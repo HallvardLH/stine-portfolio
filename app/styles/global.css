@@ -1,0 +1,29 @@
+:root {
+    --bg-color: white;
+    --text-color: black;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1e1e1e;
+    --text-color: white;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('Satoshi-Variable.ttf') format('truetype');
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: "Satoshi";
+}
+
+.container {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
