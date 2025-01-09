@@ -1,11 +1,20 @@
 :root {
-    --bg-color: white;
-    --text-color: black;
+    --primary-color: #EEF9DB;
+    --secondary-color: #011B0D;
+    --contrast-color: #FBFFE0;
+
+    --text-color: #011B0D;
+
+    /* Card colors are defined independently as they do not change with dark mode */
+    --card-background: #EEF9DB;
+    --card-text-color: #011B0D;
 }
 
 [data-theme="dark"] {
-    --bg-color: #1e1e1e;
-    --text-color: white;
+    --primary-color: #011B0D;
+    --secondary-color: #F9FF7E;
+
+    --text-color: #FBFFE0;
 }
 
 @font-face {
@@ -14,16 +23,46 @@
 }
 
 body {
-    background-color: var(--bg-color);
+    margin: 0;
+    background-color: var(--primary-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
     font-family: "Satoshi";
 }
 
+/* This gives elements margin from the sides of the screen */
+.gutter {
+    padding: 0 1rem;
+}
+
+/* Removing default link styling */
+a:-webkit-any-link {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.no-link {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
 .container {
-    background-color: var(--bg-color);
+    background-color: var(--primary-color);
     color: var(--text-color);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* Desktop */
+@media only screen and (min-width: 550px) {
+    .gutter {
+        padding: 0 calc(2rem + 10vw);
+    }
 }

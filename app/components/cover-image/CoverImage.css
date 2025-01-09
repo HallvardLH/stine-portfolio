@@ -1,0 +1,29 @@
+.cover-image-container {
+    position: relative;
+    border-radius: .938rem;
+    aspect-ratio: 1.2 / 1;
+}
+
+.cover-image {
+    width: 100%;
+    max-height: 350px;
+}
+
+.cover-image-back-icon {
+    height: 1rem;
+    width: 1rem;
+}
+
+.cover-image-back-container {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    background-color: var(--primary-color);
+    border-bottom-right-radius: .938rem;
+    padding: 0.6rem 1rem;
+
+    display: flex;
+    gap: .625rem;
+    align-items: center;
+    margin-right: 0.2rem;
+}

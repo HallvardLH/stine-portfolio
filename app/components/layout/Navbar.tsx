@@ -1,27 +1,57 @@
 import "./Navbar.css";
 import { Link } from "@remix-run/react";
+import { useState } from "react";
 
 export default function Navbar() {
+
+    const [navbarOpen, setNavbarOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setNavbarOpen(!navbarOpen);
+    }
+
     return (
-        <nav className="container">
-            <div className="navbar-inner">
-                <img
-                    src="/icons/menu.svg"
-                    alt="Play Store logo"
-                    className="store-logo"
-                />
-                <ul className="navbar-list">
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/portfolio">Portfolio</Link>
-                    </li>
-                    <li>
-                        <Link to="/about-me">About me</Link>
-                    </li>
-                </ul>
+        <nav className="navbar-container gutter">
+            <div className="navbar-top">
+                <Link to="/">
+                    <h1 className="heading no-link">
+                        UX - portefølje
+                    </h1>
+                </Link>
+                <button className="navbar-dropdown-toggle-container" onClick={() => { toggleDropdown() }}>
+                    <img
+                        src={navbarOpen ? "/icons/close.svg" : "/icons/menu.svg"}
+                        alt=""
+                        className="navbar-dropdown-toggle"
+                    />
+                </button>
             </div>
+            {navbarOpen && (
+                <div className="navbar-dropdown gutter">
+                    <ul className="navbar-list">
+                        <li>
+                            <Link onClick={() => setNavbarOpen(false)} to="/">
+                                <p className="text-medium">Hjem</p>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link onClick={() => setNavbarOpen(false)} to="/prosjektbibliotek">
+                                <p className="text-medium">Prosjektbibliotek</p>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link onClick={() => setNavbarOpen(false)} to="/about-me">
+                                <p className="text-medium">Om meg</p>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link onClick={() => setNavbarOpen(false)} to="/about-me">
+                                <p className="text-medium">Kontakt</p>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            )}
         </nav>
     )
 }

@@ -1,0 +1,43 @@
+.navbar-container {
+    background-color: var(--bg-color);
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+    position: relative;
+}
+
+.navbar-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-dropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    flex-grow: 1;
+    background-color: var(--primary-color);
+}
+
+.navbar-dropdown-toggle-container {
+    all: unset;
+    display: flex;
+    justify-content: end;
+}
+
+.navbar-dropdown-toggle {
+    height: 2rem;
+    width: 2rem;
+}
+
+.navbar-list {
+    list-style-type: none;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+.navbar-list a {
+    text-decoration: none;
+    color: var(--text-color);
+}

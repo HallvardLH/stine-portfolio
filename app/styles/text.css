@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Satoshi';
+    src: url('Satoshi-Variable.ttf') format('truetype');
+}
+
+.heading {
+    all: unset;
+    font-family: 'Satoshi';
+    font-size: 1.75rem;
+    font-weight: 800;
+    display: block;
+}
+
+.text-large {
+    all: unset;
+    font-family: 'Satoshi';
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: block;
+}
+
+.text-medium {
+    all: unset;
+    font-family: 'Satoshi';
+    font-size: 1.25rem;
+    font-weight: 500;
+    display: block;
+    line-height: 1.85rem;
+}
+
+p {
+    all: unset;
+    font-family: 'Satoshi';
+    font-size: 1rem;
+    font-weight: normal;
+    display: block;
+}
+
+.text-small {
+    font-family: 'Satoshi';
+    font-size: .875rem;
+    font-weight: lighter;
+}
+
+.card-text {
+    color: var(--card-text-color) !important;
+}
+
+
+/* Desktop */
+@media only screen and (min-width: 550px) {
+    .heading {
+        font-size: 3rem;
+    }
+
+    .text-large {
+        font-size: 2.5rem;
+    }
+
+    .text-medium {
+        font-size: 2.25rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+
+    .text-small {
+        font-size: 1.375rem;
+    }
+}

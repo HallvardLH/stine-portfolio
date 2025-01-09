@@ -1,0 +1,12 @@
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button {
+    all: unset;
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    background-color: var(--secondary-color);
+    color: var(--contrast-color);
+}

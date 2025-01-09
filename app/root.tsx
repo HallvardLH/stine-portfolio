@@ -4,7 +4,6 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  LiveReload,
   useLoaderData
 } from "@remix-run/react";
 import { themeCookie } from "./utils/theme.server";
@@ -12,11 +11,13 @@ import { useState, useEffect } from "react";
 
 import Navbar from "./components/layout/Navbar";
 
-import './styles/global.css'
+import './styles/global.css';
+import './styles/text.css';
+import './styles/layout.css';
 
-export function links() {
-  return [{ rel: "stylesheet", href: './styles/global.css' }];
-}
+// export function links() {
+//   return [{ rel: "stylesheet", href: './styles/global.css' }, { rel: "stylesheet", href: './styles/text.css' }, { rel: "stylesheet", href: './styles/layout.css' }];
+// }
 
 export async function loader({ request }: { request: Request }) {
   const cookieHeader = request.headers.get("Cookie");
@@ -62,6 +63,7 @@ export default function App() {
       </head>
       <body>
         <button
+          style={{ position: "absolute", zIndex: 999 }}
           onClick={() => {
             const newTheme = currentTheme === "light" ? "dark" : "light";
             document.documentElement.setAttribute("data-theme", newTheme);
@@ -78,7 +80,6 @@ export default function App() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   );

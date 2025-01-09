@@ -1,0 +1,17 @@
+.project-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.project-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2.625rem;
+}
+
+.standalone-paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
