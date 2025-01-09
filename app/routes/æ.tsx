@@ -42,7 +42,7 @@ export default function ProjectsLibaryRoute() {
                 </div>
 
                 <div className="standalone-paragraph">
-                    <p className="text-medium">Evalusjonsmetoder</p>
+                    <p className="text-medium">Evalueringsmetoder</p>
                     <p>
                         For å forstå markedet og brukernes forventninger startet vi med en konkurranseanalyse. Dette ga oss innsikt i trender og muligheter for at Æ-appen kunne skille seg ut. Videre gjennomførte vi en heuristisk evaluering og brukertesting for å vurdere appens brukervennlighet. Den heuristiske evalueringen avdekket designproblemer basert på etablerte prinsipper, mens brukertesting med &quot;tenk-høyt&quot;-metoden ga oss verdifull innsikt i brukernes faktiske opplevelse.
                     </p>
@@ -51,13 +51,14 @@ export default function ProjectsLibaryRoute() {
                 <ParagraphWithImage
                     textSection={
                         <div>
-                            <p className="text-medium">Evalusjonsmetoder</p>
+                            <p className="text-medium">Evalueringens resultater</p>
                             <p>
                                 Gjennom testing oppdaget vi at brukerne slet med scanning av rabattkoder i butikk, samt at personlige rabatter var vanskelige å finne. Hjemmesiden føltes overfylt, og plasseringen av &quot;logg ut&quot;- og &quot;slett konto&quot;-knappene skapte risiko for feiltrykk. Den heuristiske evalueringen avdekket også problemer som manglende flerspråklig støtte, uklare feilbeskjeder og navigasjonsutfordringer. Disse funnene har vært avgjørende i utformingen av et mer brukervennlig redesign.
                             </p>
                         </div>
                     }
                     imageSrc="/æ/æ-wireframes.png"
+                    imageText="Crazy 8's med prosjektgruppen"
                 />
             </div>
         </main>

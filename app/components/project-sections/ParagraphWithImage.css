@@ -4,8 +4,23 @@
     gap: 2.625rem;
 }
 
-.paragraph-with-image-image {
-    /* width: 100%; */
-    max-height: 350px;
+.paragraph-with-image-image-container {
     margin: 0 1rem;
+}
+
+.paragraph-with-image-image {
+    max-height: 350px;
+}
+
+/* Desktop */
+@media only screen and (min-width: 550px) {
+    .paragraph-with-image-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.625rem;
+    }
+
+    .paragraph-with-image-image {
+        max-height: 500px;
+    }
 }
