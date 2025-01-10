@@ -1,0 +1,19 @@
+.standalone-paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+/* Desktop */
+@media only screen and (min-width: 800px) {
+    .standalone-paragraph {
+        max-width: 75%;
+    }
+}
+
+/* Even larger desktop */
+@media only screen and (min-width: 1000px) {
+    .standalone-paragraph {
+        max-width: 65%;
+    }
+}

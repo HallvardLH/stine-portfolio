@@ -10,8 +10,9 @@
     gap: 2.625rem;
 }
 
-.standalone-paragraph {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
+/* Desktop */
+@media only screen and (min-width: 800px) {
+    .project-section {
+        gap: 8rem;
+    }
 }

@@ -1,4 +1,5 @@
 import "./CoverImage.css";
+import { Link } from "@remix-run/react";
 
 interface ProjectCardProps {
     src: string,
@@ -12,14 +13,14 @@ export default function CoverImage({ src }: ProjectCardProps) {
                 alt=""
                 className="cover-image"
             />
-            <div className="cover-image-back-container">
+            <Link className="cover-image-back-container" to="/prosjektbibliotek">
                 <img
                     src="/icons/back.svg"
                     alt=""
                     className="cover-image-back-icon"
                 />
                 <p className="text-small">Tilbake til prosjektbibliotek</p>
-            </div>
+            </Link>
         </div>
     )
 }

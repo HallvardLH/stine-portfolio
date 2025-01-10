@@ -32,7 +32,7 @@
 /* Desktop */
 @media only screen and (min-width: 550px) {
     .cover-image {
-        object-position: 0 -200px;
+        object-position: 0 -250px;
     }
 
     .cover-image-container {

@@ -4,20 +4,31 @@
     gap: 2.625rem;
 }
 
+.reverse {
+    flex-direction: column-reverse;
+}
+
 .paragraph-with-image-image-container {
     margin: 0 1rem;
+    align-self: center;
 }
 
 .paragraph-with-image-image {
     max-height: 350px;
+    max-width: 100%;
+    border-radius: .938rem;
 }
 
 /* Desktop */
-@media only screen and (min-width: 550px) {
+@media only screen and (min-width: 1000px) {
     .paragraph-with-image-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2.625rem;
+    }
+
+    .vertical {
+        display: flex !important;
     }
 
     .paragraph-with-image-image {

@@ -8,6 +8,27 @@
     /* Card colors are defined independently as they do not change with dark mode */
     --card-background: #EEF9DB;
     --card-text-color: #011B0D;
+
+    /* Project-specific color schemes */
+    --primary-color-æ: #B6D8FD;
+    --secondary-color-æ: #002855;
+    --contrast-color-æ: #D5E9FF;
+
+    --primary-color-corwell: #FFB1B1;
+    --secondary-color-corwell: #560000;
+    --contrast-color-corwell: #FDDCDC;
+
+    --primary-color-skredder: #E0E1DD;
+    --secondary-color-skredder: #0D1B2A;
+    --contrast-color-skredder: #F9F7FF;
+
+    --primary-color-ourspace: #EAE4E4;
+    --secondary-color-ourspace: #0A2463;
+    --contrast-color-ourspace: #FDF9F9;
+
+    --primary-color-drømmeland: #65C2B4;
+    --secondary-color-drømmeland: #1E3C43;
+    --contrast-color-drømmeland: #D7F9FF;
 }
 
 [data-theme="dark"] {
@@ -15,6 +36,21 @@
     --secondary-color: #F9FF7E;
 
     --text-color: #FBFFE0;
+
+    --primary-color-æ: #002855;
+    --secondary-color-æ: #509EF2;
+
+    --primary-color-corwell: #560000;
+    --secondary-color-corwell: #FF5F5F;
+
+    --primary-color-skredder: #0D1B2A;
+    --secondary-color-skredder: #78AAE3;
+
+    --primary-color-ourspace: #0A2463;
+    --secondary-color-ourspace: #65E152;
+
+    --primary-color-drømmeland: #1E3C43;
+    --secondary-color-drømmeland: #E687FC;
 }
 
 @font-face {
@@ -61,7 +97,7 @@ a:-webkit-any-link {
 }
 
 /* Desktop */
-@media only screen and (min-width: 550px) {
+@media only screen and (min-width: 1050px) {
     .gutter {
         padding: 0 calc(2rem + 10vw);
     }
