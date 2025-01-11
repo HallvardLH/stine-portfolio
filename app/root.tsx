@@ -70,7 +70,7 @@ export default function App() {
       </head>
       <body>
         <button
-          style={{ position: "absolute", zIndex: 999 }}
+          style={{ position: "absolute", top: "0", zIndex: 1999 }}
           onClick={() => {
             const newTheme = currentTheme === "light" ? "dark" : "light";
             document.documentElement.setAttribute("data-theme", newTheme);

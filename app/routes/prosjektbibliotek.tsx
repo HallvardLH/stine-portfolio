@@ -22,45 +22,51 @@ export default function ProjectsLibaryRoute() {
                     </p>
                 </div>
 
-                <ProjectCard
-                    imageSrc="/thumbnails/æ-thumbnail.png"
-                    date="Høsten 2024"
-                    title="Redesign av Æ-appen"
-                    description="Redesign av Rema 1000s medlemsapp med fokus på brukervennlighet"
-                    link="/æ"
-                />
+                <div className="project-card-container">
 
-                <ProjectCard
-                    imageSrc="/thumbnails/æ-thumbnail.png"
-                    date="Våren 2024"
-                    title="Corwell"
-                    description="En helseapp som forbedrer helseoppfølging ved hjelp av  lifelogging"
-                    link="/corwell"
-                />
+                    <ProjectCard
+                        imageSrc="/æ/thumbnail.png"
+                        date="Høsten 2024"
+                        title="Redesign av Æ-appen"
+                        description="Redesign av Rema 1000s medlemsapp med fokus på brukervennlighet"
+                        link="/æ"
+                    />
 
-                <ProjectCard
-                    imageSrc="/thumbnails/æ-thumbnail.png"
-                    date="Våren 2024"
-                    title="Skreddernettside"
-                    description="Sideprosjekt, nettside for skreddertjenester"
-                    link="/skreddernettside"
-                />
+                    <ProjectCard
+                        imageSrc="/corwell/thumbnail.png"
+                        date="Våren 2024"
+                        title="Corwell"
+                        description="En helseapp som forbedrer helseoppfølging ved hjelp av  lifelogging"
+                        link="/corwell"
+                    />
 
-                <ProjectCard
-                    imageSrc="/thumbnails/æ-thumbnail.png"
-                    date="Høsten 2023"
-                    title="OurSpace"
-                    description="Et CSCW- verktøy for konsulentbransjen"
-                    link="/ourspace"
-                />
+                    <ProjectCard
+                        imageSrc="/skreddernettside/thumbnail.png"
+                        date="Våren 2024"
+                        title="Skreddernettside"
+                        description="Sideprosjekt, nettside for skreddertjenester"
+                        link="/skreddernettside"
+                        imageZoom="desktop"
+                    />
 
-                <ProjectCard
-                    imageSrc="/thumbnails/æ-thumbnail.png"
-                    date="Våren 2023"
-                    title="Drømmeland"
-                    description="En læringsapp for barn om klima og miljø"
-                    link="/drømmeland"
-                />
+                    <ProjectCard
+                        imageSrc="/ourspace/thumbnail.png"
+                        date="Høsten 2023"
+                        title="OurSpace"
+                        description="Et CSCW- verktøy for konsulentbransjen"
+                        link="/ourspace"
+                        imageZoom="desktop"
+                    />
+
+                    <ProjectCard
+                        imageSrc="/drømmeland/thumbnail.png"
+                        date="Våren 2023"
+                        title="Drømmeland"
+                        description="En læringsapp for barn om klima og miljø"
+                        link="/drømmeland"
+                    />
+
+                </div>
             </main>
         </div>
     )

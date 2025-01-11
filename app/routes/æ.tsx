@@ -27,11 +27,11 @@ export default function ProjectsLibaryRoute() {
 
                 <div>
                     <div className="project-info">
-                        <p className="text-large">Plattform:</p>
+                        <p style={{ color: "var(--æ-scheme-text) !important" }} className="text-large">Plattform:</p>
                         <p className="text-medium">Mobilapp</p>
                     </div>
                     <div className="project-info">
-                        <p className="text-large">Periode:</p>
+                        <p style={{ color: "var(--æ-scheme-text) !important" }} className="text-large">Periode:</p>
                         <p className="text-medium">Sep - nov 2024</p>
                     </div>
                 </div>

@@ -13,6 +13,7 @@
     --primary-color-æ: #B6D8FD;
     --secondary-color-æ: #002855;
     --contrast-color-æ: #D5E9FF;
+    --text-color-æ: #002855;
 
     --primary-color-corwell: #FFB1B1;
     --secondary-color-corwell: #560000;
@@ -39,6 +40,7 @@
 
     --primary-color-æ: #002855;
     --secondary-color-æ: #509EF2;
+    --text-color-æ: #D5E9FF;
 
     --primary-color-corwell: #560000;
     --secondary-color-corwell: #FF5F5F;
@@ -64,6 +66,9 @@ body {
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
     font-family: "Satoshi";
+
+    /* Giving the navbar some space */
+    padding-top: 8.35rem;
 }
 
 .æ-scheme {
@@ -71,9 +76,9 @@ body {
     color: var(--secondary-color-æ) !important;
 }
 
-/* .æ-scheme p {
-    color: var(--contrast-color-æ) !important;
-} */
+.æ-scheme p {
+    color: var(--text-color-æ) !important;
+}
 
 .æ-scheme-text {
     color: var(--secondary-color-æ) !important;

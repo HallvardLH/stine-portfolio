@@ -7,21 +7,23 @@ interface ProjectCardProps {
     title: string,
     description: string,
     link: string,
+    // Whether the image is of a phone or a desktop, desktops need less zoom to stay within frame
+    imageZoom?: "phone" | "desktop"
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
 
-    const { imageSrc, date, title, description, link } = props;
+    const { imageSrc, date, title, description, link, imageZoom = "phone" } = props;
     return (
         <div className="card-container">
             <div className="card-image-container">
                 <img
                     src={imageSrc}
                     alt=""
-                    className="card-image"
+                    className={"card-image " + ("card-image-" + imageZoom)}
                 />
                 <div className="card-date-container">
-                    <p className="text-small">{date}</p>
+                    <p className="text-small card-text">{date}</p>
                 </div>
             </div>
             <h2 className="heading card-text">{title}</h2>
