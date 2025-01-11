@@ -3,17 +3,18 @@ import { Link } from "@remix-run/react";
 
 interface ProjectCardProps {
     src: string,
+    colorScheme?: string | null;
 }
 
-export default function CoverImage({ src }: ProjectCardProps) {
+export default function CoverImage({ src, colorScheme }: ProjectCardProps) {
     return (
-        <div className="cover-image-container">
+        <div className={"cover-image-container " + (colorScheme ? colorScheme : "")}>
             <img
                 src={src}
                 alt=""
                 className="cover-image"
             />
-            <Link className="cover-image-back-container" to="/prosjektbibliotek">
+            <Link className={"cover-image-back-container " + (colorScheme ? colorScheme : "")} to="/prosjektbibliotek">
                 <img
                     src="/icons/back.svg"
                     alt=""

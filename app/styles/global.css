@@ -66,6 +66,19 @@ body {
     font-family: "Satoshi";
 }
 
+.æ-scheme {
+    background-color: var(--primary-color-æ) !important;
+    color: var(--secondary-color-æ) !important;
+}
+
+/* .æ-scheme p {
+    color: var(--contrast-color-æ) !important;
+} */
+
+.æ-scheme-text {
+    color: var(--secondary-color-æ) !important;
+}
+
 /* This gives elements margin from the sides of the screen */
 .gutter {
     padding: 0 1rem;

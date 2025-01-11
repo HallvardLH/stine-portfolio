@@ -1,6 +1,6 @@
 .cover-image-container {
     position: relative;
-    border-radius: .938rem;
+    /* border-radius: .938rem; */
 }
 
 .cover-image {
@@ -32,10 +32,10 @@
 /* Desktop */
 @media only screen and (min-width: 550px) {
     .cover-image {
-        object-position: 0 -250px;
+        object-position: 0 max(calc(-10px - 10vw), -200px);
     }
 
     .cover-image-container {
-        margin-bottom: -100px;
+        padding-bottom: max(calc(40px - 10vw), 10px);
     }
 }

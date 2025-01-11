@@ -4,7 +4,8 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData
+  useLoaderData,
+  useLocation,
 } from "@remix-run/react";
 import { themeCookie } from "./utils/theme.server";
 import { useState, useEffect } from "react";
@@ -14,10 +15,6 @@ import Navbar from "./components/layout/Navbar";
 import './styles/global.css';
 import './styles/text.css';
 import './styles/layout.css';
-
-// export function links() {
-//   return [{ rel: "stylesheet", href: './styles/global.css' }, { rel: "stylesheet", href: './styles/text.css' }, { rel: "stylesheet", href: './styles/layout.css' }];
-// }
 
 export async function loader({ request }: { request: Request }) {
   const cookieHeader = request.headers.get("Cookie");
@@ -46,6 +43,16 @@ export async function action({ request }: { request: Request }) {
 export default function App() {
   const { theme } = useLoaderData<typeof loader>();
   const [currentTheme, setCurrentTheme] = useState(theme);
+  const location = useLocation();
+
+  // Custom color schemes for certain pages
+  const getNavbarColorScheme = (pathname: string) => {
+    // æ is a scary character, so we need to use %C3%A6 instead
+    if (pathname.includes("/æ") || pathname.includes("/%C3%A6")) {
+      return "æ-scheme";
+    }
+    return null; // Default color scheme
+  };
 
   // Sync client-side theme preference
   useEffect(() => {
@@ -76,7 +83,7 @@ export default function App() {
         >
           Toggle Theme
         </button>
-        <Navbar />
+        <Navbar colorScheme={getNavbarColorScheme(location.pathname)} />
         <Outlet />
         <ScrollRestoration />
         <Scripts />

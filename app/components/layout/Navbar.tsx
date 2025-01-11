@@ -2,7 +2,11 @@ import "./Navbar.css";
 import { Link } from "@remix-run/react";
 import { useState } from "react";
 
-export default function Navbar() {
+interface NavbarProps {
+    colorScheme: string | null;
+}
+
+export default function Navbar({ colorScheme }: NavbarProps) {
 
     const [navbarOpen, setNavbarOpen] = useState(false);
 
@@ -11,7 +15,7 @@ export default function Navbar() {
     }
 
     return (
-        <nav className="navbar-container gutter">
+        <nav className={"navbar-container gutter " + (colorScheme ? colorScheme : "")}>
             <div className="navbar-top">
                 <Link to="/">
                     <h1 className="heading no-link">
@@ -27,7 +31,7 @@ export default function Navbar() {
                 </button>
             </div>
             {navbarOpen && (
-                <div className="navbar-dropdown gutter">
+                <div className={"navbar-dropdown gutter " + (colorScheme ? colorScheme : "")}>
                     <ul className="navbar-list">
                         <li>
                             <Link onClick={() => setNavbarOpen(false)} to="/">

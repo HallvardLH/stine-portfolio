@@ -14,8 +14,8 @@ export const meta: MetaFunction = () => {
 export default function ProjectsLibaryRoute() {
     return (
         <main>
-            <CoverImage src="/thumbnails/æ-thumbnail.png" />
-            <div className="gutter project-section">
+            <CoverImage src="/thumbnails/æ-thumbnail.png" colorScheme="æ-scheme" />
+            <div className="gutter project-section æ-scheme">
                 <div className="text-section">
                     <h1 className="heading">
                         Redesign av Æ-appen

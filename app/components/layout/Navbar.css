@@ -1,5 +1,5 @@
 .navbar-container {
-    background-color: var(--bg-color);
+    background-color: var(--primary-color);
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
     position: relative;
@@ -15,7 +15,6 @@
     left: 0;
     right: 0;
     flex-grow: 1;
-    background-color: var(--primary-color);
     z-index: 999;
 }
 
