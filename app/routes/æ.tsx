@@ -228,7 +228,7 @@ export default function ProjectsLibaryRoute() {
                 <ParagraphWithImage
                     textSection={
                         <div>
-                            <h2 className="text-medium">Andre funksjoner</h2>
+                            <h2 style={{ marginBottom: "1.75rem" }} className="text-medium">Andre funksjoner</h2>
                             <h3 className="text-normal"><b>Handleliste</b></h3>
                             <p>
                                 Redesignet introduserer en handleliste, hvor brukerne kan lage og dele personlige lister for enklere, samarbeidsbasert handel. Brukere kan legge til varer, redigere listene sine, dele lister og krysse av produkter i butikken, noe som gjør handleopplevelsen mer organisert og effektiv.

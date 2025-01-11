@@ -16,12 +16,24 @@
     right: 0;
     flex-grow: 1;
     z-index: 999;
+    background-color: var(--primary-color);
+    height: 0;
+    overflow: hidden;
+
+    interpolate-size: allow-keywords;
+
+    transition: height 1000ms ease;
 }
 
 .navbar-dropdown-toggle-container {
     all: unset;
     display: flex;
     justify-content: end;
+    cursor: pointer;
+}
+
+.navbar-expanded {
+    height: auto;
 }
 
 .navbar-dropdown-toggle {

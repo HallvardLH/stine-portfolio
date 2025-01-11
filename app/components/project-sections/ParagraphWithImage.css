@@ -1,7 +1,7 @@
 .paragraph-with-image-container {
     display: flex;
     flex-direction: column;
-    gap: 2.625rem;
+    gap: 4rem;
 }
 
 .reverse {
@@ -11,6 +11,15 @@
 .paragraph-with-image-image-container {
     margin: 0 1rem;
     align-self: center;
+    /* align-items: center; */
+    flex-direction: column;
+    display: flex;
+    max-width: 450px;
+    gap: 0.5rem;
+}
+
+.paragraph-with-image-image-container p {
+    /* max-width: 50%; */
 }
 
 .paragraph-with-image-image {
@@ -24,7 +33,7 @@
     .paragraph-with-image-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2.625rem;
+        /* gap: 2.625rem; */
     }
 
     .vertical {

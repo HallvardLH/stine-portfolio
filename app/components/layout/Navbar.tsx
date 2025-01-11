@@ -30,32 +30,30 @@ export default function Navbar({ colorScheme }: NavbarProps) {
                     />
                 </button>
             </div>
-            {navbarOpen && (
-                <div className={"navbar-dropdown gutter " + (colorScheme ? colorScheme : "")}>
-                    <ul className="navbar-list">
-                        <li>
-                            <Link onClick={() => setNavbarOpen(false)} to="/">
-                                <p className="text-medium">Hjem</p>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link onClick={() => setNavbarOpen(false)} to="/prosjektbibliotek">
-                                <p className="text-medium">Prosjektbibliotek</p>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link onClick={() => setNavbarOpen(false)} to="/about-me">
-                                <p className="text-medium">Om meg</p>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link onClick={() => setNavbarOpen(false)} to="/about-me">
-                                <p className="text-medium">Kontakt</p>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-            )}
+            <div className={"navbar-dropdown gutter " + (colorScheme ? colorScheme + " " : " ") + (navbarOpen ? "navbar-expanded" : "")}>
+                <ul className="navbar-list">
+                    <li>
+                        <Link onClick={() => setNavbarOpen(false)} to="/">
+                            <p className="text-medium">Hjem</p>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link onClick={() => setNavbarOpen(false)} to="/prosjektbibliotek">
+                            <p className="text-medium">Prosjektbibliotek</p>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link onClick={() => setNavbarOpen(false)} to="/about-me">
+                            <p className="text-medium">Om meg</p>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link onClick={() => setNavbarOpen(false)} to="/about-me">
+                            <p className="text-medium">Kontakt</p>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
         </nav>
     )
 }
