@@ -6,15 +6,15 @@ import TwoImages from "~/components/project-sections/TwoImages";
 
 export const meta: MetaFunction = () => {
     return [
-        { title: "Prosjektbibliotek - Stine Knutsen" },
-        { name: "description", content: "Prosjektbiblioteket til Stine Knutsen." },
+        { title: "Æ-redesign - Stine Knutsen" },
+        { name: "description", content: "Et UX-redesign av Rema 1000s kundeklubbapp Æ. Designet av Stine Knutsen" },
     ];
 };
 
 export default function ProjectsLibaryRoute() {
     return (
         <main>
-            <CoverImage src="/thumbnails/æ-thumbnail.png" colorScheme="æ-scheme" />
+            <CoverImage src="/æ/thumbnail.png" colorScheme="æ-scheme" />
             <div className="gutter project-section æ-scheme">
                 <div className="text-section">
                     <h1 className="heading">
@@ -36,19 +36,27 @@ export default function ProjectsLibaryRoute() {
                     </div>
                 </div>
 
-                <div className="standalone-paragraph">
-                    <h2 className="text-medium">Bakgrunn for redesign</h2>
-                    <p>
-                        Prosjektet startet med å avdekke flere kritiske utfordringer i Æ-appen gjennom brukerundersøkelser og testing. Brukerne opplevde blant annet problemer med navigasjon, manglende personalisering og uklarhet rundt aktivering av rabatter. I tillegg skapte vage feilmeldinger og tekniske utfordringer, som at strekkoder forsvant og krevde ny innlogging, frustrasjon hos brukerne. Appens sterke fokus på merkevarebygging gikk også på bekostning av brukersentrert informasjon. Med disse innsiktene som utgangspunkt, satte vi i gang arbeidet med å heve brukervennligheten og skape en bedre opplevelse for alle Æ-brukere.
-                    </p>
-                </div>
+                <StandaloneParagraph
+                    textSection={
+                        <>
+                            <h2 className="text-medium">Bakgrunn for redesign</h2>
+                            <p>
+                                Prosjektet startet med å avdekke flere kritiske utfordringer i Æ-appen gjennom brukerundersøkelser og testing. Brukerne opplevde blant annet problemer med navigasjon, manglende personalisering og uklarhet rundt aktivering av rabatter. I tillegg skapte vage feilmeldinger og tekniske utfordringer, som at strekkoder forsvant og krevde ny innlogging, frustrasjon hos brukerne. Appens sterke fokus på merkevarebygging gikk også på bekostning av brukersentrert informasjon. Med disse innsiktene som utgangspunkt, satte vi i gang arbeidet med å heve brukervennligheten og skape en bedre opplevelse for alle Æ-brukere.
+                            </p>
+                        </>
+                    }
+                />
 
-                <div className="standalone-paragraph">
-                    <h2 className="text-medium">Evalueringsmetoder</h2>
-                    <p>
-                        For å forstå markedet og brukernes forventninger startet vi med en konkurranseanalyse. Dette ga oss innsikt i trender og muligheter for at Æ-appen kunne skille seg ut. Videre gjennomførte vi en heuristisk evaluering og brukertesting for å vurdere appens brukervennlighet. Den heuristiske evalueringen avdekket designproblemer basert på etablerte prinsipper, mens brukertesting med &quot;tenk-høyt&quot;-metoden ga oss verdifull innsikt i brukernes faktiske opplevelse.
-                    </p>
-                </div>
+                <StandaloneParagraph
+                    textSection={
+                        <>
+                            <h2 className="text-medium">Evalueringsmetoder</h2>
+                            <p>
+                                For å forstå markedet og brukernes forventninger startet vi med en konkurranseanalyse. Dette ga oss innsikt i trender og muligheter for at Æ-appen kunne skille seg ut. Videre gjennomførte vi en heuristisk evaluering og brukertesting for å vurdere appens brukervennlighet. Den heuristiske evalueringen avdekket designproblemer basert på etablerte prinsipper, mens brukertesting med &quot;tenk-høyt&quot;-metoden ga oss verdifull innsikt i brukernes faktiske opplevelse.
+                            </p>
+                        </>
+                    }
+                />
 
                 <ParagraphWithImage
                     textSection={

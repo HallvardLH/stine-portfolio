@@ -18,18 +18,22 @@
     --primary-color-corwell: #FFB1B1;
     --secondary-color-corwell: #560000;
     --contrast-color-corwell: #FDDCDC;
+    --text-color-corwell: #560000;
 
     --primary-color-skredder: #E0E1DD;
     --secondary-color-skredder: #0D1B2A;
     --contrast-color-skredder: #F9F7FF;
+    --text-color-skredder: #0D1B2A;
 
     --primary-color-ourspace: #EAE4E4;
     --secondary-color-ourspace: #0A2463;
     --contrast-color-ourspace: #FDF9F9;
+    --text-color-ourspace: #0A2463;
 
     --primary-color-drømmeland: #65C2B4;
     --secondary-color-drømmeland: #1E3C43;
     --contrast-color-drømmeland: #D7F9FF;
+    --text-color-drømmeland: #1E3C43;
 }
 
 [data-theme="dark"] {
@@ -44,15 +48,19 @@
 
     --primary-color-corwell: #560000;
     --secondary-color-corwell: #FF5F5F;
+    --text-color-corwell: #FDDCDC;
 
     --primary-color-skredder: #0D1B2A;
     --secondary-color-skredder: #78AAE3;
+    --text-color-skredder: #F9F7FF;
 
     --primary-color-ourspace: #0A2463;
     --secondary-color-ourspace: #65E152;
+    --text-color-ourspace: #FDF9F9;
 
     --primary-color-drømmeland: #1E3C43;
     --secondary-color-drømmeland: #E687FC;
+    --text-color-drømmeland: #D7F9FF;
 }
 
 @font-face {
@@ -71,6 +79,7 @@ body {
     padding-top: 8.35rem;
 }
 
+/* æ */
 .æ-scheme {
     background-color: var(--primary-color-æ) !important;
     color: var(--secondary-color-æ) !important;
@@ -82,6 +91,62 @@ body {
 
 .æ-scheme-text {
     color: var(--secondary-color-æ) !important;
+}
+
+/* corwell */
+.corwell-scheme {
+    background-color: var(--primary-color-corwell) !important;
+    color: var(--secondary-color-corwell) !important;
+}
+
+.corwell-scheme p {
+    color: var(--text-color-corwell) !important;
+}
+
+.corwell-scheme-text {
+    color: var(--secondary-color-corwell) !important;
+}
+
+/* skredder */
+.skredder-scheme {
+    background-color: var(--primary-color-skredder) !important;
+    color: var(--secondary-color-skredder) !important;
+}
+
+.skredder-scheme p {
+    color: var(--text-color-skredder) !important;
+}
+
+.skredder-scheme-text {
+    color: var(--secondary-color-skredder) !important;
+}
+
+/* ourspace */
+.ourspace-scheme {
+    background-color: var(--primary-color-ourspace) !important;
+    color: var(--secondary-color-ourspace) !important;
+}
+
+.ourspace-scheme p {
+    color: var(--text-color-ourspace) !important;
+}
+
+.ourspace-scheme-text {
+    color: var(--secondary-color-ourspace) !important;
+}
+
+/* drømmeland */
+.drømmeland-scheme {
+    background-color: var(--primary-color-drømmeland) !important;
+    color: var(--secondary-color-drømmeland) !important;
+}
+
+.drømmeland-scheme p {
+    color: var(--text-color-drømmeland) !important;
+}
+
+.drømmeland-scheme-text {
+    color: var(--secondary-color-drømmeland) !important;
 }
 
 /* This gives elements margin from the sides of the screen */
