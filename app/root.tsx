@@ -11,6 +11,7 @@ import { themeCookie } from "./utils/theme.server";
 import { useState, useEffect } from "react";
 
 import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 import './styles/global.css';
 import './styles/text.css';
@@ -51,6 +52,18 @@ export default function App() {
     if (pathname.includes("/æ") || pathname.includes("/%C3%A6")) {
       return "æ-scheme";
     }
+    if (pathname.includes("/corwell")) {
+      return "corwell-scheme";
+    }
+    if (pathname.includes("/skreddernettside")) {
+      return "skredder-scheme";
+    }
+    if (pathname.includes("/ourspace")) {
+      return "ourspace-scheme";
+    }
+    if (pathname.includes("/dr%C3%B8mmeland")) {
+      return "drømmeland-scheme";
+    }
     return null; // Default color scheme
   };
 
@@ -85,6 +98,7 @@ export default function App() {
         </button>
         <Navbar colorScheme={getNavbarColorScheme(location.pathname)} />
         <Outlet />
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>

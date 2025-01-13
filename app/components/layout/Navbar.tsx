@@ -45,7 +45,7 @@ export default function Navbar({ colorScheme }: NavbarProps) {
                     <img
                         src={navbarOpen ? "/icons/close.svg" : "/icons/menu.svg"}
                         alt=""
-                        className="navbar-dropdown-toggle"
+                        className="navbar-dropdown-toggle icon"
                     />
                 </button>
             </div>
@@ -71,12 +71,12 @@ export default function Navbar({ colorScheme }: NavbarProps) {
                         </Link>
                     </li>
                     <li>
-                        <Link onClick={() => setNavbarOpen(false)} to="/about-me">
+                        <Link onClick={() => setNavbarOpen(false)} to="/om-meg">
                             <p className="text-medium">Om meg</p>
                         </Link>
                     </li>
                     <li>
-                        <Link onClick={() => setNavbarOpen(false)} to="/about-me">
+                        <Link onClick={() => setNavbarOpen(false)} to="/kontakt">
                             <p className="text-medium">Kontakt</p>
                         </Link>
                     </li>

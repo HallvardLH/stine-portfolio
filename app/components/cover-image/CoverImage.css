@@ -28,6 +28,10 @@
     margin-right: 0.2rem;
 }
 
+.cover-image-back-container p {
+    color: var(--secondary-color) !important;
+}
+
 
 /* Desktop */
 @media only screen and (min-width: 550px) {

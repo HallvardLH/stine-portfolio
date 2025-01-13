@@ -1,0 +1,20 @@
+.contact-container {
+    margin-top: 1.5rem;
+}
+
+.contact-info-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1rem;
+    row-gap: .8rem;
+}
+
+.contact-info {
+    display: flex;
+    gap: .4rem
+}
+
+.contact-info-icon {
+    height: 1.25rem;
+    width: 1.25rem;
+}

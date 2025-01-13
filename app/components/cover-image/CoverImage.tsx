@@ -18,9 +18,9 @@ export default function CoverImage({ src, colorScheme }: ProjectCardProps) {
                 <img
                     src="/icons/back.svg"
                     alt=""
-                    className="cover-image-back-icon"
+                    className="cover-image-back-icon icon"
                 />
-                <p className="text-small">Tilbake til prosjektbibliotek</p>
+                <p className="text-small back-button-text">Tilbake til prosjektbibliotek</p>
             </Link>
         </div>
     )

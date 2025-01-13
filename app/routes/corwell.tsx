@@ -2,7 +2,6 @@ import type { MetaFunction } from "@remix-run/node";
 import CoverImage from "~/components/cover-image/CoverImage";
 import StandaloneParagraph from "~/components/project-sections/StandaloneParagraph";
 import ParagraphWithImage from "~/components/project-sections/ParagraphWithImage";
-import TwoImages from "~/components/project-sections/TwoImages";
 
 export const meta: MetaFunction = () => {
     return [

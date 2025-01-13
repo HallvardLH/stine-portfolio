@@ -5,6 +5,11 @@
 
     --text-color: #011B0D;
 
+    --header-color: #011B0D;
+
+    --icon-color: brightness(0) saturate(100%) invert(7%) sepia(95%) saturate(430%) hue-rotate(96deg) brightness(96%) contrast(100%);
+    --socials-icon-color: brightness(0) saturate(100%) invert(7%) sepia(95%) saturate(430%) hue-rotate(96deg) brightness(96%) contrast(100%);
+
     /* Card colors are defined independently as they do not change with dark mode */
     --card-background: #EEF9DB;
     --card-text-color: #011B0D;
@@ -42,6 +47,11 @@
 
     --text-color: #FBFFE0;
 
+    --header-color: #F9FF7E;
+
+    --icon-color: brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(426%) hue-rotate(35deg) brightness(109%) contrast(105%);
+    --socials-icon-color: brightness(0) saturate(100%) invert(83%) sepia(65%) saturate(342%) hue-rotate(17deg) brightness(111%) contrast(105%);
+
     --primary-color-æ: #002855;
     --secondary-color-æ: #509EF2;
     --text-color-æ: #D5E9FF;
@@ -77,6 +87,14 @@ body {
 
     /* Giving the navbar some space */
     padding-top: 8.35rem;
+}
+
+.icon {
+    filter: var(--icon-color);
+}
+
+.socials-icon {
+    filter: var(--socials-icon-color);
 }
 
 /* æ */

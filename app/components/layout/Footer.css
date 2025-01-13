@@ -1,0 +1,14 @@
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.navigation-list {
+    list-style-type: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    padding-inline-start: 0;
+}
