@@ -1,4 +1,5 @@
 import "./ParagraphWithImage.css";
+import ImageWithLoader from "../general/ImageWithLoader";
 
 interface ParagraphWithImageProps {
     textSection: React.ReactNode,
@@ -19,10 +20,10 @@ export default function ParagraphWithImage(props: ParagraphWithImageProps) {
             {textSection}
 
             <div className="paragraph-with-image-image-container">
-                <img
+                <ImageWithLoader
                     src={imageSrc}
                     alt={altText}
-                    className="paragraph-with-image-image"
+                    classes="paragraph-with-image-image"
                 />
                 <p className="text-small">{imageText}</p>
             </div>

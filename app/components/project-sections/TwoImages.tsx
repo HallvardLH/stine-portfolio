@@ -1,4 +1,5 @@
 import "./TwoImages.css";
+import ImageWithLoader from "../general/ImageWithLoader";
 
 interface TwoImagesProps {
     imageSrc1: string,
@@ -17,20 +18,20 @@ export default function TwoImages(props: TwoImagesProps) {
     return (
         <div className="two-images-container">
             <div className="two-images-image-container">
-                <img
+                <ImageWithLoader
                     src={imageSrc1}
                     alt={altText1}
-                    className="two-images-image"
+                    classes="two-images-image"
                 />
                 {!combinedImageText && (
                     <p className="text-small">{imageText1}</p>
                 )}
             </div>
             <div className="two-images-image-container">
-                <img
+                <ImageWithLoader
                     src={imageSrc2}
                     alt={altText2}
-                    className="two-images-image"
+                    classes="two-images-image"
                 />
                 {!combinedImageText && (
                     <p className="text-small">{imageText2}</p>

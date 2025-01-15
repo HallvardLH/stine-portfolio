@@ -1,5 +1,6 @@
 import "./ProjectCard.css";
 import { Link } from "@remix-run/react";
+import ImageWithLoader from "../general/ImageWithLoader";
 
 interface ProjectCardProps {
     imageSrc: string,
@@ -17,10 +18,10 @@ export default function ProjectCard(props: ProjectCardProps) {
     return (
         <div className="card-container">
             <div className="card-image-container">
-                <img
+                <ImageWithLoader
                     src={imageSrc}
                     alt=""
-                    className={"card-image " + ("card-image-" + imageZoom)}
+                    classes={"card-image " + ("card-image-" + imageZoom)}
                 />
                 <div className="card-date-container">
                     <p className="text-small card-text">{date}</p>
