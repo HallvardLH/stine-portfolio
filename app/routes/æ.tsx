@@ -16,14 +16,18 @@ export default function ProjectsLibaryRoute() {
         <main>
             <CoverImage src="/æ/thumbnail.png" colorScheme="æ-scheme" />
             <div className="gutter project-section æ-scheme">
-                <div className="text-section">
-                    <h1 className="heading">
-                        Redesign av Æ-appen
-                    </h1>
-                    <p className="text-medium">
-                        Et redesignprosjekt som har som mål å forbedre brukervennligheten i en av Norges mest populære medlemsklubbsapper.
-                    </p>
-                </div>
+                <StandaloneParagraph
+                    textSection={
+                        <>
+                            <h1 className="heading">
+                                Redesign av Æ-appen
+                            </h1>
+                            <p className="text-medium">
+                                Et redesignprosjekt som har som mål å forbedre brukervennligheten i en av Norges mest populære medlemsklubbsapper.
+                            </p>
+                        </>
+                    }
+                />
 
                 <div>
                     <div className="project-info">

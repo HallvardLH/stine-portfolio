@@ -11,7 +11,8 @@
 
 .contact-info {
     display: flex;
-    gap: .4rem
+    gap: .4rem;
+    align-items: center;
 }
 
 .contact-info-icon {

@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import ParagraphWithImage from "~/components/project-sections/ParagraphWithImage";
 import TwoImages from "~/components/project-sections/TwoImages";
+import StandaloneParagraph from "~/components/project-sections/StandaloneParagraph";
 
 export const meta: MetaFunction = () => {
     return [
@@ -13,14 +14,19 @@ export default function ProjectsLibaryRoute() {
     return (
         <main>
             <div className="gutter project-section">
-                <div className="text-section">
-                    <h1 className="heading heading-normal-color">
-                        Litt om meg
-                    </h1>
-                    <p className="text-medium">
-                        Jeg er en positiv og nysgjerrig person som trives best når jeg kan være kreativ, sosial og lære noe nytt.
-                    </p>
-                </div>
+
+                <StandaloneParagraph
+                    textSection={
+                        <>
+                            <h1 className="heading heading-normal-color">
+                                Litt om meg
+                            </h1>
+                            <p className="text-medium">
+                                Jeg er en positiv og nysgjerrig person som trives best når jeg kan være kreativ, sosial og lære noe nytt.
+                            </p>
+                        </>
+                    }
+                />
 
                 <ParagraphWithImage
                     textSection={

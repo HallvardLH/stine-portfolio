@@ -16,14 +16,19 @@ export default function ProjectsLibaryRoute() {
         <main>
             <CoverImage src="/ourspace/thumbnail.png" colorScheme="ourspace-scheme" />
             <div className="gutter project-section ourspace-scheme">
-                <div className="text-section">
-                    <h1 className="heading">
-                        OurSpace
-                    </h1>
-                    <p className="text-medium">
-                        Et CSCW-verktøy med mål om å strukturere konsulenter og klienters kalendere for å oppfylle deres ønsker og behov.
-                    </p>
-                </div>
+
+                <StandaloneParagraph
+                    textSection={
+                        <>
+                            <h1 className="heading">
+                                OurSpace
+                            </h1>
+                            <p className="text-medium">
+                                Et CSCW-verktøy med mål om å strukturere konsulenter og klienters kalendere for å oppfylle deres ønsker og behov.
+                            </p>
+                        </>
+                    }
+                />
 
                 <div>
                     <div className="project-info">

@@ -16,14 +16,19 @@ export default function ProjectsLibaryRoute() {
         <main>
             <CoverImage src="/drømmeland/thumbnail.png" colorScheme="drømmeland-scheme" />
             <div className="gutter project-section drømmeland-scheme">
-                <div className="text-section">
-                    <h1 className="heading">
-                        Drømmeland
-                    </h1>
-                    <p className="text-medium">
-                        Drømmeland er en læringsapp for barn mellom 7 og 9 år. Appen underviser om bærekraft gjennom virituelle aktiviteter som resirkulering og havrydding.
-                    </p>
-                </div>
+
+                <StandaloneParagraph
+                    textSection={
+                        <>
+                            <h1 className="heading">
+                                Drømmeland
+                            </h1>
+                            <p className="text-medium">
+                                Drømmeland er en læringsapp for barn mellom 7 og 9 år. Appen underviser om bærekraft gjennom virituelle aktiviteter som resirkulering og havrydding.
+                            </p>
+                        </>
+                    }
+                />
 
                 <div>
                     <div className="project-info">

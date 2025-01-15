@@ -9,7 +9,7 @@ export default function Contact() {
                     <img
                         src={"/icons/mail.svg"}
                         alt=""
-                        className="contact-info-icon"
+                        className="contact-info-icon icon"
                     />
                     <p>mail:</p>
                 </div>
@@ -19,7 +19,7 @@ export default function Contact() {
                     <img
                         src={"/icons/phone.svg"}
                         alt=""
-                        className="contact-info-icon"
+                        className="contact-info-icon icon"
                     />
                     <p>mobil:</p>
                 </div>
@@ -29,7 +29,7 @@ export default function Contact() {
                     <img
                         src={"/icons/address.svg"}
                         alt=""
-                        className="contact-info-icon"
+                        className="contact-info-icon icon"
                     />
                     <p>sted:</p>
                 </div>

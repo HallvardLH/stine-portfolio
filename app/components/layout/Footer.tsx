@@ -32,7 +32,23 @@ export default function Footer() {
             </div>
 
             <div className="socials-container">
+                <a target="_blank" rel="noopener noreferrer" href="https://www.behance.net/stineknutsen3">
+                    <img
+                        src={"/icons/behance.svg"}
+                        alt=""
+                        className="socials-icon"
+                    />
+                </a>
+                <img
+                    src={"/icons/linkedin.svg"}
+                    alt=""
+                    className="socials-icon"
+                />
+            </div>
 
+            <div className="footer-credit-container">
+                <p>Designet av Stine Knutsen</p>
+                <p>Utviklet av <a target="_blank" rel="noopener noreferrer" href="https://hallvardlh.netlify.app/">Hallvad Lygre Hetlelid</a></p>
             </div>
         </footer>
     )

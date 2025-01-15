@@ -44,6 +44,7 @@
 .read-more-outer-container {
     display: flex;
     justify-content: flex-end;
+    margin-top: 1rem;
 }
 
 .read-more-container {

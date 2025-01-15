@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+    margin-top: 5rem;
+    padding-bottom: 2rem !important;
 }
 
 .navigation-list {
@@ -11,4 +13,23 @@
     flex-direction: column;
     gap: .7rem;
     padding-inline-start: 0;
+}
+
+.socials-container {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+}
+
+.socials-container {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+}
+
+.footer-credit-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }

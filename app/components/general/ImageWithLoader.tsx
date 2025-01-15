@@ -29,7 +29,7 @@ export default function ImageWithLoader({ src, alt, classes, skeletonHeight = 30
 
     return (
         <>
-            {!loaded && <Skeleton height={skeletonHeight} width="100%" />}
+            {!loaded && <Skeleton className="image-skeleton" height={skeletonHeight} width="100%" />}
             <img
                 src={src}
                 alt={alt}

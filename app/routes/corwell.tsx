@@ -15,14 +15,18 @@ export default function ProjectsLibaryRoute() {
         <main>
             <CoverImage src="/corwell/thumbnail.png" colorScheme="corwell-scheme" />
             <div className="gutter project-section corwell-scheme">
-                <div className="text-section">
-                    <h1 className="heading">
-                        CorWell
-                    </h1>
-                    <p className="text-medium">
-                        Et prosjekt som gikk ut på å skape en helseapp som forbedrer innsikten i egen helse ved hjelp av lifelogging-teknologi.
-                    </p>
-                </div>
+                <StandaloneParagraph
+                    textSection={
+                        <>
+                            <h1 className="heading">
+                                CorWell
+                            </h1>
+                            <p className="text-medium">
+                                Et prosjekt som gikk ut på å skape en helseapp som forbedrer innsikten i egen helse ved hjelp av lifelogging-teknologi.
+                            </p>
+                        </>
+                    }
+                />
 
                 <div>
                     <div className="project-info">

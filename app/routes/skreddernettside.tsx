@@ -16,14 +16,19 @@ export default function ProjectsLibaryRoute() {
         <main>
             <CoverImage src="/skreddernettside/thumbnail.png" colorScheme="skredder-scheme" />
             <div className="gutter project-section skredder-scheme">
-                <div className="text-section">
-                    <h1 className="heading">
-                        Skreddernettside
-                    </h1>
-                    <p className="text-medium">
-                        Et fritidsprosjekt som gikk ut på å redesigne hjemmesiden til en skredder i Bergen.
-                    </p>
-                </div>
+
+                <StandaloneParagraph
+                    textSection={
+                        <>
+                            <h1 className="heading">
+                                Skreddernettside
+                            </h1>
+                            <p className="text-medium">
+                                Et fritidsprosjekt som gikk ut på å redesigne hjemmesiden til en skredder i Bergen.
+                            </p>
+                        </>
+                    }
+                />
 
                 <div>
                     <div className="project-info">

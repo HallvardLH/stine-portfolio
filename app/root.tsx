@@ -47,7 +47,7 @@ export default function App() {
   const location = useLocation();
 
   // Custom color schemes for certain pages
-  const getNavbarColorScheme = (pathname: string) => {
+  const getColorScheme = (pathname: string) => {
     // æ is a scary character, so we need to use %C3%A6 instead
     if (pathname.includes("/æ") || pathname.includes("/%C3%A6")) {
       return "æ-scheme";
@@ -81,7 +81,7 @@ export default function App() {
         <title>Stine Knutsen</title>
         <Links />
       </head>
-      <body>
+      <body className={getColorScheme(location.pathname) ? "" + getColorScheme(location.pathname) : ""}>
         <button
           style={{ position: "absolute", top: "0", zIndex: 1999 }}
           onClick={() => {
@@ -96,7 +96,7 @@ export default function App() {
         >
           Toggle Theme
         </button>
-        <Navbar colorScheme={getNavbarColorScheme(location.pathname)} />
+        <Navbar colorScheme={getColorScheme(location.pathname)} />
         <Outlet />
         <Footer />
         <ScrollRestoration />

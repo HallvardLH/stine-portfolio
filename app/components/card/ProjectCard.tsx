@@ -16,7 +16,7 @@ export default function ProjectCard(props: ProjectCardProps) {
 
     const { imageSrc, date, title, description, link, imageZoom = "phone" } = props;
     return (
-        <div className="card-container">
+        <Link className="card-container" to={link}>
             <div className="card-image-container">
                 <ImageWithLoader
                     src={imageSrc}
@@ -39,6 +39,6 @@ export default function ProjectCard(props: ProjectCardProps) {
                     />
                 </div>
             </Link>
-        </div>
+        </Link>
     )
 }
