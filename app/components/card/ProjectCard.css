@@ -6,6 +6,7 @@
     background-color: var(--card-background);
     border-radius: .938rem;
     padding: 1rem;
+    max-width: 400px;
 }
 
 .card-image-container {
@@ -13,7 +14,8 @@
     border-radius: .938rem;
     aspect-ratio: 1.2 / 1;
     overflow: hidden;
-    flex-grow: 1;
+    flex-shrink: 0;
+    /* flex-grow: 1; */
 }
 
 .card-image {
@@ -25,6 +27,7 @@
     transform: scale(1.35);
     transform-origin: center;
     object-position: 50% -35px;
+    max-width: 400px;
 }
 
 .card-image-desktop {

@@ -12,6 +12,7 @@
 
 .project-card-container {
     display: block;
+    margin: auto;
 }
 
 /* Desktop */
@@ -33,6 +34,10 @@
     }
 
     .project-card-container {
-        column-gap: 4rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-items: center;
+        /* justify-content: center; */
+        column-gap: 2rem;
     }
 }

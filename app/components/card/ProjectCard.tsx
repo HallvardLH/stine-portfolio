@@ -28,7 +28,7 @@ export default function ProjectCard(props: ProjectCardProps) {
                 </div>
             </div>
             <h2 className="heading card-text">{title}</h2>
-            <p className="text-medium card-text">{description}</p>
+            <p className="text-normal card-text">{description}</p>
             <Link className="read-more-outer-container" to={link}>
                 <div className="read-more-container">
                     <p className="text-small card-text">Les mer om dette prosjektet</p>

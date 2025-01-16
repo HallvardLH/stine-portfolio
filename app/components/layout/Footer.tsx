@@ -48,7 +48,7 @@ export default function Footer() {
 
             <div className="footer-credit-container">
                 <p>Designet av Stine Knutsen</p>
-                <p>Utviklet av <a target="_blank" rel="noopener noreferrer" href="https://hallvardlh.netlify.app/">Hallvad Lygre Hetlelid</a></p>
+                <p>Utviklet av <a target="_blank" rel="noopener noreferrer" href="https://hallvardlh.netlify.app/">Hallvard Lygre Hetlelid</a></p>
             </div>
         </footer>
     )
