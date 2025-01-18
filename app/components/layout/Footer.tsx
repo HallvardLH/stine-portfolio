@@ -26,24 +26,26 @@ export default function Footer() {
                 </ul>
             </nav>
 
-            <div>
-                <p className="text-large heading-normal-color">Kontaktinfo</p>
-                <Contact />
-            </div>
+            <div className="footer-cotacts-and-socials">
+                <div>
+                    <p className="text-large heading-normal-color">Kontaktinfo</p>
+                    <Contact />
+                </div>
 
-            <div className="socials-container">
-                <a target="_blank" rel="noopener noreferrer" href="https://www.behance.net/stineknutsen3">
+                <div className="socials-container">
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.behance.net/stineknutsen3">
+                        <img
+                            src={"/icons/behance.svg"}
+                            alt=""
+                            className="socials-icon"
+                        />
+                    </a>
                     <img
-                        src={"/icons/behance.svg"}
+                        src={"/icons/linkedin.svg"}
                         alt=""
                         className="socials-icon"
                     />
-                </a>
-                <img
-                    src={"/icons/linkedin.svg"}
-                    alt=""
-                    className="socials-icon"
-                />
+                </div>
             </div>
 
             <div className="footer-credit-container">

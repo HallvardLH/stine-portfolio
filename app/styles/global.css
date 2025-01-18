@@ -172,6 +172,10 @@ body {
     padding: 0 1rem;
 }
 
+.top-margin {
+    margin-top: 3rem;
+}
+
 /* Removing default link styling */
 a:-webkit-any-link {
     text-decoration: none;
@@ -201,5 +205,9 @@ a:-webkit-any-link {
 @media only screen and (min-width: 1050px) {
     .gutter {
         padding: 0 calc(2rem + 10vw);
+    }
+
+    .top-margin {
+        margin-top: 6rem;
     }
 }

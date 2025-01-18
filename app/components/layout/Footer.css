@@ -21,15 +21,35 @@
     justify-content: flex-end;
 }
 
-.socials-container {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: flex-end;
-}
-
 .footer-credit-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+
+.footer-cotacts-and-socials {
+    display: block;
+}
+
+.socials-icon {
+    height: 3rem;
+    width: 3rem;
+}
+
+/* Desktop */
+@media only screen and (min-width: 550px) {
+    .footer-cotacts-and-socials {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .socials-icon {
+        height: 4.5rem;
+        width: 4.5rem;
+    }
+
+    .socials-container {
+        align-self: flex-end;
+    }
 }

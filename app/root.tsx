@@ -82,9 +82,8 @@ export default function App() {
         <Links />
       </head>
       <body className={getColorScheme(location.pathname) ? "" + getColorScheme(location.pathname) : ""}>
-        <button
-          style={{ position: "absolute", top: "0", zIndex: 1999 }}
-          onClick={() => {
+        <Navbar
+          onThemeSwitch={() => {
             const newTheme = currentTheme === "light" ? "dark" : "light";
             document.documentElement.setAttribute("data-theme", newTheme);
             setCurrentTheme(newTheme);
@@ -93,10 +92,8 @@ export default function App() {
             form.append("theme", newTheme);
             fetch("/?index", { method: "POST", body: form });
           }}
-        >
-          Toggle Theme
-        </button>
-        <Navbar colorScheme={getColorScheme(location.pathname)} />
+          colorScheme={getColorScheme(location.pathname)}
+        />
         <Outlet />
         <Footer />
         <ScrollRestoration />

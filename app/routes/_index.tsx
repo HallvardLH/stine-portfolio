@@ -12,7 +12,7 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className="gutter">
+    <div className="gutter top-margin">
       <main>
 
         <StandaloneParagraph
