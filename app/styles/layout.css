@@ -11,8 +11,10 @@
 }
 
 .project-card-container {
-    display: block;
-    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 2rem;
+    justify-content: center;
 }
 
 /* Desktop */
@@ -22,22 +24,16 @@
     }
 
     .project-card-container {
-        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 2rem;
     }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1400px) {
     .project-section {
         gap: 8rem;
     }
 
     .project-card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-items: center;
-        /* justify-content: center; */
-        column-gap: 2rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }

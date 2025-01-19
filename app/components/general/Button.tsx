@@ -1,7 +1,7 @@
 import "./Button.css";
 
 interface ButtonProps {
-    children: string,
+    children: string | React.ReactNode,
 }
 
 export default function Button({ children }: ButtonProps) {

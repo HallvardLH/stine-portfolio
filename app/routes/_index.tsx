@@ -29,7 +29,7 @@ export default function Index() {
               </p>
               <div style={{ marginTop: "4rem", marginBottom: "6rem" }}>
                 <Link to="/prosjektbibliotek">
-                  <Button>{"Åpne prosjektbibliotek"}</Button>
+                  <Button><p className="button-label">{"Åpne prosjektbibliotek"}</p></Button>
                 </Link>
               </div>
             </div>
