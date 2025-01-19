@@ -1,13 +1,15 @@
 import "./Navbar.css";
 import { Link, useLocation } from "@remix-run/react";
 import { useState, useEffect, useRef } from "react";
+import ThemeSwitch from "../general/ThemeSwitch";
 
 interface NavbarProps {
     colorScheme: string | null;
     onThemeSwitch: () => void;
+    currentTheme: "dark" | "light",
 }
 
-export default function Navbar({ colorScheme, onThemeSwitch }: NavbarProps) {
+export default function Navbar({ colorScheme, onThemeSwitch, currentTheme }: NavbarProps) {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const [isLargeScreen, setIsLargeScreen] = useState(false);
     const navbarRef = useRef<HTMLDivElement | null>(null);
@@ -81,7 +83,8 @@ export default function Navbar({ colorScheme, onThemeSwitch }: NavbarProps) {
                         <Link onClick={() => setNavbarOpen(false)} to="/kontakt">
                             <p className={location.pathname === "/kontakt" ? "link-underlined" : ""}>Kontakt</p>
                         </Link>
-                        <button onClick={onThemeSwitch}>Switch theme</button>
+                        {/* <button onClick={onThemeSwitch}>Switch theme</button> */}
+                        <ThemeSwitch onThemeSwitch={onThemeSwitch} currentTheme={currentTheme} />
                     </div>
                 ) : (
                     <button

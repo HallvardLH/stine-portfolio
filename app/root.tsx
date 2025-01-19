@@ -92,6 +92,7 @@ export default function App() {
             form.append("theme", newTheme);
             fetch("/?index", { method: "POST", body: form });
           }}
+          currentTheme={currentTheme}
           colorScheme={getColorScheme(location.pathname)}
         />
         <Outlet />
