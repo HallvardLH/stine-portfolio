@@ -27,7 +27,7 @@ export default function ProjectsLibaryRoute() {
                     <ProjectCard
                         imageSrc="/æ/thumbnail.png"
                         date="Høsten 2024"
-                        title="Redesign av Æ-appen"
+                        title="Redesign av Æ"
                         description="Redesign av Rema 1000s medlemsapp med fokus på brukervennlighet"
                         link="/æ"
                     />

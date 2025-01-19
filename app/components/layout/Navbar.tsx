@@ -9,7 +9,7 @@ interface NavbarProps {
 
 export default function Navbar({ colorScheme, onThemeSwitch }: NavbarProps) {
     const [navbarOpen, setNavbarOpen] = useState(false);
-    const [isLargeScreen, setIsLargeScreen] = useState(window.matchMedia("(min-width: 550px)").matches);
+    const [isLargeScreen, setIsLargeScreen] = useState(false);
     const navbarRef = useRef<HTMLDivElement | null>(null);
     const location = useLocation();
 
@@ -35,9 +35,8 @@ export default function Navbar({ colorScheme, onThemeSwitch }: NavbarProps) {
         };
     }, [navbarOpen]);
 
-    // Check screen width and update state
     useEffect(() => {
-        if (window) {
+        if (typeof window !== "undefined") {
             const mediaQuery = window.matchMedia("(min-width: 550px)");
 
             const handleMediaChange = (e: MediaQueryListEvent) => {
@@ -68,26 +67,26 @@ export default function Navbar({ colorScheme, onThemeSwitch }: NavbarProps) {
                 {isLargeScreen ? (
                     <div className="navbar-links-desktop">
                         <Link onClick={() => setNavbarOpen(false)} to="/">
-                            <p className={location.pathname == "/" ? "link-underlined" : ""}>Hjem</p>
+                            <p className={location.pathname === "/" ? "link-underlined" : ""}>Hjem</p>
                         </Link>
                         <Link
                             onClick={() => setNavbarOpen(false)}
                             to="/prosjektbibliotek"
                         >
-                            <p className={location.pathname == "/prosjektbibliotek" ? "link-underlined" : ""}>Prosjektbibliotek</p>
+                            <p className={location.pathname === "/prosjektbibliotek" ? "link-underlined" : ""}>Prosjektbibliotek</p>
                         </Link>
                         <Link onClick={() => setNavbarOpen(false)} to="/om-meg">
-                            <p className={location.pathname == "/om-meg" ? "link-underlined" : ""}>Om meg</p>
+                            <p className={location.pathname === "/om-meg" ? "link-underlined" : ""}>Om meg</p>
                         </Link>
                         <Link onClick={() => setNavbarOpen(false)} to="/kontakt">
-                            <p className={location.pathname == "/kontakt" ? "link-underlined" : ""}>Kontakt</p>
+                            <p className={location.pathname === "/kontakt" ? "link-underlined" : ""}>Kontakt</p>
                         </Link>
                         <button onClick={onThemeSwitch}>Switch theme</button>
                     </div>
                 ) : (
                     <button
                         className="navbar-dropdown-toggle-container"
-                        onClick={() => toggleDropdown()}
+                        onClick={toggleDropdown}
                     >
                         <img
                             src={navbarOpen ? "/icons/close.svg" : "/icons/menu.svg"}
