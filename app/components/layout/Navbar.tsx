@@ -37,7 +37,7 @@ export default function Navbar({ colorScheme, onThemeSwitch }: NavbarProps) {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const mediaQuery = window.matchMedia("(min-width: 550px)");
+            const mediaQuery = window.matchMedia("(min-width: 1050px)");
 
             const handleMediaChange = (e: MediaQueryListEvent) => {
                 setIsLargeScreen(e.matches);

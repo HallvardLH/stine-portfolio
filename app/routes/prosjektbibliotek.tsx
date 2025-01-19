@@ -11,7 +11,7 @@ export const meta: MetaFunction = () => {
 
 export default function ProjectsLibaryRoute() {
     return (
-        <div className="gutter">
+        <div className="gutter top-margin">
             <main>
                 <div className="text-section">
                     <h1 className="heading">

@@ -1,6 +1,10 @@
 import "./Contact.css";
 
-export default function Contact() {
+interface ContactProps {
+    textClassName?: string,
+}
+
+export default function Contact({ textClassName }: ContactProps) {
     return (
         <div className="contact-container">
             <div className="contact-info-container">
@@ -11,9 +15,9 @@ export default function Contact() {
                         alt=""
                         className="contact-info-icon icon"
                     />
-                    <p>mail:</p>
+                    <p className={textClassName}>mail:</p>
                 </div>
-                <p><a href="mailto:stknu3373@uib.no">stknu3373@uib.no</a></p>
+                <p className={textClassName}><a href="mailto:stknu3373@uib.no">stknu3373@uib.no</a></p>
 
                 <div className="contact-info">
                     <img
@@ -21,9 +25,9 @@ export default function Contact() {
                         alt=""
                         className="contact-info-icon icon"
                     />
-                    <p>mobil:</p>
+                    <p className={textClassName}>mobil:</p>
                 </div>
-                <p><a href="tel:90089605">900 89 605</a></p>
+                <p className={textClassName}><a href="tel:90089605">900 89 605</a></p>
 
                 <div className="contact-info">
                     <img
@@ -31,9 +35,9 @@ export default function Contact() {
                         alt=""
                         className="contact-info-icon icon"
                     />
-                    <p>sted:</p>
+                    <p className={textClassName}>sted:</p>
                 </div>
-                <p>Bergen</p>
+                <p className={textClassName}>Bergen</p>
 
             </div>
         </div>
