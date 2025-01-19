@@ -177,7 +177,7 @@ body {
 
 /* This gives elements margin from the sides of the screen */
 .gutter {
-    padding: 0 1rem;
+    padding: 0 1.6rem;
 }
 
 .top-margin {

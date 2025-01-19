@@ -1,6 +1,6 @@
 .navbar-container {
     background-color: var(--primary-color);
-    padding: 0 4rem;
+    padding: 0 1.6rem;
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
     position: fixed;
@@ -71,4 +71,11 @@
 
 .link-underlined {
     text-decoration: underline;
+}
+
+/* Desktop */
+@media only screen and (min-width: 1050px) {
+    .navbar-container {
+        padding: 0 4rem;
+    }
 }
