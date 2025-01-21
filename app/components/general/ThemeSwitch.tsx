@@ -16,7 +16,7 @@ export default function ThemeSwitch({ onThemeSwitch, currentTheme }: ThemeSwitch
                     className="theme-switch-icon"
                 />
                 <p className="theme-switch-text">
-                    {currentTheme === "light" ? "Dark" : "Light"}
+                    {currentTheme === "light" ? "Mørk" : "Lys"}
                 </p>
             </div>
         </button>

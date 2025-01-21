@@ -8,6 +8,7 @@
     overflow: hidden;
     border-radius: 1.25rem;
     border: 1px solid var(--secondary-color);
+    width: 3.5rem;
 }
 
 .theme-switch-icon {
@@ -32,9 +33,19 @@
 
 /* Animation for light mode */
 .light .theme-switch-icon {
-    transform: translateX(45px);
+    transform: translateX(35px);
 }
 
 .light .theme-switch-text {
-    transform: translateX(-25px);
+    transform: translateX(-30px);
+}
+
+@media only screen and (min-width: 1700px) {
+    .theme-switch-container {
+        width: 5rem;
+    }
+
+    .light .theme-switch-icon {
+        transform: translateX(40px);
+    }
 }
