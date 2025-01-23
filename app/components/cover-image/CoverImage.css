@@ -32,6 +32,10 @@
     color: var(--secondary-color) !important;
 }
 
+.back-button-text {
+    font-weight: 500 !important;
+}
+
 
 /* Desktop */
 @media only screen and (min-width: 550px) {

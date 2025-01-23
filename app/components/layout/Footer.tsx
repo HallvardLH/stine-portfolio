@@ -5,7 +5,7 @@ import Contact from "./Contact";
 export default function Footer() {
     return (
         <footer className="footer-container gutter">
-            <nav className="">
+            <nav>
                 <p className="text-large heading-normal-color">Navigasjon</p>
                 <ul className="navigation-list">
                     <li>
@@ -26,7 +26,7 @@ export default function Footer() {
                 </ul>
             </nav>
 
-            <div className="footer-cotacts-and-socials">
+            <div className="footer-contacts-and-socials">
                 <div>
                     <p className="text-large heading-normal-color">Kontaktinfo</p>
                     <Contact />
@@ -49,8 +49,8 @@ export default function Footer() {
             </div>
 
             <div className="footer-credit-container">
-                <p>Designet av Stine Knutsen</p>
-                <p>Utviklet av <a target="_blank" rel="noopener noreferrer" href="https://hallvardlh.netlify.app/">Hallvard Lygre Hetlelid</a></p>
+                <p style={{ fontWeight: "lighter" }}>Designet av Stine Knutsen</p>
+                <p style={{ fontWeight: "lighter" }}>Utviklet av <a style={{ fontWeight: "lighter" }} target="_blank" rel="noopener noreferrer" href="https://hallvardlh.netlify.app/">Hallvard Lygre Hetlelid</a></p>
             </div>
         </footer>
     )

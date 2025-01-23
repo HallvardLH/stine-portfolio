@@ -83,7 +83,6 @@ export default function Navbar({ colorScheme, onThemeSwitch, currentTheme }: Nav
                         <Link onClick={() => setNavbarOpen(false)} to="/kontakt">
                             <p className={location.pathname === "/kontakt" ? "link-underlined" : ""}>Kontakt</p>
                         </Link>
-                        {/* <button onClick={onThemeSwitch}>Switch theme</button> */}
                         <ThemeSwitch onThemeSwitch={onThemeSwitch} currentTheme={currentTheme} />
                     </div>
                 ) : (
@@ -95,6 +94,7 @@ export default function Navbar({ colorScheme, onThemeSwitch, currentTheme }: Nav
                             src={navbarOpen ? "/icons/close.svg" : "/icons/menu.svg"}
                             alt=""
                             className="navbar-dropdown-toggle icon"
+                            draggable="false"
                         />
                     </button>
                 )}
@@ -129,6 +129,9 @@ export default function Navbar({ colorScheme, onThemeSwitch, currentTheme }: Nav
                         <Link onClick={() => setNavbarOpen(false)} to="/kontakt">
                             <p className="text-medium">Kontakt</p>
                         </Link>
+                    </li>
+                    <li>
+                        <ThemeSwitch onThemeSwitch={onThemeSwitch} currentTheme={currentTheme} />
                     </li>
                 </ul>
             </div>

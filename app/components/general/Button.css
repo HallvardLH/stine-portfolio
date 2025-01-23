@@ -9,4 +9,5 @@
     border-radius: 1rem;
     background-color: var(--secondary-color);
     color: var(--contrast-color);
+    font-weight: 700;
 }

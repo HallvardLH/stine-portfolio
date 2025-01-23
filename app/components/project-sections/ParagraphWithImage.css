@@ -23,7 +23,7 @@
 }
 
 .paragraph-with-image-image {
-    max-height: 350px;
+    max-height: 250px;
     max-width: 100%;
     border-radius: .938rem;
 }
@@ -32,7 +32,7 @@
 @media only screen and (min-width: 1000px) {
     .paragraph-with-image-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 0.6fr;
         /* gap: 2.625rem; */
     }
 

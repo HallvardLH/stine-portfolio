@@ -111,7 +111,8 @@ body {
     color: var(--secondary-color-æ) !important;
 }
 
-.æ-scheme p {
+.æ-scheme p,
+.æ-scheme a {
     color: var(--text-color-æ) !important;
 }
 
@@ -125,7 +126,8 @@ body {
     color: var(--secondary-color-corwell) !important;
 }
 
-.corwell-scheme p {
+.corwell-scheme p,
+.corwell-scheme a {
     color: var(--text-color-corwell) !important;
 }
 
@@ -139,7 +141,8 @@ body {
     color: var(--secondary-color-skredder) !important;
 }
 
-.skredder-scheme p {
+.skredder-scheme p,
+.skredder-scheme a {
     color: var(--text-color-skredder) !important;
 }
 
@@ -153,7 +156,8 @@ body {
     color: var(--secondary-color-ourspace) !important;
 }
 
-.ourspace-scheme p {
+.ourspace-scheme p,
+.ourspace-scheme a {
     color: var(--text-color-ourspace) !important;
 }
 
@@ -167,7 +171,8 @@ body {
     color: var(--secondary-color-drømmeland) !important;
 }
 
-.drømmeland-scheme p {
+.drømmeland-scheme p,
+.drømmeland-scheme a {
     color: var(--text-color-drømmeland) !important;
 }
 
