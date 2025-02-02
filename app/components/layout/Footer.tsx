@@ -2,11 +2,15 @@ import "./Footer.css";
 import { Link } from "@remix-run/react";
 import Contact from "./Contact";
 
-export default function Footer() {
+interface FooterProps {
+    colorScheme: string | null,
+}
+
+export default function Footer({ colorScheme }: FooterProps) {
     return (
         <footer className="footer-container gutter">
             <nav>
-                <p className="text-large heading-normal-color">Navigasjon</p>
+                <h2 className={"text-large " + (colorScheme ? colorScheme : "heading-normal-color")}>Navigasjon</h2>
                 <ul className="navigation-list">
                     <li>
                         <Link to="/prosjektbibliotek">
@@ -28,7 +32,7 @@ export default function Footer() {
 
             <div className="footer-contacts-and-socials">
                 <div>
-                    <p className="text-large heading-normal-color">Kontaktinfo</p>
+                    <h2 className={"text-large " + (colorScheme ? colorScheme : "heading-normal-color")}>Kontaktinfo</h2>
                     <Contact />
                 </div>
 

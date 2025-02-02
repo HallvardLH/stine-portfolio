@@ -21,26 +21,31 @@
     --secondary-color-æ: #002855;
     --contrast-color-æ: #D5E9FF;
     --text-color-æ: #002855;
+    --icon-color-æ: brightness(0) saturate(100%) invert(12%) sepia(86%) saturate(1712%) hue-rotate(192deg) brightness(94%) contrast(106%);
 
     --primary-color-corwell: #FFB1B1;
     --secondary-color-corwell: #560000;
     --contrast-color-corwell: #FDDCDC;
     --text-color-corwell: #560000;
+    --icon-color-corwell: brightness(0) saturate(100%) invert(6%) sepia(53%) saturate(7152%) hue-rotate(356deg) brightness(97%) contrast(107%);
 
     --primary-color-skredder: #E0E1DD;
     --secondary-color-skredder: #0D1B2A;
     --contrast-color-skredder: #F9F7FF;
     --text-color-skredder: #0D1B2A;
+    --icon-color-skredder: brightness(0) saturate(100%) invert(9%) sepia(11%) saturate(2974%) hue-rotate(170deg) brightness(92%) contrast(96%);
 
     --primary-color-ourspace: #EAE4E4;
     --secondary-color-ourspace: #0A2463;
     --contrast-color-ourspace: #FDF9F9;
     --text-color-ourspace: #0A2463;
+    --icon-color-ourspace: brightness(0) saturate(100%) invert(14%) sepia(58%) saturate(2087%) hue-rotate(202deg) brightness(93%) contrast(102%);
 
     --primary-color-drømmeland: #65C2B4;
     --secondary-color-drømmeland: #1E3C43;
     --contrast-color-drømmeland: #D7F9FF;
     --text-color-drømmeland: #1E3C43;
+    --icon-color-drømmeland: brightness(0) saturate(100%) invert(16%) sepia(24%) saturate(1073%) hue-rotate(144deg) brightness(96%) contrast(86%);
 }
 
 [data-theme="dark"] {
@@ -59,22 +64,27 @@
     --primary-color-æ: #002855;
     --secondary-color-æ: #509EF2;
     --text-color-æ: #D5E9FF;
+    --icon-color-æ: brightness(0) saturate(100%) invert(60%) sepia(8%) saturate(4228%) hue-rotate(177deg) brightness(97%) contrast(96%);
 
     --primary-color-corwell: #560000;
     --secondary-color-corwell: #FF5F5F;
     --text-color-corwell: #FDDCDC;
+    --icon-color-corwell: brightness(0) saturate(100%) invert(49%) sepia(60%) saturate(2245%) hue-rotate(324deg) brightness(107%) contrast(110%);
 
     --primary-color-skredder: #0D1B2A;
     --secondary-color-skredder: #78AAE3;
     --text-color-skredder: #F9F7FF;
+    --icon-color-skredder: brightness(0) saturate(100%) invert(66%) sepia(83%) saturate(455%) hue-rotate(182deg) brightness(89%) contrast(101%);
 
     --primary-color-ourspace: #0A2463;
     --secondary-color-ourspace: #65E152;
     --text-color-ourspace: #FDF9F9;
+    --icon-color-ourspace: brightness(0) saturate(100%) invert(99%) sepia(67%) saturate(1793%) hue-rotate(45deg) brightness(92%) contrast(91%);
 
     --primary-color-drømmeland: #1E3C43;
     --secondary-color-drømmeland: #E687FC;
     --text-color-drømmeland: #D7F9FF;
+    --icon-color-drømmeland: brightness(0) saturate(100%) invert(71%) sepia(46%) saturate(4071%) hue-rotate(226deg) brightness(103%) contrast(98%);
 }
 
 @font-face {
@@ -120,6 +130,11 @@ body {
     color: var(--secondary-color-æ) !important;
 }
 
+.æ-scheme .socials-icon,
+.æ-scheme .contact-info-icon {
+    filter: var(--icon-color-æ);
+}
+
 /* corwell */
 .corwell-scheme {
     background-color: var(--primary-color-corwell) !important;
@@ -133,6 +148,11 @@ body {
 
 .corwell-scheme-text {
     color: var(--secondary-color-corwell) !important;
+}
+
+.corwell-scheme .socials-icon,
+.corwell-scheme .contact-info-icon {
+    filter: var(--icon-color-corwell);
 }
 
 /* skredder */
@@ -150,6 +170,11 @@ body {
     color: var(--secondary-color-skredder) !important;
 }
 
+.skredder-scheme .socials-icon,
+.skredder-scheme .contact-info-icon {
+    filter: var(--icon-color-skredder);
+}
+
 /* ourspace */
 .ourspace-scheme {
     background-color: var(--primary-color-ourspace) !important;
@@ -165,6 +190,12 @@ body {
     color: var(--secondary-color-ourspace) !important;
 }
 
+.ourspace-scheme .socials-icon,
+.ourspace-scheme .contact-info-icon {
+    filter: var(--icon-color-ourspace);
+}
+
+
 /* drømmeland */
 .drømmeland-scheme {
     background-color: var(--primary-color-drømmeland) !important;
@@ -178,6 +209,11 @@ body {
 
 .drømmeland-scheme-text {
     color: var(--secondary-color-drømmeland) !important;
+}
+
+.drømmeland-scheme .socials-icon,
+.drømmeland-scheme .contact-info-icon {
+    filter: var(--icon-color-drømmeland);
 }
 
 /* This gives elements margin from the sides of the screen */
