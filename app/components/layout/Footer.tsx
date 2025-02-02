@@ -13,8 +13,13 @@ export default function Footer({ colorScheme }: FooterProps) {
                 <h2 className={"text-large " + (colorScheme ? colorScheme : "heading-normal-color")}>Navigasjon</h2>
                 <ul className="navigation-list">
                     <li>
-                        <Link to="/prosjektbibliotek">
-                            <p className="text-medium">Prosjektbibliotek</p>
+                        <Link to="/">
+                            <p className="text-medium">Hjem</p>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/portefølje">
+                            <p className="text-medium">Portefølje</p>
                         </Link>
                     </li>
                     <li>

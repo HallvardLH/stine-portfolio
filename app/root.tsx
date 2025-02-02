@@ -48,6 +48,7 @@ export default function App() {
 
   // Custom color schemes for certain pages
   const getColorScheme = (pathname: string) => {
+    console.log(pathname)
     // æ is a scary character, so we need to use %C3%A6 instead
     if (pathname.includes("/æ") || pathname.includes("/%C3%A6")) {
       return "æ-scheme";

@@ -4,8 +4,8 @@ import ProjectCard from "~/components/card/ProjectCard";
 
 export const meta: MetaFunction = () => {
     return [
-        { title: "Prosjektbibliotek - Stine Knutsen" },
-        { name: "description", content: "Prosjektbiblioteket til Stine Knutsen." },
+        { title: "Portefølje - Stine Knutsen" },
+        { name: "description", content: "Porteføljen til Stine Knutsen." },
     ];
 };
 
@@ -15,7 +15,7 @@ export default function ProjectsLibaryRoute() {
             <main>
                 <div className="text-section">
                     <h1 className="heading">
-                        Prosjektbibliotek
+                        Portefølje
                     </h1>
                     <p className="text-large">
                         Her er en samling av mine stolteste verk!
@@ -40,14 +40,14 @@ export default function ProjectsLibaryRoute() {
                         link="/corwell"
                     />
 
-                    <ProjectCard
+                    {/* <ProjectCard
                         imageSrc="/skreddernettside/thumbnail.png"
                         date="Våren 2024"
                         title="Skreddernettside"
                         description="Sideprosjekt, nettside for skreddertjenester"
                         link="/skreddernettside"
                         imageZoom="desktop"
-                    />
+                    /> */}
 
                     <ProjectCard
                         imageSrc="/ourspace/thumbnail.png"

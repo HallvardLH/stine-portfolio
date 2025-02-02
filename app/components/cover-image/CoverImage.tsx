@@ -14,13 +14,13 @@ export default function CoverImage({ src, colorScheme }: ProjectCardProps) {
                 alt=""
                 className="cover-image"
             />
-            <Link className={"cover-image-back-container " + (colorScheme ? colorScheme : "")} to="/prosjektbibliotek">
+            <Link className={"cover-image-back-container " + (colorScheme ? colorScheme : "")} to="/portefølje">
                 <img
                     src="/icons/back.svg"
                     alt=""
                     className="cover-image-back-icon icon"
                 />
-                <p className="text-small back-button-text">Tilbake til prosjektbibliotek</p>
+                <p className="text-small back-button-text">Tilbake til portefølje</p>
             </Link>
         </div>
     )

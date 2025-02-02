@@ -73,9 +73,9 @@ export default function Navbar({ colorScheme, onThemeSwitch, currentTheme }: Nav
                         </Link>
                         <Link
                             onClick={() => setNavbarOpen(false)}
-                            to="/prosjektbibliotek"
+                            to="/portefølje"
                         >
-                            <p className={location.pathname === "/prosjektbibliotek" ? "link-underlined" : ""}>Prosjektbibliotek</p>
+                            <p className={location.pathname === "/portef%C3%B8lje" ? "link-underlined" : ""}>Portefølje</p>
                         </Link>
                         <Link onClick={() => setNavbarOpen(false)} to="/om-meg">
                             <p className={location.pathname === "/om-meg" ? "link-underlined" : ""}>Om meg</p>
@@ -115,9 +115,9 @@ export default function Navbar({ colorScheme, onThemeSwitch, currentTheme }: Nav
                     <li>
                         <Link
                             onClick={() => setNavbarOpen(false)}
-                            to="/prosjektbibliotek"
+                            to="/portefølje"
                         >
-                            <p className="text-medium">Prosjektbibliotek</p>
+                            <p className="text-medium">Portefølje</p>
                         </Link>
                     </li>
                     <li>

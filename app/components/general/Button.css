@@ -10,4 +10,6 @@
     background-color: var(--secondary-color);
     color: var(--contrast-color);
     font-weight: 700;
+    min-width: 8rem;
+    text-align: center;
 }
