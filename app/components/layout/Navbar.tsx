@@ -61,9 +61,9 @@ export default function Navbar({ colorScheme, onThemeSwitch, currentTheme }: Nav
             <div className="navbar-top">
                 <Link to="/">
                     {isLargeScreen ? (
-                        <h1 className="heading no-link">UX - design portefølje</h1>
+                        <h1 className="heading no-link">Stine Knutsen</h1>
                     ) : (
-                        <h1 className="heading no-link">UX - portefølje</h1>
+                        <h1 className="heading no-link">Stine Knutsen</h1>
                     )}
                 </Link>
                 {isLargeScreen ? (
