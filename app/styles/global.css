@@ -17,6 +17,12 @@
     --card-text-color: #011B0D;
 
     /* Project-specific color schemes */
+    --primary-color-portfolio-redesign: #ADDCFF;
+    --secondary-color-portfolio-redesign: #05213F;
+    --contrast-color-portfolio-redesign: #1B50B7;
+    --text-color-portfolio-redesign: #05213F;
+    --icon-color-portfolio-redesign: brightness(0) saturate(100%) invert(11%) sepia(26%) saturate(3011%) hue-rotate(182deg) brightness(95%) contrast(100%);
+
     --primary-color-æ: #B6D8FD;
     --secondary-color-æ: #002855;
     --contrast-color-æ: #D5E9FF;
@@ -60,6 +66,11 @@
 
     --icon-color: brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(426%) hue-rotate(35deg) brightness(109%) contrast(105%);
     --socials-icon-color: brightness(0) saturate(100%) invert(83%) sepia(65%) saturate(342%) hue-rotate(17deg) brightness(111%) contrast(105%);
+
+    --primary-color-portfolio-redesign: #05213F;
+    --secondary-color-portfolio-redesign: #ADDCFF;
+    --text-color-portfolio-redesign: #F6FCFF;
+    --icon-color-portfolio-redesign: brightness(0) saturate(100%) invert(79%) sepia(9%) saturate(1259%) hue-rotate(173deg) brightness(103%) contrast(102%);
 
     --primary-color-æ: #002855;
     --secondary-color-æ: #509EF2;
@@ -113,6 +124,26 @@ body {
 
 .socials-icon {
     filter: var(--socials-icon-color);
+}
+
+/* portfolio redesign */
+.portfolio-redesign-scheme {
+    background-color: var(--primary-color-portfolio-redesign) !important;
+    color: var(--secondary-color-portfolio-redesign) !important;
+}
+
+.portfolio-redesign-scheme p,
+.portfolio-redesign-scheme a {
+    color: var(--text-color-portfolio-redesign) !important;
+}
+
+.portfolio-redesign-scheme-text {
+    color: var(--secondary-color-portfolio-redesign) !important;
+}
+
+.portfolio-redesign-scheme .socials-icon,
+.portfolio-redesign-scheme .contact-info-icon {
+    filter: var(--icon-color-portfolio-redesign);
 }
 
 /* æ */

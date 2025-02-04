@@ -48,7 +48,7 @@ export default function App() {
 
   // Custom color schemes for certain pages
   const getColorScheme = (pathname: string) => {
-    console.log(pathname)
+    // console.log(pathname)
     // æ is a scary character, so we need to use %C3%A6 instead
     if (pathname.includes("/æ") || pathname.includes("/%C3%A6")) {
       return "æ-scheme";
@@ -64,6 +64,9 @@ export default function App() {
     }
     if (pathname.includes("/dr%C3%B8mmeland")) {
       return "drømmeland-scheme";
+    }
+    if (pathname.includes("/redesign-av-portef%C3%B8lje")) {
+      return "portfolio-redesign-scheme";
     }
     return null; // Default color scheme
   };
