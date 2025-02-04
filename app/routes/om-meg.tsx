@@ -27,7 +27,7 @@ export default function ProjectsLibaryRoute() {
                         </div>
                     }
                     textSection={
-                        <div>
+                        <div style={{ alignSelf: "center" }}>
                             <p>
                                 Akkurat nå fullfører jeg bachelorgraden min i Medie- og Interaksjonsdesign ved Universitetet i Bergen.
                             </p>

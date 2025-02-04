@@ -28,10 +28,11 @@
     transform-origin: center;
     object-position: 50% -35px;
     max-width: 400px;
+    transition: transform 500ms ease;
 }
 
 .card-image-desktop {
-    transform: scale(1.08);
+    transform: scale(1.15);
     object-position: 50% -20px;
 }
 
@@ -44,10 +45,17 @@
     padding: 0.6rem 1rem;
 }
 
+.card-container:hover .read-more-outer-container {
+    opacity: 1;
+}
+
 .read-more-outer-container {
     display: flex;
     justify-content: flex-end;
     margin-top: 1rem;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 300ms ease;
 }
 
 .read-more-container {
@@ -60,4 +68,19 @@
 .card-arrow {
     height: 1rem;
     width: 1rem;
+}
+
+/* Desktop */
+@media only screen and (min-width: 550px) {
+    .read-more-outer-container {
+        opacity: 0;
+    }
+
+    .card-container:hover .card-image {
+        transform: scale(1.42);
+    }
+
+    .card-container:hover .card-image-desktop {
+        transform: scale(1.22);
+    }
 }
