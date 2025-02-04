@@ -28,7 +28,7 @@ export default function ProjectsLibaryRoute() {
                         imageSrc="/portefølje-redesign/thumbnail.png"
                         date="Vinteren 2024"
                         title="Redesign av portefølje"
-                        description="Redesign av en front-end utviklers portefølje for å effektivt fremheve arbeidet hans"
+                        description="Redesign av en front-end utviklers portefølje"
                         link="/redesign-av-portefølje"
                         imageZoom="desktop"
                     />
