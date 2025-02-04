@@ -74,7 +74,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/portefølje-redesign/landing-page.png"
+                    imageSrc="/portefølje-redesign/about.png"
                     imageText="Man kan enkelt bytte mellom lys og mørk modus ved å klikke på modus-knappen i navigasjonsmenyen"
                     altText="Mobile screen where you switch from light to dark mode though the navigation menu."
                 />
