@@ -8,7 +8,7 @@ interface FooterProps {
 
 export default function Footer({ colorScheme }: FooterProps) {
     return (
-        <footer className="footer-container gutter">
+        <footer className="footer-container">
             <nav>
                 <h2 className={"text-large " + (colorScheme ? colorScheme : "heading-normal-color")}>Navigasjon</h2>
                 <ul className="navigation-list">

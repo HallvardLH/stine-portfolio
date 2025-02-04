@@ -3,6 +3,7 @@
     flex-direction: column;
     gap: 2.5rem;
     margin-top: 15rem;
+    padding: 0 1.6rem;
     padding-bottom: 2rem !important;
 }
 
@@ -48,6 +49,10 @@ p {
 
 /* Desktop */
 @media only screen and (min-width: 550px) {
+    .footer-container {
+        padding: 0 4rem;
+    }
+
     .footer-contacts-and-socials {
         display: flex;
         flex-direction: row;
