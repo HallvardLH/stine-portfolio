@@ -28,10 +28,6 @@
     margin-right: 0.2rem;
 }
 
-.cover-image-back-container p {
-    color: var(--secondary-color) !important;
-}
-
 .back-button-text {
     font-weight: 500 !important;
 }

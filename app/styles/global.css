@@ -13,7 +13,7 @@
     --socials-icon-color: brightness(0) saturate(100%) invert(7%) sepia(95%) saturate(430%) hue-rotate(96deg) brightness(96%) contrast(100%);
 
     /* Card colors are defined independently as they do not change with dark mode */
-    --card-background: #EEF9DB;
+    --card-background: #FBFFE0;
     --card-text-color: #011B0D;
 
     /* Project-specific color schemes */

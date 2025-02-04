@@ -1,10 +1,10 @@
-.two-images-container {
+.gallery-container {
     display: flex;
     flex-direction: column;
     gap: 2.625rem;
 }
 
-.two-images-image-container {
+.gallery-image-container {
     margin: 0 1rem;
     display: flex;
     align-self: center;
@@ -12,13 +12,16 @@
     max-width: 450px;
 }
 
-.two-images-image-container p {
-    align-self: center;
-    margin-top: 0.75rem;
+.gallery-image-container p {
+    align-self: flex-start;
     /* max-width: 65%; */
 }
 
-.two-images-image {
+.gallery-text {
+    margin-top: 0.75rem;
+}
+
+.gallery-image {
     flex-grow: 1;
     max-width: 100%;
     border-radius: .938rem;
@@ -31,20 +34,24 @@
     align-self: center;
 }
 
-/* Desktop */
 @media only screen and (min-width: 1000px) {
-    .two-images-container {
+    .gallery-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2.625rem;
     }
 
-    .two-images-image {
+    .gallery-image {
         max-height: 500px;
     }
 
     .combined-image-text {
         max-width: unset;
         align-self: unset;
+    }
+
+    /* Align last image to the right when there's an odd number of images */
+    .gallery-container>.gallery-image-container:nth-child(odd):last-child {
+        grid-column: 2;
     }
 }

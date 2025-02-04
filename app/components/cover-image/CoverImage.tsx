@@ -20,7 +20,7 @@ export default function CoverImage({ src, colorScheme }: ProjectCardProps) {
                     alt=""
                     className="cover-image-back-icon icon"
                 />
-                <p className="text-small back-button-text">Tilbake til portefølje</p>
+                <p className={"text-small back-button-text " + (colorScheme ? colorScheme + "-text" : "")}>Tilbake til portefølje</p>
             </Link>
         </div>
     )

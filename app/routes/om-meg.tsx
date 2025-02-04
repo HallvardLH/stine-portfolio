@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import ParagraphWithImage from "~/components/project-sections/ParagraphWithImage";
-import TwoImages from "~/components/project-sections/TwoImages";
+import StandaloneParagraph from "~/components/project-sections/StandaloneParagraph";
+import Gallery from "~/components/project-sections/Gallery";
 
 export const meta: MetaFunction = () => {
     return [
@@ -45,9 +46,10 @@ export default function ProjectsLibaryRoute() {
                     altText="A portrait of Stine Knutsen."
                 />
 
-                <ParagraphWithImage
+                <StandaloneParagraph
                     textSection={
                         <div>
+                            <h2 className="text-medium">Min vei inn i interaksjonsdesign</h2>
                             <p>
                                 Jeg har alltid vært interessert i grafisk design og visuelle framstillinger, og har utforsket ulike kreative uttrykk som maling, tegning, foto og grafisk design. Jeg har til og med hatt en svært kort karriere innen keramikk!
                             </p>
@@ -57,18 +59,26 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/om-meg/black-cat.jpg"
-                    imageText="Eksamensoppgaven min i kunst og visuelle virkemidler fra vidregående! "
-                    altText="A painting that Stine Knutsen has made, displaying abstract people and animnals in bright colors."
                 />
 
-                <TwoImages
-                    imageSrc1="/om-meg/inmeta.png"
-                    imageText1='“Ute i felten” med gode medstudenter hos InMeta i Oslo, høsten 2023.'
-                    altText1='Stine and her two group-mates visiting the consulting agency InMeta.'
-                    imageSrc2="/om-meg/gruppebilde.png"
-                    imageText2="Jeg og gruppen min under en kreativ øvelse da vi jobbet med OurSpace, høsten 2023"
-                    altText2='Stine and her project-group doing a creative exercise while working on the OurSpace design.'
+                <Gallery
+                    images={[
+                        {
+                            src: "/om-meg/black-cat.jpg",
+                            imageText: "Eksamensoppgaven min i kunst og visuelle virkemidler fra vidregående!",
+                            altText: "A painting that Stine Knutsen has made, displaying abstract people and animnals in bright colors."
+                        },
+                        {
+                            src: "/om-meg/inmeta.png",
+                            imageText: '"Ute i felten" med gode medstudenter hos InMeta i Oslo, høsten 2023.',
+                            altText: 'Stine and her two group-mates visiting the consulting agency InMeta.'
+                        },
+                        {
+                            src: "/om-meg/gruppebilde.png",
+                            imageText: "Jeg og gruppen min under en kreativ øvelse da vi jobbet med OurSpace, høsten 2023",
+                            altText: 'Stine and her project-group doing a creative exercise while working on the OurSpace design.'
+                        }
+                    ]}
                 />
             </div>
         </main>
