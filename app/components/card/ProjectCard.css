@@ -32,8 +32,8 @@
 }
 
 .card-image-desktop {
-    transform: scale(1.15);
-    object-position: 50% -20px;
+    transform: scale(1.05);
+    object-position: 50% -10px;
 }
 
 .card-date-container {
