@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => {
 export default function ProjectsLibaryRoute() {
     return (
         <main>
-            <CoverImage src="/drømmeland/thumbnail.png" colorScheme="drømmeland-scheme" />
+            <CoverImage src="/drømmeland/thumbnail.webp" colorScheme="drømmeland-scheme" />
             <div className="gutter project-section drømmeland-scheme">
 
                 <StandaloneParagraph
@@ -61,7 +61,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/drømmeland/spillreise.png"
+                    imageSrc="/drømmeland/spillreise.webp"
                     imageText="Spilluniverset i Drømmeland "
                     altText="The game-enviroment in the Drømmeland app displayed on an IPad screen."
                 />
@@ -78,10 +78,10 @@ export default function ProjectsLibaryRoute() {
                 />
 
                 <TwoImages
-                    imageSrc1="/drømmeland/games.png"
+                    imageSrc1="/drømmeland/games.webp"
                     imageText1='To av spillene i Drømmeland, “Pant” og “Redd Fisken”'
                     altText1='Two different games you can play in Drømmeland, "Recycle" and "Save the fish".'
-                    imageSrc2="/drømmeland/min-side.png"
+                    imageSrc2="/drømmeland/min-side.webp"
                     imageText2="Min side og klasseoversikt i Drømmeland"
                     altText2='Two IPad-screens displaying both "My page" and "Class room overview" in the Drømmeland app.'
                 />

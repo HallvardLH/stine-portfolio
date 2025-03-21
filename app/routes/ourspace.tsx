@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => {
 export default function ProjectsLibaryRoute() {
     return (
         <main>
-            <CoverImage src="/ourspace/thumbnail.png" colorScheme="ourspace-scheme" />
+            <CoverImage src="/ourspace/thumbnail.webp" colorScheme="ourspace-scheme" />
             <div className="gutter project-section ourspace-scheme">
 
                 <StandaloneParagraph
@@ -66,7 +66,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/ourspace/brainstorming.png"
+                    imageSrc="/ourspace/brainstorming.webp"
                     imageText="Wireframes for nettsiden"
                     altText="Early drawings of the interface hung upon a whiteboard."
                 />
@@ -80,7 +80,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/ourspace/concept.png"
+                    imageSrc="/ourspace/concept.webp"
                     imageText="OurSpace sin prosjektside"
                     altText="The whole project-page in OurSpace, displaying goals, milestones and the project-overview."
                 />
@@ -128,10 +128,10 @@ export default function ProjectsLibaryRoute() {
                 />
 
                 <TwoImages
-                    imageSrc1="/ourspace/timeline.png"
+                    imageSrc1="/ourspace/timeline.webp"
                     imageText1="Tidslinjen"
                     altText1="The timeline in the interface displaying a hypothetical projects progress."
-                    imageSrc2="/ourspace/chat.png"
+                    imageSrc2="/ourspace/chat.webp"
                     imageText2="Chatfunksjonen i tidslinjen"
                     altText2='The "Chat directly from the timeline" feature in the OurSpace software.'
                 />

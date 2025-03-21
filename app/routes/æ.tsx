@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => {
 export default function ProjectsLibaryRoute() {
     return (
         <main>
-            <CoverImage src="/æ/thumbnail.png" colorScheme="æ-scheme" />
+            <CoverImage src="/æ/thumbnail.webp" colorScheme="æ-scheme" />
             <div className="gutter project-section æ-scheme">
                 <StandaloneParagraph
                     textSection={
@@ -71,7 +71,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/æ/æ-wireframes.png"
+                    imageSrc="/æ/æ-wireframes.webp"
                     imageText="Crazy 8's med prosjektgruppen"
                     altText="A table with Crazy 8's drawings."
                 />
@@ -85,7 +85,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/æ/wireframes.png"
+                    imageSrc="/æ/wireframes.webp"
                     imageText="Wireframes laget i Figma"
                     altText="Wireframes of the design in Figma."
                 />
@@ -103,16 +103,16 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/æ/typography.png"
+                    imageSrc="/æ/typography.webp"
                     imageText="Typografien for redesignet"
                     altText="An overview of the typhraphy used in the design, created in figma. It contains the font, and different font sizes used in the project."
                 />
 
                 <TwoImages
-                    imageSrc1="/æ/primary-colors.png"
+                    imageSrc1="/æ/primary-colors.webp"
                     imageText1="Primærfargene for redesignet"
                     altText1="An overviw of the primary colors used in the design. It contains the colors and respective codes."
-                    imageSrc2="/æ/accent.png"
+                    imageSrc2="/æ/accent.webp"
                     imageText2="Aksentfargene for redesignet"
                     altText2="An overviw of the accent colors used in the design. It contains the colors and respective codes."
                 />
@@ -128,7 +128,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/æ/first-iteration.png"
+                    imageSrc="/æ/first-iteration.webp"
                     imageText="Første designiterasjon av hjemmesiden og profilsiden i appen"
                     altText="Three different phone screens, each showing a part of the app. The homepage, and two parts of the settings page."
                 />
@@ -146,7 +146,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/æ/homepage.png"
+                    imageSrc="/æ/homepage.webp"
                     imageText="Hjemmesiden viser personlige rabatter øverst for enkel tilgang, med en snarvei i navigasjonsfeltet."
                     altText="Two phone screens, the homepage of the app and the page showing your discounts."
                 />
@@ -165,15 +165,15 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/æ/notifications.png"
+                    imageSrc="/æ/notifications.webp"
                     imageText="Varsler er plassert i sidemenyen og kan nås via bjelleikonet øverst til høyre. Dette holder rabatter i fokus og sørger for at varsler er organisert separat."
                     altText="Two phone screens, one showing your discounts, the other showing the notification center."
                 />
 
                 <TwoImages
-                    imageSrc1="/æ/receipt-old-vs-new.png"
+                    imageSrc1="/æ/receipt-old-vs-new.webp"
                     altText1="Two phone screens: the current design of the Æ-app, and the new version, both screens showing the receipt section of the app."
-                    imageSrc2="/æ/receipt.png"
+                    imageSrc2="/æ/receipt.webp"
                     altText2='Three mobile devices, where one is displaying the original interfaces "shopping trips"-page, where the other two are showing the redesigns "shopping trips" page.'
                     combinedImageText="Elementene er gruppert i tydelige seksjoner for å redusere kognitiv belastning"
                 />
@@ -191,7 +191,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/æ/discounts.png"
+                    imageSrc="/æ/discounts.webp"
                     imageText="Personlige rabatter vises i aktivert tilstand, med gul kant som fremhever aktiverte rabatter som en visuell påminnelse."
                     altText='Two screens showing the original interfaces "Personal discounts"-page, and the redesigned page.'
                 />
@@ -213,7 +213,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/æ/barcode.png"
+                    imageSrc="/æ/barcode.webp"
                     imageText="Strekkoden er tilgjengelig i både vertikal og horisontal visning"
                     altText='The new "barcode" feature in the interface, showing both horizontal and vertical displaying of barcode.'
                 />
@@ -230,9 +230,9 @@ export default function ProjectsLibaryRoute() {
                 </div>
 
                 <TwoImages
-                    imageSrc1="/æ/profile-top.png"
+                    imageSrc1="/æ/profile-top.webp"
                     altText1="The top part of the profile page both in the original and redesigned interface."
-                    imageSrc2="/æ/profile-bottom.png"
+                    imageSrc2="/æ/profile-bottom.webp"
                     altText2='The bottom part of the profile-page in both the original and redesigned interface.'
                     combinedImageText="Den redesignede profil-siden har et klart og intuitivt oppsett for å redusere kognitiv belastning."
                 />
@@ -247,7 +247,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/æ/shopping-list.png"
+                    imageSrc="/æ/shopping-list.webp"
                     imageText="Handlelistefunksjonen"
                     altText="Mobile screen displaying the added shopping-list feature."
                 />
@@ -261,7 +261,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/æ/insights.png"
+                    imageSrc="/æ/insights.webp"
                     imageText="Innsikter-siden"
                     altText="The new insights feature, displaying different statistics from previous shopping-trips."
                 />
@@ -275,7 +275,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/æ/widget.png"
+                    imageSrc="/æ/widget.webp"
                     imageText="Tilpass hjemskjerm-siden "
                     altText='A mobile screen displaying the "adjust your home-page" screen, where the user can add widgets.'
                 />

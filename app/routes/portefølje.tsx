@@ -25,7 +25,7 @@ export default function ProjectsLibaryRoute() {
                 <div className="project-card-container">
 
                     <ProjectCard
-                        imageSrc="/portefølje-redesign/thumbnail.png"
+                        imageSrc="/portefølje-redesign/thumbnail.webp"
                         date="Vinteren 2024"
                         title="Redesign av portefølje"
                         description="Redesign av en front-end utviklers portefølje"
@@ -35,7 +35,7 @@ export default function ProjectsLibaryRoute() {
 
 
                     <ProjectCard
-                        imageSrc="/æ/thumbnail.png"
+                        imageSrc="/æ/thumbnail.webp"
                         date="Høsten 2024"
                         title="Redesign av Æ"
                         description="Redesign av Rema 1000s medlemsapp med fokus på brukervennlighet"
@@ -43,7 +43,7 @@ export default function ProjectsLibaryRoute() {
                     />
 
                     <ProjectCard
-                        imageSrc="/corwell/thumbnail.png"
+                        imageSrc="/corwell/thumbnail.webp"
                         date="Våren 2024"
                         title="Corwell"
                         description="En helseapp som forbedrer helseoppfølging ved hjelp av  lifelogging"
@@ -51,7 +51,7 @@ export default function ProjectsLibaryRoute() {
                     />
 
                     {/* <ProjectCard
-                        imageSrc="/skreddernettside/thumbnail.png"
+                        imageSrc="/skreddernettside/thumbnail.webp"
                         date="Våren 2024"
                         title="Skreddernettside"
                         description="Sideprosjekt, nettside for skreddertjenester"
@@ -60,7 +60,7 @@ export default function ProjectsLibaryRoute() {
                     /> */}
 
                     <ProjectCard
-                        imageSrc="/ourspace/thumbnail.png"
+                        imageSrc="/ourspace/thumbnail.webp"
                         date="Høsten 2023"
                         title="OurSpace"
                         description="Et CSCW- verktøy for konsulentbransjen"
@@ -69,7 +69,7 @@ export default function ProjectsLibaryRoute() {
                     />
 
                     <ProjectCard
-                        imageSrc="/drømmeland/thumbnail.png"
+                        imageSrc="/drømmeland/thumbnail.webp"
                         date="Våren 2023"
                         title="Drømmeland"
                         description="En læringsapp for barn om klima og miljø"

@@ -13,7 +13,7 @@ export const meta: MetaFunction = () => {
 export default function ProjectsLibaryRoute() {
     return (
         <main>
-            <CoverImage src="/corwell/thumbnail.png" colorScheme="corwell-scheme" />
+            <CoverImage src="/corwell/thumbnail.webp" colorScheme="corwell-scheme" />
             <div className="gutter project-section corwell-scheme">
                 <StandaloneParagraph
                     textSection={
@@ -78,7 +78,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/corwell/setup.png"
+                    imageSrc="/corwell/setup.webp"
                     imageText="Onboardingen i CorWell"
                     altText="Two mobile screens displaying the onboarding process in Corwell."
                 />
@@ -92,7 +92,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/corwell/landing-page.png"
+                    imageSrc="/corwell/landing-page.webp"
                     imageText="CorWells dashbord og talestyrt chat "
                     altText="The home-page in the app, as well as the voice-chat."
                 />
@@ -106,7 +106,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/corwell/stats.png"
+                    imageSrc="/corwell/stats.webp"
                     imageText="CorWells statistikkside og daglig helserapport"
                     altText='The "live statistics"-page and the "daily health-report- page in Corwell.'
                 />
@@ -123,7 +123,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/corwell/chat.png"
+                    imageSrc="/corwell/chat.webp"
                     imageText="CorWells varslingsside og chathistorikk"
                     altText='Corwells notifications-page and chat history-page.'
                 />

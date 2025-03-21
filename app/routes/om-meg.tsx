@@ -41,7 +41,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/om-meg/headshot.png"
+                    imageSrc="/om-meg/headshot.webp"
                     imageText=""
                     altText="A portrait of Stine Knutsen."
                 />
@@ -64,17 +64,17 @@ export default function ProjectsLibaryRoute() {
                 <Gallery
                     images={[
                         {
-                            src: "/om-meg/black-cat.jpg",
+                            src: "/om-meg/black-cat.webp",
                             imageText: "Eksamensoppgaven min i kunst og visuelle virkemidler fra vidregående!",
                             altText: "A painting that Stine Knutsen has made, displaying abstract people and animnals in bright colors."
                         },
                         {
-                            src: "/om-meg/inmeta.png",
+                            src: "/om-meg/inmeta.webp",
                             imageText: '"Ute i felten" med gode medstudenter hos InMeta i Oslo, høsten 2023.',
                             altText: 'Stine and her two group-mates visiting the consulting agency InMeta.'
                         },
                         {
-                            src: "/om-meg/gruppebilde.png",
+                            src: "/om-meg/gruppebilde.webp",
                             imageText: "Jeg og gruppen min under en kreativ øvelse da vi jobbet med OurSpace, høsten 2023",
                             altText: 'Stine and her project-group doing a creative exercise while working on the OurSpace design.'
                         }

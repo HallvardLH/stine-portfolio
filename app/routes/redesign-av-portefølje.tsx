@@ -13,7 +13,7 @@ export const meta: MetaFunction = () => {
 export default function ProjectsLibaryRoute() {
     return (
         <main>
-            <CoverImage src="/portefølje-redesign/thumbnail.png" colorScheme="portfolio-redesign-scheme" />
+            <CoverImage src="/portefølje-redesign/thumbnail.webp" colorScheme="portfolio-redesign-scheme" />
             <div className="gutter project-section portfolio-redesign-scheme">
                 <StandaloneParagraph
                     textSection={
@@ -59,7 +59,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/portefølje-redesign/wireframe.png"
+                    imageSrc="/portefølje-redesign/wireframe.webp"
                     imageText="Wireframe for porteføljens hjemmeside"
                     altText="Wireframe for the website."
                 />
@@ -74,7 +74,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/portefølje-redesign/about.png"
+                    imageSrc="/portefølje-redesign/about.webp"
                     imageText="Man kan enkelt bytte mellom lys og mørk modus ved å klikke på modus-knappen i navigasjonsmenyen"
                     altText="Mobile screen where you switch from light to dark mode though the navigation menu."
                 />
@@ -90,7 +90,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/portefølje-redesign/landing-page.png"
+                    imageSrc="/portefølje-redesign/landing-page.webp"
                     imageText="Navigasjonsmenyen har blitt endret i det nye designet for å gjøre navigasjonen enklere"
                     altText='Comparison between the old and the new design.'
                 />
@@ -105,7 +105,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/portefølje-redesign/footer.png"
+                    imageSrc="/portefølje-redesign/footer.webp"
                     imageText="Den nye footeren har navigasjonslenker, kontaktinformasjon og lenker til GitHub og LinkedIn "
                     altText='The added footer on both mobile and desktop.'
                 />
@@ -123,7 +123,7 @@ export default function ProjectsLibaryRoute() {
                             </p>
                         </div>
                     }
-                    imageSrc="/portefølje-redesign/dark-light.png"
+                    imageSrc="/portefølje-redesign/dark-light.webp"
                     imageText="Prosjektsider i både lys og mørk modus for å heve brukervennlighet"
                     altText='A project showcased in both dark and light mode.'
                 />
