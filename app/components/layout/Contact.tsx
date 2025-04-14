@@ -17,7 +17,7 @@ export default function Contact({ textClassName }: ContactProps) {
                     />
                     <p className={textClassName}>mail:</p>
                 </div>
-                <p className={textClassName}><a href="mailto:stknu3373@uib.no">stknu3373@uib.no</a></p>
+                <p className={textClassName}><a href="stinenknutsen@gmail.com">stinenknutsen@gmail.com</a></p>
 
                 <div className="contact-info">
                     <img

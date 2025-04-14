@@ -49,11 +49,13 @@ export default function Footer({ colorScheme }: FooterProps) {
                             className="socials-icon"
                         />
                     </a>
-                    <img
-                        src={"/icons/linkedin.svg"}
-                        alt=""
-                        className="socials-icon"
-                    />
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/stine-knutsen-77b311294">
+                        <img
+                            src={"/icons/linkedin.svg"}
+                            alt=""
+                            className="socials-icon"
+                        />
+                    </a>
                 </div>
             </div>
 

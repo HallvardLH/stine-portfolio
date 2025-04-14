@@ -13,3 +13,13 @@
     min-width: 8rem;
     text-align: center;
 }
+
+.button:hover {
+    filter: brightness(160%);
+    -webkit-filter: brightness(160%);
+    -webkit-transition: all 100ms ease;
+    -moz-transition: all 100ms ease;
+    -o-transition: all 100ms ease;
+    -ms-transition: all 100ms ease;
+    transition: all 100ms ease;
+}
