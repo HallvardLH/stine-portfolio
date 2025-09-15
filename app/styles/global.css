@@ -52,6 +52,12 @@
     --contrast-color-drømmeland: #D7F9FF;
     --text-color-drømmeland: #1E3C43;
     --icon-color-drømmeland: brightness(0) saturate(100%) invert(16%) sepia(24%) saturate(1073%) hue-rotate(144deg) brightness(96%) contrast(86%);
+
+    --primary-color-grundercampus: #CFD2FF;
+    --secondary-color-grundercampus: #031259;
+    --contrast-color-grundercampus: #CFD2FF;
+    --text-color-grundercampus: #031259;
+    --icon-color-grundercampus: invert(6%) sepia(76%) saturate(4542%) hue-rotate(233deg) brightness(95%) contrast(107%);
 }
 
 [data-theme="dark"] {
@@ -96,6 +102,12 @@
     --secondary-color-drømmeland: #E687FC;
     --text-color-drømmeland: #D7F9FF;
     --icon-color-drømmeland: brightness(0) saturate(100%) invert(71%) sepia(46%) saturate(4071%) hue-rotate(226deg) brightness(103%) contrast(98%);
+
+    --primary-color-grundercampus: #031259;
+    --secondary-color-grundercampus: #CFD2FF;
+    --contrast-color-grundercampus: #FFC5A0;
+    --text-color-grundercampus: #CFD2FF;
+    --icon-color-grundercampus: invert(98%) sepia(39%) saturate(6754%) hue-rotate(297deg) brightness(109%) contrast(101%);
 }
 
 @font-face {
@@ -245,6 +257,26 @@ body {
 .drømmeland-scheme .socials-icon,
 .drømmeland-scheme .contact-info-icon {
     filter: var(--icon-color-drømmeland);
+}
+
+/* grundercampus */
+.grundercampus-scheme {
+    background-color: var(--primary-color-grundercampus) !important;
+    color: var(--secondary-color-grundercampus) !important;
+}
+
+.grundercampus-scheme p,
+.grundercampus-scheme a {
+    color: var(--text-color-grundercampus) !important;
+}
+
+.grundercampus-scheme-text {
+    color: var(--secondary-color-grundercampus) !important;
+}
+
+.grundercampus-scheme .socials-icon,
+.grundercampus-scheme .contact-info-icon {
+    filter: var(--icon-color-grundercampus);
 }
 
 /* This gives elements margin from the sides of the screen */

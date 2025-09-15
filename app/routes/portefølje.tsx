@@ -25,6 +25,15 @@ export default function ProjectsLibaryRoute() {
                 <div className="project-card-container">
 
                     <ProjectCard
+                        imageSrc="/grundercampus/thumbnail.webp"
+                        date="Vinteren 2024"
+                        title="Redesign av portefølje"
+                        description="Redesign av en front-end utviklers portefølje"
+                        link="/grundercampus"
+                        imageZoom="desktop"
+                    />
+
+                    <ProjectCard
                         imageSrc="/portefølje-redesign/thumbnail.webp"
                         date="Vinteren 2024"
                         title="Redesign av portefølje"

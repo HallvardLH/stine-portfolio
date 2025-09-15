@@ -68,6 +68,9 @@ export default function App() {
     if (pathname.includes("/redesign-av-portef%C3%B8lje")) {
       return "portfolio-redesign-scheme";
     }
+    if (pathname.includes("/grundercampus")) {
+      return "grundercampus-scheme";
+    }
     return null; // Default color scheme
   };
 
