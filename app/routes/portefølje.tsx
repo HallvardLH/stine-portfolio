@@ -26,9 +26,9 @@ export default function ProjectsLibaryRoute() {
 
                     <ProjectCard
                         imageSrc="/grundercampus/thumbnail.webp"
-                        date="Vinteren 2024"
-                        title="Redesign av portefølje"
-                        description="Redesign av en front-end utviklers portefølje"
+                        date="Våren 2025"
+                        title="GründerCampus"
+                        description="Nettside, logo og visuell profil for studentnettverket GründerCampus."
                         link="/grundercampus"
                         imageZoom="desktop"
                     />
