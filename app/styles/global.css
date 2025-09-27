@@ -58,6 +58,12 @@
     --contrast-color-grundercampus: #CFD2FF;
     --text-color-grundercampus: #031259;
     --icon-color-grundercampus: invert(6%) sepia(76%) saturate(4542%) hue-rotate(233deg) brightness(95%) contrast(107%);
+
+    --primary-color-barnebank: #FCF8F3;
+    --secondary-color-barnebank: #222F49;
+    --contrast-color-barnebank: #FF4238;
+    --text-color-barnebank: #222F49;
+    /* --icon-color-barnebank: invert(16%) sepia(7%) saturate(4613%) hue-rotate(182deg) brightness(88%) contrast(89%); */
 }
 
 [data-theme="dark"] {
@@ -108,6 +114,13 @@
     --contrast-color-grundercampus: #FFC5A0;
     --text-color-grundercampus: #CFD2FF;
     --icon-color-grundercampus: invert(98%) sepia(39%) saturate(6754%) hue-rotate(297deg) brightness(109%) contrast(101%);
+
+    --primary-color-barnebank: #222F49;
+    --secondary-color-barnebank: #FCF8F3;
+    --contrast-color-barnebank: #FF4238;
+    --text-color-barnebank: #FCF8F3;
+    --icon-color-barnebank: invert(33%) sepia(98%) saturate(1285%) hue-rotate(336deg) brightness(98%) contrast(107%);
+    ;
 }
 
 @font-face {
@@ -277,6 +290,26 @@ body {
 .grundercampus-scheme .socials-icon,
 .grundercampus-scheme .contact-info-icon {
     filter: var(--icon-color-grundercampus);
+}
+
+
+.barnebank-scheme {
+    background-color: var(--primary-color-barnebank) !important;
+    color: var(--secondary-color-barnebank) !important;
+}
+
+.barnebank-scheme p,
+.barnebank-scheme a {
+    color: var(--text-color-barnebank) !important;
+}
+
+.barnebank-scheme-text {
+    color: var(--secondary-color-barnebank) !important;
+}
+
+.barnebank-scheme .socials-icon,
+.barnebank-scheme .contact-info-icon {
+    filter: var(--icon-color-barnebank);
 }
 
 /* This gives elements margin from the sides of the screen */

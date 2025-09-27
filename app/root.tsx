@@ -71,6 +71,9 @@ export default function App() {
     if (pathname.includes("/grundercampus")) {
       return "grundercampus-scheme";
     }
+    if (pathname.includes("/barnebank")) {
+      return "barnebank-scheme";
+    }
     return null; // Default color scheme
   };
 

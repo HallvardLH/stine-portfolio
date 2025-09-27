@@ -25,6 +25,15 @@ export default function ProjectsLibaryRoute() {
                 <div className="project-card-container">
 
                     <ProjectCard
+                        imageSrc="/barnebank/thumbnail.webp"
+                        date="Sommeren 2025"
+                        title="Sparebanken Norge"
+                        description="Summer internship der vi designet deres nye bankløsning for barn."
+                        link="/barnebank"
+                        imageZoom="desktop"
+                    />
+
+                    <ProjectCard
                         imageSrc="/grundercampus/thumbnail.webp"
                         date="Våren 2025"
                         title="GründerCampus"
