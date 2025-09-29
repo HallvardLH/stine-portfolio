@@ -70,7 +70,8 @@
 }
 
 .link-underlined {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    font-weight: bold;
 }
 
 /* Desktop */

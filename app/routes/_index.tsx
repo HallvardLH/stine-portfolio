@@ -2,6 +2,7 @@ import type { MetaFunction } from "@remix-run/node";
 import Button from "~/components/general/Button";
 import { Link } from "@remix-run/react";
 import StandaloneParagraph from "~/components/project-sections/StandaloneParagraph";
+import ProjectCard from "~/components/card/ProjectCard";
 
 export const meta: MetaFunction = () => {
   return [
@@ -22,18 +23,33 @@ export default function Index() {
                 Hei!
               </h1>
               <p className="text-large">
-                Jeg heter Stine Knutsen og jeg er en UX-designer som elsker å skape design som gjør det enklere å navigere, og morsommere å bruke.
+                Jeg er en UX-designer som nå tar en mastergrad i medie- og interaksjonsdesign ved UiB. Jeg har tidligere fullført bachelorgraden i samme fag, og jeg brenner for å lage intuitive løsninger som gjør det enklere å bruke digitale produkter.
               </p>
               <p>
-                Jeg er en UX-designer med stor lidenskap for å skape løsninger som både er brukervennlige og estetisk tiltalende. Gjennom bachelorgraden min i interaksjonsdesign har jeg fått erfaring med sentrale deler av UX-prosessen, som brukerforskning, prototyping og testing. Dette har gitt meg en god forståelse for hvordan design kan redusere frustrasjon og forbedre digitale opplevelser.
+                Jeg trives best når jeg får jobbe med nye utfordringer, og jeg legger stor vekt på å forstå hva folk virkelig trenger før jeg lager løsninger. Målet mitt er alltid å skape design som fungerer godt og gir en god brukeropplevelse.
               </p>
-              <div style={{ marginTop: "4rem", marginBottom: "6rem" }}>
-                <Link to="/portefølje">
-                  <Button><p className="button-label">{"Se portefølje"}</p></Button>
-                </Link>
-              </div>
+
             </div>
           }
+        />
+        <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10rem" }}>
+          <h2 className="heading card-text">Siste prosjekt</h2>
+          {/* <div style={{ marginTop: "4rem", marginBottom: "6rem" }}> */}
+          <Link to="/portefølje">
+            <Button label="Gå til portefølje" />
+          </Link>
+          {/* </div> */}
+        </div>
+
+        <ProjectCard
+          imageSrc="/barnebank/thumbnail.webp"
+          date="Sommeren 2025"
+          platformInfo="App"
+          title="Sparebanken Norge"
+          description="Summer internship der vi designet deres nye bankløsning for barn."
+          link="/barnebank"
+          imageZoom="desktop"
+          hero
         />
 
       </main>

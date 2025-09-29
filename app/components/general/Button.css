@@ -5,21 +5,9 @@
 
 .button {
     all: unset;
-    padding: 1.25rem;
-    border-radius: 1rem;
-    background-color: var(--secondary-color);
-    color: var(--contrast-color);
-    font-weight: 700;
-    min-width: 8rem;
-    text-align: center;
 }
 
 .button:hover {
-    filter: brightness(160%);
-    -webkit-filter: brightness(160%);
-    -webkit-transition: all 100ms ease;
-    -moz-transition: all 100ms ease;
-    -o-transition: all 100ms ease;
-    -ms-transition: all 100ms ease;
-    transition: all 100ms ease;
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
 }

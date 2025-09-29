@@ -18,24 +18,26 @@ export default function ProjectsLibaryRoute() {
                         Portefølje
                     </h1>
                     <p className="text-large">
-                        Her er en samling av mine stolteste verk!
+                        Dette er noen av prosjektene jeg er mest stolt av. Her viser jeg hvordan jeg jobber fra innsikt til ferdig løsning, med fokus på å forstå brukernes behov og skape design som legger til rette for gode brukeropplevelser.
                     </p>
                 </div>
 
+                <ProjectCard
+                    imageSrc="/barnebank/thumbnail.webp"
+                    date="Sommeren 2025"
+                    platformInfo="App"
+                    title="Sparebanken Norge"
+                    description="Summer internship der vi designet deres nye bankløsning for barn."
+                    link="/barnebank"
+                    imageZoom="desktop"
+                    hero
+                />
+
                 <div className="project-card-container">
-
-                    <ProjectCard
-                        imageSrc="/barnebank/thumbnail.webp"
-                        date="Sommeren 2025"
-                        title="Sparebanken Norge"
-                        description="Summer internship der vi designet deres nye bankløsning for barn."
-                        link="/barnebank"
-                        imageZoom="desktop"
-                    />
-
                     <ProjectCard
                         imageSrc="/grundercampus/thumbnail.webp"
                         date="Våren 2025"
+                        platformInfo="Web"
                         title="GründerCampus"
                         description="Nettside, logo og visuell profil for studentnettverket GründerCampus."
                         link="/grundercampus"
@@ -45,6 +47,7 @@ export default function ProjectsLibaryRoute() {
                     <ProjectCard
                         imageSrc="/portefølje-redesign/thumbnail.webp"
                         date="Vinteren 2024"
+                        platformInfo="Web"
                         title="Redesign av portefølje"
                         description="Redesign av en front-end utviklers portefølje"
                         link="/redesign-av-portefølje"
@@ -55,6 +58,7 @@ export default function ProjectsLibaryRoute() {
                     <ProjectCard
                         imageSrc="/æ/thumbnail.webp"
                         date="Høsten 2024"
+                        platformInfo="App"
                         title="Redesign av Æ"
                         description="Redesign av Rema 1000s medlemsapp med fokus på brukervennlighet"
                         link="/æ"
@@ -63,6 +67,7 @@ export default function ProjectsLibaryRoute() {
                     <ProjectCard
                         imageSrc="/corwell/thumbnail.webp"
                         date="Våren 2024"
+                        platformInfo="App"
                         title="Corwell"
                         description="En helseapp som forbedrer helseoppfølging ved hjelp av  lifelogging"
                         link="/corwell"
@@ -80,6 +85,7 @@ export default function ProjectsLibaryRoute() {
                     <ProjectCard
                         imageSrc="/ourspace/thumbnail.webp"
                         date="Høsten 2023"
+                        platformInfo="Software"
                         title="OurSpace"
                         description="Et CSCW- verktøy for konsulentbransjen"
                         link="/ourspace"
@@ -89,6 +95,7 @@ export default function ProjectsLibaryRoute() {
                     <ProjectCard
                         imageSrc="/drømmeland/thumbnail.webp"
                         date="Våren 2023"
+                        platformInfo="App"
                         title="Drømmeland"
                         description="En læringsapp for barn om klima og miljø"
                         link="/drømmeland"

@@ -5,6 +5,7 @@ interface ImageData {
     src: string;
     imageText?: string;
     altText: string;
+    fullwidth?: boolean;
 }
 
 interface GalleryProps {
@@ -16,7 +17,7 @@ export default function Gallery({ images, combinedImageText }: GalleryProps) {
     return (
         <div className="gallery-container">
             {images.map((image, index) => (
-                <div key={index} className="gallery-image-container">
+                <div key={index} className={`gallery-image-container ${image.fullwidth ? "full-width-image" : ""}`}>
                     <ImageWithLoader
                         src={image.src}
                         alt={image.altText}
