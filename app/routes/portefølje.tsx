@@ -14,7 +14,7 @@ export default function ProjectsLibaryRoute() {
         <div className="gutter top-margin">
             <main>
                 <div className="text-section">
-                    <h1 className="heading">
+                    <h1 className="heading-large">
                         Portefølje
                     </h1>
                     <p className="text-large">
@@ -27,7 +27,7 @@ export default function ProjectsLibaryRoute() {
                     date="Sommeren 2025"
                     platformInfo="App"
                     title="Sparebanken Norge"
-                    description="Summer internship der vi designet deres nye bankløsning for barn."
+                    description="Summer internship der vi designet deres nye bankløsning for barn"
                     link="/barnebank"
                     imageZoom="desktop"
                     hero
@@ -39,7 +39,7 @@ export default function ProjectsLibaryRoute() {
                         date="Våren 2025"
                         platformInfo="Web"
                         title="GründerCampus"
-                        description="Nettside, logo og visuell profil for studentnettverket GründerCampus."
+                        description="Nettside, logo og visuell profil for studentnettverket GründerCampus"
                         link="/grundercampus"
                         imageZoom="desktop"
                     />
@@ -49,7 +49,7 @@ export default function ProjectsLibaryRoute() {
                         date="Vinteren 2024"
                         platformInfo="Web"
                         title="Redesign av portefølje"
-                        description="Redesign av en front-end utviklers portefølje"
+                        description="Redesign av en front-end utviklers portefølje for å fremheve arbeidet hans"
                         link="/redesign-av-portefølje"
                         imageZoom="desktop"
                     />
@@ -69,25 +69,16 @@ export default function ProjectsLibaryRoute() {
                         date="Våren 2024"
                         platformInfo="App"
                         title="Corwell"
-                        description="En helseapp som forbedrer helseoppfølging ved hjelp av  lifelogging"
+                        description="En helseapp som forbedrer helseoppfølging ved hjelp av lifelogging"
                         link="/corwell"
                     />
-
-                    {/* <ProjectCard
-                        imageSrc="/skreddernettside/thumbnail.webp"
-                        date="Våren 2024"
-                        title="Skreddernettside"
-                        description="Sideprosjekt, nettside for skreddertjenester"
-                        link="/skreddernettside"
-                        imageZoom="desktop"
-                    /> */}
 
                     <ProjectCard
                         imageSrc="/ourspace/thumbnail.webp"
                         date="Høsten 2023"
                         platformInfo="Software"
                         title="OurSpace"
-                        description="Et CSCW- verktøy for konsulentbransjen"
+                        description="Et CSCW- verktøy for konsulentbransjen utviklet på bakgrunn av feltarbeid"
                         link="/ourspace"
                         imageZoom="desktop"
                     />
@@ -97,7 +88,7 @@ export default function ProjectsLibaryRoute() {
                         date="Våren 2023"
                         platformInfo="App"
                         title="Drømmeland"
-                        description="En læringsapp for barn om klima og miljø"
+                        description="En læringsapp for barn om klima og miljø med fokus på brukervennlighet"
                         link="/drømmeland"
                     />
 

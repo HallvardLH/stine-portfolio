@@ -23,7 +23,7 @@ export default function ProjectsLibaryRoute() {
                     }
                     textSection={
                         <div style={{ alignSelf: "flex-start", display: "flex", gap: "2rem", flexDirection: "column" }}>
-                            <h1 className="heading heading-normal-color">
+                            <h1 className="heading-large heading-normal-color">
                                 Om meg
                             </h1>
                             <p className="text-medium">

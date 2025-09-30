@@ -11,6 +11,14 @@
     display: block;
 }
 
+.heading-large {
+    all: unset;
+    font-family: 'Satoshi';
+    font-size: 3rem;
+    font-weight: 500;
+    display: block;
+}
+
 /* Applied to text with the heading and text-large classes, if they appear outside of a project */
 .heading-normal-color {
     color: var(--header-color) !important;

@@ -13,7 +13,7 @@ export default function ProjectsLibaryRoute() {
         <div className="gutter top-margin">
             <main>
                 <div className="text-section shortened-paragraph">
-                    <h1 className="heading">
+                    <h1 className="heading-large">
                         Kontakt
                     </h1>
                     <p className="text-medium">

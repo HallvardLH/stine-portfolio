@@ -20,7 +20,7 @@ export default function ProjectsLibaryRoute() {
                 <StandaloneParagraph
                     textSection={
                         <>
-                            <h1 className="heading">
+                            <h1 className="heading-large">
                                 Bachelorprosjekt: GründerCampus
                             </h1>
                             <p className="text-medium">
@@ -115,8 +115,8 @@ export default function ProjectsLibaryRoute() {
 
                 <TwoImages
                     imageSrc1="/grundercampus/eyetracking.webp"
-                    imageText1="Fargepaletten for hjemmesiden."
-                    altText1="Viser GründerCampus sin fargepalett, med friske og inspirerende farger."
+                    imageText1="Brukertesting med eye-tracking: Innsikt i hvordan brukerne navigerte i prototypen."
+                    altText1="Brukertest"
 
                     imageSrc2="/grundercampus/eyetracking-screenshot.webp"
                     imageText2="Heatmap over resultatene fra eye-trackingen."

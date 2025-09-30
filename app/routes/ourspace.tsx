@@ -20,7 +20,7 @@ export default function ProjectsLibaryRoute() {
                 <StandaloneParagraph
                     textSection={
                         <>
-                            <h1 className="heading">
+                            <h1 className="heading-large">
                                 OurSpace
                             </h1>
                             <p className="text-medium">

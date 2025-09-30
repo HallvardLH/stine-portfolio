@@ -19,7 +19,7 @@ export default function Index() {
         <StandaloneParagraph
           textSection={
             <div className="text-section">
-              <h1 className="heading heading-normal-color">
+              <h1 className="heading-large heading-normal-color">
                 Hei!
               </h1>
               <p className="text-large">
@@ -33,7 +33,7 @@ export default function Index() {
           }
         />
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10rem" }}>
-          <h2 className="heading card-text">Siste prosjekt</h2>
+          <h2 className="heading">Siste prosjekt</h2>
           {/* <div style={{ marginTop: "4rem", marginBottom: "6rem" }}> */}
           <Link to="/portefølje">
             <Button label="Gå til portefølje" />

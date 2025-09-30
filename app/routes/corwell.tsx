@@ -18,7 +18,7 @@ export default function ProjectsLibaryRoute() {
                 <StandaloneParagraph
                     textSection={
                         <>
-                            <h1 className="heading">
+                            <h1 className="heading-large">
                                 CorWell
                             </h1>
                             <p className="text-medium">
