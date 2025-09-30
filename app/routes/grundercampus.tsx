@@ -149,7 +149,7 @@ export default function ProjectsLibaryRoute() {
                         <div>
                             <h2 className="text-medium">Prototypen</h2>
                             <p>
-                                Forsiden på GründerCampus-nettsiden fungerer som en inngangsport til plattformens hovedfunksjoner. Her ønsket vi å skape et førsteinntrykk som både inspirerer og informerer. Vi introduserer GründerCampus&apos; kjerneområder: Arrangementer, Startup Board og Om oss. Brukerne blir raskt kjent med hva GründerCampus tilbyr og kan enkelt navigere videre til det som er mest relevant for dem.
+                                Forsiden på GründerCampus-nettsiden fungerer som en inngangsport til plattformens hovedfunksjoner. Her ønsket vi å skape et førsteinntrykk som både inspirerer og informerer. Vi introduserer GründerCampus&apos; kjerneområder: Arrangementer, Oppstartstorget og Om oss. Brukerne blir raskt kjent med hva GründerCampus tilbyr og kan enkelt navigere videre til det som er mest relevant for dem.
 
                             </p>
                         </div>
@@ -177,13 +177,13 @@ export default function ProjectsLibaryRoute() {
                     textSection={
                         <div>
                             <p>
-                                Startup Boardet er en sentral funksjon utviklet for å knytte sammen studenter med ulike ferdigheter og interesser. Her kan studenter søke deltakelse i pågående gründerprosjekter, eller legge ut egne annonser for å finne medgründere eller spesifikk kompetanse de trenger for å realisere sine ideer. Dette senker terskelen for å komme i gang som gründer og åpner for tverrfaglig samarbeid på tvers av utdanningsretninger.
+                                Oppstartstorget er en sentral funksjon utviklet for å knytte sammen studenter med ulike ferdigheter og interesser. Her kan studenter søke deltakelse i pågående gründerprosjekter, eller legge ut egne annonser for å finne medgründere eller spesifikk kompetanse de trenger for å realisere sine ideer. Dette senker terskelen for å komme i gang som gründer og åpner for tverrfaglig samarbeid på tvers av utdanningsretninger.
                             </p>
                         </div>
                     }
                     imageSrc="/grundercampus/startup.webp"
-                    imageText="Startup Board: Koble sammen studenter og prosjekter på tvers av fagområder."
-                    altText="Startup Board-funksjon som kobler studenter med ulike kompetanser i gründerprosjekter."
+                    imageText="Oppstartstorg: Koble sammen studenter og prosjekter på tvers av fagområder."
+                    altText="Oppstartstorg-funksjon som kobler studenter med ulike kompetanser i gründerprosjekter."
                 />
 
                 <ParagraphWithImage
@@ -204,7 +204,7 @@ export default function ProjectsLibaryRoute() {
                         <>
                             <h2 className="text-medium">Grad av innovasjon</h2>
                             <p>
-                                Startup Board er en funksjon som skiller GründerCampus fra andre aktører. Ideen er å gi studenter som kanskje ikke har en egen idé, muligheten til å bidra med sin kompetanse i andres prosjekter. Dette gir dem både verdifull erfaring og et sosialt og faglig nettverk, noe som ofte er vanskelig å få tilgang til for unge studenter.
+                                Oppstartstorget er en funksjon som skiller GründerCampus fra andre aktører. Ideen er å gi studenter som kanskje ikke har en egen idé, muligheten til å bidra med sin kompetanse i andres prosjekter. Dette gir dem både verdifull erfaring og et sosialt og faglig nettverk, noe som ofte er vanskelig å få tilgang til for unge studenter.
                             </p>
                         </>
                     }
