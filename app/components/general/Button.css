@@ -9,6 +9,13 @@
     filter: brightness(0.9);
 }
 
+.read-more-container {
+    display: flex;
+    gap: .625rem;
+    align-items: center;
+    margin-right: 0.2rem;
+}
+
 
 .button-label {
     font-weight: bold;
