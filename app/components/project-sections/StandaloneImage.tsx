@@ -1,5 +1,4 @@
 import "./StandaloneImage.css";
-
 import ImageWithLoader from "../general/ImageWithLoader";
 
 interface StandaloneImageProps {
