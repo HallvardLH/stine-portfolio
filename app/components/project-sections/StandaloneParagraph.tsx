@@ -1,18 +1,11 @@
 import "./StandaloneParagraph.css";
 
 interface StandaloneParagraphProps {
-    textSection: React.ReactNode,
+  textSection: React.ReactNode;
 }
 
 export default function StandaloneParagraph(props: StandaloneParagraphProps) {
+  const { textSection } = props;
 
-    const { textSection } = props;
-
-    return (
-        <div className="standalone-paragraph">
-
-            {textSection}
-
-        </div>
-    )
+  return <div className="standalone-paragraph">{textSection}</div>;
 }

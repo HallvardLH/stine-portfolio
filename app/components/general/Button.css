@@ -1,36 +1,35 @@
 .button-container {
-    display: flex;
-    justify-content: flex-end;
-    background-color: var(--contrast-color);
-    padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--contrast-color);
+  padding: 1rem;
 }
 
 .button-container:hover {
-    filter: brightness(0.9);
+  filter: brightness(0.9);
 }
 
 .read-more-container {
-    display: flex;
-    gap: .625rem;
-    align-items: center;
-    margin-right: 0.2rem;
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  margin-right: 0.2rem;
 }
 
-
 .button-label {
-    font-weight: bold;
-    color: var(--button-text-color)
+  font-weight: bold;
+  color: var(--button-text-color);
 }
 
 .arrow-back {
-    transform: rotate(-180deg)
+  transform: rotate(-180deg);
 }
 
 .button {
-    all: unset;
+  all: unset;
 }
 
 .button:hover {
-    /* text-decoration: underline; */
-    /* text-underline-offset: 0.25rem; */
+  /* text-decoration: underline; */
+  /* text-underline-offset: 0.25rem; */
 }

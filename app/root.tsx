@@ -13,9 +13,9 @@ import { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
-import './styles/global.css';
-import './styles/text.css';
-import './styles/layout.css';
+import "./styles/global.css";
+import "./styles/text.css";
+import "./styles/layout.css";
 
 export async function loader({ request }: { request: Request }) {
   const cookieHeader = request.headers.get("Cookie");
@@ -37,7 +37,7 @@ export async function action({ request }: { request: Request }) {
       headers: {
         "Set-Cookie": await themeCookie.serialize(newTheme),
       },
-    }
+    },
   );
 }
 
@@ -91,7 +91,13 @@ export default function App() {
         <title>Stine Knutsen</title>
         <Links />
       </head>
-      <body className={getColorScheme(location.pathname) ? "" + getColorScheme(location.pathname) : ""}>
+      <body
+        className={
+          getColorScheme(location.pathname)
+            ? "" + getColorScheme(location.pathname)
+            : ""
+        }
+      >
         <Navbar
           onThemeSwitch={() => {
             const newTheme = currentTheme === "light" ? "dark" : "light";

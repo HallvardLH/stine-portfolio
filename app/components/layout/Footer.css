@@ -1,74 +1,73 @@
 .footer-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    margin-top: 15rem;
-    padding: 0 1.6rem;
-    padding-bottom: 2rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 15rem;
+  padding: 0 1.6rem;
+  padding-bottom: 2rem !important;
 }
 
 .navigation-list {
-    list-style-type: none;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: .7rem;
-    padding-inline-start: 0;
+  list-style-type: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding-inline-start: 0;
 }
 
 .socials-container {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: flex-end;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-end;
 }
 
 .footer-credit-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .footer-credit-container,
 p {
-    /* font-weight: lighter !important; */
+  /* font-weight: lighter !important; */
 }
 
-
 .footer-contacts-and-socials {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }
 
 .socials-icon {
-    height: 3rem;
-    width: 3rem;
+  height: 3rem;
+  width: 3rem;
 }
 
 /* Desktop */
 @media only screen and (min-width: 550px) {
-    .footer-container {
-        padding: 0 4rem;
-    }
+  .footer-container {
+    padding: 0 4rem;
+  }
 
-    .footer-contacts-and-socials {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+  .footer-contacts-and-socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-    .socials-icon {
-        height: 4.5rem;
-        width: 4.5rem;
-    }
+  .socials-icon {
+    height: 4.5rem;
+    width: 4.5rem;
+  }
 
-    .socials-container {
-        align-self: flex-end;
-    }
+  .socials-container {
+    align-self: flex-end;
+  }
 
-    .footer-credit-container {
-        margin-top: 4rem;
-    }
+  .footer-credit-container {
+    margin-top: 4rem;
+  }
 }

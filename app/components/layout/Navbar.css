@@ -1,82 +1,82 @@
 .navbar-container {
-    background-color: var(--primary-color);
-    padding: 0 1.6rem;
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
-    position: fixed;
-    /* Fixed position to stay at the top */
-    top: 0;
-    /* Aligns the navbar at the top */
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    height: 8.35rem;
-    box-sizing: border-box;
+  background-color: var(--primary-color);
+  padding: 0 1.6rem;
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+  position: fixed;
+  /* Fixed position to stay at the top */
+  top: 0;
+  /* Aligns the navbar at the top */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 8.35rem;
+  box-sizing: border-box;
 }
 
 .navbar-top {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .navbar-dropdown {
-    position: absolute;
-    left: 0;
-    right: 0;
-    flex-grow: 1;
-    z-index: 999;
-    background-color: var(--primary-color);
-    height: 0;
-    overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  flex-grow: 1;
+  z-index: 999;
+  background-color: var(--primary-color);
+  height: 0;
+  overflow: hidden;
 
-    interpolate-size: allow-keywords;
+  interpolate-size: allow-keywords;
 
-    transition: height 1000ms ease;
+  transition: height 1000ms ease;
 }
 
 .navbar-dropdown-toggle-container {
-    all: unset;
-    display: flex;
-    justify-content: end;
-    cursor: pointer;
+  all: unset;
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
 }
 
 .navbar-expanded {
-    height: auto;
+  height: auto;
 }
 
 .navbar-dropdown-toggle {
-    height: 2rem;
-    width: 2rem;
+  height: 2rem;
+  width: 2rem;
 }
 
 .navbar-list {
-    list-style-type: none;
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    gap: .7rem;
+  list-style-type: none;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
 }
 
 .navbar-list a {
-    text-decoration: none;
-    color: var(--text-color);
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .navbar-links-desktop {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }
 
 .link-underlined {
-    /* text-decoration: underline; */
-    font-weight: bold;
+  /* text-decoration: underline; */
+  font-weight: bold;
 }
 
 /* Desktop */
 @media only screen and (min-width: 1050px) {
-    .navbar-container {
-        padding: 0 4rem;
-    }
+  .navbar-container {
+    padding: 0 4rem;
+  }
 }

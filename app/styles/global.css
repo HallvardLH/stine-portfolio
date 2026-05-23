@@ -1,101 +1,105 @@
 :root {
-    --primary-color: #FDFFF9;
-    --secondary-color: #23261C;
-    --contrast-color: #97FF7D;
+  --primary-color: #fdfff9;
+  --secondary-color: #23261c;
+  --contrast-color: #97ff7d;
 
-    --button-text-color: #23261C;
+  --button-text-color: #23261c;
 
-    --text-color: #23261C;
+  --text-color: #23261c;
 
-    --header-color: #23261C;
+  --header-color: #23261c;
 
-    ---color: #FBFFE0;
+  ---color: #fbffe0;
 
-    --icon-color: brightness(0) saturate(100%) invert(7%) sepia(95%) saturate(430%) hue-rotate(96deg) brightness(96%) contrast(100%);
-    --socials-icon-color: brightness(0) saturate(100%) invert(7%) sepia(95%) saturate(430%) hue-rotate(96deg) brightness(96%) contrast(100%);
+  --icon-color: brightness(0) saturate(100%) invert(7%) sepia(95%)
+    saturate(430%) hue-rotate(96deg) brightness(96%) contrast(100%);
+  --socials-icon-color: brightness(0) saturate(100%) invert(7%) sepia(95%)
+    saturate(430%) hue-rotate(96deg) brightness(96%) contrast(100%);
 
-    /* Card colors are defined independently as they do not change with dark mode */
-    --card-background: #FDFFF9;
-    --card-text-color: #23261C;
+  /* Card colors are defined independently as they do not change with dark mode */
+  --card-background: #fdfff9;
+  --card-text-color: #23261c;
 }
 
 [data-theme="dark"] {
-    --primary-color: #23261C;
-    --secondary-color: #FDFFF9;
+  --primary-color: #23261c;
+  --secondary-color: #fdfff9;
 
-    --text-color: #FDFFF9;
+  --text-color: #fdfff9;
 
-    --header-color: #FDFFF9;
+  --header-color: #fdfff9;
 
-    --icon-color: brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(426%) hue-rotate(35deg) brightness(109%) contrast(105%);
-    --socials-icon-color: brightness(0) saturate(100%) invert(83%) sepia(65%) saturate(342%) hue-rotate(17deg) brightness(111%) contrast(105%);
+  --icon-color: brightness(0) saturate(100%) invert(88%) sepia(10%)
+    saturate(426%) hue-rotate(35deg) brightness(109%) contrast(105%);
+  --socials-icon-color: brightness(0) saturate(100%) invert(83%) sepia(65%)
+    saturate(342%) hue-rotate(17deg) brightness(111%) contrast(105%);
 }
 
 @font-face {
-    font-family: 'Satoshi';
-    src: url('Satoshi-Variable.ttf') format('truetype');
+  font-family: "Satoshi";
+  src: url("Satoshi-Variable.ttf") format("truetype");
 }
 
 body {
-    margin: 0;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    /* transition: background-color 0.3s ease, color 0.3s ease; */
-    font-family: "Satoshi";
+  margin: 0;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  /* transition: background-color 0.3s ease, color 0.3s ease; */
+  font-family: "Satoshi";
 
-    /* Giving the navbar some space */
-    padding-top: 8.35rem;
+  /* Giving the navbar some space */
+  padding-top: 8.35rem;
 }
 
 .icon {
-    filter: var(--icon-color);
+  filter: var(--icon-color);
 }
 
 .socials-icon {
-    filter: var(--socials-icon-color);
+  filter: var(--socials-icon-color);
 }
 
 /* This gives elements margin from the sides of the screen */
 .gutter {
-    padding: 0 1.6rem;
+  padding: 0 1.6rem;
 }
 
 .top-margin {
-    margin-top: 3rem;
+  margin-top: 3rem;
 }
 
 /* Removing default link styling */
 a:-webkit-any-link {
-    text-decoration: none;
-    color: var(--text-color);
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .no-link {
-    text-decoration: none;
-    color: var(--text-color);
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .container {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .text-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 /* Desktop */
 @media only screen and (min-width: 1050px) {
-    .gutter {
-        padding: 0 calc(2rem + 10vw);
-    }
+  .gutter {
+    padding: 0 calc(2rem + 10vw);
+  }
 
-    .top-margin {
-        margin-top: 6rem;
-    }
+  .top-margin {
+    margin-top: 6rem;
+  }
 }

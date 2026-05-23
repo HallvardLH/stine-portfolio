@@ -7,7 +7,10 @@ import ProjectCard from "~/components/card/ProjectCard";
 export const meta: MetaFunction = () => {
   return [
     { title: "Stine Knutsen" },
-    { name: "description", content: "Hjemmesiden for Stine Knutsens portefølje." },
+    {
+      name: "description",
+      content: "Hjemmesiden for Stine Knutsens portefølje.",
+    },
   ];
 };
 
@@ -15,24 +18,32 @@ export default function Index() {
   return (
     <div className="gutter top-margin">
       <main>
-
         <StandaloneParagraph
           textSection={
             <div className="text-section">
-              <h1 className="heading-large heading-normal-color">
-                Hei!
-              </h1>
+              <h1 className="heading-large heading-normal-color">Hei!</h1>
               <p className="text-large">
-                Jeg er en UX-designer som nå tar en mastergrad i medie- og interaksjonsdesign ved UiB. Jeg har tidligere fullført bachelorgraden i samme fag, og jeg brenner for å lage intuitive løsninger som gjør det enklere å bruke digitale produkter.
+                Jeg er en UX-designer som nå tar en mastergrad i medie- og
+                interaksjonsdesign ved UiB. Jeg har tidligere fullført
+                bachelorgraden i samme fag, og jeg brenner for å lage intuitive
+                løsninger som gjør det enklere å bruke digitale produkter.
               </p>
               <p>
-                Jeg trives best når jeg får jobbe med nye utfordringer, og jeg legger stor vekt på å forstå hva folk virkelig trenger før jeg lager løsninger. Målet mitt er alltid å skape design som fungerer godt og gir en god brukeropplevelse.
+                Jeg trives best når jeg får jobbe med nye utfordringer, og jeg
+                legger stor vekt på å forstå hva folk virkelig trenger før jeg
+                lager løsninger. Målet mitt er alltid å skape design som
+                fungerer godt og gir en god brukeropplevelse.
               </p>
-
             </div>
           }
         />
-        <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10rem" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "10rem",
+          }}
+        >
           <h2 className="heading">Siste prosjekt</h2>
           {/* <div style={{ marginTop: "4rem", marginBottom: "6rem" }}> */}
           <Link to="/portefølje">
@@ -51,7 +62,6 @@ export default function Index() {
           imageZoom="desktop"
           hero
         />
-
       </main>
     </div>
   );
