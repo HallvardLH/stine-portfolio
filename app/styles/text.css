@@ -45,7 +45,7 @@ p,
 .text-normal {
   all: unset;
   font-family: "Satoshi";
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: normal;
   display: block;
 }
@@ -74,10 +74,10 @@ p,
     font-size: 2.25rem;
   }
 
-  /*p,
+  p,
   .text-normal {
     font-size: 1.5rem;
-  }*/
+  }
 
   .text-small {
     font-size: 1.375rem;
