@@ -29,10 +29,9 @@
 
   --header-color: #fdfff9;
 
-  --icon-color: brightness(0) saturate(100%) invert(88%) sepia(10%)
-    saturate(426%) hue-rotate(35deg) brightness(109%) contrast(105%);
-  --socials-icon-color: brightness(0) saturate(100%) invert(83%) sepia(65%)
-    saturate(342%) hue-rotate(17deg) brightness(111%) contrast(105%);
+  --icon-color: invert(100%) sepia(2%) saturate(2255%) hue-rotate(29deg)
+    brightness(89%) contrast(130%);
+  --socials-icon-color: brightness(0) saturate(100%) invert(100%);
 }
 
 @font-face {

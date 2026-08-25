@@ -55,13 +55,13 @@ export default function Footer({ colorScheme }: FooterProps) {
         </div>
 
         <div className="socials-container">
-          <a
+          {/* <a
             target="_blank"
             rel="noopener noreferrer"
             href="https://www.behance.net/stineknutsen3"
           >
             <img src={"/icons/behance.svg"} alt="" className="socials-icon" />
-          </a>
+          </a> */}
           <a
             target="_blank"
             rel="noopener noreferrer"
