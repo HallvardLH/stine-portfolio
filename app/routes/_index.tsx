@@ -23,17 +23,18 @@ export default function Index() {
             <div className="text-section">
               <h1 className="heading-large heading-normal-color">Hei!</h1>
               <p className="text-large">
-                Jeg er en UX-designer som nå tar en mastergrad i medie- og
-                interaksjonsdesign ved UiB. Jeg har tidligere fullført
-                bachelorgraden i samme fag, og jeg brenner for å lage intuitive
-                løsninger som gjør det enklere å bruke digitale produkter.
+                Jeg er UX-designer og masterstudent i medie- og
+                interaksjonsdesign ved Universitetet i Bergen. Det som drar meg
+                mot UX er muligheten til å være med på å skape digitale
+                løsninger som er enklere å bruke, og som gjør teknologi mer
+                tilgjengelig og inkluderende for alle.
               </p>
-              <p>
+              {/* <p>
                 Jeg trives best når jeg får jobbe med nye utfordringer, og jeg
                 legger stor vekt på å forstå hva folk virkelig trenger før jeg
                 lager løsninger. Målet mitt er alltid å skape design som
                 fungerer godt og gir en god brukeropplevelse.
-              </p>
+              </p> */}
             </div>
           }
         />
@@ -44,7 +45,7 @@ export default function Index() {
             marginTop: "10rem",
           }}
         >
-          <h2 className="heading">Siste prosjekt</h2>
+          <h2 className="heading">Mitt siste prosjekt</h2>
           {/* <div style={{ marginTop: "4rem", marginBottom: "6rem" }}> */}
           <Link to="/portefølje">
             <Button label="Gå til portefølje" />

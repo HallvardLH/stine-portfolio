@@ -1,6 +1,7 @@
 import "./ProjectCard.css";
 import { Link } from "@remix-run/react";
 import ImageWithLoader from "../general/ImageWithLoader";
+import { MdArrowForward } from "react-icons/md";
 
 interface ProjectCardProps {
   imageSrc: string;
@@ -40,12 +41,15 @@ export default function ProjectCard(props: ProjectCardProps) {
       </div>
       <h2 className="heading card-text">{title}</h2>
       <p className="text-normal card-text">{description}</p>
-      <Link className="read-more-outer-container" to={link}>
+      {/* <Link className="read-more-outer-container" to={link}> */}
+      <div className="read-more-outer-container">
         <div className="read-more-container">
           <p className="text-small card-text">Les mer om dette prosjektet</p>
-          <img src="/icons/arrow.svg" alt="" className="card-arrow" />
+          {/* <img src="/icons/arrow.svg" alt="" className="card-arrow" /> */}
+          <MdArrowForward />
         </div>
-      </Link>
+      </div>
+      {/* </Link> */}
     </Link>
   );
 }

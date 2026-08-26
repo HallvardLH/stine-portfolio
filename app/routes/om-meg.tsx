@@ -9,7 +9,7 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "Jeg er en positiv og nysgjerrig person som trives best når jeg kan være kreativ, sosial og lære noe nytt.",
+        "Jeg er UX-designer og masterstudent i medie- og interaksjonsdesign ved Universitetet i Bergen.",
     },
   ];
 };
@@ -36,17 +36,29 @@ export default function ProjectsLibaryRoute() {
             >
               <h1 className="heading-large heading-normal-color">Om meg</h1>
               <p className="text-medium">
-                Jeg er en positiv person som trives best når jeg kan være
-                kreativ, sosial og skape noe som betyr noe for andre!
+                Jeg er UX-designer og masterstudent i medie- og
+                interaksjonsdesign ved Universitetet i Bergen.
               </p>
               <p>
-                Jeg tar master i Medie- og Interaksjonsdesign ved UiB, og
-                UX-design gjør jeg fordi jeg virkelig liker det, ikke bare fordi
-                det er studiet mitt. Jeg bruker mye tid i Figma, tester idéer og
-                finner løsninger som faktisk gjør ting enklere for brukerne,
-                ofte mye lenger enn jeg burde. Jeg henter inspirasjon fra små
-                detaljer og hverdagslige situasjoner, og liker å lage design som
-                både fungerer og føles naturlig å bruke.
+                Jeg har alltid likt å lage ting og jobbe visuelt, og det var noe
+                av det som først trakk meg mot design. Etter hvert ble jeg
+                spesielt interessert i hvordan design kan gjøre teknologi
+                enklere å forstå og bruke.
+              </p>
+              <p>
+                Jeg har alltid likt å lage ting og jobbe visuelt, og har vært
+                innom litt av hvert, fra strikking og maling til grafisk design.
+                Da jeg begynte på Medie- og interaksjonsdesign ved UiB, fikk jeg
+                kombinert den kreative siden med interessen min for teknologi og
+                mennesker. Gjennom bacheloren og nå masteren har jeg jobbet med
+                alt fra visuell design og interaksjon til brukerinnsikt,
+                brukertesting og konseptutvikling.
+              </p>
+              <p>
+                Det jeg liker best med UX er punktet der man begynner å se
+                muligheter i det man har lært gjennom brukerinnsikt. Jeg liker å
+                utforske ulike retninger, prøve ut ideer og se hvordan innsikt
+                kan endre løsningen underveis.
               </p>
             </div>
           }
@@ -55,41 +67,18 @@ export default function ProjectsLibaryRoute() {
           altText="A portrait of Stine Knutsen."
         />
 
-        <StandaloneParagraph
-          textSection={
-            <div>
-              <h2 className="text-medium">Min vei inn i interaksjonsdesign</h2>
-              <p>
-                Jeg har alltid vært interessert i grafisk design og visuelle
-                framstillinger, og har utforsket uttrykk som maling, tegning,
-                foto og grafisk design. Jeg har til og med hatt en svært kort
-                keramikkkarriere!
-              </p>
-              <br />
-              <p>
-                Da jeg hørte om studiet i Medie- og Interaksjonsdesign (MIX)
-                gjennom en venninne av søsteren min, visste jeg at dette var
-                riktig for meg. Gjennom bacheloren fikk jeg en dyp forståelse
-                for designprinsipper, brukervennlighet og design med
-                brukerinvolvering, kunnskap jeg nå får videreutvikle på
-                masteren.
-              </p>
-              <br />
-              <p>
-                Min favorittdel av UX-prosessen er konseptualiseringen, der
-                brukerinnsikt åpner for nye løsninger som treffer brukerne. Et
-                eksempel på dette var da jeg jobbet med Sparebanken Norge, der
-                vi endret kurs basert på innsikt og utviklet en løsning som til
-                slutt ble veldig vellykket. Jeg har også kunnskap om HCI og
-                informasjonsvitenskap, som styrker evnen min til å lage
-                intuitive og effektive brukeropplevelser.
-              </p>
-            </div>
-          }
-        />
-
         <Gallery
           images={[
+            {
+              src: "/om-meg/finn-presentasjon.webp",
+              imageText: "Presentasjonen av sommerprosjektet hos FINN.",
+              altText: "",
+            },
+            {
+              src: "/om-meg/finn-teamet.webp",
+              imageText: "Sommerteamet utenfor kontoret hos FINN!",
+              altText: "",
+            },
             {
               src: "/om-meg/innovasjonsdagen.webp",
               imageText:

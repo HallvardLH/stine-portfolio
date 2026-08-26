@@ -9,30 +9,30 @@ export default function Contact({ textClassName }: ContactProps) {
     <div className="contact-container">
       <div className="contact-info-container">
         <div className="contact-info">
-          <img
+          {/* <img
             src={"/icons/mail.svg"}
             alt=""
             className="contact-info-icon icon"
-          />
-          <p className={textClassName}>mail:</p>
+          /> */}
+          <p className={textClassName}>E-post:</p>
         </div>
         <p className={textClassName}>
           <a href="stinenknutsen@gmail.com">stinenknutsen@gmail.com</a>
         </p>
 
         <div className="contact-info">
-          <img
+          {/* <img
             src={"/icons/phone.svg"}
             alt=""
             className="contact-info-icon icon"
-          />
-          <p className={textClassName}>mobil:</p>
+          /> */}
+          <p className={textClassName}>Telefon:</p>
         </div>
         <p className={textClassName}>
           <a href="tel:90089605">900 89 605</a>
         </p>
 
-        <div className="contact-info">
+        {/* <div className="contact-info">
           <img
             src={"/icons/address.svg"}
             alt=""
@@ -40,7 +40,7 @@ export default function Contact({ textClassName }: ContactProps) {
           />
           <p className={textClassName}>sted:</p>
         </div>
-        <p className={textClassName}>Bergen</p>
+        <p className={textClassName}>Bergen</p> */}
       </div>
     </div>
   );

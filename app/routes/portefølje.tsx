@@ -16,25 +16,38 @@ export default function ProjectsLibaryRoute() {
         <div className="text-section">
           <h1 className="heading-large">Portefølje</h1>
           <p className="text-large">
-            Dette er noen av prosjektene jeg er mest stolt av. Her viser jeg
-            hvordan jeg jobber fra innsikt til ferdig løsning, med fokus på å
-            forstå brukernes behov og skape design som legger til rette for gode
-            brukeropplevelser.
+            Her er noen av prosjektene jeg har jobbet med og er mest stolt av.
+            Alt fra internships og bachelorprosjektet mitt til oppdrag gjennom
+            enkeltpersonforetaket mitt og andre prosjekter gjennom studiet.
+          </p>
+
+          <p className="text-large">
+            Trykk på et av prosjektene for å lese mer!
           </p>
         </div>
 
         <ProjectCard
-          imageSrc="/barnebank/thumbnail.webp"
-          date="Sommeren 2025"
-          platformInfo="App"
-          title="Sparebanken Norge"
-          description="Summer internship der vi designet deres nye bankløsning for barn"
-          link="/barnebank"
+          imageSrc="/finn-eiendom/thumbnail.webp"
+          date="Sommeren 2026"
+          platformInfo="Web"
+          title="FINN Eiendom"
+          description="Summer internship i FINN Eiendom med fokus på å forenkle påmeldingen til boligvisninger for meglere og boligkjøpere."
+          link="/finn-eiendom"
           imageZoom="desktop"
           hero
         />
 
         <div className="project-card-container">
+          <ProjectCard
+            imageSrc="/barnebank/thumbnail.webp"
+            date="Sommeren 2025"
+            platformInfo="App"
+            title="Sparebanken Norge"
+            description="Summer internship der vi designet deres nye bankløsning for barn"
+            link="/barnebank"
+            imageZoom="desktop"
+          />
+
           <ProjectCard
             imageSrc="/grundercampus/thumbnail.webp"
             date="Våren 2025"

@@ -3,6 +3,7 @@ import CoverImage from "~/components/cover-image/CoverImage";
 import StandaloneParagraph from "~/components/project-sections/StandaloneParagraph";
 import ParagraphWithImage from "~/components/project-sections/ParagraphWithImage";
 import { StandaloneImage } from "~/components/project-sections/StandaloneImage";
+import { MdOutlineOpenInNew } from "react-icons/md";
 
 export const meta: MetaFunction = () => {
   return [
@@ -33,6 +34,22 @@ export default function ProjectsLibaryRoute() {
                 utviklere og to UX-designere. Den nye løsningen er nå lansert
                 for bankens kunder.
               </p>
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                style={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "4px",
+                  marginTop: "1rem",
+                  display: "flex",
+                  gap: "0.5rem",
+                  alignItems: "center",
+                }}
+                href="https://www.spv.no/dagligbank/nett-og-mobilbank/barnebank"
+              >
+                Les mer om barnebanken her
+                <MdOutlineOpenInNew />
+              </a>
             </>
           }
         />
