@@ -32,6 +32,9 @@
   --icon-color: invert(100%) sepia(2%) saturate(2255%) hue-rotate(29deg)
     brightness(89%) contrast(130%);
   --socials-icon-color: brightness(0) saturate(100%) invert(100%);
+
+  --card-background: var(--primary-color);
+  --card-text-color: var(--text-color);
 }
 
 @font-face {

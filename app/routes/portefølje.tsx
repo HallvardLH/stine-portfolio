@@ -27,12 +27,12 @@ export default function ProjectsLibaryRoute() {
         </div>
 
         <ProjectCard
-          imageSrc="/finn-eiendom/landing.webp"
+          imageSrc="/finn-eiendom/thumbnail.webp"
           date="Sommeren 2026"
           platformInfo="Web"
           title="FINN Eiendom"
           description="Summer internship i FINN Eiendom med fokus på å forenkle påmeldingen til boligvisninger for meglere og boligkjøpere."
-          link="/barnebank"
+          link="/finn-eiendom"
           imageZoom="desktop"
           hero
         />

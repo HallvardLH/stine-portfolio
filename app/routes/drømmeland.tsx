@@ -52,7 +52,7 @@ export default function ProjectsLibaryRoute() {
             <>
               <h2 className="text-medium">Bakgrunn</h2>
               <p>
-                Drømmeland er utviklet for å engasjere barn i alderen 7–9 år i
+                Drømmeland er utviklet for å engasjere barn i alderen 7-9 år i
                 miljøvern gjennom bærekraftsrelaterte spill. Målet er å skape en
                 læringsplattform som kan brukes både hjemme og i skolen, der
                 lærere kan dele ut oppgaver og lekser via en egen
