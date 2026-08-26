@@ -103,7 +103,7 @@ export default function Navbar({
                 Om meg
               </p>
             </Link>
-            <Link onClick={() => setNavbarOpen(false)} to="/kontakt">
+            {/* <Link onClick={() => setNavbarOpen(false)} to="/kontakt">
               <p
                 className={
                   location.pathname === "/kontakt" ? "link-underlined" : ""
@@ -111,7 +111,7 @@ export default function Navbar({
               >
                 Kontakt
               </p>
-            </Link>
+            </Link> */}
             <ThemeSwitch
               onThemeSwitch={onThemeSwitch}
               currentTheme={currentTheme}

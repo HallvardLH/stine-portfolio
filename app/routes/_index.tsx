@@ -54,12 +54,12 @@ export default function Index() {
         </div>
 
         <ProjectCard
-          imageSrc="/barnebank/thumbnail.webp"
-          date="Sommeren 2025"
-          platformInfo="App"
-          title="Sparebanken Norge"
-          description="Summer internship der vi designet deres nye bankløsning for barn."
-          link="/barnebank"
+          imageSrc="/finn-eiendom/thumbnail.webp"
+          date="Sommeren 2026"
+          platformInfo="Web"
+          title="FINN Eiendom"
+          description="Summer internship i FINN Eiendom med fokus på å forenkle påmeldingen til boligvisninger for meglere og boligkjøpere."
+          link="/finn-eiendom"
           imageZoom="desktop"
           hero
         />

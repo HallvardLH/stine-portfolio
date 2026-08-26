@@ -18,12 +18,6 @@ export default function ProjectsLibaryRoute() {
       <main>
         <div className="text-section shortened-paragraph">
           <h1 className="heading-large">Kontakt</h1>
-          <p className="text-medium">
-            Jeg er alltid interessert i spennende prosjekter som trenger
-            UX-kompetanse. Ta kontakt om du vil diskutere idéer, forbedre
-            brukeropplevelsen eller utforske hvordan design kan løse reelle
-            behov.
-          </p>
         </div>
         <div style={{ marginTop: "4rem" }}>
           <Contact textClassName="text-medium" />

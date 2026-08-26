@@ -33,11 +33,11 @@ export default function Footer({ colorScheme }: FooterProps) {
               <p className="text-medium">Om meg</p>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/kontakt">
               <p className="text-medium">Kontakt</p>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
 
