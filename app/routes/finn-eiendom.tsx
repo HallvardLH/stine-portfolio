@@ -5,6 +5,7 @@ import ParagraphWithImage from "~/components/project-sections/ParagraphWithImage
 import TwoImages from "~/components/project-sections/TwoImages";
 import { Quote } from "~/components/project-sections/Quote";
 import { StandaloneImage } from "~/components/project-sections/StandaloneImage";
+import { MdOutlineOpenInNew } from "react-icons/md";
 
 export const meta: MetaFunction = () => {
   return [
@@ -32,6 +33,23 @@ export default function ProjectsLibaryRoute() {
                 boligvisninger, samt løsninger for hvordan dette kunne skape
                 verdi for både brukere og meglere.
               </p>
+
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                style={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "4px",
+                  marginTop: "1rem",
+                  display: "flex",
+                  gap: "0.5rem",
+                  alignItems: "center",
+                }}
+                href="https://vend.com/news/building-real-tools-for-real-buyers-inside-our-oslo-summer-internship"
+              >
+                Les mer om internshipet hos Vend (FINN) her
+                <MdOutlineOpenInNew />
+              </a>
             </>
           }
         />
