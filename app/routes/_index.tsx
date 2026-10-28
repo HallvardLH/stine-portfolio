@@ -60,7 +60,6 @@ export default function Index() {
           title="FINN Eiendom"
           description="Summer internship i FINN Eiendom med fokus på å forenkle påmeldingen til boligvisninger for meglere og boligkjøpere."
           link="/finn-eiendom"
-          imageZoom="desktop"
           hero
         />
       </main>

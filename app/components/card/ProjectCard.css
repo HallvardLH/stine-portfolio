@@ -16,7 +16,7 @@
 .card-image-container {
   position: relative;
   /* border-radius: .938rem; */
-  aspect-ratio: 1.5 / 1;
+  aspect-ratio: 1120 / 610;
   overflow: hidden;
   flex-shrink: 0;
   /* flex-grow: 1; */
@@ -28,16 +28,7 @@
   flex-grow: 1;
   /* border-radius: 1.1rem; */
   object-fit: cover;
-  transform: scale(1.35);
-  transform-origin: center;
-  object-position: 50% -35px;
   /* max-width: 400px; */
-  transition: transform 500ms ease;
-}
-
-.card-image-desktop {
-  transform: scale(1.05);
-  object-position: 50% -10px;
 }
 
 .top-info-container {
@@ -74,13 +65,5 @@
 @media only screen and (min-width: 550px) {
   .read-more-outer-container {
     opacity: 0;
-  }
-
-  .card-container:hover .card-image {
-    /* transform: scale(1.42); */
-  }
-
-  .card-container:hover .card-image-desktop {
-    /* transform: scale(1.22); */
   }
 }

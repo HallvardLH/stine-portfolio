@@ -10,22 +10,12 @@ interface ProjectCardProps {
   title: string;
   description: string;
   link: string;
-  // Whether the image is of a phone or a desktop, desktops need less zoom to stay within frame
-  imageZoom?: "phone" | "desktop";
   hero?: boolean;
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
-  const {
-    imageSrc,
-    date,
-    platformInfo,
-    title,
-    description,
-    link,
-    imageZoom = "phone",
-    hero,
-  } = props;
+  const { imageSrc, date, platformInfo, title, description, link, hero } =
+    props;
   return (
     <Link className={`card-container ${hero ? "hero" : ""}`} to={link}>
       <div className="top-info-container">
@@ -33,11 +23,7 @@ export default function ProjectCard(props: ProjectCardProps) {
         <p className="text-small card-text">{platformInfo}</p>
       </div>
       <div className="card-image-container">
-        <ImageWithLoader
-          src={imageSrc}
-          alt=""
-          classes={"card-image " + ("card-image-" + imageZoom)}
-        />
+        <ImageWithLoader src={imageSrc} alt="" classes="card-image" />
       </div>
       <h2 className="heading card-text">{title}</h2>
       <p className="text-normal card-text">{description}</p>

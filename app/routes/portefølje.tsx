@@ -33,7 +33,6 @@ export default function ProjectsLibaryRoute() {
           title="FINN Eiendom"
           description="Summer internship i FINN Eiendom med fokus på å forenkle påmeldingen til boligvisninger for meglere og boligkjøpere."
           link="/finn-eiendom"
-          imageZoom="desktop"
           hero
         />
 
@@ -45,7 +44,6 @@ export default function ProjectsLibaryRoute() {
             title="Sparebanken Norge"
             description="Summer internship der vi designet deres nye bankløsning for barn"
             link="/barnebank"
-            imageZoom="desktop"
           />
 
           <ProjectCard
@@ -55,7 +53,6 @@ export default function ProjectsLibaryRoute() {
             title="GründerCampus"
             description="Nettside, logo og visuell profil for studentnettverket GründerCampus"
             link="/grundercampus"
-            imageZoom="desktop"
           />
 
           <ProjectCard
@@ -65,7 +62,6 @@ export default function ProjectsLibaryRoute() {
             title="Redesign av portefølje"
             description="Redesign av en front-end utviklers portefølje for å fremheve arbeidet hans"
             link="/redesign-av-portefølje"
-            imageZoom="desktop"
           />
 
           <ProjectCard
@@ -93,7 +89,6 @@ export default function ProjectsLibaryRoute() {
             title="OurSpace"
             description="Et CSCW- verktøy for konsulentbransjen utviklet på bakgrunn av feltarbeid"
             link="/ourspace"
-            imageZoom="desktop"
           />
 
           <ProjectCard
