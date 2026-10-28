@@ -179,6 +179,11 @@
   outline-offset: 4px;
 }
 
+/* The chapter nav comes in a fifth of the way down the projects chapter */
+.home .case-chapters > .chapter-nav-area {
+  top: 20%;
+}
+
 /* All projects, grouped by year with the year in the margin */
 .home-projects-title {
   font-size: clamp(2rem, 4vw, 2.5rem);
