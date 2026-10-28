@@ -49,7 +49,10 @@ export default function ProjectsLibaryRoute() {
           facts={[
             { label: "Plattform", value: "Mobilapp" },
             { label: "Periode", value: "Sep - nov 2024" },
-            { label: "Gjelder", value: "Rema 1000 sin kundeklubbapp Æ" },
+            {
+              label: "Type",
+              value: "Caseprosjekt, redesign av Rema 1000 sin kundeklubbapp Æ",
+            },
           ]}
         />
         <CaseBreak eyebrow="I korte trekk">
