@@ -1,5 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
-import ProjectCard from "~/components/card/ProjectCard";
+import ProjectCard, { type Thumbnail } from "~/components/card/ProjectCard";
 
 export const meta: MetaFunction = () => {
   return [
@@ -9,7 +9,7 @@ export const meta: MetaFunction = () => {
 };
 
 interface Project {
-  imageSrc: string;
+  thumbnail: Thumbnail;
   date: string;
   platformInfo: string;
   title: string;
@@ -24,7 +24,10 @@ interface ProjectYear {
 }
 
 const latestProject: Project = {
-  imageSrc: "/finn-eiendom/thumbnail.webp",
+  thumbnail: {
+    foregroundSrc: "/finn-eiendom/thumbnail-fg.webp",
+    backgroundSrc: "/finn-eiendom/thumbnail-bg.webp",
+  },
   date: "Sommeren 2026",
   platformInfo: "Web",
   title: "FINN Eiendom",
@@ -39,7 +42,10 @@ const projectsByYear: ProjectYear[] = [
     year: "2025",
     projects: [
       {
-        imageSrc: "/barnebank/thumbnail.webp",
+        thumbnail: {
+          foregroundSrc: "/barnebank/thumbnail-fg.webp",
+          backgroundColor: "#fcf9f4",
+        },
         date: "Sommeren 2025",
         platformInfo: "App",
         title: "Sparebanken Norge",
@@ -49,7 +55,10 @@ const projectsByYear: ProjectYear[] = [
         tags: ["Summer internship", "Sparebanken Norge", "Bank for barn"],
       },
       {
-        imageSrc: "/grundercampus/thumbnail.webp",
+        thumbnail: {
+          foregroundSrc: "/grundercampus/thumbnail-fg.webp",
+          backgroundColor: "#ffeae0",
+        },
         date: "Våren 2025",
         platformInfo: "Web",
         title: "Bachelorprosjekt: GründerCampus",
@@ -64,7 +73,10 @@ const projectsByYear: ProjectYear[] = [
     year: "2024",
     projects: [
       {
-        imageSrc: "/portefølje-redesign/thumbnail.webp",
+        thumbnail: {
+          foregroundSrc: "/portefølje-redesign/thumbnail-fg.webp",
+          backgroundSrc: "/portefølje-redesign/thumbnail-bg.webp",
+        },
         date: "Vinteren 2024",
         platformInfo: "Web",
         title: "Redesign: portefølje",
@@ -74,7 +86,10 @@ const projectsByYear: ProjectYear[] = [
         tags: ["Freelance", "Redesign", "Case"],
       },
       {
-        imageSrc: "/æ/thumbnail.webp",
+        thumbnail: {
+          foregroundSrc: "/æ/thumbnail-fg.webp",
+          backgroundSrc: "/æ/thumbnail-bg.webp",
+        },
         date: "Høsten 2024",
         platformInfo: "App",
         title: "Redesign: Rema appen",
@@ -84,7 +99,10 @@ const projectsByYear: ProjectYear[] = [
         tags: ["Freelance", "Redesign", "Case"],
       },
       {
-        imageSrc: "/corwell/thumbnail.webp",
+        thumbnail: {
+          foregroundSrc: "/corwell/thumbnail-fg.webp",
+          backgroundSrc: "/corwell/thumbnail-bg.webp",
+        },
         date: "Våren 2024",
         platformInfo: "App",
         title: "CorWell",
@@ -99,7 +117,10 @@ const projectsByYear: ProjectYear[] = [
     year: "2023",
     projects: [
       {
-        imageSrc: "/ourspace/thumbnail.webp",
+        thumbnail: {
+          foregroundSrc: "/ourspace/thumbnail-fg.webp",
+          backgroundColor: "#eae4e4",
+        },
         date: "Høsten 2023",
         platformInfo: "Software",
         title: "HourSpace",
@@ -108,7 +129,10 @@ const projectsByYear: ProjectYear[] = [
         tags: ["Universitetet i Bergen", "Samarbeidsverktøy"],
       },
       {
-        imageSrc: "/drømmeland/thumbnail.webp",
+        thumbnail: {
+          foregroundSrc: "/drømmeland/thumbnail-fg.webp",
+          backgroundColor: "#3cc6b2",
+        },
         date: "Våren 2023",
         platformInfo: "App",
         title: "Drømmeland",

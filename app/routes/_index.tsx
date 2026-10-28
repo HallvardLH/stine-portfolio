@@ -34,7 +34,10 @@ export default function Index() {
         </div>
 
         <ProjectCard
-          imageSrc="/finn-eiendom/thumbnail.webp"
+          thumbnail={{
+            foregroundSrc: "/finn-eiendom/thumbnail-fg.webp",
+            backgroundSrc: "/finn-eiendom/thumbnail-bg.webp",
+          }}
           date="Sommeren 2026"
           platformInfo="Web"
           title="FINN Eiendom"
