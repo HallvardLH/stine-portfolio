@@ -59,16 +59,16 @@ export default function AboutRoute() {
         title="Veien hit"
       >
         <p>
-          Jeg har vært innom litt av hvert, fra strikking og maling til grafisk
-          design. Da jeg begynte på medie- og interaksjonsdesign ved UiB, fikk
-          jeg kombinert den kreative siden med interessen min for teknologi og
-          mennesker. Gjennom bacheloren og nå masteren har jeg jobbet med
+          Jeg har prøvd litt av hvert: strikking, maling og grafisk design. Da
+          jeg begynte på medie- og interaksjonsdesign ved UiB, fant jeg ut at
+          det jeg likte best var å kombinere det kreative med teknologi og
+          mennesker. Både på bacheloren og nå på masteren har jeg jobbet med
           visuelt design, interaksjonsdesign, innsiktsarbeid, brukertesting og
           konseptutvikling.
         </p>
         <p>
-          Jeg liker å utforske ulike retninger, prøve ut ideer og se hvordan
-          innsikt kan endre løsningen underveis.
+          Jeg liker å teste ut ideer og se hvordan det jeg lærer om brukerne
+          endrer løsningen underveis.
         </p>
       </CaseChapter>
 
