@@ -9,6 +9,7 @@
 
 .hero {
   padding: 1rem;
+  max-width: 50rem;
 }
 
 .card-image-container {
