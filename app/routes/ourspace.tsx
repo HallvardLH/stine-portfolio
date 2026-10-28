@@ -237,7 +237,8 @@ export default function ProjectsLibaryRoute() {
             src="/om-meg/gruppebilde.webp"
             alt="Gruppen rundt et bord fullt av skisser og lapper, sett ovenfra."
             caption="Jeg og gruppen min under en kreativ øvelse da vi jobbet med OurSpace, høsten 2023."
-            captionBeside
+            aspectRatio="3 / 2"
+            position="50% 12%"
           />
         </CaseChapter>
       </div>

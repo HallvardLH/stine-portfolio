@@ -263,6 +263,7 @@
 .case-figure-cropped .case-figure-image {
   aspect-ratio: var(--ratio);
   object-fit: cover;
+  object-position: var(--position, center);
 }
 
 .case-figure-pair {
@@ -530,13 +531,6 @@
   .case-columns,
   .case-figure-row {
     grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
-  }
-
-  .case-figure-beside {
-    display: grid;
-    grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
-    align-items: end;
-    column-gap: 1.5rem;
   }
 }
 
