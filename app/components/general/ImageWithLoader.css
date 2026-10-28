@@ -5,3 +5,89 @@
 /* .image-skeleton {
   border-radius: .938rem;
 } */
+
+.image-zoomable {
+  cursor: zoom-in;
+}
+
+.image-zoomable:focus-visible {
+  outline: 2px solid var(--contrast-color);
+  outline-offset: 2px;
+}
+
+/* Fullscreen view */
+.image-lightbox {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 3.5rem 1rem 1rem;
+  border: none;
+  background-color: rgba(10, 12, 4, 0.94);
+  overflow: auto;
+}
+
+.image-lightbox[open] {
+  display: flex;
+  /* margin: auto on the image centres it and still lets a big one scroll */
+}
+
+.image-lightbox::backdrop {
+  background: transparent;
+}
+
+/* Fits the screen but is never enlarged past its own pixels, so it stays sharp.
+   High quality scaling when the original is bigger than the screen. */
+.image-lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  image-rendering: auto;
+  margin: auto;
+  cursor: zoom-in;
+}
+
+/* The original pixels 1:1; the dialog scrolls to move around */
+.image-lightbox-image.actual-size {
+  max-width: none;
+  max-height: none;
+  flex-shrink: 0;
+  cursor: zoom-out;
+}
+
+.image-lightbox-close {
+  all: unset;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--contrast-color);
+  color: var(--button-text-color);
+  font-size: var(--font-size-lead);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.image-lightbox-close:hover {
+  filter: brightness(0.9);
+}
+
+.image-lightbox-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media only screen and (min-width: 1050px) {
+  .image-lightbox {
+    padding: 4.5rem 2rem 2rem;
+  }
+}
