@@ -25,6 +25,8 @@ interface Layout {
 
 // Space the fixed navbar takes up, so a chapter never ends up underneath it
 const SCROLL_OFFSET = 72;
+// How far down the last chapter the nav goes before it stays put
+const STOP_SHARE = 0.75;
 // The reader is "in" a chapter once its start passes this share of the viewport
 const READING_LINE = 0.35;
 
@@ -34,10 +36,10 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // The area runs from where the article text starts to the middle of the
-    // last chapter. The nav sticks inside it, so it follows the screen until
-    // its lower end meets that middle, and then stays put and scrolls away
-    // with the page instead of going on behind what comes after.
+    // The area runs from where the article text starts to a point three
+    // quarters down the last chapter. The nav sticks inside it, so it follows
+    // the screen until its lower end meets that point, and then stays put and
+    // scrolls away with the page instead of going on behind what comes after.
     const update = () => {
       const area = areaRef.current;
       if (!area) return;
@@ -54,7 +56,7 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
       let areaEnd = areaTop;
       if (last) {
         const rect = last.getBoundingClientRect();
-        areaEnd = rect.top + window.scrollY + rect.height / 2;
+        areaEnd = rect.top + window.scrollY + rect.height * STOP_SHARE;
         area.style.height = `${Math.max(areaEnd - areaTop, 0)}px`;
       }
       const line = window.scrollY + window.innerHeight * READING_LINE;
