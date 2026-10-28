@@ -230,8 +230,16 @@
   margin: 0 auto;
 }
 
-/* Narrower image, so the chapter nav (shown from 1400px) rests on the band
-   and not on the image */
+/* Image with space around it on the band, and narrower from 1400px so the
+   chapter nav rests on the band and not on the image */
+.case-image-break-inset {
+  padding-top: 3rem;
+}
+
+.case-image-break-inset .case-image-break-caption {
+  padding-bottom: 3rem;
+}
+
 @media only screen and (min-width: 1400px) {
   .case-image-break-inset .case-image-break-image {
     max-width: calc(100% - 20rem);

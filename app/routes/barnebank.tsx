@@ -99,7 +99,7 @@ export default function ProjectsLibaryRoute() {
           src="/barnebank/workshop-sketches.webp"
           alt="Bordet fra workshopene, dekket med ark, tusjer og barnas kreative forslag til appdesign."
           caption="Bordet fra en av workshopene der barna jobbet med tegneøvelser og delte idéer."
-          background="linear-gradient(90deg, #a09481, #9b8045)"
+          background="#e7eadb"
           inset
         />
 
