@@ -14,8 +14,12 @@ interface ChapterNavProps {
 interface Layout {
   /** The kind of background the nav sits over, which sets its colours */
   tone: string;
-  /** How far the reader has come, as a fraction of the nav's height */
+  /** How far the reader has come between the first and the last step, 0 to 1 */
   progress: number;
+  /** How far through the line after the last step, 0 to 1 */
+  tail: number;
+  /** Whether the reader has reached the start of the article text */
+  started: boolean;
   active: number;
 }
 
@@ -43,9 +47,10 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
         return el.getBoundingClientRect().top + window.scrollY;
       });
       const last = document.getElementById(chapters[chapters.length - 1].id);
+      let areaEnd = areaTop;
       if (last) {
-        const stop = last.getBoundingClientRect().bottom + window.scrollY;
-        area.style.height = `${Math.max(stop - areaTop, 0)}px`;
+        areaEnd = last.getBoundingClientRect().bottom + window.scrollY;
+        area.style.height = `${Math.max(areaEnd - areaTop, 0)}px`;
       }
       const line = window.scrollY + window.innerHeight * READING_LINE;
       let active = 0;
@@ -53,17 +58,21 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
         if (top <= line) active = i;
       });
       // Steps are spaced evenly in the nav, however long the chapters are, and
-      // the last step is the end of the bar. So progress is measured chapter by
-      // chapter: how far through the current one, plus the ones before it.
+      // the last step is where the last chapter starts. So progress is measured
+      // chapter by chapter: how far through the current one, plus the ones
+      // before it. The extra line after the last step is that chapter itself.
       const lastIndex = chapters.length - 1;
       const through =
-        active < lastIndex
-          ? (line - tops[active]) / (tops[active + 1] - tops[active])
-          : 0;
-      const progress =
-        line < areaTop
-          ? 0
-          : Math.min((active + Math.min(through, 1)) / lastIndex, 1);
+        (line - tops[active]) /
+        ((active < lastIndex ? tops[active + 1] : areaEnd) - tops[active]);
+      const clamped = Math.min(Math.max(through, 0), 1);
+      const started = line >= areaTop;
+      const progress = !started
+        ? 0
+        : active < lastIndex
+          ? (active + clamped) / lastIndex
+          : 1;
+      const tail = started && active === lastIndex ? clamped : 0;
       // Chapters sit on different backgrounds, so the nav takes its colours
       // from whichever one is behind it right now
       const navRect = navRef.current?.getBoundingClientRect();
@@ -79,6 +88,8 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
       setLayout({
         tone: surface?.dataset.surface ?? "light",
         progress,
+        tail,
+        started,
         active,
       });
     };
@@ -120,7 +131,11 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
             <div className="chapter-nav-track" aria-hidden="true">
               <div
                 className="chapter-nav-fill"
-                style={{ height: `${layout.progress * 100}%` }}
+                style={{
+                  height: layout.started
+                    ? `calc(var(--chapter-nav-tail) + ${layout.progress} * (100% - 2 * var(--chapter-nav-tail)) + ${layout.tail} * var(--chapter-nav-tail))`
+                    : "0",
+                }}
               />
             </div>
             <ol className="chapter-nav-list">
@@ -135,7 +150,9 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
                   <li
                     key={chapter.id}
                     className={`chapter-nav-item chapter-nav-${state}`}
-                    style={{ top: `${(i / (chapters.length - 1)) * 100}%` }}
+                    style={{
+                      top: `calc(var(--chapter-nav-tail) + ${i / (chapters.length - 1)} * (100% - 2 * var(--chapter-nav-tail)))`,
+                    }}
                   >
                     <a
                       href={`#${chapter.id}`}

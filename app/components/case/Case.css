@@ -453,18 +453,10 @@
     font-size: var(--font-size-heading);
   }
 
-  /* Text on one side, image on the other, switching sides down the page */
+  /* Text on the left, images on the right */
   .case-feature {
     grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
     gap: 4rem;
-  }
-
-  .case-feature-reverse {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-  }
-
-  .case-feature-reverse .case-feature-text {
-    order: 2;
   }
 
   .case-related {

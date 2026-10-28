@@ -27,6 +27,11 @@ export default function ImageWithLoader({
   const [naturalWidth, setNaturalWidth] = useState(0);
   const [actualSize, setActualSize] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  // Every zoomable image on the page, so the fullscreen view can step through
+  // them in the order they appear
+  const [gallery, setGallery] = useState<{ src: string; alt: string }[]>([]);
+  const [position, setPosition] = useState(0);
 
   useEffect(() => {
     const img = new Image();
@@ -54,9 +59,25 @@ export default function ImageWithLoader({
   }, [open]);
 
   const openImage = () => {
+    const images = Array.from(
+      document.querySelectorAll<HTMLImageElement>("img.image-zoomable"),
+    ).map((img) => ({ src: img.getAttribute("src") ?? "", alt: img.alt }));
+    const index = images.findIndex((image) => image.src === src);
+    setGallery(index === -1 ? [{ src, alt }] : images);
+    setPosition(Math.max(index, 0));
     setActualSize(false);
     setOpen(true);
   };
+
+  const step = (direction: number) => {
+    setPosition(
+      (value) => (value + direction + gallery.length) % gallery.length,
+    );
+    setActualSize(false);
+    dialogRef.current?.scrollTo(0, 0);
+  };
+
+  const shown = gallery[position] ?? { src, alt };
 
   return (
     <>
@@ -68,6 +89,7 @@ export default function ImageWithLoader({
         />
       )}
       <img
+        ref={imageRef}
         src={src}
         alt={alt}
         className={`image ${loaded ? "image-loaded" : ""} ${zoomable ? "image-zoomable" : ""} ${classes}`}
@@ -88,8 +110,13 @@ export default function ImageWithLoader({
         <dialog
           ref={dialogRef}
           className="image-lightbox"
-          aria-label={alt || "Bilde i fullskjerm"}
+          aria-label={shown.alt || "Bilde i fullskjerm"}
           onClose={() => setOpen(false)}
+          onKeyDown={(event) => {
+            if (gallery.length < 2) return;
+            if (event.key === "ArrowRight") step(1);
+            if (event.key === "ArrowLeft") step(-1);
+          }}
           // The dialog fills the screen, so a click on it (not the image) is a click outside
           onClick={(event) => {
             if (event.target === event.currentTarget)
@@ -98,8 +125,9 @@ export default function ImageWithLoader({
         >
           {/* The same original file as on the page, never a smaller copy */}
           <img
-            src={src}
-            alt={alt}
+            key={shown.src}
+            src={shown.src}
+            alt={shown.alt}
             className={`image-lightbox-image ${actualSize ? "actual-size" : ""}`}
             style={
               actualSize
@@ -112,6 +140,27 @@ export default function ImageWithLoader({
             }
             onClick={() => setActualSize((value) => !value)}
           />
+          {gallery.length > 1 && (
+            <>
+              <button
+                className="image-lightbox-step image-lightbox-prev"
+                aria-label="Forrige bilde"
+                onClick={() => step(-1)}
+              >
+                <span aria-hidden="true">←</span>
+              </button>
+              <button
+                className="image-lightbox-step image-lightbox-next"
+                aria-label="Neste bilde"
+                onClick={() => step(1)}
+              >
+                <span aria-hidden="true">→</span>
+              </button>
+              <span className="image-lightbox-count" aria-live="polite">
+                {position + 1} / {gallery.length}
+              </span>
+            </>
+          )}
           <button
             className="image-lightbox-close"
             onClick={() => dialogRef.current?.close()}

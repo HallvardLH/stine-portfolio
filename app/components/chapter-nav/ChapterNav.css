@@ -21,6 +21,8 @@
   .chapter-nav {
     --chapter-nav-top: max(10rem, 30vh);
     --chapter-nav-line: 4px;
+    /* The line runs this far above the first step and below the last one */
+    --chapter-nav-tail: 2.5rem;
     --chapter-nav-text: var(--text-color);
     --chapter-nav-ground: var(--primary-color);
     --chapter-nav-accent: var(--contrast-color);

@@ -11,15 +11,13 @@ interface FeatureProps {
   /** The text next to the image(s) */
   children: React.ReactNode;
   figures: FeatureFigure[];
-  /** Puts the image on the left and the text on the right */
-  reverse?: boolean;
 }
 
-// One part of the solution: the text beside its image, so the chapter does not
-// turn into one long column
-export function Feature({ title, children, figures, reverse }: FeatureProps) {
+// One part of the solution: the text on the left and its images on the right,
+// the same way every time so the chapter is easy to scan
+export function Feature({ title, children, figures }: FeatureProps) {
   return (
-    <div className={`case-feature ${reverse ? "case-feature-reverse" : ""}`}>
+    <div className="case-feature">
       <div className="case-feature-text">
         <h3 className="case-block-title">{title}</h3>
         {children}

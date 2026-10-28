@@ -260,7 +260,6 @@ export default function ProjectsLibaryRoute() {
                 </Feature>
 
                 <Feature
-                  reverse
                   title="Mine visninger"
                   figures={[
                     {
@@ -335,7 +334,6 @@ export default function ProjectsLibaryRoute() {
                 </Feature>
 
                 <Feature
-                  reverse
                   title="Meglerhub"
                   figures={[
                     {
@@ -383,7 +381,6 @@ export default function ProjectsLibaryRoute() {
 
               <FeatureGroup title="For begge">
                 <Feature
-                  reverse
                   title="Mine meglere"
                   figures={[
                     {
