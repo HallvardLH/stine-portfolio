@@ -101,8 +101,8 @@ export default function ProjectsLibaryRoute() {
         </CaseChapter>
 
         <CaseImageBreak
-          src="/finn-eiendom/landing.webp"
-          alt="De viktigste skjermene i løsningen: Meglerhub, boligannonsen og påmeldingsskjemaet."
+          src="/finn-eiendom/kartlegging.webp"
+          alt="Kartlegging av påmeldingsskjemaer til visning hos norske eiendomsmeglere, blant andre Emera, PrivatMegleren, DNB Eiendom, Tinholt og Nordvik."
         />
 
         <CaseChapter
