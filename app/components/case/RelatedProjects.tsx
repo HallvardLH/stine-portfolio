@@ -40,7 +40,7 @@ export default function RelatedProjects({ projects }: RelatedProjectsProps) {
                 <div className="case-related-footer">
                   <p className="case-related-title">{project.title}</p>
                   <span className="case-related-cta" aria-hidden="true">
-                    Les case
+                    Les om prosjektet
                     <img src="/icons/arrow.svg" alt="" />
                   </span>
                 </div>
