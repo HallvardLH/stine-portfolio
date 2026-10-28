@@ -33,8 +33,6 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-// FORSLAG: tekst som er markert med FORSLAG er skrevet av Claude og skal
-// gås gjennom sammen (i korte trekk, ingresser, kolonnetitler og bildetekster).
 export default function ProjectsLibaryRoute() {
   return (
     <main className="case">
@@ -54,10 +52,8 @@ export default function ProjectsLibaryRoute() {
             { label: "Gjelder", value: "Rema 1000 sin kundeklubbapp Æ" },
           ]}
         />
-
-        {/* FORSLAG */}
-        <CaseBreak eyebrow="I korte trekk" placeholder>
-          Lettere scanning, tydeligere rabatter og færre feiltrykk i Æ-appen.
+        <CaseBreak eyebrow="I korte trekk">
+          Lettere scanning, tydeligere rabatter og færre feiltrykk.
         </CaseBreak>
 
         <CaseChapter
@@ -65,7 +61,6 @@ export default function ProjectsLibaryRoute() {
           number="01"
           title="Bakgrunn for redesign"
           rule
-          // FORSLAG
           lead="Hvorfor Æ-appen trengte et redesign."
         >
           <p>
@@ -89,14 +84,12 @@ export default function ProjectsLibaryRoute() {
           number="02"
           title="Evaluering og innsikt"
           surface="dark"
-          // FORSLAG
           lead="Hva konkurranseanalysen, evalueringen og brukertestingen avdekket."
           wide={
             <>
               <CaseColumns
                 items={[
                   {
-                    // FORSLAG
                     title: "Konkurranseanalyse",
                     text: (
                       <p>
@@ -108,7 +101,6 @@ export default function ProjectsLibaryRoute() {
                     ),
                   },
                   {
-                    // FORSLAG
                     title: "Heuristisk evaluering",
                     text: (
                       <p>
@@ -120,7 +112,6 @@ export default function ProjectsLibaryRoute() {
                     ),
                   },
                   {
-                    // FORSLAG
                     title: "Brukertesting",
                     text: (
                       <p>
@@ -150,8 +141,7 @@ export default function ProjectsLibaryRoute() {
           id="design"
           number="03"
           title="Design"
-          // FORSLAG
-          lead="Fra Crazy 8's og wireframes til et designsystem tro mot Rema 1000."
+          lead="Crazy 8's, wireframes og designsystem"
           wide={
             <>
               <FigurePair
@@ -251,8 +241,7 @@ export default function ProjectsLibaryRoute() {
           number="04"
           title="Løsning"
           surface="soft"
-          // FORSLAG
-          lead="En ryddigere hjemmeside, tydeligere rabatter og scanning som alltid er tilgjengelig."
+          lead="En ryddigere hjemskjerm, tydeligere rabatter og lettere scanning av strekkoden."
           wide={
             <>
               <FeatureGroup title="Hjem og handleturer">
@@ -498,18 +487,15 @@ export default function ProjectsLibaryRoute() {
           number="05"
           title="Tilegnet erfaring fra prosjektet"
           surface="dark"
-          // FORSLAG
-          lead="Hva redesignet har lært meg, og hva jeg ville forbedret."
+          lead="Læring gjennom redesignet, og hva jeg ville forbedret."
         >
           <CaseColumns
             items={[
               {
-                // FORSLAG
                 title: "Det jeg har lært",
                 text: "Redesignet av Æ-appen har vært en lærerik erfaring, hvor jeg har fått øvd på brukerforskning, prototyping og testing. Jeg har styrket forskningsferdighetene mine, spesielt innen brukertesting og heuristisk evaluering, og ikke minst forbedret praktiske ferdigheter i Figma, som Auto Layout og designsystemer.",
               },
               {
-                // FORSLAG
                 title: "Hva jeg ville forbedret",
                 text: "I ettertid ser jeg forbedringsmuligheter, som å tydeliggjøre avhukede elementer på handlelisten og gjøre innsiktssiden mer intuitiv. Man føler seg aldri helt ferdig med et prosjekt, og design kan alltid videreutvikles for å forbedre brukervennlighet.",
               },

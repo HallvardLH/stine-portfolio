@@ -29,8 +29,6 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-// FORSLAG: tekst som er markert med FORSLAG er skrevet av Claude og skal
-// gås gjennom sammen (i korte trekk, ingresser og kolonnetitler).
 export default function ProjectsLibaryRoute() {
   return (
     <main className="case">
@@ -50,9 +48,7 @@ export default function ProjectsLibaryRoute() {
             { label: "Kurs", value: "Design for medieproduksjon (MIX203)" },
           ]}
         />
-
-        {/* FORSLAG */}
-        <CaseBreak eyebrow="I korte trekk" placeholder>
+        <CaseBreak eyebrow="I korte trekk">
           Én felles tidslinje som gir designere og klienter lik innsikt i
           prosjektet.
         </CaseBreak>
@@ -62,7 +58,6 @@ export default function ProjectsLibaryRoute() {
           number="01"
           title="Bakgrunn"
           rule
-          // FORSLAG
           lead="Feltarbeid hos Neue Design Studio (Kurppa Hosk) som utgangspunkt."
         >
           <p>
@@ -81,15 +76,13 @@ export default function ProjectsLibaryRoute() {
           number="02"
           title="Problemområdet"
           surface="dark"
-          // FORSLAG
-          lead="Tre utfordringer i designprosjekter, og hvordan vi angrep dem."
+          lead="Utfordringer i designprosjekter, og hvordan de kan løses."
           wide={
             <>
               <CaseColumns
                 items={[
                   {
-                    // FORSLAG
-                    title: "Tre utfordringer",
+                    title: "Utfordringer",
                     text: (
                       <p>
                         Gjennom brainstorming identifiserte vi tre
@@ -106,7 +99,6 @@ export default function ProjectsLibaryRoute() {
                     ),
                   },
                   {
-                    // FORSLAG
                     title: "How Might We",
                     text: (
                       <p>
@@ -118,7 +110,6 @@ export default function ProjectsLibaryRoute() {
                     ),
                   },
                   {
-                    // FORSLAG
                     title: "Mål for fremtiden",
                     text: (
                       <p>
@@ -144,7 +135,6 @@ export default function ProjectsLibaryRoute() {
           id="losning"
           number="03"
           title="Løsning"
-          // FORSLAG
           lead="En applikasjon som samler klienter og designere i ett grensesnitt."
           wide={
             <FeatureGroup title="Konseptet">
@@ -207,7 +197,6 @@ export default function ProjectsLibaryRoute() {
                   },
                 ]}
               >
-                {/* FORSLAG: kort tekst utledet fra listen og bildeteksten */}
                 <p>
                   Designere og klienter kan chatte direkte fra tidslinjen, uten
                   å forlate oversikten over prosjektet.
@@ -222,18 +211,15 @@ export default function ProjectsLibaryRoute() {
           number="04"
           title="Videre arbeid med OurSpace"
           surface="soft"
-          // FORSLAG
-          lead="Hva vi ville gjort for å forbedre prosjektet."
+          lead="Det vi ville utviklet videre."
         >
           <CaseColumns
             items={[
               {
-                // FORSLAG
                 title: "Et ryddigere grensesnitt",
                 text: "For å forbedre prosjektet ville vi fokusert på å redusere mengden elementer i grensesnittet for å skape en mer ryddig og intuitiv opplevelse, spesielt på hjemmesiden. Dette inkluderer å prioritere informasjon og gjøre navigasjonen mer oversiktlig.",
               },
               {
-                // FORSLAG
                 title: "Chat, klienter og tidslinje",
                 text: "Videre ønsker vi å utvide chat-funksjonen for å inkludere flere interaktive elementer, som veiledning og støtte til brukerne. Vi ser også behov for å utforske klientenes perspektiv og behov enda grundigere, for bedre å tilpasse løsningen til deres forventninger. Et annet viktig fokusområde er å forenkle prosessen for å legge til elementer i tidslinjen, slik at brukerne kan tilpasse og administrere denne funksjonen på en enkel og effektiv måte.",
               },

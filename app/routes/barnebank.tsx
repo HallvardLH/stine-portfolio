@@ -34,8 +34,6 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-// FORSLAG: tekst som er markert med FORSLAG er skrevet av Claude og skal
-// gås gjennom sammen (i korte trekk, ingresser og kolonnetitler).
 export default function ProjectsLibaryRoute() {
   return (
     <main className="case">
@@ -69,9 +67,7 @@ export default function ProjectsLibaryRoute() {
             },
           ]}
         />
-
-        {/* FORSLAG */}
-        <CaseBreak eyebrow="I korte trekk" placeholder>
+        <CaseBreak eyebrow="I korte trekk">
           En bank for barn, formet av barna selv.
         </CaseBreak>
 
@@ -80,8 +76,7 @@ export default function ProjectsLibaryRoute() {
           number="01"
           title="Bakgrunn"
           rule
-          // FORSLAG
-          lead="Hvorfor barn trengte en bank som var laget for dem."
+          lead="Hvorfor barn trenger en bank som er laget for dem."
         >
           <p>
             Sparebanken Norges yngste kunder benyttet tidligere den samme
@@ -111,8 +106,7 @@ export default function ProjectsLibaryRoute() {
           number="02"
           title="Innsikt"
           surface="dark"
-          // FORSLAG
-          lead="Hva vi lærte av å lytte til barna."
+          lead="Det vi lærte av barna."
           wide={
             <>
               <CaseColumns
@@ -172,8 +166,7 @@ export default function ProjectsLibaryRoute() {
           id="losning"
           number="03"
           title="Løsning"
-          // FORSLAG
-          lead="En barnebank bygget rundt oversikt, sparing og belønning."
+          lead="En barnebank med fokus på oversikt, sparing og belønning."
           wide={
             <>
               <FeatureGroup title="For barna">
@@ -326,31 +319,22 @@ export default function ProjectsLibaryRoute() {
               </FeatureGroup>
             </>
           }
-        >
-          {/* FORSLAG */}
-          <p>
-            Prototypen samler det barna ba om: enkel oversikt over pengene,
-            sparemål, belønning og oppdrag hjemme.
-          </p>
-        </CaseChapter>
+        />
 
         <CaseChapter
           id="laering"
           number="04"
           title="Min læring fra prosessen"
           surface="soft"
-          // FORSLAG
           lead="Hva sommerprosjektet har lært meg som UX-designer."
         >
           <CaseColumns
             items={[
               {
-                // FORSLAG
                 title: "Design for ekte brukere",
                 text: "Sommerprosjektet hos Sparebanken Norge har gitt betydelig faglig og personlig utvikling, både som UX-designer og i forståelsen av hvordan man arbeider med produkter for ekte brukere. Å arbeide mot lansering av et produkt som skal brukes av målgruppen har gitt innsikt i en realistisk designprosess, der vi har måttet vurdere hvordan løsningen faktisk vil bli brukt og ta høyde for ulike brukstilfeller. I tillegg er økonomi og penger et seriøst tema som krever at informasjonen er korrekt og tillitsvekkende, noe som har gjort arbeidet med presisjon og tydelig kommunikasjon ekstra viktig.",
               },
               {
-                // FORSLAG
                 title: "Verdien av innsiktsarbeid",
                 text: "I tillegg har prosjektet understreket viktigheten av innsiktsarbeid og medvirkning fra målgruppen. Uten workshops og aktivt samarbeid med barna ville bankløsningen sannsynligvis ikke inkludert Sparekompis, som i dag er den delen av løsningen som knytter sammen alle aktiviteter i appen og sikrer oppnåelsen av det viktigste målet: å øke bruk blant målgruppen.",
               },

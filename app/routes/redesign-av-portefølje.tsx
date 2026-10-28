@@ -30,8 +30,6 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-// FORSLAG: tekst som er markert med FORSLAG er skrevet av Claude og skal
-// gås gjennom sammen (i korte trekk, ingresser og kolonnetitler).
 export default function ProjectsLibaryRoute() {
   return (
     <main className="case">
@@ -51,9 +49,7 @@ export default function ProjectsLibaryRoute() {
             { label: "Oppdrag", value: "Freelance for en front-end utvikler" },
           ]}
         />
-
-        {/* FORSLAG */}
-        <CaseBreak eyebrow="I korte trekk" placeholder>
+        <CaseBreak eyebrow="I korte trekk">
           En stilren portefølje som gjør det enkelt å finne frem til arbeidet.
         </CaseBreak>
 
@@ -62,8 +58,7 @@ export default function ProjectsLibaryRoute() {
           number="01"
           title="Bakgrunn"
           rule
-          // FORSLAG
-          lead="Hvorfor porteføljen trengte en ny start."
+          lead="Utvikleren ville ha en mer profesjonell og brukervennlig portefølje."
         >
           <p>
             En front-end utvikler kontaktet meg for å redesigne porteføljen sin
@@ -77,8 +72,7 @@ export default function ProjectsLibaryRoute() {
         <CaseImageBreak
           src="/portefølje-redesign/portfolio-before-after.webp"
           alt="Sammenligning av porteføljens gamle og nye design."
-          // FORSLAG: bildetekst
-          caption="Porteføljen før og etter redesignet"
+          caption="Porteføljen før og etter redesign."
           blend
           dark
           background="linear-gradient(180deg, #064374 0%, #035894 25%, #0763a2 50%, #0166a7 75%, #016eaf 100%)"
@@ -89,14 +83,12 @@ export default function ProjectsLibaryRoute() {
           number="02"
           title="Designprosessen"
           surface="dark"
-          // FORSLAG
-          lead="Fra behovsanalyse og wireframes til en interaktiv prototype."
+          lead="Behovsanalyse, wireframes og tre iterasjoner av en prototype i Figma."
           wide={
             <>
               <CaseColumns
                 items={[
                   {
-                    // FORSLAG
                     title: "Behovsanalyse og wireframes",
                     text: (
                       <p>
@@ -114,7 +106,6 @@ export default function ProjectsLibaryRoute() {
                     ),
                   },
                   {
-                    // FORSLAG
                     title: "Prototyping og iterasjoner",
                     text: (
                       <p>
@@ -161,8 +152,7 @@ export default function ProjectsLibaryRoute() {
           id="losning"
           number="03"
           title="Løsning"
-          // FORSLAG
-          lead="Tydelig navigasjon, god struktur og valgfrihet i lys og mørk modus."
+          lead="Tydeligere navigasjon, bedre struktur og lys/mørk modus."
           wide={
             <>
               <FeatureGroup title="Navigasjon og struktur">
@@ -277,19 +267,16 @@ export default function ProjectsLibaryRoute() {
           number="04"
           title="Min læring fra prosessen"
           surface="soft"
-          // FORSLAG
           lead="Hva jeg lærte av å designe for en utvikler."
         >
           <CaseColumns
             items={[
               {
-                // FORSLAG
                 title: "Struktur fra start",
                 text: "Dette prosjektet ga meg verdifull erfaring i å designe for en utvikler, hvor balansen mellom estetikk og funksjonalitet var avgjørende. Men ingenting er perfekt på første forsøk, og jeg gjorde flere feil underveis som lærte meg mye. En av de største lærdommene mine var hvordan man bruker Auto Layout og komponenter riktig. I begynnelsen grupperte jeg ikke alltid elementene på en optimal måte, noe som førte til unødvendige konsekvenser senere når jeg brukte komponentene i designet. Jeg innså hvor viktig det er å strukturere og navngi elementer riktig fra start, slik at iterasjoner og justeringer blir smidige senere.",
               },
               {
-                // FORSLAG
-                title: "Små valg, stor effekt",
+                title: "Små valg med stor effekt",
                 text: "Jeg fikk også bekreftet hvor viktig det er med et klart informasjonshierarki, strategisk plassering av innhold og en lettfattelig struktur. I tillegg lærte jeg hvor avgjørende det er å inkludere kontaktmuligheter, fleksibilitet i navigasjon (som en godt strukturert footer og breadcrumbs) og visuelle tilpasninger som lys/mørk modus for å forbedre brukeropplevelsen. Ved å jobbe tett med utvikleren og gjennomføre brukertester i tre iterasjoner, ble jeg stadig mer bevisst på hvordan små designvalg kan ha stor påvirkning på sluttproduktet. Dette prosjektet har gitt meg enda bedre forståelse for iterativ design, systematisk oppbygging av komponenter og hvor viktig det er å tenke flere steg fremover i designprosessen.",
               },
             ]}

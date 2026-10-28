@@ -28,8 +28,6 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-// FORSLAG: tekst som er markert med FORSLAG er skrevet av Claude og skal
-// gås gjennom sammen (i korte trekk, ingresser og kolonnetitler).
 export default function ProjectsLibaryRoute() {
   return (
     <main className="case">
@@ -52,11 +50,9 @@ export default function ProjectsLibaryRoute() {
             },
           ]}
         />
-
-        {/* FORSLAG */}
-        <CaseBreak eyebrow="I korte trekk" placeholder>
-          En AI-basert helseassistent som gir hjertepasienter innsikt i egen
-          helse.
+        <CaseBreak eyebrow="I korte trekk">
+          En AI-drevet helseassistent som gir hjertepasienter bedre innsikt i
+          egen helse.
         </CaseBreak>
 
         <CaseChapter
@@ -64,8 +60,7 @@ export default function ProjectsLibaryRoute() {
           number="01"
           title="Bakgrunn"
           rule
-          // FORSLAG
-          lead="Hvordan lifelogging kan gjøre helseoppfølging enklere."
+          lead="Hvordan lifelogging kan gjøre helseoppfølging enklere for både bruker og helsepersonell."
         >
           <p>
             I kurset Design for mediebruk (MIX204) ved Universitetet i Bergen
@@ -81,13 +76,11 @@ export default function ProjectsLibaryRoute() {
           number="02"
           title="Designprosessen"
           surface="dark"
-          // FORSLAG
-          lead="Utviklet i tett samarbeid med helsepersonell og pasienter."
+          lead="Utviklet i samarbeid med helsepersonell og pasienter."
           wide={
             <CaseColumns
               items={[
                 {
-                  // FORSLAG
                   title: "Kardiolog og designsprint",
                   text: (
                     <>
@@ -106,7 +99,6 @@ export default function ProjectsLibaryRoute() {
                   ),
                 },
                 {
-                  // FORSLAG
                   title: "Intervjuer med pasienter",
                   text: (
                     <p>
@@ -116,7 +108,6 @@ export default function ProjectsLibaryRoute() {
                   ),
                 },
                 {
-                  // FORSLAG
                   title: "Målgruppe og idé",
                   text: (
                     <>
@@ -144,8 +135,7 @@ export default function ProjectsLibaryRoute() {
           id="losning"
           number="03"
           title="Løsning"
-          // FORSLAG
-          lead="Én app som samler helseloggen og forklarer den."
+          lead="En app med dashbord, statistikk og AI-chat som forklarer helsedataene enkelt."
           wide={
             <>
               <FeatureGroup title="Kom i gang">
@@ -254,18 +244,15 @@ export default function ProjectsLibaryRoute() {
           number="04"
           title="Tilegnet erfaring fra prosjektet"
           surface="soft"
-          // FORSLAG
-          lead="Hva brukertestingen lærte oss, og hva jeg ville gjort videre."
+          lead="Hva brukertestingen lærte oss, og hva jeg ville forbedret."
         >
           <CaseColumns
             items={[
               {
-                // FORSLAG
                 title: "Det vi lærte",
                 text: "Gjennom arbeidet med CorWell lærte vi mye om å designe for brukerengasjement og forenkling av komplekse data. Brukertestingen ga verdifull innsikt, spesielt i hvordan vi kunne gjøre appens funksjoner mer intuitive, som å forbedre chat-funksjonen for brukere som er uvant med AI.",
               },
               {
-                // FORSLAG
                 title: "Veien videre",
                 text: "Jeg ser også forbedringsmuligheter, som å videreutvikle grensesnittet for enda bedre brukervennlighet. Prosjektet styrket min forståelse av hvordan man kombinerer teori, ekspertinnsikt og brukerinvolvering for å skape løsninger som møter reelle behov.",
               },

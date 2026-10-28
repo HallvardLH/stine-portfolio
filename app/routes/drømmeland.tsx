@@ -27,8 +27,6 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-// FORSLAG: tekst som er markert med FORSLAG er skrevet av Claude og skal
-// gås gjennom sammen. Her mangler det mest: siden hadde ingen læringstekst.
 export default function ProjectsLibaryRoute() {
   return (
     <main className="case">
@@ -48,10 +46,8 @@ export default function ProjectsLibaryRoute() {
             { label: "Målgruppe", value: "Barn mellom 7 og 9 år" },
           ]}
         />
-
-        {/* FORSLAG */}
-        <CaseBreak eyebrow="I korte trekk" placeholder>
-          Læring om bærekraft gjennom lek, hjemme og i klasserommet.
+        <CaseBreak eyebrow="I korte trekk">
+          Læring om bærekraft gjennom spill både hjemme og i klasserommet.
         </CaseBreak>
 
         <CaseChapter
@@ -59,7 +55,6 @@ export default function ProjectsLibaryRoute() {
           number="01"
           title="Bakgrunn"
           rule
-          // FORSLAG
           lead="Hvordan barn kan lære om miljøvern gjennom spill."
         >
           <p>
@@ -82,7 +77,6 @@ export default function ProjectsLibaryRoute() {
           number="02"
           title="Samskaping med målgruppen"
           surface="dark"
-          // FORSLAG
           lead="Barnas egne tegninger ble utgangspunktet for designet."
         >
           <p>
@@ -104,8 +98,7 @@ export default function ProjectsLibaryRoute() {
           id="losning"
           number="03"
           title="Løsning"
-          // FORSLAG
-          lead="Et spilluniverse der barna løser oppdrag og tjener poeng."
+          lead="Et spillunivers der barna løser oppdrag og tjener poeng."
           wide={
             <FeatureGroup title="Appen">
               <Feature
@@ -141,10 +134,9 @@ export default function ProjectsLibaryRoute() {
                   },
                 ]}
               >
-                {/* FORSLAG: kort tekst utledet fra bildeteksten */}
                 <p>
                   Barna løser bærekraftsutfordringer gjennom korte spill, som å
-                  levere pant og redde fisken.
+                  pante og redde fiskene.
                 </p>
               </Feature>
 
@@ -158,7 +150,6 @@ export default function ProjectsLibaryRoute() {
                   },
                 ]}
               >
-                {/* FORSLAG: kort tekst utledet fra bakgrunnen og bildeteksten */}
                 <p>
                   Barna samler poeng og følger egen fremgang på Min side, mens
                   klasseoversikten gir læreren oversikt og mulighet til å dele
@@ -174,15 +165,21 @@ export default function ProjectsLibaryRoute() {
           number="04"
           title="Læring"
           surface="soft"
-          // FORSLAG
-          lead="Hva jeg tar med meg fra å designe for barn."
+          lead="Min læring fra prosjektet."
         >
-          {/* FORSLAG: erstatt med egen tekst */}
-          <p className="case-placeholder">
-            Her mangler det tekst om læring og resultat. Forslag: hva det
-            betydde å designe sammen med barna, hvordan tegningene fra
-            workshopene påvirket spilluniverset, og hva jeg ville gjort
-            annerledes.
+          <p>
+            Drømmeland har gitt meg erfaring med å designe for barn, en
+            målgruppe som bruker apper på andre måter enn voksne. I workshopene
+            tegnet barna sine egne spillunivers og drømmeavatarer, og vi fikk
+            innsikt i ønsker og ideer vi kanskje ikke hadde kommet frem til på
+            egen hånd. Tegningene ble direkte inspirasjon for designet og viste
+            meg verdien av å involvere brukerne aktivt i designprosessen,
+            fremfor å basere designvalg på egne antakelser. Prosjektet lærte meg
+            også å designe for to brukergrupper samtidig: barna som spiller, og
+            lærerne som deler ut oppgaver. Personas og brukerhistorier hjalp oss
+            med å ivareta behovene til begge gjennom prosessen. Med mer tid
+            ville jeg testet prototypen grundigere med barn i målgruppen for å
+            undersøke hvordan løsningene fungerte i praksis.
           </p>
         </CaseChapter>
       </div>

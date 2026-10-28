@@ -33,8 +33,6 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-// FORSLAG: tekst som er markert med FORSLAG er skrevet av Claude og skal
-// gås gjennom sammen (i korte trekk, ingresser og kolonnetitler).
 export default function ProjectsLibaryRoute() {
   return (
     <main className="case">
@@ -51,7 +49,7 @@ export default function ProjectsLibaryRoute() {
           facts={[
             { label: "Plattform", value: "Nettside" },
             { label: "Periode", value: "Våren 2025" },
-            { label: "Rolle", value: "UX-designer og designsystem" },
+            { label: "Rolle", value: "UX-designer" },
             {
               label: "Team",
               value:
@@ -63,11 +61,8 @@ export default function ProjectsLibaryRoute() {
             },
           ]}
         />
-
-        {/* FORSLAG */}
-        <CaseBreak eyebrow="I korte trekk" placeholder>
-          Ny nettside og visuell profil som samler Bergens studentgründere på
-          ett sted.
+        <CaseBreak eyebrow="I korte trekk">
+          Ny nettside og visuell profil for studentgründere i Bergen.
         </CaseBreak>
 
         <CaseChapter
@@ -75,7 +70,6 @@ export default function ProjectsLibaryRoute() {
           number="01"
           title="Bakgrunn"
           rule
-          // FORSLAG
           lead="Bergen har et uforløst potensial for studentgründere."
         >
           <p>
@@ -101,14 +95,12 @@ export default function ProjectsLibaryRoute() {
           number="02"
           title="Innsiktsfase"
           surface="dark"
-          // FORSLAG
-          lead="Hva vi lærte av målgruppen og innovasjonsmiljøet i Bergen."
+          lead="Hva vi lærte av innovasjonsmiljøet i Bergen."
           wide={
             <>
               <CaseColumns
                 items={[
                   {
-                    // FORSLAG
                     title: "Metoder",
                     text: (
                       <p>
@@ -119,7 +111,6 @@ export default function ProjectsLibaryRoute() {
                     ),
                   },
                   {
-                    // FORSLAG
                     title: "Innovasjonsmiljøet",
                     text: (
                       <p>
@@ -130,7 +121,6 @@ export default function ProjectsLibaryRoute() {
                     ),
                   },
                   {
-                    // FORSLAG
                     title: "Funksjoner",
                     text: (
                       <p>
@@ -163,8 +153,7 @@ export default function ProjectsLibaryRoute() {
           id="design"
           number="03"
           title="Identitet og designsystem"
-          // FORSLAG
-          lead="Fra merkevareidentitet og logo til et komponentbibliotek klart for utvikling."
+          lead="Merkevareidentitet og komponentbibliotek."
           wide={
             <>
               <FigurePair
@@ -222,8 +211,7 @@ export default function ProjectsLibaryRoute() {
           number="04"
           title="Løsning"
           surface="soft"
-          // FORSLAG
-          lead="En nettside som inspirerer, og som gjør det enkelt å finne frem."
+          lead="En nettside som skal inspirere og gjøre det enkelt å finne frem."
           wide={
             <>
               <FeatureGroup title="Lansering">
@@ -350,7 +338,6 @@ export default function ProjectsLibaryRoute() {
           number="05"
           title="Resultat og læring"
           surface="dark"
-          // FORSLAG
           lead="Testing med eye-tracking, MVP-prisen og hva jeg tar med meg videre."
           wide={
             <>
@@ -405,8 +392,9 @@ export default function ProjectsLibaryRoute() {
           }
         >
           <p>
-            Prosjektet vårt vant MVP-prisen under universitetets Innovasjonsdag
-            9. mai 2025.
+            {" "}
+            Prosjektet vant MVP-prisen under universitetets Innovasjonsdag 9.
+            mai 2025.{" "}
           </p>
         </CaseChapter>
       </div>
