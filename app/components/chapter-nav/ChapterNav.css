@@ -21,23 +21,15 @@
     pointer-events: none;
   }
 
-  /* The left edge belongs to the nav, so Tilbake stays on the cover and
-     scrolls away with it instead of floating over the nav */
-  body:has(.chapter-nav-area) .cover-image-back-container {
-    position: absolute;
-    /* Same spot as before, now measured from the cover instead of the page */
-    top: 2rem;
-  }
-
-  /* Sticks below the navbar while reading */
+  /* Half the screen tall, centred while reading and clear of Tilbake */
   .chapter-nav {
-    --chapter-nav-top: 7rem;
+    --chapter-nav-top: max(25vh, 12rem);
     --chapter-nav-line: 4px;
 
     display: block;
     position: sticky;
     top: var(--chapter-nav-top);
-    height: calc(100vh - var(--chapter-nav-top) - 1.5rem);
+    height: 50vh;
   }
   .chapter-nav-track {
     position: absolute;
@@ -46,7 +38,11 @@
     left: 0.5rem;
     width: var(--chapter-nav-line);
     border-radius: 2px;
-    background-color: color-mix(in srgb, var(--text-color) 18%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--text-color) 18%,
+      var(--primary-color)
+    );
   }
 
   /* Sits inside the track, so it only needs to fill it from the top */
@@ -97,7 +93,11 @@
   }
 
   .chapter-nav-todo .chapter-nav-dot {
-    background-color: color-mix(in srgb, var(--text-color) 35%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--text-color) 35%,
+      var(--primary-color)
+    );
   }
 
   .chapter-nav-active .chapter-nav-dot {

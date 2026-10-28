@@ -43,7 +43,14 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
         if (!el || i === 0) return areaTop;
         return el.getBoundingClientRect().top + window.scrollY;
       });
-      const line = window.scrollY + window.innerHeight * READING_LINE;
+      // The reading line drifts down to the bottom edge as the page runs out,
+      // so the nav is completely filled once the reader reaches the end
+      const maxScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const t = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 1;
+      const line =
+        window.scrollY +
+        window.innerHeight * (READING_LINE + (1 - READING_LINE) * t ** 2);
       let active = 0;
       tops.forEach((top, i) => {
         if (top <= line) active = i;
