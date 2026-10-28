@@ -18,8 +18,6 @@ interface Layout {
   progress: number;
   /** How far through the line after the last step, 0 to 1 */
   tail: number;
-  /** Pixels at the lower end of the nav that are cut off */
-  clip: number;
   /** Whether the reader has reached the start of the article text */
   started: boolean;
   active: number;
@@ -36,10 +34,10 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // The area runs from where the article text starts to a little past the end
-    // of the last chapter, so the nav stays where it is on the screen through
-    // that whole chapter. Once the chapter ends, the nav is cut off at its
-    // edge instead of following the screen over what comes after.
+    // The area runs from where the article text starts to the middle of the
+    // last chapter. The nav sticks inside it, so it follows the screen until
+    // its lower end meets that middle, and then stays put and scrolls away
+    // with the page instead of going on behind what comes after.
     const update = () => {
       const area = areaRef.current;
       if (!area) return;
@@ -55,8 +53,9 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
       const navTop = nav ? parseFloat(getComputedStyle(nav).top) || 0 : 0;
       let areaEnd = areaTop;
       if (last) {
-        areaEnd = last.getBoundingClientRect().bottom + window.scrollY;
-        area.style.height = `${Math.max(areaEnd - areaTop + navHeight, 0)}px`;
+        const rect = last.getBoundingClientRect();
+        areaEnd = rect.top + window.scrollY + rect.height / 2;
+        area.style.height = `${Math.max(areaEnd - areaTop, 0)}px`;
       }
       const line = window.scrollY + window.innerHeight * READING_LINE;
       let active = 0;
@@ -104,10 +103,7 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
       const surface = probe
         .map((el) => el.closest<HTMLElement>("[data-surface]"))
         .find(Boolean);
-      // How much of the nav's lower end lies past the end of the last chapter
-      const clip = Math.max(0, navTop + navHeight - (areaEnd - window.scrollY));
       setLayout({
-        clip,
         tone: surface?.dataset.surface ?? "light",
         progress,
         tail,
@@ -148,10 +144,6 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
             className="chapter-nav"
             aria-label="Kapitler"
             data-tone={layout.tone}
-            style={{
-              clipPath:
-                layout.clip > 0 ? `inset(0 0 ${layout.clip}px 0)` : undefined,
-            }}
             ref={navRef}
           >
             <div className="chapter-nav-track" aria-hidden="true">
