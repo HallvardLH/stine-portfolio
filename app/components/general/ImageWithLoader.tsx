@@ -3,6 +3,23 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import "./ImageWithLoader.css";
 
+interface GalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+// The caption under an image on the page, shown under it in fullscreen too
+function toGalleryImage(img: HTMLImageElement): GalleryImage {
+  return {
+    src: img.getAttribute("src") ?? "",
+    alt: img.alt,
+    caption:
+      img.closest("figure")?.querySelector("figcaption")?.textContent ??
+      undefined,
+  };
+}
+
 function Chevron({ direction }: { direction: "left" | "right" }) {
   return (
     <svg
@@ -46,7 +63,7 @@ export default function ImageWithLoader({
   const imageRef = useRef<HTMLImageElement>(null);
   // Every zoomable image on the page, so the fullscreen view can step through
   // them in the order they appear
-  const [gallery, setGallery] = useState<{ src: string; alt: string }[]>([]);
+  const [gallery, setGallery] = useState<GalleryImage[]>([]);
   const [position, setPosition] = useState(0);
 
   useEffect(() => {
@@ -77,9 +94,13 @@ export default function ImageWithLoader({
   const openImage = () => {
     const images = Array.from(
       document.querySelectorAll<HTMLImageElement>("img.image-zoomable"),
-    ).map((img) => ({ src: img.getAttribute("src") ?? "", alt: img.alt }));
+    ).map(toGalleryImage);
     const index = images.findIndex((image) => image.src === src);
-    setGallery(index === -1 ? [{ src, alt }] : images);
+    setGallery(
+      index === -1 && imageRef.current
+        ? [toGalleryImage(imageRef.current)]
+        : images,
+    );
     setPosition(Math.max(index, 0));
     setActualSize(false);
     setOpen(true);
@@ -140,22 +161,31 @@ export default function ImageWithLoader({
           }}
         >
           {/* The same original file as on the page, never a smaller copy */}
-          <img
-            key={shown.src}
-            src={shown.src}
-            alt={shown.alt}
-            className={`image-lightbox-image ${actualSize ? "actual-size" : ""}`}
-            style={
-              actualSize
-                ? { width: `${naturalWidth / window.devicePixelRatio}px` }
-                : undefined
-            }
-            decoding="async"
-            onLoad={(event) =>
-              setNaturalWidth(event.currentTarget.naturalWidth)
-            }
-            onClick={() => setActualSize((value) => !value)}
-          />
+          <figure
+            className={`image-lightbox-figure ${actualSize ? "actual-size" : ""}`}
+          >
+            <img
+              key={shown.src}
+              src={shown.src}
+              alt={shown.alt}
+              className={`image-lightbox-image ${actualSize ? "actual-size" : ""}`}
+              style={
+                actualSize
+                  ? { width: `${naturalWidth / window.devicePixelRatio}px` }
+                  : undefined
+              }
+              decoding="async"
+              onLoad={(event) =>
+                setNaturalWidth(event.currentTarget.naturalWidth)
+              }
+              onClick={() => setActualSize((value) => !value)}
+            />
+            {shown.caption && (
+              <figcaption className="image-lightbox-caption">
+                {shown.caption}
+              </figcaption>
+            )}
+          </figure>
           {gallery.length > 1 && (
             <>
               <button
