@@ -202,15 +202,19 @@
   border-top: 1px solid var(--text-color);
 }
 
-/* Image across the full width */
+/* Image on a band in its own background colour, so the image can stay below
+   screen height while the band still spans the full width */
 .case-image-break {
-  background-color: #dfe9ff;
+  background-color: #acdeff;
 }
 
 .case-image-break-image {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  max-height: min(80vh, 50rem);
+  margin: 0 auto;
 }
 
 /* Images in the text column */
