@@ -33,6 +33,10 @@ export default function ProjectCard(props: ProjectCardProps) {
           ))}
         </ul>
       )}
+      <span className="project-card-cta" aria-hidden="true">
+        Les om prosjektet
+        <img src="/icons/arrow.svg" alt="" />
+      </span>
     </Link>
   );
 }

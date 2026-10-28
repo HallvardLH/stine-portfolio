@@ -68,7 +68,7 @@ export default function Index() {
                 {latestProject.date} · {latestProject.platformInfo}
               </p>
               <Link to={latestProject.link} className="home-button">
-                Les prosjektet
+                Les om prosjektet
                 <img src="/icons/arrow.svg" alt="" />
               </Link>
             </div>

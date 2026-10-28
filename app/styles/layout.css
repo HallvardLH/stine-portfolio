@@ -179,9 +179,10 @@
   outline-offset: 4px;
 }
 
-/* The chapter nav comes in a fifth of the way down the projects chapter */
+/* The chapter nav starts level with the chapter name in the margin: the
+   chapter's top padding, plus half a line, minus the line above the first step */
 .home .case-chapters > .chapter-nav-area {
-  top: 20%;
+  top: 5.5rem;
 }
 
 /* All projects, grouped by year with the year in the margin */
