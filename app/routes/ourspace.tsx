@@ -228,7 +228,11 @@ export default function ProjectsLibaryRoute() {
           />
         </CaseChapter>
 
-        <CaseChapter id="bilder" number="05" title="Bilde fra prosjektperioden">
+        <CaseChapter
+          id="bilder"
+          number="05"
+          title="Bilde fra prosjektperioden!"
+        >
           <Figure
             src="/om-meg/gruppebilde.webp"
             alt="Gruppen rundt et bord fullt av skisser og lapper, sett ovenfra."
