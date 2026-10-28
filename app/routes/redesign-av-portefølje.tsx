@@ -73,7 +73,6 @@ export default function ProjectsLibaryRoute() {
           src="/portefølje-redesign/portfolio-before-after.webp"
           alt="Sammenligning av porteføljens gamle og nye design."
           caption="Porteføljen før og etter redesign."
-          blend
           dark
           background="linear-gradient(180deg, #064374 0%, #035894 25%, #0763a2 50%, #0166a7 75%, #016eaf 100%)"
         />

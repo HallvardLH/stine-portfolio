@@ -7,8 +7,6 @@ interface CaseImageBreakProps {
   caption?: string;
   /** Any CSS background, for images that need another colour than the default band */
   background?: string;
-  /** Fades the edges of the image into the background, for images that do not fill the width */
-  blend?: boolean;
   /** Light text and nav, for a dark background */
   dark?: boolean;
 }
@@ -19,12 +17,11 @@ export default function CaseImageBreak({
   alt,
   caption,
   background,
-  blend,
   dark,
 }: CaseImageBreakProps) {
   return (
     <figure
-      className={`case-image-break ${blend ? "case-image-break-blend" : ""}`}
+      className="case-image-break"
       data-surface={dark ? "dark" : "image"}
       style={background ? { background } : undefined}
     >

@@ -216,16 +216,6 @@
   color: var(--case-paper);
 }
 
-.case-image-break-blend .case-image-break-image {
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 15%,
-    #000 85%,
-    transparent
-  );
-}
-
 .case-image-break .case-image-break-caption {
   padding-top: 1rem;
   padding-bottom: 1.5rem;
