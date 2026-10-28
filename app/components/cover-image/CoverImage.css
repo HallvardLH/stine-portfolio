@@ -29,7 +29,7 @@
 .cover-corner {
   position: absolute;
   right: 1rem;
-  max-width: 20%;
+  width: min(var(--corner-max), var(--corner-relative));
   height: auto;
 }
 
@@ -63,7 +63,10 @@
 
 /* A logo in the bottom corner gets its own strip below the mockups */
 .cover-stage.corner-below {
-  padding-bottom: 5rem;
+  /* The logo's height (about 0.8 of its width) plus the gap around it */
+  padding-bottom: calc(
+    min(var(--corner-max), var(--corner-relative)) * 0.8 + 2.25rem
+  );
 }
 
 /* Mockups on the left, in line with the page content, with room on the right */
@@ -73,10 +76,6 @@
 
 /* Desktop */
 @media only screen and (min-width: 1050px) {
-  .cover-stage.corner-below {
-    padding-bottom: 6rem;
-  }
-
   .cover-stage.align-left {
     justify-content: flex-start;
     padding-left: max(2rem, calc((100% - 70rem) / 2));

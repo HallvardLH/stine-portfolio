@@ -32,11 +32,19 @@ export default function CoverImage({
       </Link>
       <div
         className={`cover-stage ${thumbnail.foregroundAlign === "left" ? "align-left" : ""} ${thumbnail.corner?.position === "bottom-right" ? "corner-below" : ""}`}
-        style={{
-          backgroundColor,
-          backgroundImage: backgroundSrc ? `url(${backgroundSrc})` : undefined,
-          backgroundPosition: thumbnail.backgroundPosition,
-        }}
+        style={
+          {
+            // The logo scales with the stage but never grows past its design size
+            "--corner-max": thumbnail.corner && `${thumbnail.corner.width}px`,
+            "--corner-relative":
+              thumbnail.corner && `${(thumbnail.corner.width / 1120) * 100}%`,
+            backgroundColor,
+            backgroundImage: backgroundSrc
+              ? `url(${backgroundSrc})`
+              : undefined,
+            backgroundPosition: thumbnail.backgroundPosition,
+          } as React.CSSProperties
+        }
       >
         <img
           src={foregroundSrc}
@@ -50,7 +58,6 @@ export default function CoverImage({
             src={thumbnail.corner.src}
             alt=""
             className={`cover-corner cover-corner-${thumbnail.corner.position}`}
-            style={{ width: thumbnail.corner.width }}
           />
         )}
       </div>
