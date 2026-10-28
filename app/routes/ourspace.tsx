@@ -47,7 +47,7 @@ export default function ProjectsLibaryRoute() {
           facts={[
             { label: "Plattform", value: "Software" },
             { label: "Periode", value: "Aug - nov 2023" },
-            { label: "Kurs", value: "Design for medieproduksjon" },
+            { label: "Kurs", value: "Design for medieproduksjon (MIX203)" },
           ]}
         />
 
@@ -63,16 +63,16 @@ export default function ProjectsLibaryRoute() {
           title="Bakgrunn"
           rule
           // FORSLAG
-          lead="Feltarbeid i et medieproduksjonsselskap ble utgangspunktet."
+          lead="Feltarbeid hos Neue Design Studio (Kurppa Hosk) som utgangspunkt."
         >
           <p>
-            I løpet av kurset, Design for medieproduksjon, ble vi sendt ut i
-            felten for å undersøke hvordan et selskap som arbeider med
-            medieproduksjon samarbeider og arbeider med CSCW-verktøy (computer
-            supported cooperative work). I løpet av feltarbeidet samlet vi
-            kvalitative data i form av intervju og observasjon, som vi brukte
-            til å skape et verktøy som kunne forbedre arbeidsdagen til de
-            ansatte ved firmaet vi besøkte.
+            I løpet av kurset Design for medieproduksjon (MIX203) ble vi sendt
+            ut i felten for å undersøke hvordan Neue Design Studio (Kurppa
+            Hosk), et selskap som arbeider med medieproduksjon, samarbeider og
+            arbeider med CSCW-verktøy (computer supported cooperative work). I
+            løpet av feltarbeidet samlet vi kvalitative data i form av intervju
+            og observasjon, som vi brukte til å skape et verktøy som kunne
+            forbedre arbeidsdagen til de ansatte ved firmaet vi besøkte.
           </p>
         </CaseChapter>
 

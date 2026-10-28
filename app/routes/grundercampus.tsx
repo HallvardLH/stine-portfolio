@@ -28,7 +28,7 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "Som del av bacheloroppgaven min designet jeg og gruppen min en nettside for GründerCampus. Prosjektet vårt vant MVP-prisen under Innovasjonsdagen 9. mai 2025.",
+        "Som del av bacheloroppgaven min designet jeg og gruppen min en nettside for GründerCampus. Prosjektet vårt vant MVP-prisen under universitetets Innovasjonsdag 9. mai 2025.",
     },
   ];
 };
@@ -46,7 +46,7 @@ export default function ProjectsLibaryRoute() {
         <CaseTitle
           id="intro"
           title="Bachelorprosjekt: GründerCampus"
-          intro="Gjennom bachelorprosjektet fikk prosjektgruppen min, bestående av Pernille Brubakk, Jenny Dal Østensen, Margrethe Liahjell og meg selv, muligheten til å utvikle ny nettside, logo og visuell profil for den nyoppstartede studentorganisasjonen GründerCampus. Prosjektet vårt vant MVP-prisen under Innovasjonsdagen 9. mai 2025."
+          intro="Gjennom bachelorprosjektet fikk prosjektgruppen min, bestående av Pernille Brubakk, Jenny Dal Østensen, Margrethe Liahjell og meg selv, muligheten til å utvikle ny nettside, logo og visuell profil for den nyoppstartede studentorganisasjonen GründerCampus. Prosjektet vårt vant MVP-prisen under universitetets Innovasjonsdag 9. mai 2025."
           marginTitle="Om prosjektet"
           facts={[
             { label: "Plattform", value: "Nettside" },
@@ -59,7 +59,7 @@ export default function ProjectsLibaryRoute() {
             },
             {
               label: "Pris",
-              value: "MVP-prisen, Innovasjonsdagen 9. mai 2025",
+              value: "MVP-prisen, universitetets Innovasjonsdag 9. mai 2025",
             },
           ]}
         />
@@ -405,7 +405,8 @@ export default function ProjectsLibaryRoute() {
           }
         >
           <p>
-            Prosjektet vårt vant MVP-prisen under Innovasjonsdagen 9. mai 2025.
+            Prosjektet vårt vant MVP-prisen under universitetets Innovasjonsdag
+            9. mai 2025.
           </p>
         </CaseChapter>
       </div>
