@@ -4,7 +4,6 @@ import { thumbnails } from "~/data/thumbnails";
 import ChapterNav, { type Chapter } from "~/components/chapter-nav/ChapterNav";
 import CaseTitle from "~/components/case/CaseTitle";
 import CaseBreak from "~/components/case/CaseBreak";
-import CaseImageBreak from "~/components/case/CaseImageBreak";
 import CaseColumns from "~/components/case/CaseColumns";
 import { Feature, FeatureGroup } from "~/components/case/Feature";
 import RelatedProjects from "~/components/case/RelatedProjects";
@@ -84,16 +83,6 @@ export default function ProjectsLibaryRoute() {
             bedre opplevelse for alle Æ-brukere.
           </p>
         </CaseChapter>
-
-        <CaseImageBreak
-          src="/æ/receipt-old-vs-new.webp"
-          alt="To mobilskjermer: dagens design av Æ-appen og den nye versjonen, begge med kvitteringsdelen av appen."
-          // FORSLAG: bildetekst
-          caption="Kvitteringssiden i Æ-appen: gammelt og nytt design"
-          blend
-          dark
-          background="linear-gradient(180deg, #0e50b2 0%, #196acd 25%, #237bdd 50%, #2b83e2 75%, #257edf 100%)"
-        />
 
         <CaseChapter
           id="innsikt"
@@ -311,6 +300,10 @@ export default function ProjectsLibaryRoute() {
                 <Feature
                   title="Handleturer og kvitteringer"
                   figures={[
+                    {
+                      src: "/æ/receipt-old-vs-new.webp",
+                      alt: "To mobilskjermer: dagens design av Æ-appen og den nye versjonen, begge med kvitteringsdelen av appen.",
+                    },
                     {
                       src: "/æ/receipt.webp",
                       alt: "Tre mobilenheter, hvor den ene viser det opprinnelige grensesnittets «handleturer»-side og de to andre viser redesignet.",
