@@ -62,8 +62,8 @@ export default function AboutRoute() {
           Jeg har vært innom litt av hvert, fra strikking og maling til grafisk
           design. Da jeg begynte på medie- og interaksjonsdesign ved UiB, fikk
           jeg kombinert den kreative siden med interessen min for teknologi og
-          mennesker. Gjennom bacheloren og nå masteren har jeg jobbet med alt
-          fra visuell design og interaksjon til brukerinnsikt, brukertesting og
+          mennesker. Gjennom bacheloren og nå masteren har jeg jobbet med
+          visuelt design, interaksjonsdesign, innsiktsarbeid, brukertesting og
           konseptutvikling.
         </p>
         <p>

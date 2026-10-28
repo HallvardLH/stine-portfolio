@@ -80,7 +80,7 @@
 
   .about-hero {
     display: grid;
-    grid-template-columns: 1fr 28rem;
+    grid-template-columns: 1fr 21rem;
     gap: 5rem;
     align-items: end;
   }
