@@ -32,6 +32,14 @@
   object-fit: contain;
 }
 
+.card-corner {
+  position: absolute;
+  top: 5%;
+  right: 4%;
+  width: clamp(2.5rem, 9%, 6rem);
+  height: auto;
+}
+
 .top-info-container {
   display: flex;
   justify-content: space-between;

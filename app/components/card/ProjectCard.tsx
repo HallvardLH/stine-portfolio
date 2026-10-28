@@ -8,6 +8,8 @@ export interface Thumbnail {
   foregroundSrc: string;
   backgroundColor?: string;
   backgroundSrc?: string;
+  // Small logo pinned to the top right corner instead of scaling with the mockups
+  cornerSrc?: string;
 }
 
 interface ProjectCardProps {
@@ -53,6 +55,14 @@ export default function ProjectCard(props: ProjectCardProps) {
           className="card-image"
           decoding="async"
         />
+        {thumbnail.cornerSrc && (
+          <img
+            src={thumbnail.cornerSrc}
+            alt=""
+            className="card-corner"
+            decoding="async"
+          />
+        )}
       </div>
       <div className="card-description-container">
         <h2 className="heading card-text">{title}</h2>

@@ -37,6 +37,7 @@ export default function Index() {
           thumbnail={{
             foregroundSrc: "/finn-eiendom/thumbnail-fg.webp",
             backgroundSrc: "/finn-eiendom/thumbnail-bg.webp",
+            cornerSrc: "/finn-eiendom/thumbnail-logo.svg",
           }}
           date="Sommeren 2026"
           platformInfo="Web"
