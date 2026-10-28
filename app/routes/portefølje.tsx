@@ -1,4 +1,3 @@
-// import { Outlet } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/node";
 import ProjectCard from "~/components/card/ProjectCard";
 
@@ -8,6 +7,119 @@ export const meta: MetaFunction = () => {
     { name: "description", content: "Porteføljen til Stine Knutsen." },
   ];
 };
+
+interface Project {
+  imageSrc: string;
+  date: string;
+  platformInfo: string;
+  title: string;
+  description: string;
+  link: string;
+  tags: string[];
+}
+
+interface ProjectYear {
+  year: string;
+  projects: Project[];
+}
+
+const latestProject: Project = {
+  imageSrc: "/finn-eiendom/thumbnail.webp",
+  date: "Sommeren 2026",
+  platformInfo: "Web",
+  title: "FINN Eiendom",
+  description:
+    "Summer internship i FINN Eiendom med fokus på å forenkle påmeldingen til boligvisninger for meglere og boligkjøpere.",
+  link: "/finn-eiendom",
+  tags: ["Summer internship", "FINN Eiendom"],
+};
+
+const projectsByYear: ProjectYear[] = [
+  {
+    year: "2025",
+    projects: [
+      {
+        imageSrc: "/barnebank/thumbnail.webp",
+        date: "Sommeren 2025",
+        platformInfo: "App",
+        title: "Sparebanken Norge",
+        description:
+          "Summer internship der vi designet deres nye bankløsning for barn.",
+        link: "/barnebank",
+        tags: ["Summer internship", "Sparebanken Norge", "Bank for barn"],
+      },
+      {
+        imageSrc: "/grundercampus/thumbnail.webp",
+        date: "Våren 2025",
+        platformInfo: "Web",
+        title: "Bachelorprosjekt: GründerCampus",
+        description:
+          "Nettside, logo og visuell profil for det nyoppstartede studentnettverket GründerCampus.",
+        link: "/grundercampus",
+        tags: ["Universitetet i Bergen", "Bachelorprosjekt", "Visuelt & UX"],
+      },
+    ],
+  },
+  {
+    year: "2024",
+    projects: [
+      {
+        imageSrc: "/portefølje-redesign/thumbnail.webp",
+        date: "Vinteren 2024",
+        platformInfo: "Web",
+        title: "Redesign: portefølje",
+        description:
+          "Redesign av en frontend utviklers portefølje for å fremheve arbeidet hans.",
+        link: "/redesign-av-portefølje",
+        tags: ["Freelance", "Redesign", "Case"],
+      },
+      {
+        imageSrc: "/æ/thumbnail.webp",
+        date: "Høsten 2024",
+        platformInfo: "App",
+        title: "Redesign: Rema appen",
+        description:
+          "Redesign av Rema 1000s medlemsapp med fokus på brukervennlighet.",
+        link: "/æ",
+        tags: ["Freelance", "Redesign", "Case"],
+      },
+      {
+        imageSrc: "/corwell/thumbnail.webp",
+        date: "Våren 2024",
+        platformInfo: "App",
+        title: "CorWell",
+        description:
+          "En helseapp som forbedrer helseoppfølging ved hjelp av lifelogging.",
+        link: "/corwell",
+        tags: ["Universitetet i Bergen", "Helse"],
+      },
+    ],
+  },
+  {
+    year: "2023",
+    projects: [
+      {
+        imageSrc: "/ourspace/thumbnail.webp",
+        date: "Høsten 2023",
+        platformInfo: "Software",
+        title: "HourSpace",
+        description: "Et CSCW-verktøy for konsulentbransjen.",
+        link: "/ourspace",
+        tags: ["Universitetet i Bergen", "Samarbeidsverktøy"],
+      },
+      {
+        imageSrc: "/drømmeland/thumbnail.webp",
+        date: "Våren 2023",
+        platformInfo: "App",
+        title: "Drømmeland",
+        description:
+          "En læringsapp for barn som underviser om bærekraft gjennom virtuelle aktiviteter.",
+        link: "/drømmeland",
+        tags: ["Universitetet i Bergen", "Læring", "Barn", "Bærekraft"],
+      },
+    ],
+  },
+];
 
 export default function ProjectsLibaryRoute() {
   return (
@@ -26,80 +138,20 @@ export default function ProjectsLibaryRoute() {
           </p>
         </div>
 
-        <ProjectCard
-          imageSrc="/finn-eiendom/thumbnail.webp"
-          date="Sommeren 2026"
-          platformInfo="Web"
-          title="FINN Eiendom"
-          description="Summer internship i FINN Eiendom med fokus på å forenkle påmeldingen til boligvisninger for meglere og boligkjøpere."
-          link="/finn-eiendom"
-          hero
-        />
+        <ProjectCard {...latestProject} hero />
 
-        <div className="project-card-container">
-          <ProjectCard
-            imageSrc="/barnebank/thumbnail.webp"
-            date="Sommeren 2025"
-            platformInfo="App"
-            title="Sparebanken Norge"
-            description="Summer internship der vi designet deres nye bankløsning for barn"
-            link="/barnebank"
-          />
-
-          <ProjectCard
-            imageSrc="/grundercampus/thumbnail.webp"
-            date="Våren 2025"
-            platformInfo="Web"
-            title="GründerCampus"
-            description="Nettside, logo og visuell profil for studentnettverket GründerCampus"
-            link="/grundercampus"
-          />
-
-          <ProjectCard
-            imageSrc="/portefølje-redesign/thumbnail.webp"
-            date="Vinteren 2024"
-            platformInfo="Web"
-            title="Redesign av portefølje"
-            description="Redesign av en front-end utviklers portefølje for å fremheve arbeidet hans"
-            link="/redesign-av-portefølje"
-          />
-
-          <ProjectCard
-            imageSrc="/æ/thumbnail.webp"
-            date="Høsten 2024"
-            platformInfo="App"
-            title="Redesign av Æ"
-            description="Redesign av Rema 1000s medlemsapp med fokus på brukervennlighet"
-            link="/æ"
-          />
-
-          <ProjectCard
-            imageSrc="/corwell/thumbnail.webp"
-            date="Våren 2024"
-            platformInfo="App"
-            title="Corwell"
-            description="En helseapp som forbedrer helseoppfølging ved hjelp av lifelogging"
-            link="/corwell"
-          />
-
-          <ProjectCard
-            imageSrc="/ourspace/thumbnail.webp"
-            date="Høsten 2023"
-            platformInfo="Software"
-            title="OurSpace"
-            description="Et CSCW- verktøy for konsulentbransjen utviklet på bakgrunn av feltarbeid"
-            link="/ourspace"
-          />
-
-          <ProjectCard
-            imageSrc="/drømmeland/thumbnail.webp"
-            date="Våren 2023"
-            platformInfo="App"
-            title="Drømmeland"
-            description="En læringsapp for barn om klima og miljø med fokus på brukervennlighet"
-            link="/drømmeland"
-          />
-        </div>
+        {projectsByYear.map(({ year, projects }) => (
+          <section key={year}>
+            <div className="year-divider">
+              <h2 className="heading">{year}</h2>
+            </div>
+            <div className="project-card-container">
+              {projects.map((project) => (
+                <ProjectCard key={project.link} {...project} />
+              ))}
+            </div>
+          </section>
+        ))}
       </main>
     </div>
   );

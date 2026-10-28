@@ -59,3 +59,27 @@
     grid-column: 2;
   }
 }
+
+/* Cropped gallery: every image is cut to its own aspect ratio */
+.gallery-cropped .gallery-image-container {
+  margin: 0;
+  align-self: stretch;
+}
+
+.gallery-cropped .gallery-image {
+  flex-grow: 0;
+  width: 100%;
+  aspect-ratio: var(--aspect-ratio);
+  object-fit: cover;
+}
+
+.gallery-cropped .gallery-text {
+  margin-top: 0.5rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .gallery-cropped {
+    align-items: start;
+    gap: 2.5rem 2rem;
+  }
+}

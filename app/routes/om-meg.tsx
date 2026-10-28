@@ -1,6 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
-import ParagraphWithImage from "~/components/project-sections/ParagraphWithImage";
-import StandaloneParagraph from "~/components/project-sections/StandaloneParagraph";
+import ImageWithLoader from "~/components/general/ImageWithLoader";
 import Gallery from "~/components/project-sections/Gallery";
 
 export const meta: MetaFunction = () => {
@@ -14,31 +13,18 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function ProjectsLibaryRoute() {
+export default function AboutRoute() {
   return (
     <main>
-      <div className="gutter project-section top-margin">
-        <ParagraphWithImage
-          topSection={
-            <div
-              className="shortened-paragraph"
-              style={{ marginBottom: "1rem" }}
-            ></div>
-          }
-          textSection={
-            <div
-              style={{
-                alignSelf: "flex-start",
-                display: "flex",
-                gap: "2rem",
-                flexDirection: "column",
-              }}
-            >
-              <h1 className="heading-large heading-normal-color">Om meg</h1>
-              <p className="text-medium">
-                Jeg er UX-designer og masterstudent i medie- og
-                interaksjonsdesign ved Universitetet i Bergen.
-              </p>
+      <div className="gutter top-margin about-page">
+        <div className="about-intro">
+          <div className="about-text">
+            <h1 className="heading-large">Om meg</h1>
+            <p className="text-large">
+              Jeg er UX-designer og masterstudent i medie- og interaksjonsdesign
+              ved Universitetet i Bergen.
+            </p>
+            <div className="about-body">
               <p>
                 Jeg har alltid likt å lage ting og jobbe visuelt, og det var noe
                 av det som først trakk meg mot design. Etter hvert ble jeg
@@ -61,38 +47,49 @@ export default function ProjectsLibaryRoute() {
                 kan endre løsningen underveis.
               </p>
             </div>
-          }
-          imageSrc="/om-meg/headshot.webp"
-          imageText="Bilde av meg!"
-          altText="A portrait of Stine Knutsen."
-        />
+          </div>
+
+          <figure className="about-portrait">
+            <ImageWithLoader
+              src="/om-meg/headshot.webp"
+              alt="A portrait of Stine Knutsen."
+              classes="about-portrait-image"
+            />
+            <figcaption className="text-small">Bilde av meg!</figcaption>
+          </figure>
+        </div>
 
         <Gallery
           images={[
             {
               src: "/om-meg/finn-presentasjon.webp",
+              aspectRatio: "556 / 370",
               imageText: "Presentasjonen av sommerprosjektet hos FINN.",
               altText: "",
             },
             {
               src: "/om-meg/finn-teamet.webp",
+              aspectRatio: "556 / 370",
               imageText: "Sommerteamet utenfor kontoret hos FINN!",
               altText: "",
             },
             {
               src: "/om-meg/innovasjonsdagen.webp",
+              aspectRatio: "556 / 370",
               imageText:
                 "Våren 2026 hadde jeg ansvaret for å arrangere instituttets innovasjonsdag.",
               altText: "Stine og Tuva åpner arrangementet.",
             },
             {
               src: "/om-meg/innovasjonsdagen-publikum.webp",
+              aspectRatio: "556 / 370",
               imageText:
                 "Med rekordmange publikumere, pitcher og deltakende emner ble dagen en stor suksess!",
               altText: "Publikum og jury ser på pitching.",
             },
             {
               src: "/om-meg/spn.webp",
+              aspectRatio: "1168 / 424",
               imageText:
                 "Studentteamet hos Sparebanken Norge sommeren 2025 under presentasjonen av den nye Barnebanken.",
               altText: "Studentteamet hos Sparebanken Norge.",
@@ -100,18 +97,21 @@ export default function ProjectsLibaryRoute() {
             },
             {
               src: "/om-meg/kickoff.webp",
+              aspectRatio: "556 / 370",
               imageText: "Pitchekonkurranse hos GründerCampus - som vi vant!",
               altText:
                 "Stine og Pernille på pitchekonkurranse hos GründerCampus.",
             },
             {
               src: "/om-meg/innovasjon.webp",
+              aspectRatio: "556 / 370",
               imageText:
                 "Innovasjonsuken Opp sitt Kickoff der vi fikk presentere HourSpace.",
               altText: "Stine har ordet på Innovasjonsuken Opp",
             },
             {
               src: "/om-meg/grundercampus.webp",
+              aspectRatio: "1168 / 424",
               imageText:
                 "Innovasjonsdagen 2025 - gruppen vant MVP-prisen for beste bachelorprosjekt!",
               altText: "Bachelorgruppen med diplom, sammen med juryen.",
@@ -119,6 +119,7 @@ export default function ProjectsLibaryRoute() {
             },
             {
               src: "/om-meg/black-cat.webp",
+              aspectRatio: "556 / 451",
               imageText:
                 "Eksamensoppgaven min i kunst og visuelle virkemidler fra videregående!",
               altText:
@@ -126,12 +127,14 @@ export default function ProjectsLibaryRoute() {
             },
             {
               src: "/om-meg/gruppebilde.webp",
+              aspectRatio: "556 / 643",
               imageText:
                 "Jeg og gruppen min under en kreativ øvelse da vi jobbet med OurSpace, høsten 2023.",
               altText:
                 "Stine and her project-group doing a creative exercise while working on the OurSpace design.",
             },
           ]}
+          cropped
         />
       </div>
     </main>
