@@ -173,7 +173,7 @@ export default function ImageWithLoader({
                 <Chevron direction="right" />
               </button>
               <span className="image-lightbox-count" aria-live="polite">
-                {position + 1} / {gallery.length}
+                {position + 1}/{gallery.length}
               </span>
             </>
           )}

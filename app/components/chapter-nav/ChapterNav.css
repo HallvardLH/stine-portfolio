@@ -5,8 +5,9 @@
 }
 
 @media only screen and (min-width: 1400px) {
-  /* Covers the chapters, from the title to the end of the last chapter, which
-     sets its height. The case wrapper is the positioning context. */
+  /* Covers the chapters, from the title to a bit past the end of the last
+     chapter, which sets its height. The case wrapper is the positioning
+     context. */
   .chapter-nav-area {
     display: block;
     position: absolute;
@@ -17,10 +18,9 @@
     pointer-events: none;
   }
 
-  /* Half the screen tall and resting at the bottom of the screen, so that it
-     stays in view until the last chapter ends */
+  /* Half the screen tall, in the same place on the screen all the way */
   .chapter-nav {
-    --chapter-nav-top: calc(50vh - 2rem);
+    --chapter-nav-top: max(10rem, 30vh);
     --chapter-nav-line: 4px;
     /* The line runs this far above the first step and below the last one */
     --chapter-nav-tail: 2.5rem;
