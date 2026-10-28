@@ -252,6 +252,15 @@
   height: auto;
 }
 
+.case-figure-cropped .case-figure-image {
+  aspect-ratio: var(--ratio);
+  object-fit: cover;
+}
+
+.case-figure-narrow {
+  max-width: 26rem;
+}
+
 .case-figure-pair {
   display: grid;
   grid-template-columns: minmax(0, 1fr);

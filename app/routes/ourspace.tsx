@@ -16,6 +16,7 @@ const chapters: Chapter[] = [
   { id: "innsikt", label: "Innsikt" },
   { id: "losning", label: "Løsning" },
   { id: "videre", label: "Videre arbeid" },
+  { id: "bilder", label: "Bilder" },
 ];
 
 export const meta: MetaFunction = () => {
@@ -224,6 +225,15 @@ export default function ProjectsLibaryRoute() {
                 text: "Videre ønsker vi å utvide chat-funksjonen for å inkludere flere interaktive elementer, som veiledning og støtte til brukerne. Vi ser også behov for å utforske klientenes perspektiv og behov enda grundigere, for bedre å tilpasse løsningen til deres forventninger. Et annet viktig fokusområde er å forenkle prosessen for å legge til elementer i tidslinjen, slik at brukerne kan tilpasse og administrere denne funksjonen på en enkel og effektiv måte.",
               },
             ]}
+          />
+        </CaseChapter>
+
+        <CaseChapter id="bilder" number="05" title="Bilder fra prosjektet">
+          <Figure
+            src="/om-meg/gruppebilde.webp"
+            alt="Gruppen rundt et bord fullt av skisser og lapper, sett ovenfra."
+            caption="Jeg og gruppen min under en kreativ øvelse da vi jobbet med OurSpace, høsten 2023."
+            narrow
           />
         </CaseChapter>
       </div>

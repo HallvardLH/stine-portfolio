@@ -22,6 +22,7 @@ const chapters: Chapter[] = [
   { id: "innsikt", label: "Innsikt" },
   { id: "losning", label: "Løsning" },
   { id: "resultat", label: "Resultat" },
+  { id: "bilder", label: "Bilder" },
 ];
 
 export const meta: MetaFunction = () => {
@@ -452,6 +453,30 @@ export default function ProjectsLibaryRoute() {
               ]}
             />
           </ChapterBlock>
+        </CaseChapter>
+
+        <CaseChapter
+          id="bilder"
+          number="05"
+          title="Bilder fra prosjektet"
+          wide={
+            <FigurePair
+              first={{
+                src: "/om-meg/finn-presentasjon.webp",
+                alt: "Sommerteamet foran en skjerm med presentasjonen av sommerprosjektet.",
+                caption: "Presentasjonen av sommerprosjektet hos FINN.",
+                aspectRatio: "3 / 2",
+              }}
+              second={{
+                src: "/om-meg/finn-teamet.webp",
+                alt: "Sommerteamet utenfor FINN-kontoret.",
+                caption: "Sommerteamet utenfor kontoret hos FINN!",
+                aspectRatio: "3 / 2",
+              }}
+            />
+          }
+        >
+          {" "}
         </CaseChapter>
       </div>
 

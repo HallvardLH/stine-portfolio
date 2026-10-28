@@ -21,6 +21,7 @@ const chapters: Chapter[] = [
   { id: "innsikt", label: "Innsikt" },
   { id: "losning", label: "Løsning" },
   { id: "laering", label: "Læring" },
+  { id: "bilder", label: "Bilder" },
 ];
 
 export const meta: MetaFunction = () => {
@@ -341,6 +342,22 @@ export default function ProjectsLibaryRoute() {
               },
             ]}
           />
+        </CaseChapter>
+
+        <CaseChapter
+          id="bilder"
+          number="05"
+          title="Bilder fra prosjektet"
+          wide={
+            <Figure
+              src="/om-meg/spn.webp"
+              alt="Studentteamet hos Sparebanken Norge."
+              caption="Studentteamet hos Sparebanken Norge sommeren 2025 under presentasjonen av den nye Barnebanken."
+              aspectRatio="1168 / 424"
+            />
+          }
+        >
+          {" "}
         </CaseChapter>
       </div>
 

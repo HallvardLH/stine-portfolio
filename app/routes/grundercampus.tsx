@@ -11,7 +11,7 @@ import {
   Chapter as CaseChapter,
   ChapterBlock,
 } from "~/components/case/Chapter";
-import { FigurePair, FigureRow } from "~/components/case/Figure";
+import { Figure, FigurePair, FigureRow } from "~/components/case/Figure";
 
 const chapters: Chapter[] = [
   { id: "intro", label: "Intro" },
@@ -20,6 +20,7 @@ const chapters: Chapter[] = [
   { id: "design", label: "Design" },
   { id: "losning", label: "Løsning" },
   { id: "resultat", label: "Resultat" },
+  { id: "bilder", label: "Bilder" },
 ];
 
 export const meta: MetaFunction = () => {
@@ -396,6 +397,27 @@ export default function ProjectsLibaryRoute() {
             Prosjektet vant MVP-prisen under universitetets Innovasjonsdag 9.
             mai 2025.{" "}
           </p>
+        </CaseChapter>
+
+        <CaseChapter
+          id="bilder"
+          number="06"
+          title="Bilder fra prosjektet"
+          wide={
+            <Figure
+              src="/om-meg/grundercampus.webp"
+              alt="Bachelorgruppen med diplom, sammen med juryen."
+              caption="Innovasjonsdagen 2025 - gruppen vant MVP-prisen for beste bachelorprosjekt!"
+              aspectRatio="1168 / 424"
+            />
+          }
+        >
+          <Figure
+            src="/om-meg/kickoff.webp"
+            alt="Stine og Pernille på pitchekonkurranse hos GründerCampus."
+            caption="Pitchekonkurranse hos GründerCampus - som vi vant!"
+            aspectRatio="3 / 2"
+          />
         </CaseChapter>
       </div>
 

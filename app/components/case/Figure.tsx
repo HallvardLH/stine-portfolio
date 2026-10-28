@@ -5,12 +5,29 @@ interface FigureProps {
   src: string;
   alt?: string;
   caption?: string;
+  /** Crops the image to this ratio, e.g. "3 / 2" */
+  aspectRatio?: string;
+  /** Keeps a portrait image from taking the whole width of the column */
+  narrow?: boolean;
 }
 
 // An image in the text column with its caption underneath
-export function Figure({ src, alt = "", caption }: FigureProps) {
+export function Figure({
+  src,
+  alt = "",
+  caption,
+  aspectRatio,
+  narrow,
+}: FigureProps) {
   return (
-    <figure className="case-figure">
+    <figure
+      className={`case-figure ${aspectRatio ? "case-figure-cropped" : ""} ${narrow ? "case-figure-narrow" : ""}`}
+      style={
+        aspectRatio
+          ? ({ "--ratio": aspectRatio } as React.CSSProperties)
+          : undefined
+      }
+    >
       <ImageWithLoader src={src} alt={alt} classes="case-figure-image" />
       {caption && <figcaption className="text-small">{caption}</figcaption>}
     </figure>
