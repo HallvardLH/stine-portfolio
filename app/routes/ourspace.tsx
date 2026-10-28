@@ -228,12 +228,12 @@ export default function ProjectsLibaryRoute() {
           />
         </CaseChapter>
 
-        <CaseChapter id="bilder" number="05" title="Bilde fra prosjektet">
+        <CaseChapter id="bilder" number="05" title="Bilde fra prosjektperioden">
           <Figure
             src="/om-meg/gruppebilde.webp"
             alt="Gruppen rundt et bord fullt av skisser og lapper, sett ovenfra."
             caption="Jeg og gruppen min under en kreativ øvelse da vi jobbet med OurSpace, høsten 2023."
-            narrow
+            captionBeside
           />
         </CaseChapter>
       </div>

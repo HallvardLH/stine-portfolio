@@ -402,7 +402,7 @@ export default function ProjectsLibaryRoute() {
         <CaseChapter
           id="bilder"
           number="06"
-          title="Bilder fra prosjektet"
+          title="Bilder fra prosjektperioden"
           wide={
             <Figure
               src="/om-meg/grundercampus.webp"

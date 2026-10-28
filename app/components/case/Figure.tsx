@@ -7,8 +7,8 @@ interface FigureProps {
   caption?: string;
   /** Crops the image to this ratio, e.g. "3 / 2" */
   aspectRatio?: string;
-  /** Keeps a portrait image from taking the whole width of the column */
-  narrow?: boolean;
+  /** Portrait image with its caption beside it, from tablet width up */
+  captionBeside?: boolean;
 }
 
 // An image in the text column with its caption underneath
@@ -17,11 +17,11 @@ export function Figure({
   alt = "",
   caption,
   aspectRatio,
-  narrow,
+  captionBeside,
 }: FigureProps) {
   return (
     <figure
-      className={`case-figure ${aspectRatio ? "case-figure-cropped" : ""} ${narrow ? "case-figure-narrow" : ""}`}
+      className={`case-figure ${aspectRatio ? "case-figure-cropped" : ""} ${captionBeside ? "case-figure-beside" : ""}`}
       style={
         aspectRatio
           ? ({ "--ratio": aspectRatio } as React.CSSProperties)

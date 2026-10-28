@@ -265,10 +265,6 @@
   object-fit: cover;
 }
 
-.case-figure-narrow {
-  max-width: 26rem;
-}
-
 .case-figure-pair {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -534,6 +530,13 @@
   .case-columns,
   .case-figure-row {
     grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  }
+
+  .case-figure-beside {
+    display: grid;
+    grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
+    align-items: end;
+    column-gap: 1.5rem;
   }
 }
 
