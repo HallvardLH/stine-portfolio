@@ -3,6 +3,7 @@ import { Figure } from "./Figure";
 
 interface FeatureFigure {
   src: string;
+  alt?: string;
   caption?: string;
 }
 

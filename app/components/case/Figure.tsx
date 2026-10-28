@@ -31,3 +31,21 @@ export function FigurePair({ first, second }: FigurePairProps) {
     </div>
   );
 }
+
+interface FigureRowProps {
+  figures: FigureProps[];
+}
+
+// Three or more images side by side
+export function FigureRow({ figures }: FigureRowProps) {
+  return (
+    <div
+      className="case-figure-row"
+      style={{ "--columns": figures.length } as React.CSSProperties}
+    >
+      {figures.map((figure) => (
+        <Figure key={figure.src} {...figure} />
+      ))}
+    </div>
+  );
+}
