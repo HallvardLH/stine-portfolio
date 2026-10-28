@@ -69,8 +69,9 @@ export default function ProjectsLibaryRoute() {
           ]}
         />
 
-        <CaseBreak eyebrow="I korte trekk" placeholder>
-          Skriv hovedpoenget fra prosjektet i én til to setninger her.
+        <CaseBreak eyebrow="I korte trekk">
+          Påmelding til visning på noen få trykk for boligkjøperen, og en
+          oversikt over hvem som kommer for megleren.
         </CaseBreak>
 
         <CaseChapter
@@ -103,6 +104,7 @@ export default function ProjectsLibaryRoute() {
         <CaseImageBreak
           src="/finn-eiendom/kartlegging.webp"
           alt="Kartlegging av påmeldingsskjemaer til visning hos norske eiendomsmeglere, blant andre Emera, PrivatMegleren, DNB Eiendom, Tinholt og Nordvik."
+          caption="Kartlegging av ulike megleres påmeldingsskjemaer"
         />
 
         <CaseChapter

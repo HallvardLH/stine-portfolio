@@ -206,7 +206,15 @@
 /* Image on a band in its own background colour, so the image can stay below
    screen height while the band still spans the full width */
 .case-image-break {
+  margin: 0;
+  padding: 0;
   background-color: #acdeff;
+  color: var(--case-ink);
+}
+
+.case-image-break .case-image-break-caption {
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
 }
 
 .case-image-break-image {
