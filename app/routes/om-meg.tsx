@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import "~/components/case/Case.css";
 import ImageWithLoader from "~/components/general/ImageWithLoader";
+import CaseBreak from "~/components/case/CaseBreak";
 import { Chapter as CaseChapter } from "~/components/case/Chapter";
 import { Figure, FigurePair } from "~/components/case/Figure";
 
@@ -23,53 +24,57 @@ export default function AboutRoute() {
         className="case-section about-intro"
         data-surface="light"
       >
-        <div className="case-container">
-          <div className="case-row">
-            <figure className="about-portrait">
-              <ImageWithLoader
-                src="/om-meg/headshot.webp"
-                alt="A portrait of Stine Knutsen."
-                classes="about-portrait-image"
-              />
-              <figcaption className="text-small">Bilde av meg!</figcaption>
-            </figure>
-            <div className="about-text">
-              <h1 className="case-title-heading">Om meg</h1>
-              <p className="about-lead">
-                Jeg er UX-designer og masterstudent i medie- og
-                interaksjonsdesign ved Universitetet i Bergen.
-              </p>
-              <div className="about-body">
-                <p>
-                  Jeg har alltid likt å lage ting og jobbe visuelt, og det var
-                  noe av det som først trakk meg mot design. Etter hvert ble jeg
-                  spesielt interessert i hvordan design kan gjøre teknologi
-                  enklere å forstå og bruke.
-                </p>
-                <p>
-                  Jeg har alltid likt å lage ting og jobbe visuelt, og har vært
-                  innom litt av hvert, fra strikking og maling til grafisk
-                  design. Da jeg begynte på Medie- og interaksjonsdesign ved
-                  UiB, fikk jeg kombinert den kreative siden med interessen min
-                  for teknologi og mennesker. Gjennom bacheloren og nå masteren
-                  har jeg jobbet med alt fra visuell design og interaksjon til
-                  brukerinnsikt, brukertesting og konseptutvikling.
-                </p>
-                <p>
-                  Det jeg liker best med UX er punktet der man begynner å se
-                  muligheter i det man har lært gjennom brukerinnsikt. Jeg liker
-                  å utforske ulike retninger, prøve ut ideer og se hvordan
-                  innsikt kan endre løsningen underveis.
-                </p>
-              </div>
-            </div>
+        <div className="case-container about-hero">
+          <div className="about-text">
+            <h1 className="case-title-heading">Om meg</h1>
+            <p className="about-lead">
+              Jeg er UX-designer og masterstudent i medie- og interaksjonsdesign
+              ved Universitetet i Bergen.
+            </p>
+            <p className="about-body">
+              Jeg har alltid likt å lage ting og jobbe visuelt, og det var noe
+              av det som først trakk meg mot design. Etter hvert ble jeg
+              spesielt interessert i hvordan design kan gjøre teknologi enklere
+              å forstå og bruke.
+            </p>
           </div>
+          <figure className="about-portrait">
+            <ImageWithLoader
+              src="/om-meg/headshot.webp"
+              alt="Portrett av Stine Knutsen."
+              classes="about-portrait-image"
+            />
+          </figure>
         </div>
       </section>
 
+      <CaseBreak eyebrow="Det jeg liker best">
+        Punktet der man begynner å se muligheter i det man har lært gjennom
+        brukerinnsikt.
+      </CaseBreak>
+
+      <CaseChapter
+        id="veien-hit"
+        number="01"
+        title="Veien hit"
+      >
+        <p>
+          Jeg har vært innom litt av hvert, fra strikking og maling til grafisk
+          design. Da jeg begynte på medie- og interaksjonsdesign ved UiB, fikk
+          jeg kombinert den kreative siden med interessen min for teknologi og
+          mennesker. Gjennom bacheloren og nå masteren har jeg jobbet med alt
+          fra visuell design og interaksjon til brukerinnsikt, brukertesting og
+          konseptutvikling.
+        </p>
+        <p>
+          Jeg liker å utforske ulike retninger, prøve ut ideer og se hvordan
+          innsikt kan endre løsningen underveis.
+        </p>
+      </CaseChapter>
+
       <CaseChapter
         id="bilder"
-        number="01"
+        number="02"
         title="Bilder"
         surface="soft"
         wide={

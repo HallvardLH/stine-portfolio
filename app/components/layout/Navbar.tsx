@@ -80,6 +80,13 @@ export default function Navbar({
           <div className="navbar-links-desktop">
             <Link
               onClick={() => setNavbarOpen(false)}
+              to="/#prosjekter"
+              className="navbar-link"
+            >
+              Portefølje
+            </Link>
+            <Link
+              onClick={() => setNavbarOpen(false)}
               to="/om-meg"
               className={
                 "navbar-link " +
@@ -121,6 +128,11 @@ export default function Navbar({
           <li>
             <Link onClick={() => setNavbarOpen(false)} to="/">
               <p className="text-medium">Hjem</p>
+            </Link>
+          </li>
+          <li>
+            <Link onClick={() => setNavbarOpen(false)} to="/#prosjekter">
+              <p className="text-medium">Portefølje</p>
             </Link>
           </li>
           <li>

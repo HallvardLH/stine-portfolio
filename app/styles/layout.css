@@ -31,9 +31,15 @@
   }
 }
 
-/* About page: the portrait in the margin column, the text beside it */
+/* About page: text beside a large portrait, then the chapters */
 .about-intro.case-section {
   padding: 2rem 0 4rem;
+}
+
+.about-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
 .about-text {
@@ -50,46 +56,44 @@
 }
 
 .about-body {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 40rem;
+  margin: 0;
+  max-width: 36rem;
+  line-height: 1.6;
 }
 
 .about-portrait {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  /* Under the text on mobile, in the margin from desktop */
-  order: 1;
 }
 
 .about-portrait-image {
+  display: block;
   width: 100%;
-  aspect-ratio: 390 / 370;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: center 25%;
+  object-position: center 30%;
 }
 
 @media only screen and (min-width: 1050px) {
   .about-intro.case-section {
-    padding: 5rem 0 6rem;
+    padding: 5rem 0 7rem;
   }
 
-  /* The portrait sits in the margin, next to the text */
-  .about .case-row {
-    align-items: start;
+  .about-hero {
+    display: grid;
+    grid-template-columns: 1fr 28rem;
+    gap: 5rem;
+    align-items: end;
   }
 
-  .about-portrait {
-    order: 0;
+  .about-lead {
+    font-size: 1.75rem;
+    line-height: 1.4;
+    max-width: 32rem;
   }
 }
 
 /* Home page: built from the same bands and margin column as the cases */
-.home .case-row > :nth-child(2),
-.about .case-row > :nth-child(2) {
+.home .case-row > :nth-child(2) {
   padding-top: 0;
 }
 
