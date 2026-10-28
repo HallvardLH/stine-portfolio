@@ -4,11 +4,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 0.75rem;
   border-radius: 100px;
 }
 
 .theme-switch-icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }

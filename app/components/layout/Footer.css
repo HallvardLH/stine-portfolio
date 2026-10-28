@@ -28,7 +28,7 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   margin: 0;
   padding-inline-start: 0;
 }
@@ -70,9 +70,9 @@
 
 @media only screen and (min-width: 1050px) {
   .footer-container {
-    margin-top: 3.5rem;
-    padding: 8.5rem 2rem 3rem !important;
-    gap: 5.125rem;
+    margin-top: 2.5rem;
+    padding: 6rem 2rem 2.5rem !important;
+    gap: 3.5rem;
   }
 
   .footer-main {
@@ -84,16 +84,16 @@
   .footer-content {
     flex-direction: row;
     justify-content: space-between;
-    width: min(52.9375rem, 100%);
+    width: min(40rem, 100%);
   }
 
   .navigation-list {
-    width: 10.8125rem;
+    width: 8rem;
   }
 
   .socials-icon {
-    height: 4.625rem;
-    width: 4.625rem;
+    height: 3rem;
+    width: 3rem;
   }
 
   .footer-credit-container {

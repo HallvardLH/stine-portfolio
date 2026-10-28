@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 1rem;
-  row-gap: 1.5rem;
+  row-gap: 1rem;
 }
 
 /* Values are regular weight, labels are medium */

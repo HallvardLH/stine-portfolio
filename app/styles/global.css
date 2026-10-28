@@ -1,4 +1,12 @@
 :root {
+  /* Type scale */
+  --font-size-display: 2rem;
+  --font-size-heading: 1.25rem;
+  --font-size-lead: 1.125rem;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+  --letter-spacing: 0.01em;
+
   --primary-color: #fefffa;
   --secondary-color: #181b09;
   --contrast-color: #6dff6a;
@@ -97,18 +105,24 @@ a:-webkit-any-link {
 
 .text-section-narrow {
   box-sizing: border-box;
-  max-width: 59.8125rem;
+  max-width: 46rem;
 }
 
 /* Desktop */
 @media only screen and (min-width: 1050px) {
-  body {
-    /* Header (91px) + the 56px gap below it */
-    padding-top: 9.1875rem;
+  :root {
+    --font-size-display: 2.5rem;
+    --font-size-heading: 1.5rem;
   }
 
+  body {
+    /* Header (72px) + the 40px gap below it */
+    padding-top: 7rem;
+  }
+
+  /* Content is centered with a max width of 70rem (1120px) */
   .gutter {
-    padding: 0 clamp(2rem, 9.4444vw, 8.5rem);
+    padding: 0 max(2rem, calc((100vw - 70rem) / 2));
   }
 
   .top-margin {
@@ -116,7 +130,7 @@ a:-webkit-any-link {
   }
 
   .text-section {
-    gap: 2rem;
-    padding: 0 1.5rem;
+    gap: 1.5rem;
+    padding: 0 1rem;
   }
 }

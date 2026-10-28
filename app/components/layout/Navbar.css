@@ -66,9 +66,8 @@
 
 .navbar-links-desktop {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 30rem;
+  gap: 1.5rem;
 }
 
 .navbar-links-desktop a {
@@ -83,7 +82,7 @@
 /* Desktop */
 @media only screen and (min-width: 1050px) {
   .navbar-container {
-    padding: 1.5rem 2rem !important;
-    height: 5.6875rem;
+    padding: 1.25rem 2rem !important;
+    height: 4.5rem;
   }
 }

@@ -31,7 +31,7 @@ export default function ProjectCard(props: ProjectCardProps) {
         {tags && tags.length > 0 && (
           <ul className="card-tags">
             {tags.map((tag) => (
-              <li key={tag} className="card-tag text-large card-text">
+              <li key={tag} className="card-tag text-medium card-text">
                 {tag}
               </li>
             ))}
