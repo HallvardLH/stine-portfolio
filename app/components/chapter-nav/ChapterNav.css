@@ -5,7 +5,7 @@
 }
 
 @media only screen and (min-width: 1400px) {
-  /* Covers the chapters, from the title to the last chapter's heading, which
+  /* Covers the chapters, from the title to the end of the last chapter, which
      sets its height. The case wrapper is the positioning context. */
   .chapter-nav-area {
     display: block;

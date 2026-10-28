@@ -21,9 +21,6 @@ interface Layout {
 
 // Space the fixed navbar takes up, so a chapter never ends up underneath it
 const SCROLL_OFFSET = 72;
-// Where the last step stops, measured from the top of the last chapter's margin
-// (half a line of the chapter number, so the dot sits beside it)
-const STOP_OFFSET = 8;
 // The reader is "in" a chapter once its start passes this share of the viewport
 const READING_LINE = 0.35;
 
@@ -33,9 +30,9 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // The area runs from where the article text starts to the last chapter's
-    // heading. The nav sticks inside it, so it stops with its last step beside
-    // that heading and scrolls away with the page from there.
+    // The area runs from where the article text starts to the end of the last
+    // chapter. The nav sticks inside it, so it stays in view through that
+    // chapter and never goes further down than its end.
     const update = () => {
       const area = areaRef.current;
       if (!area) return;
@@ -45,12 +42,9 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
         if (!el || i === 0) return areaTop;
         return el.getBoundingClientRect().top + window.scrollY;
       });
-      const last = document
-        .getElementById(chapters[chapters.length - 1].id)
-        ?.querySelector(".case-margin");
+      const last = document.getElementById(chapters[chapters.length - 1].id);
       if (last) {
-        const stop =
-          last.getBoundingClientRect().top + window.scrollY + STOP_OFFSET;
+        const stop = last.getBoundingClientRect().bottom + window.scrollY;
         area.style.height = `${Math.max(stop - areaTop, 0)}px`;
       }
       const line = window.scrollY + window.innerHeight * READING_LINE;
@@ -65,9 +59,11 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
       const through =
         active < lastIndex
           ? (line - tops[active]) / (tops[active + 1] - tops[active])
-          : 1;
+          : 0;
       const progress =
-        line < areaTop ? 0 : (active + Math.min(through, 1)) / lastIndex;
+        line < areaTop
+          ? 0
+          : Math.min((active + Math.min(through, 1)) / lastIndex, 1);
       // Chapters sit on different backgrounds, so the nav takes its colours
       // from whichever one is behind it right now
       const navRect = navRef.current?.getBoundingClientRect();
