@@ -21,6 +21,9 @@ interface Layout {
 
 // Space the fixed navbar takes up, so a chapter never ends up underneath it
 const SCROLL_OFFSET = 72;
+// Where the last step stops, measured from the top of the last chapter's margin
+// (half a line of the chapter number, so the dot sits beside it)
+const STOP_OFFSET = 8;
 // The reader is "in" a chapter once its start passes this share of the viewport
 const READING_LINE = 0.35;
 
@@ -30,37 +33,41 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // The area spans the article text, from where it starts to just before
-    // the footer. The nav sticks inside it, so it never leaves that stretch.
+    // The area runs from where the article text starts to the last chapter's
+    // heading. The nav sticks inside it, so it stops with its last step beside
+    // that heading and scrolls away with the page from there.
     const update = () => {
       const area = areaRef.current;
       if (!area) return;
-      const areaRect = area.getBoundingClientRect();
-      const areaTop = areaRect.top + window.scrollY;
+      const areaTop = area.getBoundingClientRect().top + window.scrollY;
       const tops = chapters.map(({ id }, i) => {
         const el = document.getElementById(id);
         if (!el || i === 0) return areaTop;
         return el.getBoundingClientRect().top + window.scrollY;
       });
-      // The reading line drifts down to the bottom edge as the page runs out,
-      // so the nav is completely filled once the reader reaches the end
-      const maxScroll =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const t = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 1;
-      const line =
-        window.scrollY +
-        window.innerHeight * (READING_LINE + (1 - READING_LINE) * t ** 2);
+      const last = document
+        .getElementById(chapters[chapters.length - 1].id)
+        ?.querySelector(".case-margin");
+      if (last) {
+        const stop =
+          last.getBoundingClientRect().top + window.scrollY + STOP_OFFSET;
+        area.style.height = `${Math.max(stop - areaTop, 0)}px`;
+      }
+      const line = window.scrollY + window.innerHeight * READING_LINE;
       let active = 0;
       tops.forEach((top, i) => {
         if (top <= line) active = i;
       });
-      // Chapters are spaced evenly in the nav, however long they are, and the
-      // last one gets the final stretch. So progress is measured chapter by
+      // Steps are spaced evenly in the nav, however long the chapters are, and
+      // the last step is the end of the bar. So progress is measured chapter by
       // chapter: how far through the current one, plus the ones before it.
-      const ends = [...tops.slice(1), areaTop + areaRect.height];
-      const through = (line - tops[active]) / (ends[active] - tops[active]);
+      const lastIndex = chapters.length - 1;
+      const through =
+        active < lastIndex
+          ? (line - tops[active]) / (tops[active + 1] - tops[active])
+          : 1;
       const progress =
-        line < areaTop ? 0 : (active + Math.min(through, 1)) / chapters.length;
+        line < areaTop ? 0 : (active + Math.min(through, 1)) / lastIndex;
       // Chapters sit on different backgrounds, so the nav takes its colours
       // from whichever one is behind it right now
       const navRect = navRef.current?.getBoundingClientRect();
@@ -132,7 +139,7 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
                   <li
                     key={chapter.id}
                     className={`chapter-nav-item chapter-nav-${state}`}
-                    style={{ top: `${(i / chapters.length) * 100}%` }}
+                    style={{ top: `${(i / (chapters.length - 1)) * 100}%` }}
                   >
                     <a
                       href={`#${chapter.id}`}

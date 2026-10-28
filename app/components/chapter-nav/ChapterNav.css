@@ -5,24 +5,21 @@
 }
 
 @media only screen and (min-width: 1400px) {
-  /* Covers the chapters, from the title to the end of the last one. The case
-     wrapper is the positioning context. */
+  /* Covers the chapters, from the title to the last chapter's heading, which
+     sets its height. The case wrapper is the positioning context. */
   .chapter-nav-area {
     display: block;
     position: absolute;
     top: 0;
-    /* Runs a little past the text on shorter screens, so that at the very end
-       the nav rests under the Tilbake button instead of sliding behind it */
-    bottom: calc(-1 * clamp(0px, 31rem - 50vh, 6rem));
     /* Same left edge as the Tilbake button */
     left: 1rem;
     width: 7.5rem;
     pointer-events: none;
   }
 
-  /* Half the screen tall, hanging right under the Tilbake button */
+  /* Half the screen tall, lower down on the screen than the Tilbake button */
   .chapter-nav {
-    --chapter-nav-top: 10rem;
+    --chapter-nav-top: max(10rem, 30vh);
     --chapter-nav-line: 4px;
     --chapter-nav-text: var(--text-color);
     --chapter-nav-ground: var(--primary-color);
