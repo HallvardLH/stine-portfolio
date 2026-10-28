@@ -1,0 +1,129 @@
+import "./ChapterNav.css";
+import { useEffect, useState } from "react";
+
+export interface Chapter {
+  /** id of the element where the chapter starts */
+  id: string;
+  label: string;
+}
+
+interface ChapterNavProps {
+  chapters: Chapter[];
+}
+
+interface Layout {
+  /** Where each chapter starts, as a fraction of the page height */
+  markers: number[];
+  /** How far the reader has come, as a fraction of the page height */
+  progress: number;
+  active: number;
+}
+
+// Space the fixed navbar takes up, so a chapter never ends up underneath it
+const SCROLL_OFFSET = 112;
+// The reader is "in" a chapter once its start passes this share of the viewport
+const READING_LINE = 0.35;
+
+const pad = (n: number) => String(n).padStart(2, "0");
+
+export default function ChapterNav({ chapters }: ChapterNavProps) {
+  const [layout, setLayout] = useState<Layout | null>(null);
+
+  useEffect(() => {
+    const starts = () =>
+      chapters.map(({ id }, i) => {
+        const el = document.getElementById(id);
+        if (!el || i === 0) return 0;
+        return el.getBoundingClientRect().top + window.scrollY;
+      });
+
+    const update = () => {
+      const tops = starts();
+      const pageHeight = document.documentElement.scrollHeight;
+      const line = window.scrollY + window.innerHeight * READING_LINE;
+      let active = 0;
+      tops.forEach((top, i) => {
+        if (top <= line) active = i;
+      });
+      setLayout({
+        markers: tops.map((top) => top / pageHeight),
+        progress: Math.min(line / pageHeight, 1),
+        active,
+      });
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    // Images and fonts change the page height after the first render
+    const observer = new ResizeObserver(update);
+    observer.observe(document.body);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      observer.disconnect();
+    };
+  }, [chapters]);
+
+  // Rendered only after mount: positions depend on the real page layout
+  if (!layout) return null;
+
+  const goTo = (event: React.MouseEvent, index: number) => {
+    event.preventDefault();
+    const el = document.getElementById(chapters[index].id);
+    if (!el) return;
+    const top =
+      index === 0
+        ? 0
+        : el.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+  };
+
+  return (
+    <nav className="chapter-nav" aria-label="Kapitler">
+      <div className="chapter-nav-track" aria-hidden="true">
+        <div
+          className="chapter-nav-fill"
+          style={{ height: `${layout.progress * 100}%` }}
+        />
+      </div>
+      <ol className="chapter-nav-list">
+        {chapters.map((chapter, i) => {
+          const state =
+            i < layout.active
+              ? "done"
+              : i === layout.active
+                ? "active"
+                : "todo";
+          return (
+            <li
+              key={chapter.id}
+              className={`chapter-nav-item chapter-nav-${state}`}
+              style={{ top: `${layout.markers[i] * 100}%` }}
+            >
+              <a
+                href={`#${chapter.id}`}
+                className="chapter-nav-link"
+                aria-current={state === "active" ? "step" : undefined}
+                aria-label={chapter.label}
+                title={chapter.label}
+                onClick={(event) => goTo(event, i)}
+              >
+                <span className="chapter-nav-dot" />
+                <span className="chapter-nav-label">
+                  {pad(i)}
+                  {state === "active" && (
+                    <span className="chapter-nav-name">{chapter.label}</span>
+                  )}
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
+}

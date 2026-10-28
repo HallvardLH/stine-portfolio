@@ -1,0 +1,108 @@
+/* Vertical chapter progress on the left edge. Flat on purpose: no borders,
+   shadows or pills. Passed steps use the accent colour. */
+.chapter-nav {
+  display: none;
+}
+
+@media only screen and (min-width: 1400px) {
+  .chapter-nav {
+    --chapter-nav-top: 12rem;
+    --chapter-nav-bottom: 1.5rem;
+    --chapter-nav-line: 4px;
+
+    display: block;
+    position: fixed;
+    z-index: 900;
+    top: var(--chapter-nav-top);
+    bottom: var(--chapter-nav-bottom);
+    left: 0.75rem;
+    width: 7.75rem;
+    pointer-events: none;
+  }
+
+  .chapter-nav-track {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0.5rem;
+    width: var(--chapter-nav-line);
+    border-radius: 2px;
+    background-color: color-mix(in srgb, var(--text-color) 18%, transparent);
+  }
+
+  /* Sits inside the track, so it only needs to fill it from the top */
+  .chapter-nav-fill {
+    width: 100%;
+    border-radius: 2px;
+    background-color: var(--contrast-color);
+  }
+
+  .chapter-nav-list {
+    all: unset;
+    display: block;
+  }
+
+  .chapter-nav-item {
+    position: absolute;
+    left: 0;
+    height: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .chapter-nav-link {
+    all: unset;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    cursor: pointer;
+    pointer-events: auto;
+    color: var(--text-color);
+  }
+
+  .chapter-nav-link:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
+  }
+
+  .chapter-nav-dot {
+    flex-shrink: 0;
+    width: 0.75rem;
+    height: 0.75rem;
+    /* Centre the dot on the line: 0.5rem offset + half the line width */
+    margin-left: calc(0.5rem + var(--chapter-nav-line) / 2 - 0.375rem);
+    border-radius: 50%;
+    background-color: var(--contrast-color);
+  }
+
+  .chapter-nav-todo .chapter-nav-dot {
+    background-color: color-mix(in srgb, var(--text-color) 35%, transparent);
+  }
+
+  .chapter-nav-active .chapter-nav-dot {
+    width: 1rem;
+    height: 1rem;
+    margin-left: calc(0.5rem + var(--chapter-nav-line) / 2 - 0.5rem);
+  }
+
+  .chapter-nav-label {
+    display: flex;
+    gap: 0.5rem;
+    font-size: var(--font-size-small);
+    line-height: 1.2;
+    white-space: nowrap;
+    opacity: 0.7;
+  }
+
+  .chapter-nav-active .chapter-nav-label {
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    opacity: 1;
+  }
+
+  .chapter-nav-link:hover .chapter-nav-label {
+    opacity: 1;
+  }
+}

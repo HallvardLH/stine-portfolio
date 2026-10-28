@@ -7,6 +7,15 @@ import TwoImages from "~/components/project-sections/TwoImages";
 import { Quote } from "~/components/project-sections/Quote";
 import { StandaloneImage } from "~/components/project-sections/StandaloneImage";
 import { MdOutlineOpenInNew } from "react-icons/md";
+import ChapterNav, { type Chapter } from "~/components/chapter-nav/ChapterNav";
+
+const chapters: Chapter[] = [
+  { id: "intro", label: "Intro" },
+  { id: "bakgrunn", label: "Bakgrunn" },
+  { id: "innsikt", label: "Innsikt" },
+  { id: "losning", label: "Løsning" },
+  { id: "resultat", label: "Resultat" },
+];
 
 export const meta: MetaFunction = () => {
   return [
@@ -22,12 +31,15 @@ export const meta: MetaFunction = () => {
 export default function ProjectsLibaryRoute() {
   return (
     <main>
+      <ChapterNav chapters={chapters} />
       <CoverImage thumbnail={thumbnails.finn} />
       <div className="gutter project-section">
         <StandaloneParagraph
           textSection={
             <>
-              <h1 className="heading-large">FINN Eiendom</h1>
+              <h1 id="intro" className="heading-large">
+                FINN Eiendom
+              </h1>
               <p className="text-medium">
                 Sommeren 2026 jobbet jeg som UX-intern hos FINN Eiendom (Vend).
                 Sammen med tre utviklere utviklet vi et påmeldingsskjema for
@@ -69,7 +81,9 @@ export default function ProjectsLibaryRoute() {
         <StandaloneParagraph
           textSection={
             <>
-              <h2 className="text-medium">Bakgrunn</h2>
+              <h2 id="bakgrunn" className="text-medium">
+                Bakgrunn
+              </h2>
               <p>
                 Påmelding til boligvisninger ble innført under COVID-19 for å
                 kontrollere antall besøkende og ha oversikt over hvem som hadde
@@ -96,7 +110,7 @@ export default function ProjectsLibaryRoute() {
         <StandaloneParagraph
           textSection={
             <>
-              <h2 className="text-medium">
+              <h2 id="innsikt" className="text-medium">
                 Innsiktsarbeid: kartlegging og Intervju
               </h2>
               <p>
@@ -179,7 +193,9 @@ export default function ProjectsLibaryRoute() {
           }
         />
 
-        <h2 className="heading">Løsningen</h2>
+        <h2 id="losning" className="heading">
+          Løsningen
+        </h2>
 
         <StandaloneParagraph
           textSection={
@@ -355,7 +371,9 @@ export default function ProjectsLibaryRoute() {
         <StandaloneParagraph
           textSection={
             <>
-              <h2 className="text-medium">Brukertesting</h2>
+              <h2 id="resultat" className="text-medium">
+                Brukertesting
+              </h2>
               <p>
                 Vi gjennomførte seks lavterskel brukertester av
                 påmeldingsskjemaet og Dashboardet. Fem tester gikk gjennom begge
