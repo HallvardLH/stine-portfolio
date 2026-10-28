@@ -74,15 +74,45 @@
   padding: 0.25rem 0.5rem;
 }
 
-.link-underlined {
-  /* text-decoration: underline; */
-  font-weight: bold;
+/* Logo and links in the same type as the rest of the site. The current page
+   gets the accent colour as an underline, like the email in the footer. */
+.navbar-logo {
+  font-size: var(--font-size-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.navbar-link {
+  font-size: var(--font-size-body);
+  font-weight: 500;
+}
+
+.navbar-links-desktop a.navbar-link-current {
+  text-decoration: underline;
+  text-decoration-color: var(--contrast-color);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.5rem;
+}
+
+.navbar-links-desktop a.navbar-link:hover:not(.navbar-link-current) {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--text-color) 40%, transparent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.5rem;
 }
 
 /* Desktop */
 @media only screen and (min-width: 1050px) {
+  /* Logo and links line up with the page content, and a thin rule marks the
+     edge of the header */
   .navbar-container {
-    padding: 1.25rem 2rem !important;
+    padding: 1.25rem max(2rem, calc((100vw - 70rem) / 2)) !important;
     height: 4.5rem;
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--text-color) 12%, transparent);
+  }
+
+  .navbar-links-desktop {
+    gap: 2rem;
   }
 }

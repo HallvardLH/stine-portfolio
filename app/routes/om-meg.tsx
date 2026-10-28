@@ -1,6 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
+import "~/components/case/Case.css";
 import ImageWithLoader from "~/components/general/ImageWithLoader";
-import Gallery from "~/components/project-sections/Gallery";
+import { Chapter as CaseChapter } from "~/components/case/Chapter";
+import { Figure, FigurePair } from "~/components/case/Figure";
 
 export const meta: MetaFunction = () => {
   return [
@@ -15,128 +17,137 @@ export const meta: MetaFunction = () => {
 
 export default function AboutRoute() {
   return (
-    <main>
-      <div className="gutter top-margin about-page">
-        <div className="about-intro">
-          <div className="about-text">
-            <h1 className="heading-large">Om meg</h1>
-            <p className="text-large">
-              Jeg er UX-designer og masterstudent i medie- og interaksjonsdesign
-              ved Universitetet i Bergen.
-            </p>
-            <div className="about-body">
-              <p>
-                Jeg har alltid likt å lage ting og jobbe visuelt, og det var noe
-                av det som først trakk meg mot design. Etter hvert ble jeg
-                spesielt interessert i hvordan design kan gjøre teknologi
-                enklere å forstå og bruke.
+    <main className="case about">
+      <section
+        id="intro"
+        className="case-section about-intro"
+        data-surface="light"
+      >
+        <div className="case-container">
+          <div className="case-row">
+            <figure className="about-portrait">
+              <ImageWithLoader
+                src="/om-meg/headshot.webp"
+                alt="A portrait of Stine Knutsen."
+                classes="about-portrait-image"
+              />
+              <figcaption className="text-small">Bilde av meg!</figcaption>
+            </figure>
+            <div className="about-text">
+              <h1 className="case-title-heading">Om meg</h1>
+              <p className="about-lead">
+                Jeg er UX-designer og masterstudent i medie- og
+                interaksjonsdesign ved Universitetet i Bergen.
               </p>
-              <p>
-                Jeg har alltid likt å lage ting og jobbe visuelt, og har vært
-                innom litt av hvert, fra strikking og maling til grafisk design.
-                Da jeg begynte på Medie- og interaksjonsdesign ved UiB, fikk jeg
-                kombinert den kreative siden med interessen min for teknologi og
-                mennesker. Gjennom bacheloren og nå masteren har jeg jobbet med
-                alt fra visuell design og interaksjon til brukerinnsikt,
-                brukertesting og konseptutvikling.
-              </p>
-              <p>
-                Det jeg liker best med UX er punktet der man begynner å se
-                muligheter i det man har lært gjennom brukerinnsikt. Jeg liker å
-                utforske ulike retninger, prøve ut ideer og se hvordan innsikt
-                kan endre løsningen underveis.
-              </p>
+              <div className="about-body">
+                <p>
+                  Jeg har alltid likt å lage ting og jobbe visuelt, og det var
+                  noe av det som først trakk meg mot design. Etter hvert ble jeg
+                  spesielt interessert i hvordan design kan gjøre teknologi
+                  enklere å forstå og bruke.
+                </p>
+                <p>
+                  Jeg har alltid likt å lage ting og jobbe visuelt, og har vært
+                  innom litt av hvert, fra strikking og maling til grafisk
+                  design. Da jeg begynte på Medie- og interaksjonsdesign ved
+                  UiB, fikk jeg kombinert den kreative siden med interessen min
+                  for teknologi og mennesker. Gjennom bacheloren og nå masteren
+                  har jeg jobbet med alt fra visuell design og interaksjon til
+                  brukerinnsikt, brukertesting og konseptutvikling.
+                </p>
+                <p>
+                  Det jeg liker best med UX er punktet der man begynner å se
+                  muligheter i det man har lært gjennom brukerinnsikt. Jeg liker
+                  å utforske ulike retninger, prøve ut ideer og se hvordan
+                  innsikt kan endre løsningen underveis.
+                </p>
+              </div>
             </div>
           </div>
-
-          <figure className="about-portrait">
-            <ImageWithLoader
-              src="/om-meg/headshot.webp"
-              alt="A portrait of Stine Knutsen."
-              classes="about-portrait-image"
-            />
-            <figcaption className="text-small">Bilde av meg!</figcaption>
-          </figure>
         </div>
+      </section>
 
-        <Gallery
-          images={[
-            {
-              src: "/om-meg/finn-presentasjon.webp",
-              aspectRatio: "556 / 370",
-              imageText: "Presentasjonen av sommerprosjektet hos FINN.",
-              altText: "",
-            },
-            {
-              src: "/om-meg/finn-teamet.webp",
-              aspectRatio: "556 / 370",
-              imageText: "Sommerteamet utenfor kontoret hos FINN!",
-              altText: "",
-            },
-            {
-              src: "/om-meg/innovasjonsdagen.webp",
-              aspectRatio: "556 / 370",
-              imageText:
-                "Våren 2026 hadde jeg ansvaret for å arrangere instituttets innovasjonsdag.",
-              altText: "Stine og Tuva åpner arrangementet.",
-            },
-            {
-              src: "/om-meg/innovasjonsdagen-publikum.webp",
-              aspectRatio: "556 / 370",
-              imageText:
-                "Med rekordmange publikumere, pitcher og deltakende emner ble dagen en stor suksess!",
-              altText: "Publikum og jury ser på pitching.",
-            },
-            {
-              src: "/om-meg/spn.webp",
-              aspectRatio: "1168 / 424",
-              imageText:
-                "Studentteamet hos Sparebanken Norge sommeren 2025 under presentasjonen av den nye Barnebanken.",
-              altText: "Studentteamet hos Sparebanken Norge.",
-              fullwidth: true,
-            },
-            {
-              src: "/om-meg/kickoff.webp",
-              aspectRatio: "556 / 370",
-              imageText: "Pitchekonkurranse hos GründerCampus - som vi vant!",
-              altText:
-                "Stine og Pernille på pitchekonkurranse hos GründerCampus.",
-            },
-            {
-              src: "/om-meg/innovasjon.webp",
-              aspectRatio: "556 / 370",
-              imageText:
-                "Innovasjonsuken Opp sitt Kickoff der vi fikk presentere OurSpace.",
-              altText: "Stine har ordet på Innovasjonsuken Opp",
-            },
-            {
-              src: "/om-meg/grundercampus.webp",
-              aspectRatio: "1168 / 424",
-              imageText:
-                "Innovasjonsdagen 2025 - gruppen vant MVP-prisen for beste bachelorprosjekt!",
-              altText: "Bachelorgruppen med diplom, sammen med juryen.",
-              fullwidth: true,
-            },
-            {
-              src: "/om-meg/black-cat.webp",
-              aspectRatio: "556 / 451",
-              imageText:
-                "Eksamensoppgaven min i kunst og visuelle virkemidler fra videregående!",
-              altText:
-                "A painting that Stine Knutsen has made, displaying abstract people and animnals in bright colors.",
-            },
-            {
-              src: "/om-meg/gruppebilde.webp",
-              aspectRatio: "556 / 643",
-              imageText:
-                "Jeg og gruppen min under en kreativ øvelse da vi jobbet med OurSpace, høsten 2023.",
-              altText:
-                "Stine and her project-group doing a creative exercise while working on the OurSpace design.",
-            },
-          ]}
-          cropped
-        />
-      </div>
+      <CaseChapter
+        id="bilder"
+        number="01"
+        title="Bilder"
+        surface="soft"
+        wide={
+          <>
+            <FigurePair
+              first={{
+                src: "/om-meg/finn-presentasjon.webp",
+                caption: "Presentasjonen av sommerprosjektet hos FINN.",
+                aspectRatio: "556 / 370",
+              }}
+              second={{
+                src: "/om-meg/finn-teamet.webp",
+                caption: "Sommerteamet utenfor kontoret hos FINN!",
+                aspectRatio: "556 / 370",
+              }}
+            />
+            <FigurePair
+              first={{
+                src: "/om-meg/innovasjonsdagen.webp",
+                alt: "Stine og Tuva åpner arrangementet.",
+                caption:
+                  "Våren 2026 hadde jeg ansvaret for å arrangere instituttets innovasjonsdag.",
+                aspectRatio: "556 / 370",
+              }}
+              second={{
+                src: "/om-meg/innovasjonsdagen-publikum.webp",
+                alt: "Publikum og jury ser på pitching.",
+                caption:
+                  "Med rekordmange publikumere, pitcher og deltakende emner ble dagen en stor suksess!",
+                aspectRatio: "556 / 370",
+              }}
+            />
+            <Figure
+              src="/om-meg/spn.webp"
+              alt="Studentteamet hos Sparebanken Norge."
+              caption="Studentteamet hos Sparebanken Norge sommeren 2025 under presentasjonen av den nye Barnebanken."
+              aspectRatio="1168 / 424"
+            />
+            <FigurePair
+              first={{
+                src: "/om-meg/kickoff.webp",
+                alt: "Stine og Pernille på pitchekonkurranse hos GründerCampus.",
+                caption: "Pitchekonkurranse hos GründerCampus - som vi vant!",
+                aspectRatio: "556 / 370",
+              }}
+              second={{
+                src: "/om-meg/innovasjon.webp",
+                alt: "Stine har ordet på Innovasjonsuken Opp",
+                caption:
+                  "Innovasjonsuken Opp sitt Kickoff der vi fikk presentere OurSpace.",
+                aspectRatio: "556 / 370",
+              }}
+            />
+            <Figure
+              src="/om-meg/grundercampus.webp"
+              alt="Bachelorgruppen med diplom, sammen med juryen."
+              caption="Innovasjonsdagen 2025 - gruppen vant MVP-prisen for beste bachelorprosjekt!"
+              aspectRatio="1168 / 424"
+            />
+            <FigurePair
+              first={{
+                src: "/om-meg/black-cat.webp",
+                alt: "A painting that Stine Knutsen has made, displaying abstract people and animnals in bright colors.",
+                caption:
+                  "Eksamensoppgaven min i kunst og visuelle virkemidler fra videregående!",
+                aspectRatio: "556 / 451",
+              }}
+              second={{
+                src: "/om-meg/gruppebilde.webp",
+                alt: "Stine and her project-group doing a creative exercise while working on the OurSpace design.",
+                caption:
+                  "Jeg og gruppen min under en kreativ øvelse da vi jobbet med OurSpace, høsten 2023.",
+                aspectRatio: "556 / 643",
+              }}
+            />
+          </>
+        }
+      />
     </main>
   );
 }

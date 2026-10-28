@@ -69,46 +69,28 @@ export default function Navbar({
       className={"navbar-container " + (colorScheme ? colorScheme : "")}
     >
       <div className="navbar-top">
-        <Link to="/">
-          {isLargeScreen ? (
-            <h1 className="heading no-link">Stine Knutsen</h1>
-          ) : (
-            <h1 className="heading no-link">Stine Knutsen</h1>
-          )}
+        <Link
+          to="/"
+          className="navbar-logo"
+          onClick={() => setNavbarOpen(false)}
+        >
+          Stine Knutsen
         </Link>
         {isLargeScreen ? (
           <div className="navbar-links-desktop">
-            <Link onClick={() => setNavbarOpen(false)} to="/#prosjekter">
-              <p
-                className={
-                  "text-medium " +
-                  (location.pathname === "/portef%C3%B8lje"
-                    ? "link-underlined"
-                    : "")
-                }
-              >
-                Portefølje
-              </p>
+            <Link
+              onClick={() => setNavbarOpen(false)}
+              to="/om-meg"
+              className={
+                "navbar-link " +
+                (location.pathname === "/om-meg" ? "navbar-link-current" : "")
+              }
+              aria-current={
+                location.pathname === "/om-meg" ? "page" : undefined
+              }
+            >
+              Om meg
             </Link>
-            <Link onClick={() => setNavbarOpen(false)} to="/om-meg">
-              <p
-                className={
-                  "text-medium " +
-                  (location.pathname === "/om-meg" ? "link-underlined" : "")
-                }
-              >
-                Om meg
-              </p>
-            </Link>
-            {/* <Link onClick={() => setNavbarOpen(false)} to="/kontakt">
-              <p
-                className={
-                  location.pathname === "/kontakt" ? "link-underlined" : ""
-                }
-              >
-                Kontakt
-              </p>
-            </Link> */}
             <ThemeSwitch
               onThemeSwitch={onThemeSwitch}
               currentTheme={currentTheme}
@@ -139,11 +121,6 @@ export default function Navbar({
           <li>
             <Link onClick={() => setNavbarOpen(false)} to="/">
               <p className="text-medium">Hjem</p>
-            </Link>
-          </li>
-          <li>
-            <Link onClick={() => setNavbarOpen(false)} to="/#prosjekter">
-              <p className="text-medium">Portefølje</p>
             </Link>
           </li>
           <li>
