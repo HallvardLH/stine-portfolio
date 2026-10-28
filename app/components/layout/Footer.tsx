@@ -1,52 +1,62 @@
 import "./Footer.css";
 import { Link } from "@remix-run/react";
-import Contact from "./Contact";
 
 export default function Footer() {
   return (
-    <footer className="footer-container">
-      <div className="footer-main">
-        <div className="footer-content">
-          <nav>
-            <ul className="navigation-list">
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-row">
+          <p className="footer-margin">Kontakt</p>
+          <div className="footer-contact">
+            <h2 className="footer-title">Jeg hører gjerne fra deg!</h2>
+            <a className="footer-email" href="mailto:stinenknutsen@gmail.com">
+              stinenknutsen@gmail.com
+            </a>
+            <dl className="footer-details">
+              <div>
+                <dt>Telefon</dt>
+                <dd>
+                  <a href="tel:+4790089605">+ 47 900 89 605</a>
+                </dd>
+              </div>
+              <div>
+                <dt>LinkedIn</dt>
+                <dd>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.linkedin.com/in/stine-knutsen-77b311294"
+                  >
+                    Stine Knutsen ↗
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <nav aria-label="Bunn">
+            <ul className="footer-nav">
               <li>
-                <Link to="/#prosjekter">
-                  <p className="text-large">Portefølje</p>
-                </Link>
+                <Link to="/#prosjekter">Portefølje</Link>
               </li>
               <li>
-                <Link to="/om-meg">
-                  <p className="text-large">Om meg</p>
-                </Link>
+                <Link to="/om-meg">Om meg</Link>
               </li>
             </ul>
           </nav>
-          <Contact textClassName="text-large" />
+          <p className="footer-credit">
+            Designet av Stine Knutsen · Utviklet av{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://hallvardlh.netlify.app/"
+            >
+              Hallvard Lygre Hetlelid
+            </a>
+          </p>
         </div>
-
-        <div className="socials-container">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.linkedin.com/in/stine-knutsen-77b311294"
-          >
-            <img src={"/icons/linkedin.svg"} alt="" className="socials-icon" />
-          </a>
-        </div>
-      </div>
-
-      <div className="footer-credit-container">
-        <p className="text-small">Designet av Stine Knutsen</p>
-        <p className="text-small">
-          Utviklet av{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://hallvardlh.netlify.app/"
-          >
-            Hallvard Lygre Hetlelid
-          </a>
-        </p>
       </div>
     </footer>
   );
