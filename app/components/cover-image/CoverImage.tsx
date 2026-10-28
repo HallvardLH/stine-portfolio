@@ -31,7 +31,7 @@ export default function CoverImage({
         <Button label="Tilbake" arrowDirection="left" />
       </Link>
       <div
-        className={`cover-stage ${thumbnail.foregroundAlign === "left" ? "align-left" : ""}`}
+        className={`cover-stage ${thumbnail.foregroundAlign === "left" ? "align-left" : ""} ${thumbnail.corner?.position === "bottom-right" ? "corner-below" : ""}`}
         style={{
           backgroundColor,
           backgroundImage: backgroundSrc ? `url(${backgroundSrc})` : undefined,

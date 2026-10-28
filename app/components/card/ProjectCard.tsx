@@ -43,7 +43,7 @@ export default function ProjectCard(props: ProjectCardProps) {
         <img
           src={thumbnail.foregroundSrc}
           alt=""
-          className={`card-image ${thumbnail.foregroundAlign === "left" ? "align-left" : ""}`}
+          className={`card-image ${thumbnail.foregroundAlign === "left" ? "align-left" : ""} ${thumbnail.corner?.position === "bottom-right" ? "corner-below" : ""}`}
           decoding="async"
         />
         {thumbnail.corner && (

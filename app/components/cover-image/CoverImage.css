@@ -19,6 +19,8 @@
    object-fit keeps the proportions even when only one dimension is limited. */
 .cover-image {
   display: block;
+  width: auto;
+  height: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
@@ -59,6 +61,11 @@
   font-weight: 500 !important;
 }
 
+/* A logo in the bottom corner gets its own strip below the mockups */
+.cover-stage.corner-below {
+  padding-bottom: 5rem;
+}
+
 /* Mockups on the left, in line with the page content, with room on the right */
 .align-left .cover-image {
   object-position: left center;
@@ -66,6 +73,10 @@
 
 /* Desktop */
 @media only screen and (min-width: 1050px) {
+  .cover-stage.corner-below {
+    padding-bottom: 6rem;
+  }
+
   .cover-stage.align-left {
     justify-content: flex-start;
     padding-left: max(2rem, calc((100% - 70rem) / 2));

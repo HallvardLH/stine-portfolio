@@ -40,7 +40,6 @@
 .card-corner {
   position: absolute;
   right: 4%;
-  min-width: 1.5rem;
   height: auto;
 }
 
@@ -49,7 +48,13 @@
 }
 
 .card-corner-bottom-right {
-  bottom: 7%;
+  bottom: 5%;
+}
+
+/* A logo in the bottom corner gets its own strip: the mockups sit at the top
+   instead of being centred, so the logo never lands on top of them. */
+.card-image.corner-below {
+  object-position: center top;
 }
 
 .top-info-container {
