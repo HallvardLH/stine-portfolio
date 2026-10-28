@@ -57,11 +57,12 @@
   flex-shrink: 0;
 }
 
+/* The text itself runs from the left, in a block that sits in the middle */
 .image-lightbox-caption {
-  max-width: 60rem;
+  max-width: 48rem;
   color: #fdfff9;
   font-size: var(--font-size-body);
-  text-align: center;
+  text-align: left;
 }
 
 /* Fits the screen but is never enlarged past its own pixels, so it stays sharp.
