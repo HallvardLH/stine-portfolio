@@ -9,7 +9,6 @@
 
 .hero {
   padding: 1rem;
-  max-width: 50rem;
 }
 
 .card-image-container {
@@ -47,4 +46,13 @@
 .card-tag {
   border: 1px solid var(--card-text-color);
   padding: 0.25rem 0.5rem;
+}
+
+/* On desktop the hero card stays full width, but its image is cropped so the
+   whole card fits in the viewport instead of being taller than the screen. */
+@media only screen and (min-width: 1050px) {
+  .hero .card-image-container {
+    aspect-ratio: auto;
+    height: clamp(16rem, calc(100vh - 20rem), 37rem);
+  }
 }
