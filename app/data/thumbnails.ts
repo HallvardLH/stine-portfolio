@@ -6,6 +6,8 @@ export interface Thumbnail {
   foregroundSize: { width: number; height: number };
   backgroundColor?: string;
   backgroundSrc?: string;
+  // Keep the mockups to the left, leaving the right side to the background
+  foregroundAlign?: "center" | "left";
   // Which part of the background image stays in view when it is cropped
   backgroundPosition?: string;
   // Small logo pinned to a corner instead of scaling with the mockups.
@@ -23,6 +25,7 @@ export const thumbnails = {
     foregroundSize: { width: 775, height: 517 },
     backgroundSrc: "/finn-eiendom/thumbnail-bg.webp",
     backgroundPosition: "center bottom",
+    foregroundAlign: "left",
     corner: {
       src: "/finn-eiendom/thumbnail-logo.svg",
       width: 107,

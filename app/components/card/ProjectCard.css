@@ -32,6 +32,11 @@
   object-fit: contain;
 }
 
+.card-image.align-left {
+  padding-right: 34%;
+  object-position: left center;
+}
+
 .card-corner {
   position: absolute;
   right: 4%;

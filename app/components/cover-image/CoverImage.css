@@ -15,12 +15,13 @@
   background-position: center;
 }
 
-/* Never larger than the image's own size, and shrinks to fit the stage */
+/* Never larger than the image's own size, and shrinks to fit the stage.
+   object-fit keeps the proportions even when only one dimension is limited. */
 .cover-image {
   display: block;
   max-width: 100%;
   max-height: 100%;
-  height: auto;
+  object-fit: contain;
 }
 
 .cover-corner {
@@ -58,8 +59,19 @@
   font-weight: 500 !important;
 }
 
+/* Mockups on the left, in line with the page content, with room on the right */
+.align-left .cover-image {
+  object-position: left center;
+}
+
 /* Desktop */
 @media only screen and (min-width: 1050px) {
+  .cover-stage.align-left {
+    justify-content: flex-start;
+    padding-left: max(2rem, calc((100% - 70rem) / 2));
+    padding-right: 34%;
+  }
+
   .cover-image-container {
     margin-bottom: 3rem;
   }
