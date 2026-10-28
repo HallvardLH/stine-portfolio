@@ -1,6 +1,7 @@
 /* Vertical chapter progress on the left edge. Flat on purpose: no borders,
    shadows or pills. Passed steps use the accent colour. */
-.chapter-nav-area {
+.chapter-nav-area,
+.chapter-margin {
   display: none;
 }
 
@@ -8,6 +9,41 @@
   /* The article is the positioning context for the nav's area */
   .project-section:has(> .chapter-nav-area) {
     position: relative;
+  }
+
+  /* The text moves out to the right, so each chapter gets a label in the
+     margin beside where it starts */
+  .project-section:has(> .chapter-nav-area) > .standalone-paragraph,
+  .project-section:has(> .chapter-nav-area) > h2 {
+    margin-left: 22.5rem;
+  }
+
+  .chapter-margin {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: max(2rem, calc((100vw - 70rem) / 2));
+    width: 20rem;
+    pointer-events: none;
+  }
+
+  .chapter-margin-label {
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .chapter-margin-number {
+    font-size: var(--font-size-small);
+    opacity: 0.7;
+  }
+
+  .chapter-margin-title {
+    font-size: var(--font-size-heading);
+    font-weight: 700;
   }
 
   /* Covers the article text, from its start to just before the footer */
@@ -124,6 +160,18 @@
     font-size: var(--font-size-body);
     font-weight: 500;
     opacity: 1;
+  }
+
+  /* The margin label already names the chapter being read, so the other
+     names only show while the nav is hovered */
+  .chapter-nav-todo .chapter-nav-label,
+  .chapter-nav-done .chapter-nav-label {
+    opacity: 0;
+  }
+
+  .chapter-nav:has(.chapter-nav-link:hover) .chapter-nav-label,
+  .chapter-nav-link:focus-visible .chapter-nav-label {
+    opacity: 0.7;
   }
 
   .chapter-nav-link:hover .chapter-nav-label {

@@ -12,6 +12,8 @@ interface ChapterNavProps {
 }
 
 interface Layout {
+  /** Where each chapter starts, in px from the top of the article text */
+  offsets: number[];
   /** How far the reader has come, as a fraction of the nav's height */
   progress: number;
   active: number;
@@ -21,6 +23,8 @@ interface Layout {
 const SCROLL_OFFSET = 112;
 // The reader is "in" a chapter once its start passes this share of the viewport
 const READING_LINE = 0.35;
+
+const pad = (n: number) => String(n).padStart(2, "0");
 
 export default function ChapterNav({ chapters }: ChapterNavProps) {
   const [layout, setLayout] = useState<Layout | null>(null);
@@ -58,7 +62,11 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
       const through = (line - tops[active]) / (ends[active] - tops[active]);
       const progress =
         line < areaTop ? 0 : (active + Math.min(through, 1)) / chapters.length;
-      setLayout({ progress, active });
+      setLayout({
+        offsets: tops.map((top) => top - areaTop),
+        progress,
+        active,
+      });
     };
 
     update();
@@ -86,46 +94,64 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
   };
 
   return (
-    <div className="chapter-nav-area" ref={areaRef}>
-      {layout && (
-        <nav className="chapter-nav" aria-label="Kapitler">
-          <div className="chapter-nav-track" aria-hidden="true">
-            <div
-              className="chapter-nav-fill"
-              style={{ height: `${layout.progress * 100}%` }}
-            />
-          </div>
-          <ol className="chapter-nav-list">
-            {chapters.map((chapter, i) => {
-              const state =
-                i < layout.active
-                  ? "done"
-                  : i === layout.active
-                    ? "active"
-                    : "todo";
-              return (
-                <li
+    <>
+      <div className="chapter-margin" aria-hidden="true">
+        {layout &&
+          chapters.map(
+            (chapter, i) =>
+              i > 0 && (
+                <div
                   key={chapter.id}
-                  className={`chapter-nav-item chapter-nav-${state}`}
-                  style={{ top: `${(i / chapters.length) * 100}%` }}
+                  className="chapter-margin-label"
+                  style={{ top: layout.offsets[i] }}
                 >
-                  <a
-                    href={`#${chapter.id}`}
-                    className="chapter-nav-link"
-                    aria-current={state === "active" ? "step" : undefined}
-                    aria-label={chapter.label}
-                    title={chapter.label}
-                    onClick={(event) => goTo(event, i)}
+                  <span className="chapter-margin-number">{pad(i)}</span>
+                  <span className="chapter-margin-title">{chapter.label}</span>
+                </div>
+              ),
+          )}
+      </div>
+      <div className="chapter-nav-area" ref={areaRef}>
+        {layout && (
+          <nav className="chapter-nav" aria-label="Kapitler">
+            <div className="chapter-nav-track" aria-hidden="true">
+              <div
+                className="chapter-nav-fill"
+                style={{ height: `${layout.progress * 100}%` }}
+              />
+            </div>
+            <ol className="chapter-nav-list">
+              {chapters.map((chapter, i) => {
+                const state =
+                  i < layout.active
+                    ? "done"
+                    : i === layout.active
+                      ? "active"
+                      : "todo";
+                return (
+                  <li
+                    key={chapter.id}
+                    className={`chapter-nav-item chapter-nav-${state}`}
+                    style={{ top: `${(i / chapters.length) * 100}%` }}
                   >
-                    <span className="chapter-nav-dot" />
-                    <span className="chapter-nav-label">{chapter.label}</span>
-                  </a>
-                </li>
-              );
-            })}
-          </ol>
-        </nav>
-      )}
-    </div>
+                    <a
+                      href={`#${chapter.id}`}
+                      className="chapter-nav-link"
+                      aria-current={state === "active" ? "step" : undefined}
+                      aria-label={chapter.label}
+                      title={chapter.label}
+                      onClick={(event) => goTo(event, i)}
+                    >
+                      <span className="chapter-nav-dot" />
+                      <span className="chapter-nav-label">{chapter.label}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
+        )}
+      </div>
+    </>
   );
 }
