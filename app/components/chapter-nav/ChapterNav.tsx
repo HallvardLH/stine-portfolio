@@ -12,9 +12,7 @@ interface ChapterNavProps {
 }
 
 interface Layout {
-  /** Where each chapter starts, as a fraction of the article height */
-  markers: number[];
-  /** How far the reader has come, as a fraction of the article height */
+  /** How far the reader has come, as a fraction of the nav's height */
   progress: number;
   active: number;
 }
@@ -53,12 +51,14 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
       tops.forEach((top, i) => {
         if (top <= line) active = i;
       });
-      const clamp = (n: number) => Math.min(Math.max(n, 0), 1);
-      setLayout({
-        markers: tops.map((top) => clamp((top - areaTop) / areaRect.height)),
-        progress: clamp((line - areaTop) / areaRect.height),
-        active,
-      });
+      // Chapters are spaced evenly in the nav, however long they are, and the
+      // last one gets the final stretch. So progress is measured chapter by
+      // chapter: how far through the current one, plus the ones before it.
+      const ends = [...tops.slice(1), areaTop + areaRect.height];
+      const through = (line - tops[active]) / (ends[active] - tops[active]);
+      const progress =
+        line < areaTop ? 0 : (active + Math.min(through, 1)) / chapters.length;
+      setLayout({ progress, active });
     };
 
     update();
@@ -107,7 +107,7 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
                 <li
                   key={chapter.id}
                   className={`chapter-nav-item chapter-nav-${state}`}
-                  style={{ top: `${layout.markers[i] * 100}%` }}
+                  style={{ top: `${(i / chapters.length) * 100}%` }}
                 >
                   <a
                     href={`#${chapter.id}`}

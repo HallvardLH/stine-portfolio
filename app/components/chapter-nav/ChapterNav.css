@@ -15,16 +15,21 @@
     display: block;
     position: absolute;
     top: 0;
-    bottom: 0;
-    left: 0.75rem;
-    width: 7.75rem;
+    /* Runs a little past the text on shorter screens, so that at the very end
+       the nav rests under the Tilbake button instead of sliding behind it */
+    bottom: calc(-1 * clamp(0px, 34rem - 50vh, 6rem));
+    /* Same left edge as the Tilbake button */
+    left: 1rem;
+    width: 7.5rem;
     pointer-events: none;
   }
 
-  /* Half the screen tall, centred while reading and clear of Tilbake */
+  /* Half the screen tall, hanging right under the Tilbake button */
   .chapter-nav {
-    --chapter-nav-top: max(25vh, 12rem);
+    --chapter-nav-top: 13rem;
     --chapter-nav-line: 4px;
+    /* Dots and line are centred on this distance from the left edge */
+    --chapter-nav-center: 0.5rem;
 
     display: block;
     position: sticky;
@@ -35,7 +40,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0.5rem;
+    left: calc(var(--chapter-nav-center) - var(--chapter-nav-line) / 2);
     width: var(--chapter-nav-line);
     border-radius: 2px;
     background-color: color-mix(
@@ -86,8 +91,7 @@
     flex-shrink: 0;
     width: 0.75rem;
     height: 0.75rem;
-    /* Centre the dot on the line: 0.5rem offset + half the line width */
-    margin-left: calc(0.5rem + var(--chapter-nav-line) / 2 - 0.375rem);
+    margin-left: calc(var(--chapter-nav-center) - 0.375rem);
     border-radius: 50%;
     background-color: var(--contrast-color);
   }
@@ -103,7 +107,7 @@
   .chapter-nav-active .chapter-nav-dot {
     width: 1rem;
     height: 1rem;
-    margin-left: calc(0.5rem + var(--chapter-nav-line) / 2 - 0.5rem);
+    margin-left: calc(var(--chapter-nav-center) - 0.5rem);
   }
 
   .chapter-nav-label {
