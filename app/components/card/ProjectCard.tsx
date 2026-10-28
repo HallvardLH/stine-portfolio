@@ -1,6 +1,7 @@
 import "./ProjectCard.css";
 import { Link } from "@remix-run/react";
 import type { Thumbnail } from "~/data/thumbnails";
+import ThumbnailImage from "./ThumbnailImage";
 
 interface ProjectCardProps {
   thumbnail: Thumbnail;
@@ -30,32 +31,7 @@ export default function ProjectCard(props: ProjectCardProps) {
         <p className="text-small card-text">{date}</p>
         <p className="text-small card-text">{platformInfo}</p>
       </div>
-      <div
-        className="card-image-container"
-        style={{
-          backgroundColor: thumbnail.backgroundColor,
-          backgroundImage: thumbnail.backgroundSrc
-            ? `url(${thumbnail.backgroundSrc})`
-            : undefined,
-          backgroundPosition: thumbnail.backgroundPosition,
-        }}
-      >
-        <img
-          src={thumbnail.foregroundSrc}
-          alt=""
-          className={`card-image ${thumbnail.foregroundAlign === "left" ? "align-left" : ""} ${thumbnail.corner?.position === "bottom-right" ? "corner-below" : ""}`}
-          decoding="async"
-        />
-        {thumbnail.corner && (
-          <img
-            src={thumbnail.corner.src}
-            alt=""
-            className={`card-corner card-corner-${thumbnail.corner.position}`}
-            style={{ width: `${(thumbnail.corner.width / 1120) * 100}%` }}
-            decoding="async"
-          />
-        )}
-      </div>
+      <ThumbnailImage thumbnail={thumbnail} />
       <div className="card-description-container">
         <h2 className="heading card-text">{title}</h2>
         <p className="text-large card-text">{description}</p>

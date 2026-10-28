@@ -12,23 +12,22 @@ interface ChapterNavProps {
 }
 
 interface Layout {
-  /** Where each chapter starts, in px from the top of the article text */
-  offsets: number[];
+  /** The kind of background the nav sits over, which sets its colours */
+  tone: string;
   /** How far the reader has come, as a fraction of the nav's height */
   progress: number;
   active: number;
 }
 
 // Space the fixed navbar takes up, so a chapter never ends up underneath it
-const SCROLL_OFFSET = 112;
+const SCROLL_OFFSET = 72;
 // The reader is "in" a chapter once its start passes this share of the viewport
 const READING_LINE = 0.35;
-
-const pad = (n: number) => String(n).padStart(2, "0");
 
 export default function ChapterNav({ chapters }: ChapterNavProps) {
   const [layout, setLayout] = useState<Layout | null>(null);
   const areaRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     // The area spans the article text, from where it starts to just before
@@ -62,8 +61,20 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
       const through = (line - tops[active]) / (ends[active] - tops[active]);
       const progress =
         line < areaTop ? 0 : (active + Math.min(through, 1)) / chapters.length;
+      // Chapters sit on different backgrounds, so the nav takes its colours
+      // from whichever one is behind it right now
+      const navRect = navRef.current?.getBoundingClientRect();
+      const probe = navRect
+        ? document.elementsFromPoint(
+            navRect.left + 8,
+            navRect.top + navRect.height / 2,
+          )
+        : [];
+      const surface = probe
+        .map((el) => el.closest<HTMLElement>("[data-surface]"))
+        .find(Boolean);
       setLayout({
-        offsets: tops.map((top) => top - areaTop),
+        tone: surface?.dataset.surface ?? "light",
         progress,
         active,
       });
@@ -95,25 +106,14 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
 
   return (
     <>
-      <div className="chapter-margin" aria-hidden="true">
-        {layout &&
-          chapters.map(
-            (chapter, i) =>
-              i > 0 && (
-                <div
-                  key={chapter.id}
-                  className="chapter-margin-label"
-                  style={{ top: layout.offsets[i] }}
-                >
-                  <span className="chapter-margin-number">{pad(i)}</span>
-                  <span className="chapter-margin-title">{chapter.label}</span>
-                </div>
-              ),
-          )}
-      </div>
       <div className="chapter-nav-area" ref={areaRef}>
         {layout && (
-          <nav className="chapter-nav" aria-label="Kapitler">
+          <nav
+            className="chapter-nav"
+            aria-label="Kapitler"
+            data-tone={layout.tone}
+            ref={navRef}
+          >
             <div className="chapter-nav-track" aria-hidden="true">
               <div
                 className="chapter-nav-fill"

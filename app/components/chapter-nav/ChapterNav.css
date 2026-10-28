@@ -1,52 +1,12 @@
 /* Vertical chapter progress on the left edge. Flat on purpose: no borders,
    shadows or pills. Passed steps use the accent colour. */
-.chapter-nav-area,
-.chapter-margin {
+.chapter-nav-area {
   display: none;
 }
 
 @media only screen and (min-width: 1400px) {
-  /* The article is the positioning context for the nav's area */
-  .project-section:has(> .chapter-nav-area) {
-    position: relative;
-  }
-
-  /* The text moves out to the right, so each chapter gets a label in the
-     margin beside where it starts */
-  .project-section:has(> .chapter-nav-area) > .standalone-paragraph,
-  .project-section:has(> .chapter-nav-area) > h2 {
-    margin-left: 22.5rem;
-  }
-
-  .chapter-margin {
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: max(2rem, calc((100vw - 70rem) / 2));
-    width: 20rem;
-    pointer-events: none;
-  }
-
-  .chapter-margin-label {
-    position: absolute;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .chapter-margin-number {
-    font-size: var(--font-size-small);
-    opacity: 0.7;
-  }
-
-  .chapter-margin-title {
-    font-size: var(--font-size-heading);
-    font-weight: 700;
-  }
-
-  /* Covers the article text, from its start to just before the footer */
+  /* Covers the chapters, from the title to the end of the last one. The case
+     wrapper is the positioning context. */
   .chapter-nav-area {
     display: block;
     position: absolute;
@@ -64,6 +24,9 @@
   .chapter-nav {
     --chapter-nav-top: 13rem;
     --chapter-nav-line: 4px;
+    --chapter-nav-text: var(--text-color);
+    --chapter-nav-ground: var(--primary-color);
+    --chapter-nav-accent: var(--contrast-color);
     /* Dots and line are centred on this distance from the left edge */
     --chapter-nav-center: 0.5rem;
 
@@ -72,6 +35,18 @@
     top: var(--chapter-nav-top);
     height: 50vh;
   }
+  /* The nav follows the background it is over */
+  .chapter-nav[data-tone="dark"] {
+    --chapter-nav-text: #fdfff9;
+    --chapter-nav-ground: #23261c;
+  }
+
+  .chapter-nav[data-tone="accent"] {
+    --chapter-nav-text: #181b09;
+    --chapter-nav-ground: var(--contrast-color);
+    --chapter-nav-accent: #181b09;
+  }
+
   .chapter-nav-track {
     position: absolute;
     top: 0;
@@ -81,8 +56,8 @@
     border-radius: 2px;
     background-color: color-mix(
       in srgb,
-      var(--text-color) 18%,
-      var(--primary-color)
+      var(--chapter-nav-text) 18%,
+      var(--chapter-nav-ground)
     );
   }
 
@@ -90,7 +65,7 @@
   .chapter-nav-fill {
     width: 100%;
     border-radius: 2px;
-    background-color: var(--contrast-color);
+    background-color: var(--chapter-nav-accent);
   }
 
   .chapter-nav-list {
@@ -115,11 +90,11 @@
     padding: 0.5rem 0.5rem 0.5rem 0;
     cursor: pointer;
     pointer-events: auto;
-    color: var(--text-color);
+    color: var(--chapter-nav-text);
   }
 
   .chapter-nav-link:focus-visible {
-    outline: 2px solid var(--text-color);
+    outline: 2px solid var(--chapter-nav-text);
     outline-offset: 2px;
   }
 
@@ -129,14 +104,14 @@
     height: 0.75rem;
     margin-left: calc(var(--chapter-nav-center) - 0.375rem);
     border-radius: 50%;
-    background-color: var(--contrast-color);
+    background-color: var(--chapter-nav-accent);
   }
 
   .chapter-nav-todo .chapter-nav-dot {
     background-color: color-mix(
       in srgb,
-      var(--text-color) 35%,
-      var(--primary-color)
+      var(--chapter-nav-text) 35%,
+      var(--chapter-nav-ground)
     );
   }
 
@@ -147,6 +122,8 @@
   }
 
   .chapter-nav-label {
+    /* The global link colour is more specific than the link's own rule */
+    color: var(--chapter-nav-text);
     font-size: var(--font-size-small);
     line-height: 1.2;
     white-space: nowrap;

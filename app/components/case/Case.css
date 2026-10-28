@@ -1,0 +1,406 @@
+/* Magazine layout for a project: full-width bands, with each chapter's name in
+   the left margin and the text in a column beside it. */
+.case {
+  --case-soft: #f1f4e3;
+  --case-soft-strong: #e7eadb;
+  --case-dark: #23261c;
+  --case-ink: #181b09;
+  --case-paper: #fdfff9;
+
+  letter-spacing: var(--letter-spacing);
+}
+
+[data-theme="dark"] .case {
+  --case-soft: color-mix(in srgb, var(--text-color) 6%, var(--primary-color));
+  --case-soft-strong: color-mix(
+    in srgb,
+    var(--text-color) 10%,
+    var(--primary-color)
+  );
+  --case-dark: #181b09;
+}
+
+/* Wraps the chapters, so the nav can follow them from top to bottom */
+.case-chapters {
+  position: relative;
+}
+
+.case :where(h1, h2, h3, dl, dd, figure, blockquote, ul) {
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout */
+.case-container {
+  padding: 0 1.6rem;
+}
+
+.case-section {
+  padding: 4rem 0;
+}
+
+.case-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.case-margin {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.case-margin-number {
+  font-size: var(--font-size-small);
+  opacity: 0.7;
+}
+
+.case-margin-title {
+  font-size: var(--font-size-heading);
+  font-weight: 700;
+}
+
+.case-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.case-lead {
+  font-size: var(--font-size-lead);
+  font-weight: 500;
+}
+
+.case-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.case-text > .case-block:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.case-block-title {
+  font-size: var(--font-size-lead);
+  font-weight: 700;
+}
+
+/* Title and facts */
+.case-section.case-title-section {
+  padding: 3rem 0;
+}
+
+.case-title {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.case-title-head {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.case-title-heading {
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.case-intro {
+  max-width: 51rem;
+  font-size: var(--font-size-lead);
+  font-weight: 500;
+}
+
+.case-facts {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-fact {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--text-color);
+}
+
+.case-fact dt {
+  font-size: var(--font-size-small);
+}
+
+.case-fact a {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Break in the accent colour */
+.case-break {
+  padding: 5rem 0;
+  background-color: var(--contrast-color);
+  color: var(--case-ink);
+}
+
+.case-break .case-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.case-eyebrow {
+  font-size: var(--font-size-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-statement {
+  max-width: 60rem;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Text that still has to be written */
+.case-placeholder {
+  opacity: 0.6;
+  outline: 2px dashed currentColor;
+  outline-offset: 0.5rem;
+}
+
+/* Chapter backgrounds */
+.case-chapter {
+  color: var(--text-color);
+}
+
+.case-soft {
+  background-color: var(--case-soft);
+}
+
+.case-dark {
+  background-color: var(--case-dark);
+  color: var(--case-paper);
+}
+
+.case-dark .case-margin-number,
+.case-dark .case-margin-title {
+  color: var(--contrast-color);
+}
+
+.case-dark .case-margin-number {
+  opacity: 1;
+}
+
+.case-rule {
+  margin-bottom: 4rem;
+  border-top: 1px solid var(--text-color);
+}
+
+/* Image across the full width */
+.case-image-break {
+  background-color: #dfe9ff;
+}
+
+.case-image-break-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Images in the text column */
+.case-figure {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.case-figure-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.case-figure-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.case-figure-pair .case-figure {
+  margin-top: 0;
+}
+
+/* Quote */
+.case-quote {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  border-left: 6px solid var(--contrast-color);
+}
+
+.case-quote-text {
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.case-quote footer {
+  opacity: 0.8;
+}
+
+/* Learnings */
+.case-learnings {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.case-learning {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--text-color);
+}
+
+.case-learning .case-block-title {
+  font-size: var(--font-size-body);
+}
+
+/* Related projects */
+.case-related {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4rem 0 4rem 1.6rem;
+  overflow: hidden;
+}
+
+.case-related-heading {
+  margin: 0;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--header-color);
+}
+
+.case-related-list-wrapper {
+  min-width: 0;
+}
+
+.case-related-list {
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.case-related-list::-webkit-scrollbar {
+  display: none;
+}
+
+.case-related-item {
+  flex: 0 0 min(80vw, 24.25rem);
+  scroll-snap-align: start;
+}
+
+.case-related-link {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.case-related-title {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.case-related-next {
+  all: unset;
+  display: block;
+  margin: 2rem 1.6rem 0 auto;
+  cursor: pointer;
+}
+
+.case-related-next:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 4px;
+}
+
+.case-related-next img {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Desktop */
+@media only screen and (min-width: 700px) {
+  .case-figure-pair,
+  .case-learnings {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-learnings {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media only screen and (min-width: 1050px) {
+  .case-container {
+    padding: 0 max(2rem, calc((100vw - 70rem) / 2));
+  }
+
+  .case-section {
+    padding: 6rem 0;
+  }
+
+  .case-section.case-title-section {
+    padding: 4.5rem 0;
+  }
+
+  .case-break {
+    padding: 6rem 0;
+  }
+
+  .case-row {
+    grid-template-columns: minmax(0, 17.5rem) minmax(0, 47.5rem);
+    column-gap: 5rem;
+  }
+
+  .case-chapter .case-row {
+    padding-top: 1.5rem;
+  }
+
+  .case-margin-title {
+    font-size: var(--font-size-heading);
+  }
+
+  .case-related {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+    padding: 5rem 0 5rem 2rem;
+  }
+
+  .case-related-heading {
+    flex: 0 0 min(26rem, 28%);
+  }
+
+  .case-related-list-wrapper {
+    flex: 1;
+  }
+}
