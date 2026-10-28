@@ -13,7 +13,7 @@
     top: 0;
     /* Runs a little past the text on shorter screens, so that at the very end
        the nav rests under the Tilbake button instead of sliding behind it */
-    bottom: calc(-1 * clamp(0px, 34rem - 50vh, 6rem));
+    bottom: calc(-1 * clamp(0px, 31rem - 50vh, 6rem));
     /* Same left edge as the Tilbake button */
     left: 1rem;
     width: 7.5rem;
@@ -22,7 +22,7 @@
 
   /* Half the screen tall, hanging right under the Tilbake button */
   .chapter-nav {
-    --chapter-nav-top: 13rem;
+    --chapter-nav-top: 10rem;
     --chapter-nav-line: 4px;
     --chapter-nav-text: var(--text-color);
     --chapter-nav-ground: var(--primary-color);
