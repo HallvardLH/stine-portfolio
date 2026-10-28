@@ -10,7 +10,9 @@ interface ChapterProps {
   rule?: boolean;
   /** One sentence in larger type that sums up the chapter */
   lead?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  /** Content across the full width, under the text column */
+  wide?: React.ReactNode;
 }
 
 // A chapter: its number and name in the margin, the text in the column beside it
@@ -22,6 +24,7 @@ export function Chapter({
   rule,
   lead,
   children,
+  wide,
 }: ChapterProps) {
   return (
     <section
@@ -41,6 +44,7 @@ export function Chapter({
             {children}
           </div>
         </div>
+        {wide && <div className="case-wide">{wide}</div>}
       </div>
     </section>
   );

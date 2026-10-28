@@ -257,24 +257,85 @@
   opacity: 0.8;
 }
 
-/* Learnings */
-.case-learnings {
+/* Columns */
+.case-columns {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 2rem;
-  margin-top: 1rem;
 }
 
-.case-learning {
+.case-column {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--text-color);
+  border-top: 1px solid currentColor;
 }
 
-.case-learning .case-block-title {
+.case-column .case-block-title {
   font-size: var(--font-size-body);
+}
+
+.case-column-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Content across the full width, under the text column */
+.case-wide {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-top: 4rem;
+}
+
+.case-wide .case-quote {
+  max-width: 62rem;
+  margin-top: 0;
+}
+
+.case-wide-intro {
+  max-width: 47.5rem;
+}
+
+/* Features: text beside its image */
+.case-feature-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.case-group-title {
+  padding-top: 1rem;
+  border-top: 1px solid currentColor;
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.case-feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.case-feature-figures {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.case-feature-figures .case-figure {
+  margin-top: 0;
 }
 
 /* Related projects */
@@ -349,13 +410,12 @@
 
 /* Desktop */
 @media only screen and (min-width: 700px) {
-  .case-figure-pair,
-  .case-learnings {
+  .case-figure-pair {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .case-learnings {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .case-columns {
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
   }
 }
 
@@ -387,6 +447,20 @@
 
   .case-margin-title {
     font-size: var(--font-size-heading);
+  }
+
+  /* Text on one side, image on the other, switching sides down the page */
+  .case-feature {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: 4rem;
+  }
+
+  .case-feature-reverse {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  }
+
+  .case-feature-reverse .case-feature-text {
+    order: 2;
   }
 
   .case-related {
