@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
-import ProjectCard, { type Thumbnail } from "~/components/card/ProjectCard";
+import ProjectCard from "~/components/card/ProjectCard";
+import { thumbnails, type Thumbnail } from "~/data/thumbnails";
 
 export const meta: MetaFunction = () => {
   return [
@@ -24,11 +25,7 @@ interface ProjectYear {
 }
 
 const latestProject: Project = {
-  thumbnail: {
-    foregroundSrc: "/finn-eiendom/thumbnail-fg.webp",
-    backgroundSrc: "/finn-eiendom/thumbnail-bg.webp",
-    cornerSrc: "/finn-eiendom/thumbnail-logo.svg",
-  },
+  thumbnail: thumbnails.finn,
   date: "Sommeren 2026",
   platformInfo: "Web",
   title: "FINN Eiendom",
@@ -43,10 +40,7 @@ const projectsByYear: ProjectYear[] = [
     year: "2025",
     projects: [
       {
-        thumbnail: {
-          foregroundSrc: "/barnebank/thumbnail-fg.webp",
-          backgroundColor: "#fcf9f4",
-        },
+        thumbnail: thumbnails.barnebank,
         date: "Sommeren 2025",
         platformInfo: "App",
         title: "Sparebanken Norge",
@@ -56,10 +50,7 @@ const projectsByYear: ProjectYear[] = [
         tags: ["Summer internship", "Sparebanken Norge", "Bank for barn"],
       },
       {
-        thumbnail: {
-          foregroundSrc: "/grundercampus/thumbnail-fg.webp",
-          backgroundColor: "#ffeae0",
-        },
+        thumbnail: thumbnails.grundercampus,
         date: "Våren 2025",
         platformInfo: "Web",
         title: "Bachelorprosjekt: GründerCampus",
@@ -74,10 +65,7 @@ const projectsByYear: ProjectYear[] = [
     year: "2024",
     projects: [
       {
-        thumbnail: {
-          foregroundSrc: "/portefølje-redesign/thumbnail-fg.webp",
-          backgroundSrc: "/portefølje-redesign/thumbnail-bg.webp",
-        },
+        thumbnail: thumbnails.portefoljeRedesign,
         date: "Vinteren 2024",
         platformInfo: "Web",
         title: "Redesign: portefølje",
@@ -87,10 +75,7 @@ const projectsByYear: ProjectYear[] = [
         tags: ["Freelance", "Redesign", "Case"],
       },
       {
-        thumbnail: {
-          foregroundSrc: "/æ/thumbnail-fg.webp",
-          backgroundSrc: "/æ/thumbnail-bg.webp",
-        },
+        thumbnail: thumbnails.rema,
         date: "Høsten 2024",
         platformInfo: "App",
         title: "Redesign: Rema appen",
@@ -100,10 +85,7 @@ const projectsByYear: ProjectYear[] = [
         tags: ["Freelance", "Redesign", "Case"],
       },
       {
-        thumbnail: {
-          foregroundSrc: "/corwell/thumbnail-fg.webp",
-          backgroundSrc: "/corwell/thumbnail-bg.webp",
-        },
+        thumbnail: thumbnails.corwell,
         date: "Våren 2024",
         platformInfo: "App",
         title: "CorWell",
@@ -118,10 +100,7 @@ const projectsByYear: ProjectYear[] = [
     year: "2023",
     projects: [
       {
-        thumbnail: {
-          foregroundSrc: "/ourspace/thumbnail-fg.webp",
-          backgroundColor: "#eae4e4",
-        },
+        thumbnail: thumbnails.ourspace,
         date: "Høsten 2023",
         platformInfo: "Software",
         title: "HourSpace",
@@ -130,10 +109,7 @@ const projectsByYear: ProjectYear[] = [
         tags: ["Universitetet i Bergen", "Samarbeidsverktøy"],
       },
       {
-        thumbnail: {
-          foregroundSrc: "/drømmeland/thumbnail-fg.webp",
-          backgroundColor: "#3cc6b2",
-        },
+        thumbnail: thumbnails.dromme,
         date: "Våren 2023",
         platformInfo: "App",
         title: "Drømmeland",

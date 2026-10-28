@@ -1,13 +1,41 @@
 .cover-image-container {
-  padding-top: 6rem;
   position: relative;
-  /* border-radius: .938rem; */
+  margin-bottom: 2rem;
 }
 
+.cover-stage {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 14rem;
+  padding: 1.5rem 1rem;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Never larger than the image's own size, and shrinks to fit the stage */
 .cover-image {
-  width: 100%;
-  object-fit: cover;
-  object-position: 0 -30px;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+
+.cover-corner {
+  position: absolute;
+  right: 1rem;
+  max-width: 20%;
+  height: auto;
+}
+
+.cover-corner-top-right {
+  top: 1rem;
+}
+
+.cover-corner-bottom-right {
+  bottom: 1rem;
 }
 
 .cover-image-back-icon {
@@ -23,6 +51,7 @@
   gap: 0.625rem;
   align-items: center;
   margin-right: 0.2rem;
+  z-index: 1;
 }
 
 .back-button-text {
@@ -30,12 +59,25 @@
 }
 
 /* Desktop */
-@media only screen and (min-width: 550px) {
-  .cover-image {
-    object-position: 0 max(calc(-10px - 10vw), -200px);
+@media only screen and (min-width: 1050px) {
+  .cover-image-container {
+    margin-bottom: 3rem;
   }
 
-  .cover-image-container {
-    padding-bottom: max(calc(40px - 10vw), 10px);
+  .cover-stage {
+    height: clamp(24rem, 70vh, 38rem);
+    padding: 3rem 2rem;
+  }
+
+  .cover-corner {
+    right: 2rem;
+  }
+
+  .cover-corner-top-right {
+    top: 1.5rem;
+  }
+
+  .cover-corner-bottom-right {
+    bottom: 1.5rem;
   }
 }

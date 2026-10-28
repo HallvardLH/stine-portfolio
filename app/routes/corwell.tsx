@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import CoverImage from "~/components/cover-image/CoverImage";
+import { thumbnails } from "~/data/thumbnails";
 import StandaloneParagraph from "~/components/project-sections/StandaloneParagraph";
 import ParagraphWithImage from "~/components/project-sections/ParagraphWithImage";
 
@@ -17,7 +18,7 @@ export const meta: MetaFunction = () => {
 export default function ProjectsLibaryRoute() {
   return (
     <main>
-      <CoverImage src="/corwell/thumbnail.webp" colorScheme="corwell-scheme" />
+      <CoverImage thumbnail={thumbnails.corwell} colorScheme="corwell-scheme" />
       <div className="gutter project-section corwell-scheme">
         <StandaloneParagraph
           textSection={

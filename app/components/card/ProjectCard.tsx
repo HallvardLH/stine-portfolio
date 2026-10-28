@@ -1,16 +1,6 @@
 import "./ProjectCard.css";
 import { Link } from "@remix-run/react";
-
-// A thumbnail is two layers: a background that fills any shape (a colour or a
-// cropped image) and a transparent foreground with the mockups, which is
-// always shown whole and centred.
-export interface Thumbnail {
-  foregroundSrc: string;
-  backgroundColor?: string;
-  backgroundSrc?: string;
-  // Small logo pinned to the top right corner instead of scaling with the mockups
-  cornerSrc?: string;
-}
+import type { Thumbnail } from "~/data/thumbnails";
 
 interface ProjectCardProps {
   thumbnail: Thumbnail;
@@ -55,11 +45,12 @@ export default function ProjectCard(props: ProjectCardProps) {
           className="card-image"
           decoding="async"
         />
-        {thumbnail.cornerSrc && (
+        {thumbnail.corner && (
           <img
-            src={thumbnail.cornerSrc}
+            src={thumbnail.corner.src}
             alt=""
-            className="card-corner"
+            className={`card-corner card-corner-${thumbnail.corner.position}`}
+            style={{ width: `${(thumbnail.corner.width / 1120) * 100}%` }}
             decoding="async"
           />
         )}

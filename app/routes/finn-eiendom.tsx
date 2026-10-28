@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import CoverImage from "~/components/cover-image/CoverImage";
+import { thumbnails } from "~/data/thumbnails";
 import StandaloneParagraph from "~/components/project-sections/StandaloneParagraph";
 import ParagraphWithImage from "~/components/project-sections/ParagraphWithImage";
 import TwoImages from "~/components/project-sections/TwoImages";
@@ -21,7 +22,7 @@ export const meta: MetaFunction = () => {
 export default function ProjectsLibaryRoute() {
   return (
     <main>
-      <CoverImage src="/finn-eiendom/landing.webp" />
+      <CoverImage thumbnail={thumbnails.finn} />
       <div className="gutter project-section">
         <StandaloneParagraph
           textSection={

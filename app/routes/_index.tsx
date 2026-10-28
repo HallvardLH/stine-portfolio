@@ -2,6 +2,7 @@ import type { MetaFunction } from "@remix-run/node";
 import Button from "~/components/general/Button";
 import { Link } from "@remix-run/react";
 import ProjectCard from "~/components/card/ProjectCard";
+import { thumbnails } from "~/data/thumbnails";
 
 export const meta: MetaFunction = () => {
   return [
@@ -34,11 +35,7 @@ export default function Index() {
         </div>
 
         <ProjectCard
-          thumbnail={{
-            foregroundSrc: "/finn-eiendom/thumbnail-fg.webp",
-            backgroundSrc: "/finn-eiendom/thumbnail-bg.webp",
-            cornerSrc: "/finn-eiendom/thumbnail-logo.svg",
-          }}
+          thumbnail={thumbnails.finn}
           date="Sommeren 2026"
           platformInfo="Web"
           title="FINN Eiendom"

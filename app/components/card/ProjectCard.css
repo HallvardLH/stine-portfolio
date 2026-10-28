@@ -34,10 +34,17 @@
 
 .card-corner {
   position: absolute;
-  top: 5%;
   right: 4%;
-  width: clamp(2.5rem, 9%, 6rem);
+  min-width: 1.5rem;
   height: auto;
+}
+
+.card-corner-top-right {
+  top: 5%;
+}
+
+.card-corner-bottom-right {
+  bottom: 7%;
 }
 
 .top-info-container {

@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import CoverImage from "~/components/cover-image/CoverImage";
+import { thumbnails } from "~/data/thumbnails";
 import StandaloneParagraph from "~/components/project-sections/StandaloneParagraph";
 import ParagraphWithImage from "~/components/project-sections/ParagraphWithImage";
 
@@ -18,7 +19,7 @@ export default function ProjectsLibaryRoute() {
   return (
     <main>
       <CoverImage
-        src="/portefølje-redesign/thumbnail.webp"
+        thumbnail={thumbnails.portefoljeRedesign}
         colorScheme="portfolio-redesign-scheme"
       />
       <div className="gutter project-section portfolio-redesign-scheme">
