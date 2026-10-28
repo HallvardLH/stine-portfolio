@@ -6,6 +6,8 @@ export interface Thumbnail {
   foregroundSize: { width: number; height: number };
   backgroundColor?: string;
   backgroundSrc?: string;
+  // Which part of the background image stays in view when it is cropped
+  backgroundPosition?: string;
   // Small logo pinned to a corner instead of scaling with the mockups.
   // `width` is its size in CSS pixels, which is the largest it is ever shown at.
   corner?: {
@@ -20,6 +22,7 @@ export const thumbnails = {
     foregroundSrc: "/finn-eiendom/thumbnail-fg.webp",
     foregroundSize: { width: 775, height: 517 },
     backgroundSrc: "/finn-eiendom/thumbnail-bg.webp",
+    backgroundPosition: "center bottom",
     corner: {
       src: "/finn-eiendom/thumbnail-logo.svg",
       width: 107,
@@ -38,7 +41,7 @@ export const thumbnails = {
   },
   grundercampus: {
     foregroundSrc: "/grundercampus/thumbnail-fg.webp",
-    foregroundSize: { width: 906, height: 481 },
+    foregroundSize: { width: 906, height: 479 },
     backgroundColor: "#ffeae0",
   },
   portefoljeRedesign: {

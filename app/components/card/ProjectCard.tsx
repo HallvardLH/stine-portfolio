@@ -37,6 +37,7 @@ export default function ProjectCard(props: ProjectCardProps) {
           backgroundImage: thumbnail.backgroundSrc
             ? `url(${thumbnail.backgroundSrc})`
             : undefined,
+          backgroundPosition: thumbnail.backgroundPosition,
         }}
       >
         <img

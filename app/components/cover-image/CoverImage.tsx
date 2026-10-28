@@ -35,6 +35,7 @@ export default function CoverImage({
         style={{
           backgroundColor,
           backgroundImage: backgroundSrc ? `url(${backgroundSrc})` : undefined,
+          backgroundPosition: thumbnail.backgroundPosition,
         }}
       >
         <img
