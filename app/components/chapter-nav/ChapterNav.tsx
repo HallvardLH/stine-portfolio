@@ -25,6 +25,8 @@ interface Layout {
 
 // Space the fixed navbar takes up, so a chapter never ends up underneath it
 const SCROLL_OFFSET = 72;
+// Space between the bottom of the nav and the bottom of the screen
+const BOTTOM_GAP = 32;
 // The reader is "in" a chapter once its start passes this share of the viewport
 const READING_LINE = 0.35;
 
@@ -72,7 +74,20 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
         : active < lastIndex
           ? (active + clamped) / lastIndex
           : 1;
-      const tail = started && active === lastIndex ? clamped : 0;
+      // The line after the last step fills while the last chapter scrolls by,
+      // and is full when the nav comes to rest at the end of that chapter
+      const tailStart = tops[lastIndex] - window.innerHeight * READING_LINE;
+      const tailEnd = areaEnd - window.innerHeight + BOTTOM_GAP;
+      const tail =
+        started && active === lastIndex
+          ? Math.min(
+              Math.max(
+                (window.scrollY - tailStart) / Math.max(tailEnd - tailStart, 1),
+                0,
+              ),
+              1,
+            )
+          : 0;
       // Chapters sit on different backgrounds, so the nav takes its colours
       // from whichever one is behind it right now
       const navRect = navRef.current?.getBoundingClientRect();

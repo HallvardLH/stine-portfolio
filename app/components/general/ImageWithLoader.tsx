@@ -3,6 +3,22 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import "./ImageWithLoader.css";
 
+function Chevron({ direction }: { direction: "left" | "right" }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="32"
+      height="32"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
+      <path d={direction === "left" ? "M15 4 7 12l8 8" : "M9 4l8 8-8 8"} />
+    </svg>
+  );
+}
+
 interface ImageWithLoaderProps {
   src: string;
   alt: string;
@@ -109,7 +125,7 @@ export default function ImageWithLoader({
       {open && (
         <dialog
           ref={dialogRef}
-          className="image-lightbox"
+          className={`image-lightbox ${gallery.length > 1 ? "image-lightbox-gallery" : ""}`}
           aria-label={shown.alt || "Bilde i fullskjerm"}
           onClose={() => setOpen(false)}
           onKeyDown={(event) => {
@@ -147,14 +163,14 @@ export default function ImageWithLoader({
                 aria-label="Forrige bilde"
                 onClick={() => step(-1)}
               >
-                <span aria-hidden="true">←</span>
+                <Chevron direction="left" />
               </button>
               <button
                 className="image-lightbox-step image-lightbox-next"
                 aria-label="Neste bilde"
                 onClick={() => step(1)}
               >
-                <span aria-hidden="true">→</span>
+                <Chevron direction="right" />
               </button>
               <span className="image-lightbox-count" aria-live="polite">
                 {position + 1} / {gallery.length}

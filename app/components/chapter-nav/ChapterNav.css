@@ -17,9 +17,10 @@
     pointer-events: none;
   }
 
-  /* Half the screen tall, lower down on the screen than the Tilbake button */
+  /* Half the screen tall and resting at the bottom of the screen, so that it
+     stays in view until the last chapter ends */
   .chapter-nav {
-    --chapter-nav-top: max(10rem, 30vh);
+    --chapter-nav-top: calc(50vh - 2rem);
     --chapter-nav-line: 4px;
     /* The line runs this far above the first step and below the last one */
     --chapter-nav-tail: 2.5rem;
