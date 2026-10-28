@@ -70,7 +70,7 @@ export default function ProjectsLibaryRoute() {
         />
 
         <CaseBreak eyebrow="I korte trekk">
-          Enklere påmelding for boligkjøperen, og bedre oversikt for megleren.
+          Enklere påmelding for boligkjøperen, bedre oversikt for megleren.
         </CaseBreak>
 
         <CaseChapter
