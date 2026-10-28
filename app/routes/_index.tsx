@@ -7,8 +7,6 @@ import ThumbnailImage from "~/components/card/ThumbnailImage";
 import { latestProject, projectsByYear } from "~/data/projects";
 
 const chapters: Chapter[] = [
-  { id: "intro", label: "Hei!" },
-  { id: "siste-prosjekt", label: "Siste prosjekt" },
   { id: "prosjekter", label: "Prosjekter" },
   ...projectsByYear.map(({ year }) => ({ id: `ar-${year}`, label: year })),
 ];
@@ -26,68 +24,67 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <main className="case home">
+      <section
+        id="intro"
+        className="case-section home-intro"
+        data-surface="light"
+      >
+        <div className="case-container">
+          <div className="home-intro-text">
+            <h1 className="case-title-heading">Hei!</h1>
+            <p className="home-lead">
+              Jeg er UX-designer og masterstudent på medie- og
+              interaksjonsdesign ved Universitetet i Bergen. UX for meg er
+              muligheten til å skape digitale løsninger som er enklere å bruke,
+              og som gjør teknologi mer tilgjengelig og inkluderende for alle.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="siste-prosjekt"
+        className="case-section case-dark home-latest"
+        data-surface="dark"
+      >
+        <div className="case-container">
+          <div className="case-row">
+            <div className="case-margin">
+              <span className="case-margin-number">Siste prosjekt</span>
+            </div>
+            <div className="case-text home-latest-text">
+              <ul className="home-tags">
+                {latestProject.tags.map((tag) => (
+                  <li key={tag} className="home-tag">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+              <h2 className="home-latest-title">{latestProject.title}</h2>
+              <p className="home-latest-description">
+                {latestProject.description}
+              </p>
+              <p className="home-latest-meta">
+                {latestProject.date} · {latestProject.platformInfo}
+              </p>
+              <Link to={latestProject.link} className="home-button">
+                Les prosjektet
+                <img src="/icons/arrow.svg" alt="" />
+              </Link>
+            </div>
+          </div>
+          <Link
+            to={latestProject.link}
+            className="home-latest-image"
+            aria-label={latestProject.title}
+          >
+            <ThumbnailImage thumbnail={latestProject.thumbnail} />
+          </Link>
+        </div>
+      </section>
+
       <div className="case-chapters">
         <ChapterNav chapters={chapters} />
-
-        <section
-          id="intro"
-          className="case-section home-intro"
-          data-surface="light"
-        >
-          <div className="case-container">
-            <div className="home-intro-text">
-              <h1 className="case-title-heading">Hei!</h1>
-              <p className="home-lead">
-                Jeg er UX-designer og masterstudent på medie- og
-                interaksjonsdesign ved Universitetet i Bergen. UX for meg er
-                muligheten til å skape digitale løsninger som er enklere å
-                bruke, og som gjør teknologi mer tilgjengelig og inkluderende
-                for alle.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section
-          id="siste-prosjekt"
-          className="case-section case-dark home-latest"
-          data-surface="dark"
-        >
-          <div className="case-container">
-            <div className="case-row">
-              <div className="case-margin">
-                <span className="case-margin-number">Siste prosjekt</span>
-              </div>
-              <div className="case-text home-latest-text">
-                <ul className="home-tags">
-                  {latestProject.tags.map((tag) => (
-                    <li key={tag} className="home-tag">
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-                <h2 className="home-latest-title">{latestProject.title}</h2>
-                <p className="home-latest-description">
-                  {latestProject.description}
-                </p>
-                <p className="home-latest-meta">
-                  {latestProject.date} · {latestProject.platformInfo}
-                </p>
-                <Link to={latestProject.link} className="home-button">
-                  Les prosjektet
-                  <img src="/icons/arrow.svg" alt="" />
-                </Link>
-              </div>
-            </div>
-            <Link
-              to={latestProject.link}
-              className="home-latest-image"
-              aria-label={latestProject.title}
-            >
-              <ThumbnailImage thumbnail={latestProject.thumbnail} />
-            </Link>
-          </div>
-        </section>
 
         <section
           id="prosjekter"
