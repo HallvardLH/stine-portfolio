@@ -8,7 +8,7 @@ import CaseColumns from "~/components/case/CaseColumns";
 import { Feature, FeatureGroup } from "~/components/case/Feature";
 import RelatedProjects from "~/components/case/RelatedProjects";
 import { Chapter as CaseChapter } from "~/components/case/Chapter";
-import { Figure } from "~/components/case/Figure";
+import { Figure, FigurePair } from "~/components/case/Figure";
 
 const chapters: Chapter[] = [
   { id: "intro", label: "Intro" },
@@ -16,7 +16,7 @@ const chapters: Chapter[] = [
   { id: "innsikt", label: "Innsikt" },
   { id: "losning", label: "Løsning" },
   { id: "videre", label: "Videre arbeid" },
-  { id: "bilder", label: "Bilde!" },
+  { id: "bilder", label: "Bilder!" },
 ];
 
 export const meta: MetaFunction = () => {
@@ -231,16 +231,28 @@ export default function ProjectsLibaryRoute() {
         <CaseChapter
           id="bilder"
           number="05"
-          title="Bilde fra prosjektperioden!"
-        >
-          <Figure
-            src="/om-meg/gruppebilde.webp"
-            alt="Gruppen rundt et bord fullt av skisser og lapper, sett ovenfra."
-            caption="Jeg og gruppen min under en kreativ øvelse da vi jobbet med OurSpace, høsten 2023."
-            aspectRatio="3 / 2"
-            position="50% 45%"
-          />
-        </CaseChapter>
+          title="Bilder fra prosjektperioden!"
+          wide={
+            <FigurePair
+              first={{
+                src: "/om-meg/gruppebilde.webp",
+                alt: "Gruppen rundt et bord fullt av skisser og lapper, sett ovenfra.",
+                caption:
+                  "Jeg og gruppen min under en kreativ øvelse da vi jobbet med OurSpace, høsten 2023.",
+                aspectRatio: "3 / 2",
+                position: "50% 45%",
+              }}
+              second={{
+                src: "/om-meg/innovasjon.webp",
+                alt: "Stine har ordet på Innovasjonsuken Opp.",
+                caption:
+                  "Innovasjonsuken Opp sitt Kickoff der vi fikk presentere OurSpace.",
+                aspectRatio: "3 / 2",
+                position: "50% 20%",
+              }}
+            />
+          }
+        />
       </div>
 
       <RelatedProjects

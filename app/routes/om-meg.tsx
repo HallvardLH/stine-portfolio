@@ -106,7 +106,7 @@ export default function AboutRoute() {
               src: "/om-meg/innovasjon.webp",
               aspectRatio: "556 / 370",
               imageText:
-                "Innovasjonsuken Opp sitt Kickoff der vi fikk presentere HourSpace.",
+                "Innovasjonsuken Opp sitt Kickoff der vi fikk presentere OurSpace.",
               altText: "Stine har ordet på Innovasjonsuken Opp",
             },
             {
