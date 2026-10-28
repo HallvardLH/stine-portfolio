@@ -21,7 +21,7 @@ const chapters: Chapter[] = [
   { id: "innsikt", label: "Innsikt" },
   { id: "losning", label: "Løsning" },
   { id: "laering", label: "Læring" },
-  { id: "bilder", label: "Bilder" },
+  { id: "bilder", label: "Bilde" },
 ];
 
 export const meta: MetaFunction = () => {
@@ -347,7 +347,7 @@ export default function ProjectsLibaryRoute() {
         <CaseChapter
           id="bilder"
           number="05"
-          title="Bilder fra prosjektet"
+          title="Bilde fra sommeren hos Sparebanken Norge"
           wide={
             <Figure
               src="/om-meg/spn.webp"

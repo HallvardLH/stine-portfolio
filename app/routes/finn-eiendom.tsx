@@ -458,7 +458,7 @@ export default function ProjectsLibaryRoute() {
         <CaseChapter
           id="bilder"
           number="05"
-          title="Bilder fra prosjektet"
+          title="Bilder fra sommeren hos FINN"
           wide={
             <FigurePair
               first={{
