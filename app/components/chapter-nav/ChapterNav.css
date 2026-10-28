@@ -1,25 +1,44 @@
 /* Vertical chapter progress on the left edge. Flat on purpose: no borders,
    shadows or pills. Passed steps use the accent colour. */
-.chapter-nav {
+.chapter-nav-area {
   display: none;
 }
 
 @media only screen and (min-width: 1400px) {
-  .chapter-nav {
-    --chapter-nav-top: 12rem;
-    --chapter-nav-bottom: 1.5rem;
-    --chapter-nav-line: 4px;
+  /* The article is the positioning context for the nav's area */
+  .project-section:has(> .chapter-nav-area) {
+    position: relative;
+  }
 
+  /* Covers the article text, from its start to just before the footer */
+  .chapter-nav-area {
     display: block;
-    position: fixed;
-    z-index: 900;
-    top: var(--chapter-nav-top);
-    bottom: var(--chapter-nav-bottom);
+    position: absolute;
+    top: 0;
+    bottom: 0;
     left: 0.75rem;
     width: 7.75rem;
     pointer-events: none;
   }
 
+  /* The left edge belongs to the nav, so Tilbake stays on the cover and
+     scrolls away with it instead of floating over the nav */
+  body:has(.chapter-nav-area) .cover-image-back-container {
+    position: absolute;
+    /* Same spot as before, now measured from the cover instead of the page */
+    top: 2rem;
+  }
+
+  /* Sticks below the navbar while reading */
+  .chapter-nav {
+    --chapter-nav-top: 7rem;
+    --chapter-nav-line: 4px;
+
+    display: block;
+    position: sticky;
+    top: var(--chapter-nav-top);
+    height: calc(100vh - var(--chapter-nav-top) - 1.5rem);
+  }
   .chapter-nav-track {
     position: absolute;
     top: 0;

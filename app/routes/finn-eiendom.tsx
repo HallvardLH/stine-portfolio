@@ -31,9 +31,9 @@ export const meta: MetaFunction = () => {
 export default function ProjectsLibaryRoute() {
   return (
     <main>
-      <ChapterNav chapters={chapters} />
       <CoverImage thumbnail={thumbnails.finn} />
       <div className="gutter project-section">
+        <ChapterNav chapters={chapters} />
         <StandaloneParagraph
           textSection={
             <>
