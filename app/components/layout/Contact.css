@@ -6,7 +6,12 @@
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 1rem;
-  row-gap: 1.2rem;
+  row-gap: 1.5rem;
+}
+
+/* Values are regular weight, labels are medium */
+.contact-info-container > p {
+  font-weight: 400;
 }
 
 .contact-info {

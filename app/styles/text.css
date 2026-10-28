@@ -7,7 +7,7 @@
   all: unset;
   font-family: "Satoshi";
   font-size: 1.75rem;
-  font-weight: 800;
+  font-weight: 700;
   display: block;
 }
 
@@ -15,7 +15,7 @@
   all: unset;
   font-family: "Satoshi";
   font-size: 3rem;
-  font-weight: 500;
+  font-weight: 700;
   display: block;
 }
 
@@ -28,7 +28,7 @@
   all: unset;
   font-family: "Satoshi";
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
   display: block;
 }
 
@@ -52,8 +52,19 @@ p,
 
 .text-small {
   font-family: "Satoshi";
-  font-size: 0.875rem;
-  font-weight: lighter;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Letter spacing is 3% across all text styles in the design */
+.heading,
+.heading-large,
+.text-large,
+.text-medium,
+p,
+.text-normal,
+.text-small {
+  letter-spacing: 0.03em;
 }
 
 .card-text {
@@ -61,6 +72,17 @@ p,
 }
 
 /* Desktop */
+@media only screen and (min-width: 1050px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .text-medium {
+    font-size: 1.5rem;
+  }
+}
+
+/* Large desktop */
 @media only screen and (min-width: 1700px) {
   .heading {
     font-size: 3rem;

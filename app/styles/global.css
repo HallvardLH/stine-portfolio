@@ -1,13 +1,13 @@
 :root {
-  --primary-color: #fdfff9;
-  --secondary-color: #23261c;
-  --contrast-color: #97ff7d;
+  --primary-color: #fefffa;
+  --secondary-color: #181b09;
+  --contrast-color: #6dff6a;
 
-  --button-text-color: #23261c;
+  --button-text-color: #181b09;
 
-  --text-color: #23261c;
+  --text-color: #181b09;
 
-  --header-color: #23261c;
+  --header-color: #181b09;
 
   ---color: #fbffe0;
 
@@ -17,8 +17,8 @@
     saturate(430%) hue-rotate(96deg) brightness(96%) contrast(100%);
 
   /* Card colors are defined independently as they do not change with dark mode */
-  --card-background: #fdfff9;
-  --card-text-color: #23261c;
+  --card-background: #fefffa;
+  --card-text-color: #181b09;
 }
 
 [data-theme="dark"] {
@@ -95,13 +95,28 @@ a:-webkit-any-link {
   gap: 1.25rem;
 }
 
+.text-section-narrow {
+  box-sizing: border-box;
+  max-width: 59.8125rem;
+}
+
 /* Desktop */
 @media only screen and (min-width: 1050px) {
+  body {
+    /* Header (91px) + the 56px gap below it */
+    padding-top: 9.1875rem;
+  }
+
   .gutter {
-    padding: 0 calc(2rem + 10vw);
+    padding: 0 clamp(2rem, 9.4444vw, 8.5rem);
   }
 
   .top-margin {
-    margin-top: 6rem;
+    margin-top: 0;
+  }
+
+  .text-section {
+    gap: 2rem;
+    padding: 0 1.5rem;
   }
 }

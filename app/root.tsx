@@ -112,7 +112,7 @@ export default function App() {
           colorScheme={getColorScheme(location.pathname)}
         />
         <Outlet />
-        <Footer colorScheme={getColorScheme(location.pathname)} />
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>

@@ -17,7 +17,7 @@ export default function Contact({ textClassName }: ContactProps) {
           <p className={textClassName}>E-post:</p>
         </div>
         <p className={textClassName}>
-          <a href="stinenknutsen@gmail.com">stinenknutsen@gmail.com</a>
+          <a href="mailto:stinenknutsen@gmail.com">stinenknutsen@gmail.com</a>
         </p>
 
         <div className="contact-info">
@@ -29,7 +29,7 @@ export default function Contact({ textClassName }: ContactProps) {
           <p className={textClassName}>Telefon:</p>
         </div>
         <p className={textClassName}>
-          <a href="tel:90089605">900 89 605</a>
+          <a href="tel:+4790089605">+ 47 900 89 605</a>
         </p>
 
         {/* <div className="contact-info">

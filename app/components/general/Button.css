@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-end;
   background-color: var(--contrast-color);
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .button-container:hover {
@@ -11,14 +11,18 @@
 
 .read-more-container {
   display: flex;
-  gap: 0.625rem;
+  gap: 0.75rem;
   align-items: center;
-  margin-right: 0.2rem;
 }
 
 .button-label {
-  font-weight: bold;
   color: var(--button-text-color);
+  white-space: nowrap;
+}
+
+.button-arrow {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .arrow-back {
@@ -27,9 +31,4 @@
 
 .button {
   all: unset;
-}
-
-.button:hover {
-  /* text-decoration: underline; */
-  /* text-underline-offset: 0.25rem; */
 }

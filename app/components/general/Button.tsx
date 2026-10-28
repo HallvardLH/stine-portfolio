@@ -17,11 +17,11 @@ export default function Button({ label, arrowDirection }: ButtonProps) {
               : undefined
           }
         >
-          <p className="text-small button-label">{label}</p>
+          <p className="text-large button-label">{label}</p>
           <img
             src="/icons/arrow.svg"
             alt=""
-            className={`card-arrow ${arrowDirection === "left" ? "arrow-back" : ""}`}
+            className={`button-arrow ${arrowDirection === "left" ? "arrow-back" : ""}`}
           />
         </div>
       </button>

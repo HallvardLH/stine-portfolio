@@ -1,7 +1,6 @@
 import "./ProjectCard.css";
 import { Link } from "@remix-run/react";
 import ImageWithLoader from "../general/ImageWithLoader";
-import { MdArrowForward } from "react-icons/md";
 
 interface ProjectCardProps {
   imageSrc: string;
@@ -10,11 +9,12 @@ interface ProjectCardProps {
   title: string;
   description: string;
   link: string;
+  tags?: string[];
   hero?: boolean;
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
-  const { imageSrc, date, platformInfo, title, description, link, hero } =
+  const { imageSrc, date, platformInfo, title, description, link, tags, hero } =
     props;
   return (
     <Link className={`card-container ${hero ? "hero" : ""}`} to={link}>
@@ -25,17 +25,19 @@ export default function ProjectCard(props: ProjectCardProps) {
       <div className="card-image-container">
         <ImageWithLoader src={imageSrc} alt="" classes="card-image" />
       </div>
-      <h2 className="heading card-text">{title}</h2>
-      <p className="text-normal card-text">{description}</p>
-      {/* <Link className="read-more-outer-container" to={link}> */}
-      <div className="read-more-outer-container">
-        <div className="read-more-container">
-          <p className="text-small card-text">Les mer om dette prosjektet</p>
-          {/* <img src="/icons/arrow.svg" alt="" className="card-arrow" /> */}
-          <MdArrowForward />
-        </div>
+      <div className="card-description-container">
+        <h2 className="heading card-text">{title}</h2>
+        <p className="text-large card-text">{description}</p>
+        {tags && tags.length > 0 && (
+          <ul className="card-tags">
+            {tags.map((tag) => (
+              <li key={tag} className="card-tag text-large card-text">
+                {tag}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      {/* </Link> */}
     </Link>
   );
 }

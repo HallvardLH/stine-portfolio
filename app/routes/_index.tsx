@@ -1,7 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import Button from "~/components/general/Button";
 import { Link } from "@remix-run/react";
-import StandaloneParagraph from "~/components/project-sections/StandaloneParagraph";
 import ProjectCard from "~/components/card/ProjectCard";
 
 export const meta: MetaFunction = () => {
@@ -18,39 +17,20 @@ export default function Index() {
   return (
     <div className="gutter top-margin">
       <main>
-        <StandaloneParagraph
-          textSection={
-            <div className="text-section">
-              <h1 className="heading-large heading-normal-color">Hei!</h1>
-              <p className="text-large">
-                Jeg er UX-designer og masterstudent i medie- og
-                interaksjonsdesign ved Universitetet i Bergen. Det som drar meg
-                mot UX er muligheten til å være med på å skape digitale
-                løsninger som er enklere å bruke, og som gjør teknologi mer
-                tilgjengelig og inkluderende for alle.
-              </p>
-              {/* <p>
-                Jeg trives best når jeg får jobbe med nye utfordringer, og jeg
-                legger stor vekt på å forstå hva folk virkelig trenger før jeg
-                lager løsninger. Målet mitt er alltid å skape design som
-                fungerer godt og gir en god brukeropplevelse.
-              </p> */}
-            </div>
-          }
-        />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: "10rem",
-          }}
-        >
+        <div className="text-section text-section-narrow">
+          <h1 className="heading-large heading-normal-color">Hei!</h1>
+          <p className="text-large">
+            Jeg er UX-designer og masterstudent i medie- og interaksjonsdesign
+            ved Universitetet i Bergen. Det som drar meg mot UX er muligheten
+            til å skape digitale løsninger som er enklere å bruke, og som gjør
+            teknologi mer tilgjengelig og inkluderende for alle.
+          </p>
+        </div>
+        <div className="landing-project-header">
           <h2 className="heading">Mitt siste prosjekt</h2>
-          {/* <div style={{ marginTop: "4rem", marginBottom: "6rem" }}> */}
           <Link to="/portefølje">
-            <Button label="Gå til portefølje" />
+            <Button label="Se porteføljen min" />
           </Link>
-          {/* </div> */}
         </div>
 
         <ProjectCard
@@ -60,6 +40,7 @@ export default function Index() {
           title="FINN Eiendom"
           description="Summer internship i FINN Eiendom med fokus på å forenkle påmeldingen til boligvisninger for meglere og boligkjøpere."
           link="/finn-eiendom"
+          tags={["Summer internship", "FINN Eiendom"]}
           hero
         />
       </main>

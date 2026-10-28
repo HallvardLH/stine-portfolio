@@ -78,17 +78,13 @@ export default function Navbar({
         </Link>
         {isLargeScreen ? (
           <div className="navbar-links-desktop">
-            <Link onClick={() => setNavbarOpen(false)} to="/">
-              <p className={location.pathname === "/" ? "link-underlined" : ""}>
-                Hjem
-              </p>
-            </Link>
             <Link onClick={() => setNavbarOpen(false)} to="/portefølje">
               <p
                 className={
-                  location.pathname === "/portef%C3%B8lje"
+                  "text-medium " +
+                  (location.pathname === "/portef%C3%B8lje"
                     ? "link-underlined"
-                    : ""
+                    : "")
                 }
               >
                 Portefølje
@@ -97,7 +93,8 @@ export default function Navbar({
             <Link onClick={() => setNavbarOpen(false)} to="/om-meg">
               <p
                 className={
-                  location.pathname === "/om-meg" ? "link-underlined" : ""
+                  "text-medium " +
+                  (location.pathname === "/om-meg" ? "link-underlined" : "")
                 }
               >
                 Om meg

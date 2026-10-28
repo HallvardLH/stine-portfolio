@@ -17,6 +17,7 @@
 .navbar-top {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-dropdown {
@@ -65,8 +66,13 @@
 
 .navbar-links-desktop {
   display: flex;
-  gap: 2rem;
+  justify-content: space-between;
   align-items: center;
+  width: 30rem;
+}
+
+.navbar-links-desktop a {
+  padding: 0.25rem 0.5rem;
 }
 
 .link-underlined {
@@ -77,6 +83,7 @@
 /* Desktop */
 @media only screen and (min-width: 1050px) {
   .navbar-container {
-    padding: 0 4rem;
+    padding: 1.5rem 2rem !important;
+    height: 5.6875rem;
   }
 }
