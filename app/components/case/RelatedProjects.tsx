@@ -36,7 +36,13 @@ export default function RelatedProjects({ projects }: RelatedProjectsProps) {
           {projects.map((project) => (
             <li key={project.link} className="case-related-item">
               <Link to={project.link} className="case-related-link">
-                <ThumbnailImage thumbnail={project.thumbnail} />
+                <div className="case-related-image">
+                  <ThumbnailImage thumbnail={project.thumbnail} />
+                  <span className="case-related-cta" aria-hidden="true">
+                    Les case
+                    <img src="/icons/arrow.svg" alt="" />
+                  </span>
+                </div>
                 <p className="case-related-title">{project.title}</p>
               </Link>
             </li>
