@@ -230,6 +230,14 @@
   margin: 0 auto;
 }
 
+/* Narrower image, so the chapter nav (shown from 1400px) rests on the band
+   and not on the image */
+@media only screen and (min-width: 1400px) {
+  .case-image-break-inset .case-image-break-image {
+    max-width: calc(100% - 20rem);
+  }
+}
+
 /* Images in the text column */
 .case-figure {
   display: flex;

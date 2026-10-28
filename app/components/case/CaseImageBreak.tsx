@@ -7,6 +7,8 @@ interface CaseImageBreakProps {
   caption?: string;
   /** Any CSS background, for images that need another colour than the default band */
   background?: string;
+  /** Keeps the image clear of the chapter nav in the left margin, so the nav stays readable */
+  inset?: boolean;
   /** Light text and nav, for a dark background */
   dark?: boolean;
 }
@@ -17,11 +19,12 @@ export default function CaseImageBreak({
   alt,
   caption,
   background,
+  inset,
   dark,
 }: CaseImageBreakProps) {
   return (
     <figure
-      className="case-image-break"
+      className={`case-image-break ${inset ? "case-image-break-inset" : ""}`}
       data-surface={dark ? "dark" : "image"}
       style={background ? { background } : undefined}
     >
