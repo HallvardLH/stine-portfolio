@@ -407,12 +407,16 @@
   outline-offset: -4px;
 }
 
-/* The title, and under it a flat label with an arrow that shows on hover */
+/* The title, and under it a flat label with an arrow on the right that shows
+   on hover */
 .case-related-footer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: flex-start;
+}
+
+.case-related-footer .case-related-cta {
+  align-self: flex-end;
 }
 
 .case-related-cta {
