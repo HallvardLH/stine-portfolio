@@ -1,9 +1,22 @@
 import type { MetaFunction } from "@remix-run/node";
 import CoverImage from "~/components/cover-image/CoverImage";
 import { thumbnails } from "~/data/thumbnails";
-import StandaloneParagraph from "~/components/project-sections/StandaloneParagraph";
-import ParagraphWithImage from "~/components/project-sections/ParagraphWithImage";
-import TwoImages from "~/components/project-sections/TwoImages";
+import ChapterNav, { type Chapter } from "~/components/chapter-nav/ChapterNav";
+import CaseTitle from "~/components/case/CaseTitle";
+import CaseBreak from "~/components/case/CaseBreak";
+import CaseColumns from "~/components/case/CaseColumns";
+import { Feature, FeatureGroup } from "~/components/case/Feature";
+import RelatedProjects from "~/components/case/RelatedProjects";
+import { Chapter as CaseChapter } from "~/components/case/Chapter";
+import { Figure } from "~/components/case/Figure";
+
+const chapters: Chapter[] = [
+  { id: "intro", label: "Intro" },
+  { id: "bakgrunn", label: "Bakgrunn" },
+  { id: "innsikt", label: "Innsikt" },
+  { id: "losning", label: "Løsning" },
+  { id: "videre", label: "Videre arbeid" },
+];
 
 export const meta: MetaFunction = () => {
   return [
@@ -16,174 +29,239 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+// FORSLAG: tekst som er markert med FORSLAG er skrevet av Claude og skal
+// gås gjennom sammen (i korte trekk, ingresser og kolonnetitler).
 export default function ProjectsLibaryRoute() {
   return (
-    <main>
-      <CoverImage
-        thumbnail={thumbnails.ourspace}
-        colorScheme="ourspace-scheme"
-      />
-      <div className="gutter project-section ourspace-scheme">
-        <StandaloneParagraph
-          textSection={
+    <main className="case">
+      <CoverImage thumbnail={thumbnails.ourspace} />
+
+      <div className="case-chapters">
+        <ChapterNav chapters={chapters} />
+
+        <CaseTitle
+          id="intro"
+          title="OurSpace"
+          intro="Et CSCW-verktøy med mål om å strukturere konsulenter og klienters kalendere for å oppfylle deres ønsker og behov."
+          marginTitle="Om prosjektet"
+          facts={[
+            { label: "Plattform", value: "Software" },
+            { label: "Periode", value: "Aug - nov 2023" },
+            { label: "Kurs", value: "Design for medieproduksjon" },
+          ]}
+        />
+
+        {/* FORSLAG */}
+        <CaseBreak eyebrow="I korte trekk" placeholder>
+          Én felles tidslinje som gir designere og klienter lik innsikt i
+          prosjektet.
+        </CaseBreak>
+
+        <CaseChapter
+          id="bakgrunn"
+          number="01"
+          title="Bakgrunn"
+          rule
+          // FORSLAG
+          lead="Feltarbeid i et medieproduksjonsselskap ble utgangspunktet."
+        >
+          <p>
+            I løpet av kurset, Design for medieproduksjon, ble vi sendt ut i
+            felten for å undersøke hvordan et selskap som arbeider med
+            medieproduksjon samarbeider og arbeider med CSCW-verktøy (computer
+            supported cooperative work). I løpet av feltarbeidet samlet vi
+            kvalitative data i form av intervju og observasjon, som vi brukte
+            til å skape et verktøy som kunne forbedre arbeidsdagen til de
+            ansatte ved firmaet vi besøkte.
+          </p>
+        </CaseChapter>
+
+        <CaseChapter
+          id="innsikt"
+          number="02"
+          title="Problemområdet"
+          surface="dark"
+          // FORSLAG
+          lead="Tre utfordringer i designprosjekter, og hvordan vi angrep dem."
+          wide={
             <>
-              <h1 className="heading-large">OurSpace</h1>
-              <p className="text-medium">
-                Et CSCW-verktøy med mål om å strukturere konsulenter og
-                klienters kalendere for å oppfylle deres ønsker og behov.
-              </p>
+              <CaseColumns
+                items={[
+                  {
+                    // FORSLAG
+                    title: "Tre utfordringer",
+                    text: (
+                      <p>
+                        Gjennom brainstorming identifiserte vi tre
+                        hovedutfordringer knyttet til designprosjekter:
+                        kommunikasjon med kunden, selve designprosessen og
+                        arbeidsfordeling. Kommunikasjon med kunden er ofte
+                        preget av treghet, hvor designere må avvente svar før de
+                        kan fortsette arbeidet. Dette skaper forsinkelser og
+                        utfordringer når kunden introduserer plutselige
+                        endringer som ikke alltid er i takt med designprosessen.
+                        Slike problemer oppstår ofte fordi kunden ikke er
+                        tilstrekkelig involvert eller inkludert underveis.
+                      </p>
+                    ),
+                  },
+                  {
+                    // FORSLAG
+                    title: "How Might We",
+                    text: (
+                      <p>
+                        For å finne løsninger brukte vi «How Might We»-øvelser
+                        (HMW), som for eksempel: Hvordan kan vi strukturere
+                        klientens og designerens kalender for å bedre oppfylle
+                        deres ønsker og behov?
+                      </p>
+                    ),
+                  },
+                  {
+                    // FORSLAG
+                    title: "Mål for fremtiden",
+                    text: (
+                      <p>
+                        I tillegg satte vi et mål for fremtiden: “In two years
+                        time” skal designere ha en klar forståelse av egne og
+                        andres prosjekter, inkludert tid, omfang og kompetanse.
+                      </p>
+                    ),
+                  },
+                ]}
+              />
+
+              <Figure
+                src="/ourspace/brainstorming.webp"
+                alt="Tidlige skisser av grensesnittet hengt opp på en whiteboardtavle."
+                caption="Wireframes for nettsiden"
+              />
             </>
           }
         />
 
-        <div>
-          <div className="project-info">
-            <p className="text-large">Plattform:</p>
-            <p className="text-medium">Software</p>
-          </div>
-          <div className="project-info">
-            <p className="text-large">Periode:</p>
-            <p className="text-medium">Aug - nov 2023</p>
-          </div>
-        </div>
+        <CaseChapter
+          id="losning"
+          number="03"
+          title="Løsning"
+          // FORSLAG
+          lead="En applikasjon som samler klienter og designere i ett grensesnitt."
+          wide={
+            <FeatureGroup title="Konseptet">
+              <Feature
+                title="Prosjektsiden"
+                figures={[
+                  {
+                    src: "/ourspace/concept.webp",
+                    alt: "Hele prosjektsiden i OurSpace, med mål, milepæler og prosjektoversikt.",
+                    caption: "OurSpace sin prosjektside",
+                  },
+                ]}
+              >
+                <p>
+                  Konseptet for OurSpace er at det skal være en applikasjon som
+                  samler både klienter og designer i et felles grensesnitt.
+                  OurSpace skal gi en oversikt over hvem som gjør hva, deadlines
+                  og milepæler i et aktuelt prosjekt. Den som benytter seg av
+                  plattformen kan holde oversikt over hvordan alle
+                  prosjektdeltakere ligger an i prosjektplanen, som minimerer
+                  forvirring og frustrasjon.
+                </p>
+              </Feature>
 
-        <StandaloneParagraph
-          textSection={
-            <>
-              <h2 className="text-medium">Bakgrunn</h2>
-              <p>
-                I løpet av kurset, Design for medieproduksjon, ble vi sendt ut i
-                felten for å undersøke hvordan et selskap som arbeider med
-                medieproduksjon samarbeider og arbeider med CSCW-verktøy
-                (computer supported cooperative work). I løpet av feltarbeidet
-                samlet vi kvalitative data i form av intervju og observasjon,
-                som vi brukte til å skape et verktøy som kunne forbedre
-                arbeidsdagen til de ansatte ved firmaet vi besøkte.
-              </p>
-            </>
+              <Feature
+                title="Tidslinje som verktøy"
+                figures={[
+                  {
+                    src: "/ourspace/timeline.webp",
+                    alt: "Tidslinjen i grensesnittet, med fremdriften i et tenkt prosjekt.",
+                    caption: "Tidslinjen",
+                  },
+                ]}
+              >
+                <p>
+                  Tidslinjen skal gi en felles oversikt til alle som samarbeider
+                  om et prosjekt. Dette gjelder både designteamet og klientene.
+                  Vi mener denne løsningen kan hjelpe med å forhindre
+                  kommunikasjonsproblemer og uklare arbeidsplaner. Kort sagt er
+                  det en oversiktlig plan som skal gi alle muligheten til å få
+                  lik innsikt i prosjektet.
+                </p>
+                <p>Tidslinjen inneholder:</p>
+                <ul className="case-list">
+                  <li>Milepæler</li>
+                  <li>Møter</li>
+                  <li>Oppdrag og oppgaver</li>
+                  <li>Tilgang til filer</li>
+                  <li>Chat mellom designere og klienter</li>
+                </ul>
+              </Feature>
+
+              <Feature
+                title="Chat i tidslinjen"
+                figures={[
+                  {
+                    src: "/ourspace/chat.webp",
+                    alt: "Funksjonen «Chat direkte fra tidslinjen» i OurSpace.",
+                    caption: "Chatfunksjonen i tidslinjen",
+                  },
+                ]}
+              >
+                {/* FORSLAG: kort tekst utledet fra listen og bildeteksten */}
+                <p>
+                  Designere og klienter kan chatte direkte fra tidslinjen, uten
+                  å forlate oversikten over prosjektet.
+                </p>
+              </Feature>
+            </FeatureGroup>
           }
         />
 
-        <ParagraphWithImage
-          textSection={
-            <div>
-              <h2 className="text-medium">Problemområdet</h2>
-              <p>
-                Gjennom brainstorming identifiserte vi tre hovedutfordringer
-                knyttet til designprosjekter: kommunikasjon med kunden, selve
-                designprosessen og arbeidsfordeling. Kommunikasjon med kunden er
-                ofte preget av treghet, hvor designere må avvente svar før de
-                kan fortsette arbeidet. Dette skaper forsinkelser og
-                utfordringer når kunden introduserer plutselige endringer som
-                ikke alltid er i takt med designprosessen. Slike problemer
-                oppstår ofte fordi kunden ikke er tilstrekkelig involvert eller
-                inkludert underveis.
-              </p>
-              <br />
-              <p>
-                For å finne løsninger brukte vi &quot;How Might We&quot;-øvelser
-                (HMW), som for eksempel: Hvordan kan vi strukturere klientens og
-                designerens kalender for å bedre oppfylle deres ønsker og behov?
-                I tillegg satte vi et mål for fremtiden: “In two years time”
-                skal designere ha en klar forståelse av egne og andres
-                prosjekter, inkludert tid, omfang og kompetanse.
-              </p>
-            </div>
-          }
-          imageSrc="/ourspace/brainstorming.webp"
-          imageText="Wireframes for nettsiden"
-          altText="Early drawings of the interface hung upon a whiteboard."
-        />
-
-        <ParagraphWithImage
-          textSection={
-            <div>
-              <h2 className="text-medium">Konsept</h2>
-              <p>
-                Konseptet for OurSpace er at det skal være en applikasjon som
-                samler både klienter og designer i et felles grensesnitt.
-                OurSpace skal gi en oversikt over hvem som gjør hva, deadlines
-                og milepæler i et aktuelt prosjekt. Den som benytter seg av
-                plattformen kan holde oversikt over hvordan alle
-                prosjektdeltakere ligger an i prosjektplanen, som minimerer
-                forvirring og frustrasjon.
-              </p>
-            </div>
-          }
-          imageSrc="/ourspace/concept.webp"
-          imageText="OurSpace sin prosjektside"
-          altText="The whole project-page in OurSpace, displaying goals, milestones and the project-overview."
-        />
-
-        <StandaloneParagraph
-          textSection={
-            <>
-              <h2 className="text-medium">Tidslinje som verktøy</h2>
-              <p>
-                Tidslinjen skal gi en felles oversikt til alle som samarbeider
-                om et prosjekt. Dette gjelder både designteamet og klientene. Vi
-                mener denne løsningen kan hjelpe med å forhindre
-                kommunikasjonsproblemer og uklare arbeidsplaner. Kort sagt er
-                det en oversiktlig plan som skal gi alle muligheten til å få lik
-                innsikt i prosjektet.
-              </p>
-              <br />
-              <p>Tidslinjen inneholder:</p>
-              <ul>
-                <li>
-                  <p>Milepæler</p>
-                </li>
-                <li>
-                  <p>Møter</p>
-                </li>
-                <li>
-                  <p>Oppdrag og oppgaver</p>
-                </li>
-                <li>
-                  <p>Tilgang til filer</p>
-                </li>
-                <li>
-                  <p>Chat mellom designere og klienter</p>
-                </li>
-              </ul>
-            </>
-          }
-        />
-
-        <TwoImages
-          imageSrc1="/ourspace/timeline.webp"
-          imageText1="Tidslinjen"
-          altText1="The timeline in the interface displaying a hypothetical projects progress."
-          imageSrc2="/ourspace/chat.webp"
-          imageText2="Chatfunksjonen i tidslinjen"
-          altText2='The "Chat directly from the timeline" feature in the OurSpace software.'
-        />
-
-        <StandaloneParagraph
-          textSection={
-            <>
-              <h2 className="text-medium">Videre arbeid med OurSpace</h2>
-              <p>
-                For å forbedre prosjektet ville vi fokusert på å redusere
-                mengden elementer i grensesnittet for å skape en mer ryddig og
-                intuitiv opplevelse, spesielt på hjemmesiden. Dette inkluderer å
-                prioritere informasjon og gjøre navigasjonen mer oversiktlig.
-              </p>
-              <br />
-              <p>
-                Videre ønsker vi å utvide chat-funksjonen for å inkludere flere
-                interaktive elementer, som veiledning og støtte til brukerne. Vi
-                ser også behov for å utforske klientenes perspektiv og behov
-                enda grundigere, for bedre å tilpasse løsningen til deres
-                forventninger. Et annet viktig fokusområde er å forenkle
-                prosessen for å legge til elementer i tidslinjen, slik at
-                brukerne kan tilpasse og administrere denne funksjonen på en
-                enkel og effektiv måte.
-              </p>
-            </>
-          }
-        />
+        <CaseChapter
+          id="videre"
+          number="04"
+          title="Videre arbeid med OurSpace"
+          surface="soft"
+          // FORSLAG
+          lead="Hva vi ville gjort for å forbedre prosjektet."
+        >
+          <CaseColumns
+            items={[
+              {
+                // FORSLAG
+                title: "Et ryddigere grensesnitt",
+                text: "For å forbedre prosjektet ville vi fokusert på å redusere mengden elementer i grensesnittet for å skape en mer ryddig og intuitiv opplevelse, spesielt på hjemmesiden. Dette inkluderer å prioritere informasjon og gjøre navigasjonen mer oversiktlig.",
+              },
+              {
+                // FORSLAG
+                title: "Chat, klienter og tidslinje",
+                text: "Videre ønsker vi å utvide chat-funksjonen for å inkludere flere interaktive elementer, som veiledning og støtte til brukerne. Vi ser også behov for å utforske klientenes perspektiv og behov enda grundigere, for bedre å tilpasse løsningen til deres forventninger. Et annet viktig fokusområde er å forenkle prosessen for å legge til elementer i tidslinjen, slik at brukerne kan tilpasse og administrere denne funksjonen på en enkel og effektiv måte.",
+              },
+            ]}
+          />
+        </CaseChapter>
       </div>
+
+      <RelatedProjects
+        projects={[
+          { thumbnail: thumbnails.corwell, title: "CorWell", link: "/corwell" },
+          {
+            thumbnail: thumbnails.dromme,
+            title: "Drømmeland",
+            link: "/drømmeland",
+          },
+          {
+            thumbnail: thumbnails.rema,
+            title: "Redesign: Rema appen",
+            link: "/æ",
+          },
+          {
+            thumbnail: thumbnails.portefoljeRedesign,
+            title: "Redesign: portefølje",
+            link: "/redesign-av-portefølje",
+          },
+        ]}
+      />
     </main>
   );
 }
