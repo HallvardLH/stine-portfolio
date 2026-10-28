@@ -26,7 +26,7 @@ export default function CoverImage({
         className={
           "cover-image-back-container " + (colorScheme ? colorScheme : "")
         }
-        to="/portefølje"
+        to="/#prosjekter"
       >
         <Button label="Tilbake" arrowDirection="left" />
       </Link>

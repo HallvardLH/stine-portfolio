@@ -78,7 +78,7 @@ export default function Navbar({
         </Link>
         {isLargeScreen ? (
           <div className="navbar-links-desktop">
-            <Link onClick={() => setNavbarOpen(false)} to="/portefølje">
+            <Link onClick={() => setNavbarOpen(false)} to="/#prosjekter">
               <p
                 className={
                   "text-medium " +
@@ -142,7 +142,7 @@ export default function Navbar({
             </Link>
           </li>
           <li>
-            <Link onClick={() => setNavbarOpen(false)} to="/portefølje">
+            <Link onClick={() => setNavbarOpen(false)} to="/#prosjekter">
               <p className="text-medium">Portefølje</p>
             </Link>
           </li>

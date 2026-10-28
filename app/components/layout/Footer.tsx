@@ -10,7 +10,7 @@ export default function Footer() {
           <nav>
             <ul className="navigation-list">
               <li>
-                <Link to="/portefølje">
+                <Link to="/#prosjekter">
                   <p className="text-large">Portefølje</p>
                 </Link>
               </li>

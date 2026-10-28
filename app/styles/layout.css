@@ -10,13 +10,14 @@
   gap: 2.625rem;
 }
 
-.landing-project-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1.5rem;
-  margin-top: 10rem;
+/* The project list on the landing page, below the introduction */
+.landing-projects {
+  margin-top: 4rem;
+  scroll-margin-top: 6rem;
+}
+
+.landing-projects > .text-section {
+  margin-bottom: 2.5rem;
 }
 
 .year-divider {
@@ -60,13 +61,6 @@
 @media only screen and (min-width: 1400px) {
   .project-section {
     gap: 6rem;
-  }
-}
-
-@media only screen and (min-width: 1050px) {
-  .landing-project-header {
-    margin-top: 2.5rem;
-    padding: 0 1rem;
   }
 }
 

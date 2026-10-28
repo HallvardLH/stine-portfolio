@@ -1,8 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
-import Button from "~/components/general/Button";
-import { Link } from "@remix-run/react";
 import ProjectCard from "~/components/card/ProjectCard";
-import { thumbnails } from "~/data/thumbnails";
+import { latestProject, projectsByYear } from "~/data/projects";
 
 export const meta: MetaFunction = () => {
   return [
@@ -27,23 +25,30 @@ export default function Index() {
             teknologi mer tilgjengelig og inkluderende for alle.
           </p>
         </div>
-        <div className="landing-project-header">
-          <h2 className="heading">Mitt siste prosjekt</h2>
-          <Link to="/portefølje">
-            <Button label="Se porteføljen min" />
-          </Link>
-        </div>
 
-        <ProjectCard
-          thumbnail={thumbnails.finn}
-          date="Sommeren 2026"
-          platformInfo="Web"
-          title="FINN Eiendom"
-          description="Summer internship i FINN Eiendom med fokus på å forenkle påmeldingen til boligvisninger for meglere og boligkjøpere."
-          link="/finn-eiendom"
-          tags={["Summer internship", "FINN Eiendom"]}
-          hero
-        />
+        <section id="prosjekter" className="landing-projects">
+          <div className="text-section text-section-narrow">
+            <p className="text-large">
+              Her er noen av prosjektene jeg har jobbet med og er mest stolt av.
+              Trykk på et av dem for å lese mer!
+            </p>
+          </div>
+
+          <ProjectCard {...latestProject} hero />
+
+          {projectsByYear.map(({ year, projects }) => (
+            <div key={year}>
+              <div className="year-divider">
+                <h2 className="heading">{year}</h2>
+              </div>
+              <div className="project-card-container">
+                {projects.map((project) => (
+                  <ProjectCard key={project.link} {...project} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </section>
       </main>
     </div>
   );
