@@ -24,8 +24,6 @@ const SCROLL_OFFSET = 112;
 // The reader is "in" a chapter once its start passes this share of the viewport
 const READING_LINE = 0.35;
 
-const pad = (n: number) => String(n).padStart(2, "0");
-
 export default function ChapterNav({ chapters }: ChapterNavProps) {
   const [layout, setLayout] = useState<Layout | null>(null);
   const areaRef = useRef<HTMLDivElement>(null);
@@ -120,14 +118,7 @@ export default function ChapterNav({ chapters }: ChapterNavProps) {
                     onClick={(event) => goTo(event, i)}
                   >
                     <span className="chapter-nav-dot" />
-                    <span className="chapter-nav-label">
-                      {pad(i)}
-                      {state === "active" && (
-                        <span className="chapter-nav-name">
-                          {chapter.label}
-                        </span>
-                      )}
-                    </span>
+                    <span className="chapter-nav-label">{chapter.label}</span>
                   </a>
                 </li>
               );
