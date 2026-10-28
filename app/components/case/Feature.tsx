@@ -13,8 +13,7 @@ interface FeatureProps {
   figures: FeatureFigure[];
 }
 
-// One part of the solution: the text on the left and its images on the right,
-// the same way every time so the chapter is easy to scan
+// One part of the solution: its text, with the images right underneath
 export function Feature({ title, children, figures }: FeatureProps) {
   return (
     <div className="case-feature">
@@ -36,12 +35,12 @@ interface FeatureGroupProps {
   children: React.ReactNode;
 }
 
-// A set of features under a small heading
+// A set of features, with the group name in the margin beside the first one
 export function FeatureGroup({ title, children }: FeatureGroupProps) {
   return (
     <div className="case-feature-group">
       <h3 className="case-group-title">{title}</h3>
-      {children}
+      <div className="case-feature-list">{children}</div>
     </div>
   );
 }
