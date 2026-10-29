@@ -99,27 +99,54 @@
   outline-offset: 3px;
 }
 
-/* The filters on the left and the step indicator on the right, over the chart */
+/* The filters over the chart */
 .timeline-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem 2rem;
   margin-bottom: 1.5rem;
 }
 
-/* The chart shows one stretch of time at a time; the dots change stretch */
-.timeline-steps {
+/* Under the chart: the dots that change the stretch of time, and a button back to today */
+.timeline-chart-footer {
   display: none;
   align-items: center;
-  margin-left: auto;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.timeline-steps {
+  display: flex;
+  align-items: center;
+  /* Lines up the first dot with the edge of the page */
+  margin-left: -0.5rem;
 }
 
 .timeline-steps-label {
-  margin-right: 0.5rem;
+  margin-left: 0.5rem;
   font-size: var(--font-size-small);
   opacity: 0.75;
+}
+
+.timeline-today-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-color);
+  font: inherit;
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.timeline-today-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+  text-decoration: none;
+}
+
+.timeline-today-button:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 3px;
 }
 
 /* The hit area is larger than the dot */
@@ -530,12 +557,12 @@
     margin-bottom: 3rem;
   }
 
-  .timeline-chart {
-    display: block;
+  .timeline-chart-footer {
+    display: flex;
   }
 
-  .timeline-steps {
-    display: flex;
+  .timeline-chart {
+    display: block;
   }
 
   .timeline-year-jump {

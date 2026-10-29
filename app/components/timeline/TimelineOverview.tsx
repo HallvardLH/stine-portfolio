@@ -35,10 +35,14 @@ export default function TimelineOverview({
   onSelect,
   filters,
 }: TimelineOverviewProps) {
-  // It opens on the latest stretch, which has today in it
-  const [step, setStep] = useState(steps.length - 1);
-  const { from, to } = steps[step];
   const today = currentYear();
+  // The stretch with today in it, which is where the chart opens
+  const todayStep = Math.max(
+    steps.findIndex((item) => today >= item.from && today < item.to),
+    0,
+  );
+  const [step, setStep] = useState(todayStep);
+  const { from, to } = steps[step];
 
   const share = (year: number) => ((year - from) / (to - from)) * 100;
   const gridYears = Array.from(
@@ -81,23 +85,7 @@ export default function TimelineOverview({
 
   return (
     <>
-      <div className="timeline-toolbar">
-        {filters}
-        <div className="timeline-steps" role="group" aria-label="Tidsrom">
-          <span className="timeline-steps-label" aria-live="polite">
-            {steps[step].label}
-          </span>
-          {steps.map((item, index) => (
-            <button
-              key={item.label}
-              className={`timeline-step ${index === step ? "is-active" : ""}`}
-              aria-label={`Vis ${item.label}`}
-              aria-current={index === step ? "step" : undefined}
-              onClick={() => setStep(index)}
-            />
-          ))}
-        </div>
-      </div>
+      <div className="timeline-toolbar">{filters}</div>
 
       <div
         className="timeline-chart"
@@ -183,6 +171,30 @@ export default function TimelineOverview({
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="timeline-chart-footer">
+        <div className="timeline-steps" role="group" aria-label="Tidsrom">
+          {steps.map((item, index) => (
+            <button
+              key={item.label}
+              className={`timeline-step ${index === step ? "is-active" : ""}`}
+              aria-label={`Vis ${item.label}`}
+              aria-current={index === step ? "step" : undefined}
+              onClick={() => setStep(index)}
+            />
+          ))}
+          <span className="timeline-steps-label" aria-live="polite">
+            {steps[step].label}
+          </span>
+        </div>
+        <button
+          className="timeline-today-button"
+          disabled={step === todayStep}
+          onClick={() => setStep(todayStep)}
+        >
+          I dag
+        </button>
       </div>
     </>
   );
