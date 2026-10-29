@@ -71,48 +71,37 @@ export default function ArchiveBox({ open }: ArchiveBoxProps) {
   }, [open]);
 
   const angle = progress * OPEN_ANGLE;
-  // The flap on the front edge leans back over the box, the one on the back edge stands behind
-  const frontFold = fold([-COS, -SIN], angle);
-  const backFold = fold([COS, SIN], angle);
+  // Each flap folds up from its own edge, over the box from where it hangs
+  const foldFrontRight = fold([-COS, -SIN], angle);
+  const foldBackLeft = fold([COS, SIN], angle);
+  const foldFrontLeft = fold([COS, -SIN], angle);
+  const foldBackRight = fold([-COS, SIN], angle);
+
+  const flap = (a: Point, b: Point, by: Point) =>
+    points([a, b, add(b, by), add(a, by)]);
 
   return (
     <svg
       className="archive-box"
-      viewBox="60 20 220 270"
+      viewBox="40 10 240 280"
       aria-hidden="true"
       fill="none"
     >
-      {/* The inside corner at the back, seen through the opening */}
-      <line
-        x1={backTop[0]}
-        y1={backTop[1]}
-        x2={backTop[0]}
-        y2={frontTop[1] - 15}
-      />
+      {/* The two walls at the back, seen from inside through the opening */}
+      <polygon points={points([leftTop, backTop, back, left])} />
+      <polygon points={points([backTop, rightTop, right, back])} />
 
-      {/* The flap on the back edge */}
-      <polygon
-        points={points([
-          leftTop,
-          backTop,
-          add(backTop, backFold),
-          add(leftTop, backFold),
-        ])}
-      />
-
-      {/* The two sides of the box */}
+      {/* The two sides of the box we see from outside */}
       <polygon points={points([front, left, leftTop, frontTop])} />
       <polygon points={points([front, right, rightTop, frontTop])} />
 
-      {/* The flap on the front edge */}
-      <polygon
-        points={points([
-          frontTop,
-          rightTop,
-          add(rightTop, frontFold),
-          add(frontTop, frontFold),
-        ])}
-      />
+      {/* The short flaps, which lie under the long ones while the box is shut */}
+      <polygon points={flap(frontTop, leftTop, foldFrontLeft)} />
+      <polygon points={flap(rightTop, backTop, foldBackRight)} />
+
+      {/* The long flaps, which meet in the middle */}
+      <polygon points={flap(leftTop, backTop, foldBackLeft)} />
+      <polygon points={flap(frontTop, rightTop, foldFrontRight)} />
     </svg>
   );
 }

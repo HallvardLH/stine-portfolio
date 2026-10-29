@@ -1,17 +1,18 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
+import { useMemo, useState } from "react";
 import "~/components/case/Case.css";
 import ChapterNav, { type Chapter } from "~/components/chapter-nav/ChapterNav";
 import ProjectCard from "~/components/card/ProjectCard";
 import "~/components/archive/Archive.css";
 import ArchiveTeaser from "~/components/archive/ArchiveTeaser";
 import ThumbnailImage from "~/components/card/ThumbnailImage";
-import { latestProject, projectsByYear } from "~/data/projects";
-
-const chapters: Chapter[] = [
-  { id: "prosjekter", label: "Prosjekter" },
-  ...projectsByYear.map(({ year }) => ({ id: `ar-${year}`, label: year })),
-];
+import {
+  latestProject,
+  projectCategories,
+  projectsByYear,
+  type ProjectCategory,
+} from "~/data/projects";
 
 export const meta: MetaFunction = () => {
   return [
@@ -24,6 +25,29 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const [filter, setFilter] = useState<ProjectCategory | "alle">("alle");
+
+  // Only the years that have something left under the filter
+  const years = useMemo(
+    () =>
+      projectsByYear
+        .map(({ year, projects }) => ({
+          year,
+          projects: projects.filter(
+            (project) => filter === "alle" || project.category === filter,
+          ),
+        }))
+        .filter(({ projects }) => projects.length > 0),
+    [filter],
+  );
+  const chapters = useMemo<Chapter[]>(
+    () => [
+      { id: "prosjekter", label: "Prosjekter" },
+      ...years.map(({ year }) => ({ id: `ar-${year}`, label: year })),
+    ],
+    [years],
+  );
+
   return (
     <main className="case home">
       <section
@@ -104,11 +128,30 @@ export default function Index() {
                   Her er noen av prosjektene jeg har jobbet med og er mest stolt
                   av. Trykk på et av dem for å lese mer!
                 </p>
+                <div
+                  className="home-filters"
+                  role="group"
+                  aria-label="Filtrer prosjekter"
+                >
+                  {[
+                    { id: "alle" as const, label: "Alle" },
+                    ...projectCategories,
+                  ].map((category) => (
+                    <button
+                      key={category.id}
+                      className="home-chip"
+                      aria-pressed={filter === category.id}
+                      onClick={() => setFilter(category.id)}
+                    >
+                      {category.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
             <div className="home-years">
-              {projectsByYear.map(({ year, projects }) => (
+              {years.map(({ year, projects }) => (
                 <div key={year} id={`ar-${year}`} className="home-year">
                   <div className="case-row">
                     <h3 className="home-year-title">{year}</h3>
@@ -127,8 +170,8 @@ export default function Index() {
 
       <section
         id="arkiv"
-        className="case-section home-archive"
-        data-surface="light"
+        className="case-section case-soft home-archive"
+        data-surface="soft"
       >
         <div className="case-container">
           <div className="case-row">

@@ -1,6 +1,15 @@
 import { thumbnails, type Thumbnail } from "~/data/thumbnails";
 
+export type ProjectCategory = "universitet" | "internship" | "freelance";
+
+export const projectCategories: { id: ProjectCategory; label: string }[] = [
+  { id: "universitet", label: "Prosjekter på universitetet" },
+  { id: "internship", label: "Internships" },
+  { id: "freelance", label: "Freelance" },
+];
+
 export interface Project {
+  category: ProjectCategory;
   thumbnail: Thumbnail;
   date: string;
   platformInfo: string;
@@ -16,6 +25,7 @@ export interface ProjectYear {
 }
 
 export const latestProject: Project = {
+  category: "internship",
   thumbnail: thumbnails.finn,
   date: "Sommeren 2026",
   platformInfo: "Web",
@@ -31,6 +41,7 @@ export const projectsByYear: ProjectYear[] = [
     year: "2025",
     projects: [
       {
+        category: "internship",
         thumbnail: thumbnails.barnebank,
         date: "Sommeren 2025",
         platformInfo: "App",
@@ -41,6 +52,7 @@ export const projectsByYear: ProjectYear[] = [
         tags: ["Summer internship", "Sparebanken Norge", "Bank for barn"],
       },
       {
+        category: "universitet",
         thumbnail: thumbnails.grundercampus,
         date: "Våren 2025",
         platformInfo: "Web",
@@ -56,16 +68,7 @@ export const projectsByYear: ProjectYear[] = [
     year: "2024",
     projects: [
       {
-        thumbnail: thumbnails.portefoljeRedesign,
-        date: "Vinteren 2024",
-        platformInfo: "Web",
-        title: "Redesign: portefølje",
-        description:
-          "Redesign av en frontend utviklers portefølje for å fremheve arbeidet hans.",
-        link: "/redesign-av-portefølje",
-        tags: ["Freelance", "Redesign", "Case"],
-      },
-      {
+        category: "freelance",
         thumbnail: thumbnails.rema,
         date: "Høsten 2024",
         platformInfo: "App",
@@ -76,6 +79,7 @@ export const projectsByYear: ProjectYear[] = [
         tags: ["Freelance", "Redesign", "Case"],
       },
       {
+        category: "universitet",
         thumbnail: thumbnails.corwell,
         date: "Våren 2024",
         platformInfo: "App",
@@ -91,6 +95,7 @@ export const projectsByYear: ProjectYear[] = [
     year: "2023",
     projects: [
       {
+        category: "universitet",
         thumbnail: thumbnails.ourspace,
         date: "Høsten 2023",
         platformInfo: "Software",
@@ -100,6 +105,7 @@ export const projectsByYear: ProjectYear[] = [
         tags: ["Universitetet i Bergen", "Samarbeidsverktøy"],
       },
       {
+        category: "universitet",
         thumbnail: thumbnails.dromme,
         date: "Våren 2023",
         platformInfo: "App",
@@ -113,7 +119,28 @@ export const projectsByYear: ProjectYear[] = [
   },
 ];
 
+/** Projects that do not need to stand out. They have a page of their own, the archive. */
+export const archiveByYear: ProjectYear[] = [
+  {
+    year: "2024",
+    projects: [
+      {
+        category: "freelance",
+        thumbnail: thumbnails.portefoljeRedesign,
+        date: "Vinteren 2024",
+        platformInfo: "Web",
+        title: "Redesign: portefølje",
+        description:
+          "Redesign av en frontend utviklers portefølje for å fremheve arbeidet hans.",
+        link: "/redesign-av-portefølje",
+        tags: ["Freelance", "Redesign", "Case"],
+      },
+    ],
+  },
+];
+
 export const allProjects: Project[] = [
   latestProject,
   ...projectsByYear.flatMap(({ projects }) => projects),
+  ...archiveByYear.flatMap(({ projects }) => projects),
 ];

@@ -1,8 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
 import "~/components/case/Case.css";
 import "~/components/archive/Archive.css";
-import { archive } from "~/data/archive";
+import ProjectCard from "~/components/card/ProjectCard";
+import { archiveByYear } from "~/data/projects";
 
 export const meta: MetaFunction = () => {
   return [
@@ -32,31 +32,18 @@ export default function ArchiveRoute() {
 
       <section className="case-section archive-list" data-surface="light">
         <div className="case-container">
-          {archive.length === 0 ? (
-            <p className="archive-empty">Arkivet fylles opp etter hvert.</p>
-          ) : (
-            <ul className="archive-items">
-              {archive.map((item) => (
-                <li key={item.id} className="archive-item">
-                  <div className="case-row">
-                    <p className="archive-item-year">{item.year}</p>
-                    <div className="case-text">
-                      <h2 className="archive-item-title">{item.title}</h2>
-                      <p className="archive-item-description">
-                        {item.description}
-                      </p>
-                      {item.link && (
-                        <Link to={item.link.to} className="case-button">
-                          {item.link.label}
-                          <img src="/icons/arrow.svg" alt="" />
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
+          {archiveByYear.map(({ year, projects }) => (
+            <div key={year} className="home-year">
+              <div className="case-row">
+                <h2 className="home-year-title">{year}</h2>
+                <div className="home-cards">
+                  {projects.map((project) => (
+                    <ProjectCard key={project.link} {...project} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </main>
