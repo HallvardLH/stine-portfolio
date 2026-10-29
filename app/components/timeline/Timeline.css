@@ -189,7 +189,7 @@
     padding-inline: 0.75rem;
     background-color: color-mix(
       in srgb,
-      var(--contrast-color) 22%,
+      var(--contrast-color) 12%,
       transparent
     );
   }
@@ -281,7 +281,6 @@
   }
 
   .timeline a.timeline-bar-sommer {
-    border: 2px solid var(--case-ink);
     color: var(--case-ink);
     background-color: var(--contrast-color);
     min-width: 1.5rem;
