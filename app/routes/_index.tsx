@@ -2,7 +2,6 @@ import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import { useMemo, useState } from "react";
 import "~/components/case/Case.css";
-import ChapterNav, { type Chapter } from "~/components/chapter-nav/ChapterNav";
 import ProjectCard from "~/components/card/ProjectCard";
 import "~/components/archive/Archive.css";
 import ArchiveTeaser from "~/components/archive/ArchiveTeaser";
@@ -40,14 +39,6 @@ export default function Index() {
         .filter(({ projects }) => projects.length > 0),
     [filter],
   );
-  const chapters = useMemo<Chapter[]>(
-    () => [
-      { id: "prosjekter", label: "Prosjekter" },
-      ...years.map(({ year }) => ({ id: `ar-${year}`, label: year })),
-    ],
-    [years],
-  );
-
   return (
     <main className="case home">
       <section
@@ -111,64 +102,60 @@ export default function Index() {
         </div>
       </section>
 
-      <div className="case-chapters">
-        <ChapterNav chapters={chapters} />
-
-        <section
-          id="prosjekter"
-          className="case-section home-projects"
-          data-surface="light"
-        >
-          <div className="case-container">
-            <div className="case-row">
-              <div className="case-margin">
-                <span className="case-margin-number">Prosjekter</span>
-              </div>
-              <div className="case-text">
-                <h2 className="home-projects-title">Prosjekter</h2>
-                <p className="case-lead">
-                  Her er noen av prosjektene jeg har jobbet med og er mest stolt
-                  av. Trykk på et av dem for å lese mer!
-                </p>
-                <div
-                  className="home-filters"
-                  role="group"
-                  aria-label="Filtrer prosjekter"
-                >
-                  {[
-                    { id: "alle" as const, label: "Alle" },
-                    ...projectCategories,
-                  ].map((category) => (
-                    <button
-                      key={category.id}
-                      className="home-chip"
-                      aria-pressed={filter === category.id}
-                      onClick={() => setFilter(category.id)}
-                    >
-                      {category.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
+      <section
+        id="prosjekter"
+        className="case-section home-projects"
+        data-surface="light"
+      >
+        <div className="case-container">
+          <div className="case-row">
+            <div className="case-margin">
+              <span className="case-margin-number">Prosjekter</span>
             </div>
-
-            <div className="home-years">
-              {years.map(({ year, projects }) => (
-                <div key={year} id={`ar-${year}`} className="home-year">
-                  <div className="case-row">
-                    <h3 className="home-year-title">{year}</h3>
-                    <div className="home-cards">
-                      {projects.map((project) => (
-                        <ProjectCard key={project.link} {...project} />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
+            <div className="case-text">
+              <h2 className="home-projects-title">Prosjekter</h2>
+              <p className="case-lead">
+                Her er prosjektene jeg har jobbet med. Trykk på et av dem for å
+                lese mer!
+              </p>
+              <div
+                className="home-filters"
+                role="group"
+                aria-label="Filtrer prosjekter"
+              >
+                {[
+                  { id: "alle" as const, label: "Alle" },
+                  ...projectCategories,
+                ].map((category) => (
+                  <button
+                    key={category.id}
+                    className="home-chip"
+                    aria-pressed={filter === category.id}
+                    onClick={() => setFilter(category.id)}
+                  >
+                    {category.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-        </section>
-      </div>
+
+          <div className="home-years">
+            {years.map(({ year, projects }) => (
+              <div key={year} id={`ar-${year}`} className="home-year">
+                <div className="case-row">
+                  <h3 className="home-year-title">{year}</h3>
+                  <div className="home-cards">
+                    {projects.map((project) => (
+                      <ProjectCard key={project.link} {...project} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section
         id="arkiv"

@@ -37,6 +37,7 @@ export const latestProject: Project = {
 };
 
 export const projectsByYear: ProjectYear[] = [
+  { year: "2026", projects: [latestProject] },
   {
     year: "2025",
     projects: [
@@ -140,7 +141,6 @@ export const archiveByYear: ProjectYear[] = [
 ];
 
 export const allProjects: Project[] = [
-  latestProject,
   ...projectsByYear.flatMap(({ projects }) => projects),
   ...archiveByYear.flatMap(({ projects }) => projects),
 ];

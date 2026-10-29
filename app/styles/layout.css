@@ -204,12 +204,6 @@
   outline-offset: 4px;
 }
 
-/* The chapter nav starts level with the chapter name in the margin: the
-   chapter's top padding, plus half a line, minus the line above the first step */
-.home .case-chapters > .chapter-nav-area {
-  top: 5.5rem;
-}
-
 /* All projects, grouped by year with the year in the margin */
 .home-projects-title {
   font-size: clamp(2rem, 4vw, 2.5rem);
