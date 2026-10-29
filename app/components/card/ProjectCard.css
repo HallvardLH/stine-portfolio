@@ -122,3 +122,10 @@
   padding: 0.3rem 0.75rem;
   font-size: 0.8125rem;
 }
+
+/* Marks a prototype. It is filled, so it reads before the other tags do. */
+.card-tag-fiktiv {
+  border-color: transparent;
+  font-weight: 500;
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
+}

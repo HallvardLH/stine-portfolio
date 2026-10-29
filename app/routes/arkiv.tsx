@@ -4,7 +4,7 @@ import "~/components/archive/Archive.css";
 import { Link } from "@remix-run/react";
 import ThumbnailImage from "~/components/card/ThumbnailImage";
 import Button from "~/components/general/Button";
-import { archiveByYear } from "~/data/projects";
+import { archiveByYear, projectStatusLabels } from "~/data/projects";
 
 export const meta: MetaFunction = () => {
   return [
@@ -54,6 +54,11 @@ export default function ArchiveRoute() {
                     </Link>
                     <div className="archive-feature-text">
                       <ul className="home-tags">
+                        {projectStatusLabels[project.status] && (
+                          <li className={`home-tag home-tag-${project.status}`}>
+                            {projectStatusLabels[project.status]}
+                          </li>
+                        )}
                         {project.tags.map((tag) => (
                           <li key={tag} className="home-tag">
                             {tag}

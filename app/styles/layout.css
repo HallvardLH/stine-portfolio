@@ -151,6 +151,13 @@
   font-size: 0.8125rem;
 }
 
+/* Marks a prototype */
+.home-tag-fiktiv {
+  border-color: transparent;
+  font-weight: 500;
+  background-color: color-mix(in srgb, currentColor 14%, transparent);
+}
+
 .home-latest-title {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
