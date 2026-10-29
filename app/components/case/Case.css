@@ -430,6 +430,22 @@
   margin-top: 0;
 }
 
+/* Phone screenshots: two to a row on small screens, otherwise one row at a
+   phone-like size that does not stretch with the column */
+.case-feature-phones {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 1rem;
+}
+
+@media only screen and (min-width: 600px) {
+  .case-feature-phones {
+    grid-template-columns: repeat(var(--phones), minmax(0, 1fr));
+    gap: 1.5rem;
+    max-width: calc(var(--phones) * 18rem + (var(--phones) - 1) * 1.5rem);
+  }
+}
+
 /* Related projects */
 .case-related {
   display: flex;

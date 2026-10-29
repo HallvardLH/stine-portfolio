@@ -91,6 +91,18 @@ export default function StinesOppskrifterRoute() {
                       caption: "Spørsmålskortet på forsiden",
                     },
                   ]}
+                  phones={[
+                    {
+                      src: "/stines-oppskrifter/mobil-forside.webp",
+                      alt: "Forsiden på mobil, med søk og spørsmålskortet.",
+                      caption: "Forsiden på mobil",
+                    },
+                    {
+                      src: "/stines-oppskrifter/mobil-forside-liste.webp",
+                      alt: "Oppskriftene på mobil, filtrert på middag.",
+                      caption: "Oppskriftene filtreres underveis",
+                    },
+                  ]}
                 >
                   <p>
                     På forsiden svarer du på noen få spørsmål, og oppskriftene
@@ -102,12 +114,16 @@ export default function StinesOppskrifterRoute() {
 
                 <Feature
                   title="Oppskriften"
-                  figures={[
+                  phones={[
                     {
-                      src: "/stines-oppskrifter/oppskrift.webp",
-                      alt: "En oppskrift med ingredienser, porsjonsvalg og fremgangsmåte.",
-                      caption:
-                        "En oppskrift med porsjonsknapper og ingredienser",
+                      src: "/stines-oppskrifter/mobil-oppskrift.webp",
+                      alt: "En oppskrift på mobil, med forfatteren, Følg-knapp og tid.",
+                      caption: "Oppskriften på mobil",
+                    },
+                    {
+                      src: "/stines-oppskrifter/mobil-ingredienser.webp",
+                      alt: "Porsjonsvalg og ingrediensliste på mobil.",
+                      caption: "Porsjonsknapper og ingredienser",
                     },
                   ]}
                 >
@@ -159,11 +175,16 @@ export default function StinesOppskrifterRoute() {
 
                 <Feature
                   title="Handleliste"
-                  figures={[
+                  phones={[
                     {
-                      src: "/stines-oppskrifter/handleliste.webp",
-                      alt: "Handlelisten, laget ut fra ukesmenyen, med avkryssede varer.",
-                      caption: "Handlelisten laget ut fra ukesmenyen",
+                      src: "/stines-oppskrifter/mobil-uke.webp",
+                      alt: "Ukesmenyen på mobil.",
+                      caption: "Ukesmenyen",
+                    },
+                    {
+                      src: "/stines-oppskrifter/mobil-handleliste.webp",
+                      alt: "Handlelisten på mobil, laget ut fra ukesmenyen, med avkryssede varer.",
+                      caption: "Handlelisten laget ut fra den",
                     },
                   ]}
                 >
