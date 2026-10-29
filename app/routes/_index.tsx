@@ -127,8 +127,8 @@ export default function Index() {
 
       <section
         id="arkiv"
-        className="case-section case-soft home-archive"
-        data-surface="soft"
+        className="case-section home-archive"
+        data-surface="light"
       >
         <div className="case-container">
           <div className="case-row">
