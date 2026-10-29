@@ -116,44 +116,11 @@
   margin-bottom: 2.5rem;
 }
 
-.timeline-chart-pager,
+.timeline-chart-years,
 .timeline-chart-actions {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-/* Plain arrows, with the icon lined up with the left edge of the page */
-.timeline-chart-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--text-color);
-  cursor: pointer;
-  transition: opacity 0.15s ease;
-}
-
-.timeline-chart-arrow:first-child {
-  margin-left: -0.5625rem;
-}
-
-.timeline-chart-arrow:hover:not(:disabled) {
-  opacity: 0.6;
-}
-
-.timeline-chart-arrow:disabled {
-  opacity: 0.25;
-  cursor: default;
-}
-
-.timeline-chart-arrow:focus-visible {
-  outline: 2px solid var(--text-color);
-  outline-offset: 2px;
 }
 
 .timeline-chart-button {
@@ -176,6 +143,7 @@
     color 0.15s ease;
 }
 
+.timeline-chart-button.is-active,
 .timeline-chart-button:hover:not(:disabled) {
   background-color: var(--text-color);
   color: var(--primary-color);

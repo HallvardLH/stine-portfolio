@@ -23,22 +23,6 @@ const gridYears = Array.from(
   (_, i) => Math.ceil(chartStart) + i,
 );
 
-function Arrow({ direction }: { direction: "left" | "right" }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="18"
-      height="18"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden="true"
-    >
-      <path d={direction === "left" ? "M15 4 7 12l8 8" : "M9 4l8 8-8 8"} />
-    </svg>
-  );
-}
-
 function tooltip(entry: TimelineEntry) {
   const org = entry.org.split(" · ")[0];
   return entry.title.includes(org) ? entry.title : `${entry.title} · ${org}`;
@@ -59,11 +43,37 @@ export default function TimelineOverview({
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
   const [fit, setFit] = useState(false);
+  // The year the pills point at: the one just chosen, or else the year at the
+  // left of what is shown
+  const [activeYear, setActiveYear] = useState<number | null>(null);
+  const chosen = useRef<number | null>(null);
 
   const behavior = () =>
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
       ? "auto"
       : "smooth";
+
+  // Where the years sit on screen: the first column of the chart is the row
+  // names, which stay put, so the years are measured from the track
+  const trackBox = () => {
+    const element = scroller.current;
+    const grid = element?.querySelector<HTMLElement>(".timeline-chart-grid");
+    if (!element || !grid) return null;
+    const box = element.getBoundingClientRect();
+    const track = grid.getBoundingClientRect();
+    // The row names stay put at the left, so the track shows from their edge
+    const cover = element.querySelector<HTMLElement>(".timeline-axis-cover");
+    const names = cover ? cover.getBoundingClientRect().right : box.left;
+    // Visible part of the track, in screen pixels
+    const left = Math.max(track.left, names);
+    return {
+      element,
+      box,
+      track,
+      left,
+      right: Math.min(track.right, box.right),
+    };
+  };
 
   const updateEdges = () => {
     const element = scroller.current;
@@ -72,10 +82,34 @@ export default function TimelineOverview({
     setCanRight(
       element.scrollLeft + element.clientWidth < element.scrollWidth - 4,
     );
+    if (chosen.current !== null) return;
+    const view = trackBox();
+    if (!view) return;
+    const year =
+      chartStart +
+      ((view.left + 48 - view.track.left) / view.track.width) *
+        (chartEnd - chartStart);
+    setActiveYear(
+      Math.min(Math.max(Math.floor(year), gridYears[0]), gridYears.at(-1)!),
+    );
+  };
+
+  // Brings a year to the left of the visible part of the chart
+  const showYear = (year: number) => {
+    const view = trackBox();
+    if (!view) return;
+    chosen.current = year;
+    setActiveYear(year);
+    const yearX = view.track.left + (share(year) / 100) * view.track.width;
+    view.element.scrollBy({
+      left: yearX - view.left - 24,
+      behavior: behavior(),
+    });
   };
 
   // Today about two thirds of the way across
   const showToday = (smooth: boolean) => {
+    chosen.current = null;
     const element = scroller.current;
     const marker = element?.querySelector<HTMLElement>(".timeline-chart-today");
     if (!element || !marker) return;
@@ -89,12 +123,6 @@ export default function TimelineOverview({
     });
   };
 
-  const page = (direction: number) =>
-    scroller.current?.scrollBy({
-      left: direction * scroller.current.clientWidth * 0.6,
-      behavior: behavior(),
-    });
-
   // The chart is wider than most screens, so it opens on the latest years
   useEffect(() => {
     if (!fit) showToday(false);
@@ -106,32 +134,26 @@ export default function TimelineOverview({
   useEffect(() => {
     window.addEventListener("resize", updateEdges);
     return () => window.removeEventListener("resize", updateEdges);
+    // Only reads refs, so the first copy of the function is fine
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="timeline-chart-wrap">
       <div className="timeline-chart-controls">
-        <div className="timeline-chart-pager">
-          {!fit && (
-            <>
+        <div className="timeline-chart-years">
+          {!fit &&
+            gridYears.map((year) => (
               <button
-                className="timeline-chart-arrow"
-                aria-label="Tidligere"
-                disabled={!canLeft}
-                onClick={() => page(-1)}
+                key={year}
+                className={`timeline-chart-button ${year === activeYear ? "is-active" : ""}`}
+                aria-current={year === activeYear ? "true" : undefined}
+                aria-label={`Gå til ${year}`}
+                onClick={() => showYear(year)}
               >
-                <Arrow direction="left" />
+                {year}
               </button>
-              <button
-                className="timeline-chart-arrow"
-                aria-label="Senere"
-                disabled={!canRight}
-                onClick={() => page(1)}
-              >
-                <Arrow direction="right" />
-              </button>
-            </>
-          )}
+            ))}
         </div>
         <div className="timeline-chart-actions">
           {!fit && (
@@ -158,6 +180,8 @@ export default function TimelineOverview({
           ref={scroller}
           className={`timeline-chart ${fit ? "is-fit" : ""}`}
           onScroll={updateEdges}
+          onWheel={() => (chosen.current = null)}
+          onTouchStart={() => (chosen.current = null)}
           role="group"
           aria-label="Oversikt over erfaringene mine, fra 2019 til nå"
           onPointerDown={(event) => {
