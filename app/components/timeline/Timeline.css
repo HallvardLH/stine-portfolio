@@ -492,7 +492,8 @@
 }
 
 .timeline a.timeline-bar-frivillig {
-  margin-right: 2px;
+  /* Room between bars that follow each other, half of it on each side */
+  width: calc(100% - 0.5rem);
   border: 1.5px solid color-mix(in srgb, var(--text-color) 70%, transparent);
   color: var(--text-color);
 }

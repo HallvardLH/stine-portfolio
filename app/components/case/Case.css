@@ -10,6 +10,11 @@
   letter-spacing: var(--letter-spacing);
 }
 
+/* Stines oppskrifter: the lime from its thumbnail */
+.case-oppskrifter {
+  --case-lime: #d9f5b8;
+}
+
 [data-theme="dark"] .case {
   --case-soft: color-mix(in srgb, var(--text-color) 6%, var(--primary-color));
   --case-soft-strong: color-mix(
@@ -435,19 +440,23 @@
   margin-top: 0;
 }
 
-/* Phone screenshots: two to a row on small screens, otherwise one row at a
-   phone-like size that does not stretch with the column */
+/* Phone screenshots sit together on a coloured panel, two to a row on small
+   screens, otherwise one row of phone-sized columns */
 .case-feature-phones {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem 1rem;
+  padding: 1.5rem 1rem;
+  background-color: var(--case-lime, var(--case-soft-strong));
+  color: var(--case-ink);
 }
 
 @media only screen and (min-width: 600px) {
   .case-feature-phones {
-    grid-template-columns: repeat(var(--phones), minmax(0, 1fr));
-    gap: 1.5rem;
-    max-width: calc(var(--phones) * 18rem + (var(--phones) - 1) * 1.5rem);
+    grid-template-columns: repeat(var(--phones), minmax(0, 15rem));
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem 2rem;
   }
 }
 
