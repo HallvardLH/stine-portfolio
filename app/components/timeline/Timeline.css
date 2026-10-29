@@ -588,6 +588,7 @@
 /* On small screens the filters stay under the menu while the list scrolls,
    in one row that moves sideways so they never take much of the screen */
 .timeline-filter-sticky {
+  gap: 0.5rem;
   position: sticky;
   top: 4.5rem;
   z-index: 5;
@@ -598,7 +599,10 @@
 }
 
 .timeline-filter-sticky .timeline-chips {
+  position: relative;
+  flex: 1;
   flex-wrap: nowrap;
+  min-width: 0;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -612,21 +616,12 @@
   white-space: nowrap;
 }
 
-/* "Alle" stays at the left edge while the rest moves under it, so you can
+/* "Alle" stays at the left edge while the rest moves beside it, so you can
    always see that a filter is on, and get out of it */
-.timeline-filter-sticky .timeline-chips {
-  scroll-padding-left: 5.5rem;
-}
-
-.timeline-filter-sticky .timeline-chip:first-child {
-  position: sticky;
-  left: 0;
-  z-index: 1;
-  box-shadow: 0.5rem 0 0 var(--primary-color);
-}
-
-.timeline-filter-sticky .timeline-chip:first-child:not([aria-pressed="true"]) {
-  background-color: var(--primary-color);
+@media only screen and (max-width: 699px) {
+  .timeline-filter-sticky {
+    display: flex;
+  }
 }
 
 .timeline-chip {

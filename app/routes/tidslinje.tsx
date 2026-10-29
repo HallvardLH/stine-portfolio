@@ -83,9 +83,7 @@ export default function TimelineRoute() {
     );
     const chip = row?.querySelector<HTMLElement>("[aria-pressed=true]");
     if (!row || !chip) return;
-    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    // Not under "Alle", which stays in place at the left
-    const left = chip.offsetLeft - 5.5 * rem;
+    const left = chip.offsetLeft;
     const right = chip.offsetLeft + chip.offsetWidth - row.clientWidth;
     if (left < row.scrollLeft) row.scrollLeft = Math.max(left, 0);
     else if (right > row.scrollLeft) row.scrollLeft = right;
@@ -114,25 +112,26 @@ export default function TimelineRoute() {
     }
   };
 
+  const chip = (category: { id: Filter; label: string }) => (
+    <button
+      key={category.id}
+      className="timeline-chip"
+      aria-pressed={filter === category.id}
+      onClick={() => pick(category.id)}
+    >
+      {category.label}
+      <span>{count(category.id)}</span>
+    </button>
+  );
+  const all = { id: "alle" as const, label: "Alle" };
+
   const chips = (
     <div
       className="timeline-chips"
       role="group"
       aria-label="Filtrer etter kategori"
     >
-      {[{ id: "alle" as const, label: "Alle" }, ...categories].map(
-        (category) => (
-          <button
-            key={category.id}
-            className="timeline-chip"
-            aria-pressed={filter === category.id}
-            onClick={() => pick(category.id)}
-          >
-            {category.label}
-            <span>{count(category.id)}</span>
-          </button>
-        ),
-      )}
+      {[all, ...categories].map(chip)}
     </div>
   );
 
@@ -222,7 +221,14 @@ export default function TimelineRoute() {
       <section id="erfaringer" className="case-section timeline-list">
         <div className="case-container">
           {/* Small screens have no chart, so the filters follow the list instead */}
-          <div className="timeline-filter-sticky">{chips}</div>
+          <div
+            className="timeline-filter-sticky"
+            role="group"
+            aria-label="Filtrer etter kategori"
+          >
+            {chip(all)}
+            <div className="timeline-chips">{categories.map(chip)}</div>
+          </div>
           <div className="timeline-filter">
             <p className="timeline-filter-status" aria-live="polite">
               {filter === "alle" ? (
