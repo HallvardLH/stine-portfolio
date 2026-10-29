@@ -639,20 +639,21 @@
   }
 }
 
-/* Wide enough for the count to stand beside the filters */
-@media only screen and (min-width: 1050px) {
-  /* The filters stand at the right edge, so they do not move when the text changes */
+/* Larger screens have the filters over the chart, so the list only has the
+   count, in the page like any other line */
+@media only screen and (min-width: 700px) {
   .timeline-filter-set {
-    flex-basis: 0;
-    justify-content: flex-end;
+    display: none;
   }
 
-  .timeline-filter-set .timeline-chips {
-    flex: 0 1 auto;
+  .timeline-filter-sticky {
+    position: static;
+    margin-bottom: 0;
+    padding-block: 0;
   }
 
-  .timeline-filter-status {
-    white-space: nowrap;
+  .timeline-filter-sticky::before {
+    display: none;
   }
 }
 
