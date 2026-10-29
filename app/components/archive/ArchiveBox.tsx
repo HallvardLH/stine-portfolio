@@ -41,6 +41,7 @@ const fold = (inward: Point, angle: number): Point => [
 ];
 
 const easeOut = (x: number) => 1 - (1 - x) ** 3;
+const clamp = (x: number) => Math.min(Math.max(x, 0), 1);
 
 export default function ArchiveBox({ open }: ArchiveBoxProps) {
   // 0 is shut and 1 is open. It moves by itself, since a drawing in this
@@ -57,12 +58,12 @@ export default function ArchiveBox({ open }: ArchiveBoxProps) {
       return;
     }
     const from = current.current;
-    const duration = 350 * Math.abs(target - from);
+    const duration = 600 * Math.abs(target - from);
     const start = performance.now();
     let frame = 0;
     const step = (now: number) => {
       const done = duration === 0 ? 1 : Math.min((now - start) / duration, 1);
-      current.current = from + (target - from) * easeOut(done);
+      current.current = from + (target - from) * done;
       setProgress(current.current);
       if (done < 1) frame = requestAnimationFrame(step);
     };
@@ -70,17 +71,24 @@ export default function ArchiveBox({ open }: ArchiveBoxProps) {
     return () => cancelAnimationFrame(frame);
   }, [open]);
 
-  const angle = progress * OPEN_ANGLE;
+  // The flaps move one pair at a time. Opening, the long flaps on top lift
+  // first and the short ones after. Shutting, the short ones go in first and
+  // the long ones close over them.
+  const longProgress = easeOut(clamp(progress / 0.5));
+  const shortProgress = easeOut(clamp((progress - 0.5) / 0.5));
+  const longAngle = longProgress * OPEN_ANGLE;
+  const shortAngle = shortProgress * OPEN_ANGLE;
   // Each flap folds up from its own edge, over the box from where it hangs
-  const foldFrontRight = fold([-COS, -SIN], angle);
-  const foldBackLeft = fold([COS, SIN], angle);
-  const foldFrontLeft = fold([COS, -SIN], angle);
-  const foldBackRight = fold([-COS, SIN], angle);
+  const foldFrontRight = fold([-COS, -SIN], longAngle);
+  const foldBackLeft = fold([COS, SIN], longAngle);
+  const foldFrontLeft = fold([COS, -SIN], shortAngle);
+  const foldBackRight = fold([-COS, SIN], shortAngle);
 
   const flap = (a: Point, b: Point, by: Point) =>
     points([a, b, add(b, by), add(a, by)]);
 
-  const lifted = progress > 0.12;
+  // The short flap in front is only over the long one behind when both are up
+  const lifted = shortProgress > 0.05 && longProgress > 0.05;
   const frontLeftShort = (
     <polygon key="front-left" points={flap(frontTop, leftTop, foldFrontLeft)} />
   );
