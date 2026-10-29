@@ -168,6 +168,33 @@
   line-height: 1.2;
 }
 
+/* A flat button in the accent colour with an arrow, for a link to another page */
+.case-button {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--contrast-color);
+  color: var(--button-text-color);
+  font-size: var(--font-size-body);
+  font-weight: 500;
+}
+
+.case-button:hover {
+  filter: brightness(0.9);
+}
+
+.case-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.case-button img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 /* Text that still has to be written */
 .case-placeholder {
   opacity: 0.6;

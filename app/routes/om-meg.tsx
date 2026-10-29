@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 import "~/components/case/Case.css";
 import ImageWithLoader from "~/components/general/ImageWithLoader";
 import CaseBreak from "~/components/case/CaseBreak";
@@ -53,11 +54,7 @@ export default function AboutRoute() {
         brukerinnsikt.
       </CaseBreak>
 
-      <CaseChapter
-        id="veien-hit"
-        number="01"
-        title="Veien hit"
-      >
+      <CaseChapter id="veien-hit" number="01" title="Veien hit">
         <p>
           Jeg har prøvd litt av hvert: strikking, maling og grafisk design. Da
           jeg begynte på medie- og interaksjonsdesign ved UiB, fant jeg ut at
@@ -70,6 +67,10 @@ export default function AboutRoute() {
           Jeg liker å teste ut ideer og se hvordan det jeg lærer om brukerne
           endrer løsningen underveis.
         </p>
+        <Link to="/tidslinje" className="case-button">
+          Se hele reisen min
+          <img src="/icons/arrow.svg" alt="" />
+        </Link>
       </CaseChapter>
 
       <CaseChapter

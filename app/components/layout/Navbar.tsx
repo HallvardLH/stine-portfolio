@@ -84,11 +84,23 @@ export default function Navbar({
               onClick={close}
               to="/om-meg"
               className={
-                "navbar-link " + (isCurrent("/om-meg") ? "navbar-link-current" : "")
+                "navbar-link " +
+                (isCurrent("/om-meg") ? "navbar-link-current" : "")
               }
               aria-current={isCurrent("/om-meg") ? "page" : undefined}
             >
               Om meg
+            </Link>
+            <Link
+              onClick={close}
+              to="/tidslinje"
+              className={
+                "navbar-link " +
+                (isCurrent("/tidslinje") ? "navbar-link-current" : "")
+              }
+              aria-current={isCurrent("/tidslinje") ? "page" : undefined}
+            >
+              Tidslinje
             </Link>
             <a href="#kontakt" className="navbar-link">
               Kontakt
@@ -135,6 +147,16 @@ export default function Navbar({
                 aria-current={isCurrent("/om-meg") ? "page" : undefined}
               >
                 Om meg
+              </Link>
+            </li>
+            <li>
+              <Link
+                onClick={close}
+                to="/tidslinje"
+                className={isCurrent("/tidslinje") ? "navbar-link-current" : ""}
+                aria-current={isCurrent("/tidslinje") ? "page" : undefined}
+              >
+                Tidslinje
               </Link>
             </li>
             <li>
