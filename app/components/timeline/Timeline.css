@@ -4,6 +4,11 @@
   --timeline-line: color-mix(in srgb, var(--text-color) 20%, transparent);
   --timeline-soft-line: color-mix(in srgb, var(--text-color) 12%, transparent);
   --timeline-label-width: 6.5rem;
+  --timeline-featured-tint: color-mix(
+    in srgb,
+    var(--contrast-color) 12%,
+    transparent
+  );
 }
 
 /* Intro */
@@ -98,8 +103,19 @@
 }
 
 @media only screen and (min-width: 700px) {
+  /* The chart scrolls sideways when the screen is narrower than it needs. The
+     padding makes room for the tooltips above the top bars and for the green
+     row, which runs a little past the edges. */
   .timeline-chart {
     display: block;
+    margin: -2.5rem -0.75rem 0;
+    padding: 2.5rem 0.75rem 0;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .timeline-chart-inner {
+    min-width: 56rem;
   }
 
   .timeline-year-jump {
@@ -192,11 +208,18 @@
     /* The green runs a little past the column, so the label lines up with the others */
     margin-inline: -0.75rem;
     padding-inline: 0.75rem;
-    background-color: color-mix(
-      in srgb,
-      var(--contrast-color) 12%,
-      transparent
+    background-color: var(--timeline-featured-tint);
+  }
+
+  .timeline-lane-featured .timeline-lane-label {
+    background-color: var(--primary-color);
+    background-image: linear-gradient(
+      var(--timeline-featured-tint),
+      var(--timeline-featured-tint)
     );
+    box-shadow:
+      -0.75rem 0 0 var(--timeline-featured-tint),
+      -0.75rem 0 0 var(--primary-color);
   }
 
   .timeline-lane-featured .timeline-track {
@@ -221,7 +244,18 @@
     opacity: 0.2;
   }
 
+  /* The row names stay put when the chart is scrolled sideways */
   .timeline-lane-label {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    box-sizing: border-box;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    /* Covers the strip left of the label, so the bars do not show there when scrolled */
+    box-shadow: -0.75rem 0 0 var(--primary-color);
     flex: 0 0 var(--timeline-label-width);
     padding-right: 0.75rem;
     font-size: 0.8125rem;

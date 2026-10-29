@@ -197,7 +197,7 @@ export const timeline: TimelineEntry[] = [
     title: "Kors på Halsen",
     org: "Røde Kors · Bergen",
     through: 2025,
-    lane: 6,
+    lane: 7,
     start: at(2024),
     end: at(2025),
     barLabel: "Kors på Halsen",
@@ -257,6 +257,19 @@ export const timeline: TimelineEntry[] = [
     barLabel: "Bachelor i interaksjonsdesign",
   },
   {
+    id: "kjelsas",
+    category: "arbeid",
+    year: "2021",
+    dateLabel: "2021 – 2022",
+    title: "Assistent",
+    org: "Kjelsås barneskole · Oslo",
+    through: 2022,
+    lane: 2,
+    start: at(2021, 8),
+    end: at(2022, 7),
+    barLabel: "Kjelsås barneskole",
+  },
+  {
     id: "bergans",
     category: "arbeid",
     year: "2019",
@@ -268,11 +281,11 @@ export const timeline: TimelineEntry[] = [
     lane: 1,
     start: at(2019, 11),
     end: at(2025, 7),
-    barLabel: "Bergans · siden 2019",
+    barLabel: "Bergans",
   },
 ];
 
-/** The rows in the overview. Arbeidserfaring has two, as the jobs overlap. */
+/** The rows in the overview. Arbeidserfaring and Frivillig arbeid have two, as the jobs overlap. */
 export const lanes: { label?: string; tall?: boolean; featured?: boolean }[] = [
   { label: "Utdanning", tall: true },
   { label: "Arbeidserfaring" },
@@ -281,11 +294,12 @@ export const lanes: { label?: string; tall?: boolean; featured?: boolean }[] = [
   { featured: true },
   { label: "Arbeid på universitetet" },
   { label: "Frivillig arbeid" },
+  {},
 ];
 
 /** The years the overview covers. It starts after 2021, so the left side is not
  * empty; the job that began in 2019 runs in from the edge. */
-export const chartStart = 2021.6;
+export const chartStart = 2021.4;
 export const chartEnd = 2027.5;
 
 /** Today as a decimal year, to the month so the server and the browser agree */
