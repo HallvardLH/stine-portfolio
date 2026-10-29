@@ -80,6 +80,23 @@ export default function ArchiveBox({ open }: ArchiveBoxProps) {
   const flap = (a: Point, b: Point, by: Point) =>
     points([a, b, add(b, by), add(a, by)]);
 
+  const lifted = progress > 0.12;
+  const frontLeftShort = (
+    <polygon key="front-left" points={flap(frontTop, leftTop, foldFrontLeft)} />
+  );
+  const backRightShort = (
+    <polygon key="back-right" points={flap(rightTop, backTop, foldBackRight)} />
+  );
+  const backLeftLong = (
+    <polygon key="back-left" points={flap(leftTop, backTop, foldBackLeft)} />
+  );
+  const frontRightLong = (
+    <polygon
+      key="front-right"
+      points={flap(frontTop, rightTop, foldFrontRight)}
+    />
+  );
+
   return (
     <svg
       className="archive-box"
@@ -95,13 +112,15 @@ export default function ArchiveBox({ open }: ArchiveBoxProps) {
       <polygon points={points([front, left, leftTop, frontTop])} />
       <polygon points={points([front, right, rightTop, frontTop])} />
 
-      {/* The short flaps, which lie under the long ones while the box is shut */}
-      <polygon points={flap(frontTop, leftTop, foldFrontLeft)} />
-      <polygon points={flap(rightTop, backTop, foldBackRight)} />
+      {/* Shut, the short flaps lie under the long ones. Once they are up, the
+          short flap in front stands in front of the long one behind it. */}
+      {!lifted && frontLeftShort}
+      {backRightShort}
 
       {/* The long flaps, which meet in the middle */}
-      <polygon points={flap(leftTop, backTop, foldBackLeft)} />
-      <polygon points={flap(frontTop, rightTop, foldFrontRight)} />
+      {backLeftLong}
+      {lifted && frontLeftShort}
+      {frontRightLong}
     </svg>
   );
 }

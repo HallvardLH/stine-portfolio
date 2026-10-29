@@ -85,3 +85,46 @@
 .archive-list.case-section {
   padding-top: 0;
 }
+
+/* One project, large: the image across the page, then the text under it */
+.archive-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 3rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent);
+}
+
+.archive-feature-image {
+  display: block;
+}
+
+.archive-feature-image:focus-visible,
+.archive-feature .case-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.archive-feature-text {
+  gap: 1.25rem;
+}
+
+.archive-feature-title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.archive-feature-description {
+  margin: 0;
+  max-width: 40rem;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.archive-feature-meta {
+  margin: 0;
+  font-size: var(--font-size-small);
+  opacity: 0.6;
+}

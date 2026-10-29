@@ -1,7 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
 import "~/components/case/Case.css";
 import "~/components/archive/Archive.css";
-import ProjectCard from "~/components/card/ProjectCard";
+import { Link } from "@remix-run/react";
+import ThumbnailImage from "~/components/card/ThumbnailImage";
 import { archiveByYear } from "~/data/projects";
 
 export const meta: MetaFunction = () => {
@@ -32,18 +33,44 @@ export default function ArchiveRoute() {
 
       <section className="case-section archive-list" data-surface="light">
         <div className="case-container">
-          {archiveByYear.map(({ year, projects }) => (
-            <div key={year} className="home-year">
-              <div className="case-row">
-                <h2 className="home-year-title">{year}</h2>
-                <div className="home-cards">
-                  {projects.map((project) => (
-                    <ProjectCard key={project.link} {...project} />
-                  ))}
+          {archiveByYear.flatMap(({ year, projects }) =>
+            projects.map((project) => (
+              <article key={project.link} className="archive-feature">
+                <Link
+                  to={project.link}
+                  className="archive-feature-image"
+                  aria-label={project.title}
+                >
+                  <ThumbnailImage thumbnail={project.thumbnail} />
+                </Link>
+                <div className="case-row">
+                  <div className="case-margin">
+                    <span className="case-margin-number">{year}</span>
+                  </div>
+                  <div className="case-text archive-feature-text">
+                    <ul className="home-tags">
+                      {project.tags.map((tag) => (
+                        <li key={tag} className="home-tag">
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                    <h2 className="archive-feature-title">{project.title}</h2>
+                    <p className="archive-feature-description">
+                      {project.description}
+                    </p>
+                    <p className="archive-feature-meta">
+                      {project.date} · {project.platformInfo}
+                    </p>
+                    <Link to={project.link} className="case-button">
+                      Les om prosjektet
+                      <img src="/icons/arrow.svg" alt="" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </article>
+            )),
+          )}
         </div>
       </section>
     </main>
