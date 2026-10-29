@@ -61,7 +61,7 @@ export const timeline: TimelineEntry[] = [
     id: "mix301",
     category: "universitet",
     year: "2026",
-    dateLabel: "september 2026 – pågående",
+    dateLabel: "september – desember 2026",
     title: "Læreassistent MIX301",
     org: "Universitetet i Bergen",
     text: "Veileder studentprosjekter i et KI-fokusert emne som handler om å anvende KI i både prosess og endelig løsning. Arbeidet inkluderer fasilitering av workshops og bistand i idéutvikling, prosjektarbeid og semesteroppgaver.",
@@ -69,6 +69,7 @@ export const timeline: TimelineEntry[] = [
     barLabel: "Læreassistent MIX301",
     lane: 6,
     start: at(2026, 9),
+    plannedEnd: at(2027, 1),
   },
   {
     id: "finn",
