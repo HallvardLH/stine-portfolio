@@ -252,7 +252,8 @@
   height: 2.75rem;
 }
 
-.timeline-lane-tall .timeline-bar-label {
+.timeline-lane-tall .timeline-bar-label,
+.timeline-lane-featured .timeline-bar-label {
   box-sizing: border-box;
   padding: 0 0.625rem;
   font-size: 0.75rem;
@@ -261,9 +262,13 @@
   white-space: normal;
 }
 
+.timeline-lane-featured .timeline-bar-label {
+  padding: 0 0.375rem;
+}
+
 /* The highlighted internships sit on a green band across the whole row */
 .timeline-lane-featured {
-  min-height: 3rem;
+  min-height: 3.75rem;
   /* The green runs a little past the column, so the label lines up with the others */
   margin-inline: -0.75rem;
   padding-inline: 0.75rem;
@@ -271,7 +276,7 @@
 }
 
 .timeline-lane-featured .timeline-track {
-  height: 2rem;
+  height: 2.75rem;
 }
 
 .timeline-bar-note {
@@ -284,13 +289,6 @@
   transform: translateY(-50%);
   font-size: 0.8125rem;
   white-space: nowrap;
-}
-
-.timeline-lane-featured .timeline-bar-note {
-  background-image: linear-gradient(
-    var(--timeline-featured-tint),
-    var(--timeline-featured-tint)
-  );
 }
 
 .timeline-bar-note b {
@@ -382,7 +380,8 @@
 .timeline a.timeline-bar-sommer {
   color: var(--case-ink);
   background-color: var(--contrast-color);
-  min-width: 1.5rem;
+  /* Wide enough for the name, even when the stretch of time is short */
+  min-width: 5.5rem;
 }
 
 .timeline a.timeline-bar-universitet {
