@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import "~/components/case/Case.css";
 import "~/components/timeline/Timeline.css";
 import TimelineItem from "~/components/timeline/TimelineItem";
-import TimelineLightbox from "~/components/timeline/TimelineLightbox";
+import ImageLightbox from "~/components/general/ImageLightbox";
 import TimelineOverview from "~/components/timeline/TimelineOverview";
 import {
   categories,
@@ -242,11 +242,10 @@ export default function TimelineRoute() {
       </section>
 
       {open && open.entry.photos && (
-        <TimelineLightbox
-          title={`${open.entry.title} · ${open.entry.org.split(" · ")[0]}`}
-          photos={open.entry.photos}
+        <ImageLightbox
+          label={`Bilder fra ${open.entry.title}`}
+          images={open.entry.photos}
           index={open.index}
-          onIndex={(index) => setOpen({ ...open, index })}
           onClose={() => setOpen(null)}
         />
       )}
