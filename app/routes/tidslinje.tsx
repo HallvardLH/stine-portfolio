@@ -82,6 +82,44 @@ export default function TimelineRoute() {
     return () => clearTimeout(timer);
   }, [highlighted]);
 
+  // On small screens the filters follow the list, so a pick takes you back to
+  // the top of what it left, instead of somewhere in the middle of nothing
+  const pick = (next: Filter) => {
+    setFilter(next);
+    if (!window.matchMedia("(max-width: 699px)").matches) return;
+    const top = document
+      .querySelector(".timeline-filter")
+      ?.getBoundingClientRect().top;
+    // Below the menu and the filter bar
+    const stuck =
+      8.5 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    if (top !== undefined && top < stuck) {
+      window.scrollTo({ top: window.scrollY + top - stuck, behavior: "auto" });
+    }
+  };
+
+  const chips = (
+    <div
+      className="timeline-chips"
+      role="group"
+      aria-label="Filtrer etter kategori"
+    >
+      {[{ id: "alle" as const, label: "Alle" }, ...categories].map(
+        (category) => (
+          <button
+            key={category.id}
+            className="timeline-chip"
+            aria-pressed={filter === category.id}
+            onClick={() => pick(category.id)}
+          >
+            {category.label}
+            <span>{count(category.id)}</span>
+          </button>
+        ),
+      )}
+    </div>
+  );
+
   return (
     <main className="case timeline">
       <section
@@ -153,31 +191,7 @@ export default function TimelineRoute() {
               </p>
             </div>
           </div>
-          <TimelineOverview
-            filter={filter}
-            onSelect={jumpTo}
-            filters={
-              <div
-                className="timeline-chips"
-                role="group"
-                aria-label="Filtrer etter kategori"
-              >
-                {[{ id: "alle" as const, label: "Alle" }, ...categories].map(
-                  (category) => (
-                    <button
-                      key={category.id}
-                      className="timeline-chip"
-                      aria-pressed={filter === category.id}
-                      onClick={() => setFilter(category.id)}
-                    >
-                      {category.label}
-                      <span>{count(category.id)}</span>
-                    </button>
-                  ),
-                )}
-              </div>
-            }
-          />
+          <TimelineOverview filter={filter} onSelect={jumpTo} filters={chips} />
           <nav className="timeline-year-jump" aria-label="Hopp til år">
             <span>Hopp til</span>
             {years.map((year) => (
@@ -191,6 +205,8 @@ export default function TimelineRoute() {
 
       <section id="erfaringer" className="case-section timeline-list">
         <div className="case-container">
+          {/* Small screens have no chart, so the filters follow the list instead */}
+          <div className="timeline-filter-sticky">{chips}</div>
           <div className="timeline-filter">
             <p className="timeline-filter-status" aria-live="polite">
               {filter === "alle" ? (

@@ -139,8 +139,9 @@
   outline-offset: 3px;
 }
 
-/* The filters over the chart */
+/* The filters over the chart, which only larger screens have */
 .timeline-toolbar {
+  display: none;
   margin-bottom: 1.5rem;
 }
 
@@ -543,11 +544,16 @@
     display: block;
   }
 
+  .timeline-toolbar {
+    display: block;
+  }
+
   .timeline-chart-card {
     display: block;
   }
 
-  .timeline-year-jump {
+  .timeline-year-jump,
+  .timeline-filter-sticky {
     display: none;
   }
 }
@@ -577,6 +583,33 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+/* On small screens the filters stay under the menu while the list scrolls,
+   in one row that moves sideways so they never take much of the screen */
+.timeline-filter-sticky {
+  position: sticky;
+  top: 4.5rem;
+  z-index: 5;
+  margin: 0 -1.6rem 1rem;
+  padding: 0.75rem 1.6rem;
+  border-bottom: 1px solid var(--timeline-line);
+  background-color: var(--primary-color);
+}
+
+.timeline-filter-sticky .timeline-chips {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.timeline-filter-sticky .timeline-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.timeline-filter-sticky .timeline-chip {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .timeline-chip {
