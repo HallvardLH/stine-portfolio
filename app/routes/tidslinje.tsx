@@ -129,12 +129,36 @@ export default function TimelineRoute() {
             <div className="case-margin">
               <h2 className="case-margin-title">Oversikt</h2>
               <p className="timeline-help">
-                Hele reisen på ett blikk. Trykk på et årstall for å gå dit, og
-                på en strek for å lese mer.
+                Hele reisen på ett blikk. Bytt tidsrom med prikkene, og trykk på
+                en strek for å lese mer.
               </p>
             </div>
           </div>
-          <TimelineOverview filter={filter} onSelect={jumpTo} />
+          <TimelineOverview
+            filter={filter}
+            onSelect={jumpTo}
+            filters={
+              <div
+                className="timeline-chips"
+                role="group"
+                aria-label="Filtrer etter kategori"
+              >
+                {[{ id: "alle" as const, label: "Alle" }, ...categories].map(
+                  (category) => (
+                    <button
+                      key={category.id}
+                      className="timeline-chip"
+                      aria-pressed={filter === category.id}
+                      onClick={() => setFilter(category.id)}
+                    >
+                      {category.label}
+                      <span>{count(category.id)}</span>
+                    </button>
+                  ),
+                )}
+              </div>
+            }
+          />
           <nav className="timeline-year-jump" aria-label="Hopp til år">
             <span>Hopp til</span>
             {years.map((year) => (
@@ -149,25 +173,6 @@ export default function TimelineRoute() {
       <section id="erfaringer" className="case-section timeline-list">
         <div className="case-container">
           <div className="timeline-filter">
-            <div
-              className="timeline-chips"
-              role="group"
-              aria-label="Filtrer etter kategori"
-            >
-              {[{ id: "alle" as const, label: "Alle" }, ...categories].map(
-                (category) => (
-                  <button
-                    key={category.id}
-                    className="timeline-chip"
-                    aria-pressed={filter === category.id}
-                    onClick={() => setFilter(category.id)}
-                  >
-                    {category.label}
-                    <span>{count(category.id)}</span>
-                  </button>
-                ),
-              )}
-            </div>
             <p className="timeline-filter-status" aria-live="polite">
               {filter === "alle" ? (
                 `${timeline.length} erfaringer · nyeste først`
