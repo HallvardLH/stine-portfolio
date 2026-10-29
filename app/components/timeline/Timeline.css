@@ -115,14 +115,14 @@
 .timeline-steps {
   display: flex;
   align-items: center;
-  /* Lines up the first dot with the edge of the page */
+  /* Lines the chevron up with the edge of the page */
   margin-left: -0.5rem;
 }
 
 .timeline-steps-label {
-  margin-left: 0.5rem;
+  min-width: 5.5rem;
   font-size: var(--font-size-small);
-  opacity: 0.75;
+  text-align: center;
 }
 
 .timeline-today-button {
@@ -149,32 +149,22 @@
   outline-offset: 3px;
 }
 
-/* The hit area is larger than the dot */
+/* The hit area is larger than the arrow */
 .timeline-step {
-  position: relative;
-  width: 1.75rem;
-  height: 1.75rem;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
   padding: 0;
   border: 0;
   background: none;
+  color: var(--text-color);
   cursor: pointer;
 }
 
-.timeline-step::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  box-sizing: border-box;
-  width: 0.625rem;
-  height: 0.625rem;
-  margin: -0.3125rem 0 0 -0.3125rem;
-  border: 1.5px solid var(--text-color);
-  border-radius: 50%;
-}
-
-.timeline-step.is-active::before {
-  background-color: var(--text-color);
+.timeline-step:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 
 .timeline-step:focus-visible {

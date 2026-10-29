@@ -16,6 +16,22 @@ interface TimelineOverviewProps {
   filters: ReactNode;
 }
 
+function Chevron({ direction }: { direction: "left" | "right" }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
+      <path d={direction === "left" ? "M15 4 7 12l8 8" : "M9 4l8 8-8 8"} />
+    </svg>
+  );
+}
+
 function tooltip(entry: TimelineEntry) {
   const org = entry.org.split(" · ")[0];
   return entry.title.includes(org) ? entry.title : `${entry.title} · ${org}`;
@@ -175,18 +191,25 @@ export default function TimelineOverview({
 
       <div className="timeline-chart-footer">
         <div className="timeline-steps" role="group" aria-label="Tidsrom">
-          {steps.map((item, index) => (
-            <button
-              key={item.label}
-              className={`timeline-step ${index === step ? "is-active" : ""}`}
-              aria-label={`Vis ${item.label}`}
-              aria-current={index === step ? "step" : undefined}
-              onClick={() => setStep(index)}
-            />
-          ))}
+          <button
+            className="timeline-step"
+            aria-label="Tidligere tidsrom"
+            disabled={step === 0}
+            onClick={() => setStep(step - 1)}
+          >
+            <Chevron direction="left" />
+          </button>
           <span className="timeline-steps-label" aria-live="polite">
             {steps[step].label}
           </span>
+          <button
+            className="timeline-step"
+            aria-label="Senere tidsrom"
+            disabled={step === steps.length - 1}
+            onClick={() => setStep(step + 1)}
+          >
+            <Chevron direction="right" />
+          </button>
         </div>
         <button
           className="timeline-today-button"

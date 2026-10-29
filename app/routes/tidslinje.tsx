@@ -129,7 +129,7 @@ export default function TimelineRoute() {
             <div className="case-margin">
               <h2 className="case-margin-title">Oversikt</h2>
               <p className="timeline-help">
-                Hele reisen på ett blikk. Bytt tidsrom med prikkene, og trykk på
+                Hele reisen på ett blikk. Bytt tidsrom med pilene, og trykk på
                 en strek for å lese mer.
               </p>
             </div>
