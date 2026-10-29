@@ -92,9 +92,9 @@ export default function TimelineRoute() {
         <div className="case-container">
           <h1 className="case-title-heading">Tidslinje</h1>
           <p className="timeline-lead">
-            Her er reisen min så langt: studier, jobber og frivillig arbeid.
-            Trykk på et bilde for å se mer, eller velg en kategori for å se bare
-            det du er nysgjerrig på.
+            Hva jeg har gjort til nå: studier, ulike jobber, internships og
+            frivillig arbeid. Trykk på elementer i tidslinjen eller bla ned for
+            å se hvordan jeg har kommet dit jeg er i dag.
           </p>
         </div>
       </section>
@@ -123,7 +123,11 @@ export default function TimelineRoute() {
         </div>
       </section>
 
-      <section id="oversikt" className="case-section timeline-overview">
+      <section
+        id="oversikt"
+        className="case-section case-soft timeline-overview"
+        data-surface="soft"
+      >
         <div className="case-container">
           <div className="case-row timeline-overview-head">
             <div className="case-margin">

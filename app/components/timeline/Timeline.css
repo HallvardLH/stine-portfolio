@@ -281,7 +281,7 @@
   right: calc(100% + 0.5rem);
   padding: 0 0.25rem;
   /* Hides the today line behind the name */
-  background-color: var(--primary-color);
+  background-color: var(--case-soft);
   transform: translateY(-50%);
   font-size: 0.8125rem;
   white-space: nowrap;
@@ -441,15 +441,6 @@
 .timeline-bar:hover .timeline-tip,
 .timeline-bar:focus-visible .timeline-tip {
   display: flex;
-}
-
-/* The overview and the list read as one: no extra space between them */
-.timeline-overview.case-section {
-  padding-bottom: 0;
-}
-
-.timeline-list.case-section {
-  padding-top: 2.5rem;
 }
 
 /* On small screens the year links do the job; the chart is for larger ones */
