@@ -70,7 +70,7 @@
 }
 
 .timeline-overview-head {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .timeline-year-jump {
@@ -97,15 +97,107 @@
   outline-offset: 3px;
 }
 
-/* The chart is wider than most screens and scrolls sideways, by the scrollbar,
-   by dragging or with touch. The padding makes room for the tooltips above the top bars and for the green
-     row, which runs a little past the edges. */
-.timeline-chart {
+/* The chart is wider than most screens and scrolls sideways: with the arrows,
+   by dragging, with the scrollbar or by touch. The padding makes room for the
+   tooltips above the top bars and for the green row, which runs a little past
+   the edges. */
+.timeline-chart-wrap {
   display: none;
+}
+
+.timeline-chart-controls {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.timeline-chart-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 2.25rem;
+  padding: 0 1rem;
+  border: 1px solid color-mix(in srgb, var(--text-color) 35%, transparent);
+  border-radius: 999px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font: inherit;
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.timeline-chart-button.is-round {
+  width: 2.25rem;
+  padding: 0;
+}
+
+.timeline-chart-button:hover:not(:disabled) {
+  background-color: var(--text-color);
+  color: var(--primary-color);
+}
+
+.timeline-chart-button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.timeline-chart-button:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 3px;
+}
+
+/* A soft edge shows on the side where there is more to see */
+.timeline-chart-frame {
+  position: relative;
   margin: -2.5rem -0.75rem 0;
+}
+
+.timeline-chart-frame::before,
+.timeline-chart-frame::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 3.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.timeline-chart-frame::before {
+  left: calc(var(--timeline-label-width) + 0.75rem);
+  background: linear-gradient(to right, var(--primary-color), transparent);
+}
+
+.timeline-chart-frame::after {
+  right: 0;
+  background: linear-gradient(to left, var(--primary-color), transparent);
+}
+
+.timeline-chart-frame.has-left::before,
+.timeline-chart-frame.has-right::after {
+  opacity: 1;
+}
+
+.timeline-chart {
   padding: 2.5rem 0.75rem 0;
   overflow-x: auto;
   cursor: grab;
+}
+
+.timeline-chart.is-fit {
+  cursor: default;
 }
 
 .timeline-chart.is-dragging {
@@ -130,6 +222,10 @@
 
 .timeline-chart-inner {
   min-width: 112rem;
+}
+
+.timeline-chart.is-fit .timeline-chart-inner {
+  min-width: 0;
 }
 
 .timeline-chart-axis-row {
@@ -432,7 +528,7 @@
 
 /* On small screens the year links do the job; the chart is for larger ones */
 @media only screen and (min-width: 700px) {
-  .timeline-chart {
+  .timeline-chart-wrap {
     display: block;
   }
 
