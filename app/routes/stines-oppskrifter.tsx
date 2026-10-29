@@ -276,6 +276,7 @@ export default function StinesOppskrifterRoute() {
                     caption: "Kalorier på oppskriftskortene",
                   },
                 ]}
+                widePhones
                 phones={[
                   {
                     src: "/stines-oppskrifter/mobil-kalorier.webp",

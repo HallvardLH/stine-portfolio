@@ -14,10 +14,18 @@ interface FeatureProps {
   figures?: FeatureFigure[];
   /** Phone screenshots, shown side by side under the other images */
   phones?: FeatureFigure[];
+  /** A single composed image that can use more of the panel than a phone */
+  widePhones?: boolean;
 }
 
 // One part of the solution: its text, with the images right underneath
-export function Feature({ title, children, figures, phones }: FeatureProps) {
+export function Feature({
+  title,
+  children,
+  figures,
+  phones,
+  widePhones,
+}: FeatureProps) {
   return (
     <div className="case-feature">
       <div className="case-feature-text">
@@ -31,7 +39,7 @@ export function Feature({ title, children, figures, phones }: FeatureProps) {
           ))}
           {phones && phones.length > 0 && (
             <div
-              className="case-feature-phones"
+              className={`case-feature-phones${widePhones ? " is-wide" : ""}`}
               style={{ "--phones": phones.length } as React.CSSProperties}
             >
               {phones.map((phone) => (

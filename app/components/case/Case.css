@@ -451,12 +451,20 @@
   color: var(--case-ink);
 }
 
+.case-feature-phones.is-wide {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 @media only screen and (min-width: 600px) {
   .case-feature-phones {
     grid-template-columns: repeat(var(--phones), minmax(0, 15rem));
     justify-content: center;
     gap: 2rem;
     padding: 3rem 2rem;
+  }
+
+  .case-feature-phones.is-wide {
+    grid-template-columns: minmax(0, 24rem);
   }
 }
 
