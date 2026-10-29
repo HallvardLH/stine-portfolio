@@ -116,6 +116,17 @@
 }
 
 /* Latest project: a dark band with the thumbnail across the full width */
+/* Linked to from the menu: the fixed bar must not cover the top of it */
+.home-latest {
+  scroll-margin-top: 4.5rem;
+}
+
+@media only screen and (min-width: 1050px) {
+  .home-latest {
+    scroll-margin-top: 0;
+  }
+}
+
 .home-latest .case-container {
   display: flex;
   flex-direction: column;

@@ -77,7 +77,7 @@ export default function Navbar({
         </Link>
         {isLargeScreen ? (
           <div className="navbar-links-desktop">
-            <Link onClick={close} to="/#prosjekter" className="navbar-link">
+            <Link onClick={close} to="/#siste-prosjekt" className="navbar-link">
               Portefølje
             </Link>
             <Link
@@ -135,7 +135,7 @@ export default function Navbar({
         >
           <ul className="navbar-list">
             <li>
-              <Link onClick={close} to="/#prosjekter">
+              <Link onClick={close} to="/#siste-prosjekt">
                 Portefølje
               </Link>
             </li>

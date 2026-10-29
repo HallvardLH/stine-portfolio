@@ -39,7 +39,7 @@ export default function Footer() {
           <nav aria-label="Bunn">
             <ul className="footer-nav">
               <li>
-                <Link to="/#prosjekter">Portefølje</Link>
+                <Link to="/#siste-prosjekt">Portefølje</Link>
               </li>
               <li>
                 <Link to="/om-meg">Om meg</Link>
