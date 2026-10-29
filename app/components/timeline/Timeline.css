@@ -184,16 +184,14 @@
   /* The highlighted internships sit on a green band across the whole row */
   .timeline-lane-featured {
     min-height: 3.25rem;
+    /* The green runs a little past the column, so the label lines up with the others */
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
     background-color: color-mix(
       in srgb,
       var(--contrast-color) 22%,
       transparent
     );
-  }
-
-  .timeline-lane-featured .timeline-lane-label {
-    box-sizing: border-box;
-    padding-left: 0.75rem;
   }
 
   .timeline-lane-featured .timeline-track {
