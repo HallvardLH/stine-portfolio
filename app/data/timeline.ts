@@ -50,8 +50,6 @@ export interface TimelineEntry {
   through?: number;
   /** Highlighted in the overview and the list */
   featured?: boolean;
-  /** Which side of its period the name sits on in the overview */
-  labelSide?: "start" | "end";
 }
 
 /** Year with months as a decimal: month 1 is the start of the year */
@@ -68,7 +66,7 @@ export const timeline: TimelineEntry[] = [
     org: "Universitetet i Bergen",
     text: "Veileder UX-prosjekter i et KI-fokusert emne, med KI gjennom hele UX-prosessen. Fasiliterer workshops og bistår med idéutvikling, prosjektarbeid og semesteroppgaver.",
     live: true,
-    lane: 4,
+    lane: 5,
     start: at(2026, 9),
   },
   {
@@ -84,7 +82,6 @@ export const timeline: TimelineEntry[] = [
     note: "Påmeldingsskjemaet ble lansert samme høst",
     link: { to: "/finn-eiendom", label: "Les om prosjektet" },
     featured: true,
-    labelSide: "start",
     barLabel: "FINN Eiendom",
     photos: [
       {
@@ -98,7 +95,7 @@ export const timeline: TimelineEntry[] = [
         caption: "Sommerteamet utenfor kontoret hos FINN!",
       },
     ],
-    lane: 3,
+    lane: 4,
     start: at(2026, 6),
     end: at(2026, 9),
   },
@@ -124,7 +121,7 @@ export const timeline: TimelineEntry[] = [
           "Med rekordmange publikumere, pitcher og deltakende emner ble dagen en stor suksess!",
       },
     ],
-    lane: 4,
+    lane: 5,
     start: at(2026, 2),
     end: at(2026, 7),
   },
@@ -141,7 +138,7 @@ export const timeline: TimelineEntry[] = [
     lane: 0,
     start: at(2025, 8),
     plannedEnd: at(2027, 6),
-    barLabel: "Master",
+    barLabel: "Master i interaksjonsdesign",
   },
   {
     id: "mix203",
@@ -151,7 +148,7 @@ export const timeline: TimelineEntry[] = [
     title: "Læreassistent MIX203",
     org: "Universitetet i Bergen",
     text: "Veiledet studenter i å utvikle brukerorienterte digitale løsninger for mediebransjen, med oppfølging av prototyper og feltarbeid hos samarbeidende bedrifter.",
-    lane: 4,
+    lane: 5,
     start: at(2025, 8),
     end: at(2026, 1),
   },
@@ -166,7 +163,6 @@ export const timeline: TimelineEntry[] = [
     note: "Lansert til bankens kunder samme sommer",
     link: { to: "/barnebank", label: "Les om prosjektet" },
     featured: true,
-    labelSide: "end",
     barLabel: "Sparebanken Norge",
     photos: [
       {
@@ -201,7 +197,7 @@ export const timeline: TimelineEntry[] = [
     title: "Kors på Halsen",
     org: "Røde Kors · Bergen",
     through: 2025,
-    lane: 5,
+    lane: 6,
     start: at(2024),
     end: at(2025),
     barLabel: "Kors på Halsen",
@@ -214,7 +210,7 @@ export const timeline: TimelineEntry[] = [
     title: "Redd Barna",
     org: "Bergen",
     through: 2024,
-    lane: 5,
+    lane: 6,
     start: at(2023),
     end: at(2024),
     barLabel: "Redd Barna",
@@ -258,7 +254,7 @@ export const timeline: TimelineEntry[] = [
     lane: 0,
     start: at(2022, 8),
     end: at(2025, 6),
-    barLabel: "Bachelor",
+    barLabel: "Bachelor i interaksjonsdesign",
   },
   {
     id: "bergans",
@@ -277,11 +273,12 @@ export const timeline: TimelineEntry[] = [
 ];
 
 /** The rows in the overview. Arbeidserfaring has two, as the jobs overlap. */
-export const lanes: { label?: string }[] = [
-  { label: "Utdanning" },
+export const lanes: { label?: string; tall?: boolean; featured?: boolean }[] = [
+  { label: "Utdanning", tall: true },
   { label: "Arbeidserfaring" },
   {},
-  { label: "Summer internships" },
+  { label: "Summer internships", featured: true },
+  { featured: true },
   { label: "Arbeid på universitetet" },
   { label: "Frivillig arbeid" },
 ];

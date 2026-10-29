@@ -106,27 +106,6 @@
     display: none;
   }
 
-  /* Names of the highlighted experiences, above the years */
-  .timeline-chart-featured {
-    position: relative;
-    height: 2rem;
-    margin-left: var(--timeline-label-width);
-  }
-
-  .timeline-chart-name {
-    position: absolute;
-    top: 0;
-    padding: 0.25rem 0.75rem;
-    border: 1px solid var(--case-ink);
-    border-radius: 999px;
-    background-color: var(--contrast-color);
-    color: var(--case-ink);
-    font-size: 0.8125rem;
-    font-weight: 700;
-    white-space: nowrap;
-    transition: opacity 0.2s ease;
-  }
-
   .timeline-chart-axis {
     position: relative;
     height: 1.5rem;
@@ -162,23 +141,6 @@
     background-color: var(--timeline-soft-line);
   }
 
-  /* A green column through every row, so the highlighted periods can be
-     compared with everything else that was going on */
-  .timeline-chart-grid > .timeline-chart-band {
-    top: -3.5rem;
-    background-color: color-mix(
-      in srgb,
-      var(--contrast-color) 30%,
-      transparent
-    );
-    transition: opacity 0.2s ease;
-  }
-
-  .timeline-chart-name.is-dim,
-  .timeline-chart-band.is-dim {
-    opacity: 0.2;
-  }
-
   .timeline-chart-grid > .timeline-chart-today {
     z-index: 2;
     width: 2px;
@@ -199,6 +161,61 @@
     display: flex;
     align-items: center;
     min-height: 2.75rem;
+  }
+
+  /* The education bars are taller, to have room for their names */
+  .timeline-lane-tall {
+    min-height: 3.75rem;
+  }
+
+  .timeline-lane-tall .timeline-track {
+    height: 2.75rem;
+  }
+
+  .timeline-lane-tall .timeline-bar-label {
+    box-sizing: border-box;
+    padding: 0 0.625rem;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;
+  }
+
+  /* The highlighted internships sit on a green band across the whole row */
+  .timeline-lane-featured {
+    min-height: 3.25rem;
+    background-color: color-mix(
+      in srgb,
+      var(--contrast-color) 22%,
+      transparent
+    );
+  }
+
+  .timeline-lane-featured .timeline-lane-label {
+    box-sizing: border-box;
+    padding-left: 0.75rem;
+  }
+
+  .timeline-lane-featured .timeline-track {
+    height: 2rem;
+  }
+
+  .timeline-bar-note {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 0.75rem);
+    transform: translateY(-50%);
+    font-size: 0.8125rem;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+  }
+
+  .timeline-bar-note b {
+    font-weight: 700;
+  }
+
+  .timeline-bar-note.is-dim {
+    opacity: 0.2;
   }
 
   .timeline-lane-label {
@@ -269,6 +286,7 @@
     border: 2px solid var(--case-ink);
     color: var(--case-ink);
     background-color: var(--contrast-color);
+    min-width: 1.5rem;
   }
 
   .timeline a.timeline-bar-universitet {

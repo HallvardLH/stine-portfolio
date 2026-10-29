@@ -33,9 +33,6 @@ export default function TimelineOverview({
   onSelect,
 }: TimelineOverviewProps) {
   const today = Math.min(currentYear(), chartEnd);
-  const featured = timeline.filter((entry) => entry.featured);
-  // The highlighted experiences stay in full colour when their kind is chosen
-  const featuredShown = filter === "alle" || filter === "sommer";
 
   return (
     <div
@@ -43,25 +40,6 @@ export default function TimelineOverview({
       role="group"
       aria-label="Oversikt over erfaringene mine, fra 2019 til nå"
     >
-      <div className="timeline-chart-featured" aria-hidden="true">
-        {featured.map((entry) => {
-          const end = entry.end ?? today;
-          return (
-            <span
-              key={entry.id}
-              className={`timeline-chart-name ${featuredShown ? "" : "is-dim"}`}
-              style={
-                entry.labelSide === "end"
-                  ? { right: `${100 - share(end)}%` }
-                  : { left: `${share(entry.start)}%` }
-              }
-            >
-              {entry.barLabel}
-            </span>
-          );
-        })}
-      </div>
-
       <div className="timeline-chart-axis" aria-hidden="true">
         {gridYears.map((year) => (
           <span key={year} style={{ left: `${share(year)}%` }}>
@@ -72,16 +50,6 @@ export default function TimelineOverview({
 
       <div className="timeline-chart-lanes">
         <div className="timeline-chart-grid" aria-hidden="true">
-          {featured.map((entry) => (
-            <span
-              key={entry.id}
-              className={`timeline-chart-band ${featuredShown ? "" : "is-dim"}`}
-              style={{
-                left: `${share(entry.start)}%`,
-                width: `${share(entry.end ?? today) - share(entry.start)}%`,
-              }}
-            />
-          ))}
           {gridYears.map((year) => (
             <span key={year} style={{ left: `${share(year)}%` }} />
           ))}
@@ -94,7 +62,10 @@ export default function TimelineOverview({
         </div>
 
         {lanes.map((lane, index) => (
-          <div className="timeline-lane" key={index}>
+          <div
+            className={`timeline-lane ${lane.tall ? "timeline-lane-tall" : ""} ${lane.featured ? "timeline-lane-featured" : ""}`}
+            key={index}
+          >
             <span className="timeline-lane-label">{lane.label}</span>
             <div className="timeline-track">
               {timeline
@@ -138,6 +109,14 @@ export default function TimelineOverview({
                           <span>{entry.dateLabel} · Trykk for å lese mer</span>
                         </span>
                       </a>
+                      {entry.featured && (
+                        <span
+                          className={`timeline-bar-note ${dimmed ? "is-dim" : ""}`}
+                          aria-hidden="true"
+                        >
+                          <b>{entry.barLabel}</b> {entry.dateLabel}
+                        </span>
+                      )}
                       {planned > 0 && (
                         <span
                           className="timeline-bar-planned"
