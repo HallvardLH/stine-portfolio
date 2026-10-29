@@ -108,7 +108,7 @@ export default function ArchiveBox({ open }: ArchiveBoxProps) {
   return (
     <svg
       className="archive-box"
-      viewBox="40 10 240 280"
+      viewBox="40 24 240 266"
       aria-hidden="true"
       fill="none"
     >

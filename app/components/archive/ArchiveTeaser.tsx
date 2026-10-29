@@ -28,10 +28,12 @@ export default function ArchiveTeaser() {
   return (
     <div className="archive-teaser">
       <div className="archive-teaser-text">
-        <h2 className="home-projects-title">Arkiv</h2>
-        <p className="case-lead">
-          Prosjekter som har hjulpet meg komme dit jeg er i dag.
-        </p>
+        <div className="archive-teaser-intro">
+          <h2 className="home-projects-title">Arkiv</h2>
+          <p className="case-lead">
+            Prosjekter som har hjulpet meg komme dit jeg er i dag.
+          </p>
+        </div>
         <Link to="/arkiv" className="home-button" onClick={go} {...pointing}>
           Gå til arkiv
           <img src="/icons/arrow.svg" alt="" />
