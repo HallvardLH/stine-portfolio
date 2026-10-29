@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { MdOutlineOpenInNew } from "react-icons/md";
 import CoverImage from "~/components/cover-image/CoverImage";
 import { thumbnails } from "~/data/thumbnails";
 import ChapterNav, { type Chapter } from "~/components/chapter-nav/ChapterNav";
@@ -42,6 +43,19 @@ export default function StinesOppskrifterRoute() {
           marginTitle="Om prosjektet"
           facts={[
             { label: "Plattform", value: "Nettside" },
+            {
+              label: "Lenke",
+              value: (
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href="https://stinesoppskrifter.no/"
+                >
+                  stinesoppskrifter.no
+                  <MdOutlineOpenInNew />
+                </a>
+              ),
+            },
             { label: "Periode", value: "Okt 2026 - pågående" },
             { label: "Oppdrag", value: "Freelance, eget prosjekt" },
             { label: "Verktøy", value: "Figma, Claude og MCP" },
