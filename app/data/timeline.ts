@@ -308,8 +308,8 @@ export const lanes: {
   {},
 ];
 
-/** The years the overview covers: from the start of 2019 to mid-2027 */
-export const chartStart = 2019;
+/** The years the overview covers: from October 2019 to mid-2027 */
+export const chartStart = at(2019, 10);
 export const chartEnd = 2027.75;
 
 /** Today as a decimal year, to the month so the server and the browser agree */
