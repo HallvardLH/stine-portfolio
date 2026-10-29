@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   currentYear,
   lanes,
@@ -71,6 +71,28 @@ function layout(step: (typeof steps)[number], today: number) {
   }));
 }
 
+// The stretch of time with the most of a category in it, which is where to
+// look when that category is picked
+function stretchFor(category: TimelineCategory, today: number) {
+  let best = 0;
+  let bestYears = -1;
+  steps.forEach(({ from, to }, index) => {
+    const years = timeline
+      .filter((entry) => entry.category === category)
+      .reduce((sum, entry) => {
+        const end = entry.end ?? entry.plannedEnd ?? today;
+        return (
+          sum + Math.max(Math.min(end, to) - Math.max(entry.start, from), 0)
+        );
+      }, 0);
+    if (years >= bestYears) {
+      best = index;
+      bestYears = years;
+    }
+  });
+  return best;
+}
+
 // The journey on a shared time axis, a stretch of time at a time: a bar per
 // experience. A bar takes you to the entry in the list.
 export default function TimelineOverview({
@@ -86,6 +108,11 @@ export default function TimelineOverview({
   );
   const [step, setStep] = useState(todayStep);
   const { from, to } = steps[step];
+
+  // Picking a category brings up the stretch of time where it mostly is
+  useEffect(() => {
+    if (filter !== "alle") setStep(stretchFor(filter, today));
+  }, [filter, today]);
 
   const share = (year: number) => ((year - from) / (to - from)) * 100;
   const gridYears = Array.from(
