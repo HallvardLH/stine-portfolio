@@ -1,14 +1,37 @@
+/* A flat icon button, drawn in the same line weight as the other icons */
 .theme-switch {
   all: unset;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding: 0.25rem 0.75rem;
-  border-radius: 100px;
+  padding: 0.5rem;
+}
+
+.theme-switch:hover .theme-switch-icon {
+  opacity: 0.6;
+}
+
+.theme-switch:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
 }
 
 .theme-switch-icon {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* In the mobile menu: the name of the mode, with the icon on the right */
+.theme-switch-row {
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 0;
+  box-sizing: border-box;
+}
+
+.theme-switch-label {
+  font-size: var(--font-size-body);
+  font-weight: 500;
 }

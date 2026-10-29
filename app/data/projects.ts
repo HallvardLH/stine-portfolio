@@ -112,3 +112,8 @@ export const projectsByYear: ProjectYear[] = [
     ],
   },
 ];
+
+export const allProjects: Project[] = [
+  latestProject,
+  ...projectsByYear.flatMap(({ projects }) => projects),
+];

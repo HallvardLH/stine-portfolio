@@ -63,41 +63,36 @@ export default function Navbar({
     }
   }, []);
 
+  const isCurrent = (path: string) => location.pathname === path;
+  const close = () => setNavbarOpen(false);
+
   return (
     <nav
       ref={navbarRef}
       className={"navbar-container " + (colorScheme ? colorScheme : "")}
     >
       <div className="navbar-top">
-        <Link
-          to="/"
-          className="navbar-logo"
-          onClick={() => setNavbarOpen(false)}
-        >
+        <Link to="/" className="navbar-logo" onClick={close}>
           Stine Knutsen
         </Link>
         {isLargeScreen ? (
           <div className="navbar-links-desktop">
-            <Link
-              onClick={() => setNavbarOpen(false)}
-              to="/#prosjekter"
-              className="navbar-link"
-            >
+            <Link onClick={close} to="/#prosjekter" className="navbar-link">
               Portefølje
             </Link>
             <Link
-              onClick={() => setNavbarOpen(false)}
+              onClick={close}
               to="/om-meg"
               className={
-                "navbar-link " +
-                (location.pathname === "/om-meg" ? "navbar-link-current" : "")
+                "navbar-link " + (isCurrent("/om-meg") ? "navbar-link-current" : "")
               }
-              aria-current={
-                location.pathname === "/om-meg" ? "page" : undefined
-              }
+              aria-current={isCurrent("/om-meg") ? "page" : undefined}
             >
               Om meg
             </Link>
+            <a href="#kontakt" className="navbar-link">
+              Kontakt
+            </a>
             <ThemeSwitch
               onThemeSwitch={onThemeSwitch}
               currentTheme={currentTheme}
@@ -105,54 +100,58 @@ export default function Navbar({
           </div>
         ) : (
           <button
-            className="navbar-dropdown-toggle-container"
+            className="navbar-dropdown-toggle"
             onClick={toggleDropdown}
+            aria-expanded={navbarOpen}
+            aria-controls="navbar-menu"
+            aria-label={navbarOpen ? "Lukk menyen" : "Åpne menyen"}
           >
             <img
               src={navbarOpen ? "/icons/close.svg" : "/icons/menu.svg"}
               alt=""
-              className="navbar-dropdown-toggle icon"
+              className="navbar-dropdown-icon icon"
               draggable="false"
             />
           </button>
         )}
       </div>
-      <div
-        className={
-          "navbar-dropdown gutter " +
-          (colorScheme ? colorScheme + " " : " ") +
-          (navbarOpen ? "navbar-expanded" : "")
-        }
-      >
-        <ul className="navbar-list">
-          <li>
-            <Link onClick={() => setNavbarOpen(false)} to="/">
-              <p className="text-medium">Hjem</p>
-            </Link>
-          </li>
-          <li>
-            <Link onClick={() => setNavbarOpen(false)} to="/#prosjekter">
-              <p className="text-medium">Portefølje</p>
-            </Link>
-          </li>
-          <li>
-            <Link onClick={() => setNavbarOpen(false)} to="/om-meg">
-              <p className="text-medium">Om meg</p>
-            </Link>
-          </li>
-          <li>
-            <Link onClick={() => setNavbarOpen(false)} to="/kontakt">
-              <p className="text-medium">Kontakt</p>
-            </Link>
-          </li>
-          <li>
-            <ThemeSwitch
-              onThemeSwitch={onThemeSwitch}
-              currentTheme={currentTheme}
-            />
-          </li>
-        </ul>
-      </div>
+      {!isLargeScreen && (
+        <div
+          id="navbar-menu"
+          className={"navbar-dropdown " + (navbarOpen ? "navbar-expanded" : "")}
+          aria-hidden={!navbarOpen}
+        >
+          <ul className="navbar-list">
+            <li>
+              <Link onClick={close} to="/#prosjekter">
+                Portefølje
+              </Link>
+            </li>
+            <li>
+              <Link
+                onClick={close}
+                to="/om-meg"
+                className={isCurrent("/om-meg") ? "navbar-link-current" : ""}
+                aria-current={isCurrent("/om-meg") ? "page" : undefined}
+              >
+                Om meg
+              </Link>
+            </li>
+            <li>
+              <a onClick={close} href="#kontakt">
+                Kontakt
+              </a>
+            </li>
+            <li>
+              <ThemeSwitch
+                onThemeSwitch={onThemeSwitch}
+                currentTheme={currentTheme}
+                showLabel
+              />
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }

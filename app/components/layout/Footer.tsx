@@ -3,7 +3,7 @@ import { Link } from "@remix-run/react";
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" id="kontakt">
       <div className="footer-container">
         <div className="footer-row">
           <p className="footer-margin">Kontakt</p>

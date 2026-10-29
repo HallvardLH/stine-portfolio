@@ -1,77 +1,22 @@
+/* A flat bar with a thin rule underneath, the same on every screen size */
 .navbar-container {
-  background-color: var(--primary-color);
-  padding: 0 1.6rem;
-  padding-top: 3rem !important;
-  padding-bottom: 3rem !important;
   position: fixed;
-  /* Fixed position to stay at the top */
   top: 0;
-  /* Aligns the navbar at the top */
   left: 0;
   right: 0;
   z-index: 1000;
-  height: 8.35rem;
+  height: 4.5rem;
+  padding: 0 1.6rem;
   box-sizing: border-box;
+  background-color: var(--primary-color);
+  border-bottom: 1px solid color-mix(in srgb, var(--text-color) 12%, transparent);
 }
 
 .navbar-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.navbar-dropdown {
-  position: absolute;
-  left: 0;
-  right: 0;
-  flex-grow: 1;
-  z-index: 999;
-  background-color: var(--primary-color);
-  height: 0;
-  overflow: hidden;
-
-  interpolate-size: allow-keywords;
-
-  transition: height 1000ms ease;
-}
-
-.navbar-dropdown-toggle-container {
-  all: unset;
-  display: flex;
-  justify-content: end;
-  cursor: pointer;
-}
-
-.navbar-expanded {
-  height: auto;
-}
-
-.navbar-dropdown-toggle {
-  height: 2rem;
-  width: 2rem;
-}
-
-.navbar-list {
-  list-style-type: none;
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-
-.navbar-list a {
-  text-decoration: none;
-  color: var(--text-color);
-}
-
-.navbar-links-desktop {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.navbar-links-desktop a {
-  padding: 0.25rem 0.5rem;
+  height: 100%;
 }
 
 /* Logo and links in the same type as the rest of the site. The current page
@@ -87,7 +32,17 @@
   font-weight: 500;
 }
 
-.navbar-links-desktop a.navbar-link-current {
+.navbar-links-desktop {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-links-desktop a {
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-container a.navbar-link-current {
   text-decoration: underline;
   text-decoration-color: var(--contrast-color);
   text-decoration-thickness: 3px;
@@ -101,15 +56,96 @@
   text-underline-offset: 0.5rem;
 }
 
-/* Desktop */
+/* Menu button on small screens */
+.navbar-dropdown-toggle {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: -0.5rem;
+  cursor: pointer;
+}
+
+.navbar-dropdown-toggle:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: -2px;
+}
+
+.navbar-dropdown-icon {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  /* The icons are drawn in the dark ink, so they are turned white in dark mode */
+  filter: none;
+}
+
+[data-theme="dark"] .navbar-dropdown-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* The menu is a panel under the bar, with a rule between the rows */
+.navbar-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 0;
+  overflow: hidden;
+  background-color: var(--primary-color);
+  border-bottom: 0 solid color-mix(in srgb, var(--text-color) 12%, transparent);
+  transition: height 0.25s ease;
+  interpolate-size: allow-keywords;
+}
+
+.navbar-dropdown.navbar-expanded {
+  height: auto;
+  border-bottom-width: 1px;
+}
+
+.navbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 1.6rem 0.5rem;
+}
+
+.navbar-list li {
+  list-style: none;
+  border-top: 1px solid color-mix(in srgb, var(--text-color) 12%, transparent);
+}
+
+.navbar-list li:first-child {
+  border-top: 0;
+}
+
+.navbar-list li > a {
+  display: block;
+  padding: 1rem 0;
+  font-size: var(--font-size-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.navbar-list li > a.navbar-link-current {
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.35rem;
+  width: fit-content;
+  margin: 1rem 0;
+  padding: 0;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-dropdown {
+    transition: none;
+  }
+}
+
+/* Desktop: logo and links line up with the page content */
 @media only screen and (min-width: 1050px) {
-  /* Logo and links line up with the page content, and a thin rule marks the
-     edge of the header */
   .navbar-container {
-    padding: 1.25rem max(2rem, calc((100vw - 70rem) / 2)) !important;
-    height: 4.5rem;
-    border-bottom: 1px solid
-      color-mix(in srgb, var(--text-color) 12%, transparent);
+    padding: 0 max(2rem, calc((100vw - 70rem) / 2));
   }
 
   .navbar-links-desktop {
