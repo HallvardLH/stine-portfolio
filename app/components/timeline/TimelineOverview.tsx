@@ -377,6 +377,7 @@ export default function TimelineOverview({
             onClick={() => showToday(true)}
           >
             I dag
+            <img src="/icons/arrow.svg" alt="" />
           </button>
         </div>
       </div>
