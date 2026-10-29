@@ -111,39 +111,45 @@ export default function TimelineOverview({
   return (
     <div className="timeline-chart-wrap">
       <div className="timeline-chart-controls">
-        {!fit && (
-          <>
-            <button
-              className="timeline-chart-button is-round"
-              aria-label="Tidligere"
-              disabled={!canLeft}
-              onClick={() => page(-1)}
-            >
-              <Arrow direction="left" />
-            </button>
-            <button
-              className="timeline-chart-button is-round"
-              aria-label="Senere"
-              disabled={!canRight}
-              onClick={() => page(1)}
-            >
-              <Arrow direction="right" />
-            </button>
+        <div className="timeline-chart-pager">
+          {!fit && (
+            <>
+              <button
+                className="timeline-chart-arrow"
+                aria-label="Tidligere"
+                disabled={!canLeft}
+                onClick={() => page(-1)}
+              >
+                <Arrow direction="left" />
+              </button>
+              <button
+                className="timeline-chart-arrow"
+                aria-label="Senere"
+                disabled={!canRight}
+                onClick={() => page(1)}
+              >
+                <Arrow direction="right" />
+              </button>
+            </>
+          )}
+        </div>
+        <div className="timeline-chart-actions">
+          {!fit && (
             <button
               className="timeline-chart-button"
               onClick={() => showToday(true)}
             >
               Til i dag
             </button>
-          </>
-        )}
-        <button
-          className="timeline-chart-button"
-          aria-pressed={fit}
-          onClick={() => setFit((value) => !value)}
-        >
-          {fit ? "Zoom inn" : "Vis alt"}
-        </button>
+          )}
+          <button
+            className="timeline-chart-button"
+            aria-pressed={fit}
+            onClick={() => setFit((value) => !value)}
+          >
+            {fit ? "Zoom inn" : "Vis alt"}
+          </button>
+        </div>
       </div>
       <div
         className={`timeline-chart-frame ${canLeft ? "has-left" : ""} ${canRight ? "has-right" : ""}`}
