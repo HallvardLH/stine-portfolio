@@ -201,7 +201,10 @@ export default function TimelineRoute() {
         <div className="case-container">
           <div className="case-row timeline-overview-head">
             <div className="case-margin">
-              <h2 className="case-margin-title">Oversikt</h2>
+              <h2 className="case-margin-title">
+                <span className="timeline-lead-wide">Oversikt</span>
+                <span className="timeline-lead-narrow">Hopp til</span>
+              </h2>
               <p className="timeline-help">
                 Dra eller bla på tidslinjen, og trykk på elementer for å lese
                 mer.
@@ -210,7 +213,6 @@ export default function TimelineRoute() {
           </div>
           <TimelineOverview filter={filter} onSelect={jumpTo} filters={chips} />
           <nav className="timeline-year-jump" aria-label="Hopp til år">
-            <span>Hopp til</span>
             {years.map((year) => (
               <a key={year} href={`#ar-${year}`}>
                 {year}
@@ -225,14 +227,6 @@ export default function TimelineRoute() {
           {/* The filters stay under the menu while the list scrolls, on the same
               line as how many are shown */}
           <div className="timeline-filter-sticky">
-            <div
-              className="timeline-filter-set"
-              role="group"
-              aria-label="Filtrer etter kategori"
-            >
-              {chip(all)}
-              <div className="timeline-chips">{categories.map(chip)}</div>
-            </div>
             <p className="timeline-filter-status" aria-live="polite">
               {filter === "alle" ? (
                 `${timeline.length} erfaringer · nyeste først`
@@ -245,6 +239,14 @@ export default function TimelineRoute() {
                 </>
               )}
             </p>
+            <div
+              className="timeline-filter-set"
+              role="group"
+              aria-label="Filtrer etter kategori"
+            >
+              {chip(all)}
+              <div className="timeline-chips">{categories.map(chip)}</div>
+            </div>
           </div>
 
           <div className="timeline-years">
