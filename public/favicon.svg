@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#181b09"/>
+  <!-- S, built from straight bars with a short turn at each end -->
+  <path d="M24 22V14H12V32H24V50H12V42" fill="none" stroke="#fefffa" stroke-width="8"/>
+  <!-- K, a stem and two arms cut level with the stem -->
+  <clipPath id="k"><rect x="0" y="10" width="64" height="44"/></clipPath>
+  <g fill="none" stroke="#6dff6a" stroke-width="8" clip-path="url(#k)">
+    <path d="M38 10V54"/>
+    <path d="M38 39.6L54.6 8"/>
+    <path d="M38 24.4L54.6 56"/>
+  </g>
+</svg>
