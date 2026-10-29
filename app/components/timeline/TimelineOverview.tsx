@@ -87,7 +87,7 @@ export default function TimelineOverview({
     if (!view) return;
     const year =
       chartStart +
-      ((view.left + 48 - view.track.left) / view.track.width) *
+      ((view.left + 80 - view.track.left) / view.track.width) *
         (chartEnd - chartStart);
     setActiveYear(
       Math.min(Math.max(Math.floor(year), gridYears[0]), gridYears.at(-1)!),
@@ -102,7 +102,7 @@ export default function TimelineOverview({
     setActiveYear(year);
     const yearX = view.track.left + (share(year) / 100) * view.track.width;
     view.element.scrollBy({
-      left: yearX - view.left - 24,
+      left: yearX - view.left - 72,
       behavior: behavior(),
     });
   };
@@ -141,37 +141,13 @@ export default function TimelineOverview({
   return (
     <div className="timeline-chart-wrap">
       <div className="timeline-chart-controls">
-        <div className="timeline-chart-years">
-          {!fit &&
-            gridYears.map((year) => (
-              <button
-                key={year}
-                className={`timeline-chart-button ${year === activeYear ? "is-active" : ""}`}
-                aria-current={year === activeYear ? "true" : undefined}
-                aria-label={`Gå til ${year}`}
-                onClick={() => showYear(year)}
-              >
-                {year}
-              </button>
-            ))}
-        </div>
-        <div className="timeline-chart-actions">
-          {!fit && (
-            <button
-              className="timeline-chart-button"
-              onClick={() => showToday(true)}
-            >
-              Til i dag
-            </button>
-          )}
-          <button
-            className="timeline-chart-button"
-            aria-pressed={fit}
-            onClick={() => setFit((value) => !value)}
-          >
-            {fit ? "Zoom inn" : "Vis alt"}
-          </button>
-        </div>
+        <button
+          className="timeline-chart-toggle"
+          aria-pressed={fit}
+          onClick={() => setFit((value) => !value)}
+        >
+          {fit ? "Zoom inn" : "Vis alt"}
+        </button>
       </div>
       <div
         className={`timeline-chart-frame ${canLeft ? "has-left" : ""} ${canRight ? "has-right" : ""}`}
@@ -218,13 +194,20 @@ export default function TimelineOverview({
           }}
         >
           <div className="timeline-chart-inner">
-            <div className="timeline-chart-axis-row" aria-hidden="true">
-              <span className="timeline-axis-cover" />
+            <div className="timeline-chart-axis-row">
+              <span className="timeline-axis-cover" aria-hidden="true" />
               <div className="timeline-chart-axis">
                 {gridYears.map((year) => (
-                  <span key={year} style={{ left: `${share(year)}%` }}>
+                  <button
+                    key={year}
+                    className={`timeline-axis-year ${year === activeYear && !fit ? "is-active" : ""}`}
+                    style={{ left: `${share(year)}%` }}
+                    aria-label={`Gå til ${year}`}
+                    disabled={fit}
+                    onClick={() => showYear(year)}
+                  >
                     {year}
-                  </span>
+                  </button>
                 ))}
               </div>
             </div>
@@ -297,7 +280,7 @@ export default function TimelineOverview({
                                 className={`timeline-bar-note ${dimmed ? "is-dim" : ""}`}
                                 aria-hidden="true"
                               >
-                                <b>{entry.barLabel}</b> {entry.dateLabel}
+                                <b>{entry.barLabel}</b>
                               </span>
                             )}
                           </span>

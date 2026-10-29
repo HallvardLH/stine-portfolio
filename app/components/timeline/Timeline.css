@@ -97,8 +97,8 @@
   outline-offset: 3px;
 }
 
-/* The chart is wider than most screens and scrolls sideways: with the arrows,
-   by dragging, with the scrollbar or by touch. The padding makes room for the
+/* The chart is wider than most screens and scrolls sideways: by the years on
+   the axis, by dragging, with the scrollbar or by touch. The padding makes room for the
    tooltips above the top bars and for the green row, which runs a little past
    the edges. */
 .timeline-chart-wrap {
@@ -109,52 +109,28 @@
   position: relative;
   z-index: 3;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
+  justify-content: flex-end;
   margin-bottom: 2.5rem;
 }
 
-.timeline-chart-years,
-.timeline-chart-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.timeline-chart-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  height: 2.25rem;
-  padding: 0 1rem;
-  border: 1px solid color-mix(in srgb, var(--text-color) 35%, transparent);
-  border-radius: 999px;
-  background-color: var(--primary-color);
+/* Quiet, so the chart stays the main thing */
+.timeline-chart-toggle {
+  padding: 0;
+  border: 0;
+  background: none;
   color: var(--text-color);
   font: inherit;
   font-size: var(--font-size-small);
-  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
   cursor: pointer;
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
 }
 
-.timeline-chart-button.is-active,
-.timeline-chart-button:hover:not(:disabled) {
-  background-color: var(--text-color);
-  color: var(--primary-color);
+.timeline-chart-toggle:hover {
+  text-decoration-thickness: 2px;
 }
 
-.timeline-chart-button:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-
-.timeline-chart-button:focus-visible {
+.timeline-chart-toggle:focus-visible {
   outline: 2px solid var(--text-color);
   outline-offset: 3px;
 }
@@ -214,13 +190,12 @@
 }
 
 .timeline-chart::-webkit-scrollbar-track {
-  border-radius: 999px;
-  background-color: color-mix(in srgb, var(--text-color) 8%, transparent);
+  background: none;
 }
 
 .timeline-chart::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background-color: color-mix(in srgb, var(--text-color) 35%, transparent);
+  background-color: color-mix(in srgb, var(--text-color) 25%, transparent);
 }
 
 .timeline-chart-inner {
@@ -249,13 +224,45 @@
   position: relative;
   flex: 1;
   height: 1.5rem;
-  font-size: 0.8125rem;
-  opacity: 0.65;
 }
 
-.timeline-chart-axis span {
+/* The years are buttons: one brings that year into view */
+.timeline-axis-year {
   position: absolute;
+  top: 0;
+  padding: 0 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--text-color);
+  font: inherit;
+  font-size: 0.8125rem;
+  opacity: 0.6;
   transform: translateX(-50%);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.timeline-axis-year:hover:not(:disabled),
+.timeline-axis-year.is-active {
+  opacity: 1;
+}
+
+.timeline-axis-year.is-active {
+  font-weight: 600;
+}
+
+.timeline-axis-year:hover:not(:disabled) {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.timeline-axis-year:disabled {
+  cursor: default;
+}
+
+.timeline-axis-year:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
 }
 
 .timeline-chart-lanes {
@@ -305,7 +312,7 @@
 .timeline-lane {
   display: flex;
   align-items: center;
-  min-height: 2.75rem;
+  min-height: 2.5rem;
 }
 
 /* The education bars are taller, to have room for their names */
@@ -328,7 +335,7 @@
 
 /* The highlighted internships sit on a green band across the whole row */
 .timeline-lane-featured {
-  min-height: 3.25rem;
+  min-height: 3rem;
   /* The green runs a little past the column, so the label lines up with the others */
   margin-inline: -0.75rem;
   padding-inline: 0.75rem;
@@ -347,7 +354,7 @@
 }
 
 .timeline-lane-featured .timeline-track {
-  height: 2.25rem;
+  height: 2rem;
 }
 
 .timeline-bar-note {
@@ -361,7 +368,7 @@
 }
 
 .timeline-bar-note b {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .timeline-bar-note.is-dim {
@@ -390,7 +397,7 @@
 .timeline-track {
   position: relative;
   flex: 1;
-  height: 2rem;
+  height: 1.75rem;
 }
 
 .timeline-bar-wrap {
