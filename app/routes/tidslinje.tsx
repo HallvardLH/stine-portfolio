@@ -79,7 +79,7 @@ export default function TimelineRoute() {
   // row moves, never the page.
   useEffect(() => {
     const row = document.querySelector<HTMLElement>(
-      ".timeline-filterbar .timeline-chips",
+      ".timeline-filter-set .timeline-chips",
     );
     const chip = row?.querySelector<HTMLElement>("[aria-pressed=true]");
     if (!row || !chip) return;
@@ -100,14 +100,17 @@ export default function TimelineRoute() {
   // instead of somewhere in the middle of nothing
   const pick = (next: Filter) => {
     setFilter(next);
-    const top = document
-      .querySelector(".timeline-filter")
-      ?.getBoundingClientRect().top;
-    // Below the menu and the filter bar
-    const stuck =
-      8.5 * parseFloat(getComputedStyle(document.documentElement).fontSize);
-    if (top !== undefined && top < stuck) {
-      window.scrollTo({ top: window.scrollY + top - stuck, behavior: "auto" });
+    const bar = document.querySelector(".timeline-filter-sticky");
+    const years = document.querySelector(".timeline-years");
+    if (!bar || !years) return;
+    const below = bar.getBoundingClientRect().bottom;
+    const top = years.getBoundingClientRect().top;
+    // Only when the list has scrolled up under the bar
+    if (top < below) {
+      window.scrollTo({
+        top: window.scrollY + top - below - 16,
+        behavior: "auto",
+      });
     }
   };
 
@@ -123,6 +126,16 @@ export default function TimelineRoute() {
     </button>
   );
   const all = { id: "alle" as const, label: "Alle" };
+
+  const chips = (
+    <div
+      className="timeline-chips"
+      role="group"
+      aria-label="Filtrer etter kategori"
+    >
+      {[all, ...categories].map(chip)}
+    </div>
+  );
 
   return (
     <main className="case timeline">
@@ -180,124 +193,119 @@ export default function TimelineRoute() {
         </div>
       </section>
 
-      {/* One bar for both the chart and the list: it stays under the menu while
-          you scroll, so you can always see that a filter is on */}
-      <div className="timeline-body">
-        <div className="timeline-filterbar">
-          <div
-            className="case-container timeline-filterbar-inner"
-            role="group"
-            aria-label="Filtrer etter kategori"
-          >
-            {chip(all)}
-            <div className="timeline-chips">{categories.map(chip)}</div>
-          </div>
-        </div>
-
-        <section
-          id="oversikt"
-          className="case-section case-soft timeline-overview"
-          data-surface="soft"
-        >
-          <div className="case-container">
-            <div className="case-row timeline-overview-head">
-              <div className="case-margin">
-                <h2 className="case-margin-title">Oversikt</h2>
-                <p className="timeline-help">
-                  Dra eller bla på tidslinjen, og trykk på elementer for å lese
-                  mer.
-                </p>
-              </div>
-            </div>
-            <TimelineOverview filter={filter} onSelect={jumpTo} />
-            <nav className="timeline-year-jump" aria-label="Hopp til år">
-              <span>Hopp til</span>
-              {years.map((year) => (
-                <a key={year} href={`#ar-${year}`}>
-                  {year}
-                </a>
-              ))}
-            </nav>
-          </div>
-        </section>
-
-        <section id="erfaringer" className="case-section timeline-list">
-          <div className="case-container">
-            <div className="timeline-filter">
-              <p className="timeline-filter-status" aria-live="polite">
-                {filter === "alle" ? (
-                  `${timeline.length} erfaringer · nyeste først`
-                ) : (
-                  <>
-                    {visible.length} av {timeline.length} erfaringer vises ·{" "}
-                    <button onClick={() => setFilter("alle")}>
-                      Nullstill filter
-                    </button>
-                  </>
-                )}
+      <section
+        id="oversikt"
+        className="case-section case-soft timeline-overview"
+        data-surface="soft"
+      >
+        <div className="case-container">
+          <div className="case-row timeline-overview-head">
+            <div className="case-margin">
+              <h2 className="case-margin-title">Oversikt</h2>
+              <p className="timeline-help">
+                Dra eller bla på tidslinjen, og trykk på elementer for å lese
+                mer.
               </p>
             </div>
-
-            <div className="timeline-years">
-              {years.map((year) => {
-                const entries = visible.filter((entry) => entry.year === year);
-                if (entries.length === 0) return null;
-                // What started earlier and was still going on that year
-                const alsoActive = visible.filter(
-                  (entry) =>
-                    Number(entry.year) < Number(year) &&
-                    lastYear(entry) >= Number(year),
-                );
-                return (
-                  <div key={year} id={`ar-${year}`} className="timeline-year">
-                    <div className="case-row">
-                      <div className="timeline-year-margin">
-                        <h2 className="timeline-year-title">{year}</h2>
-                        <p>
-                          {entries.length}{" "}
-                          {entries.length === 1 ? "erfaring" : "erfaringer"}
-                        </p>
-                        {alsoActive.length > 0 && (
-                          <div className="timeline-year-also">
-                            <span>Samtidig</span>
-                            <ul>
-                              {alsoActive.map((entry) => (
-                                <li key={entry.id}>
-                                  <a
-                                    href={`#erfaring-${entry.id}`}
-                                    onClick={(event) => {
-                                      event.preventDefault();
-                                      jumpTo(entry.id);
-                                    }}
-                                  >
-                                    {entry.barLabel ?? entry.title}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                      <ul className="timeline-items">
-                        {entries.map((entry) => (
-                          <TimelineItem
-                            key={entry.id}
-                            entry={entry}
-                            highlighted={highlighted === entry.id}
-                            onOpenPhotos={(item) =>
-                              setOpen({ entry: item, index: 0 })
-                            }
-                          />
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
           </div>
-        </section>
-      </div>
+          <TimelineOverview filter={filter} onSelect={jumpTo} filters={chips} />
+          <nav className="timeline-year-jump" aria-label="Hopp til år">
+            <span>Hopp til</span>
+            {years.map((year) => (
+              <a key={year} href={`#ar-${year}`}>
+                {year}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </section>
+
+      <section id="erfaringer" className="case-section timeline-list">
+        <div className="case-container">
+          {/* The filters stay under the menu while the list scrolls, on the same
+              line as how many are shown */}
+          <div className="timeline-filter-sticky">
+            <div
+              className="timeline-filter-set"
+              role="group"
+              aria-label="Filtrer etter kategori"
+            >
+              {chip(all)}
+              <div className="timeline-chips">{categories.map(chip)}</div>
+            </div>
+            <p className="timeline-filter-status" aria-live="polite">
+              {filter === "alle" ? (
+                `${timeline.length} erfaringer · nyeste først`
+              ) : (
+                <>
+                  {visible.length} av {timeline.length} vises ·{" "}
+                  <button onClick={() => setFilter("alle")}>
+                    Nullstill filter
+                  </button>
+                </>
+              )}
+            </p>
+          </div>
+
+          <div className="timeline-years">
+            {years.map((year) => {
+              const entries = visible.filter((entry) => entry.year === year);
+              if (entries.length === 0) return null;
+              // What started earlier and was still going on that year
+              const alsoActive = visible.filter(
+                (entry) =>
+                  Number(entry.year) < Number(year) &&
+                  lastYear(entry) >= Number(year),
+              );
+              return (
+                <div key={year} id={`ar-${year}`} className="timeline-year">
+                  <div className="case-row">
+                    <div className="timeline-year-margin">
+                      <h2 className="timeline-year-title">{year}</h2>
+                      <p>
+                        {entries.length}{" "}
+                        {entries.length === 1 ? "erfaring" : "erfaringer"}
+                      </p>
+                      {alsoActive.length > 0 && (
+                        <div className="timeline-year-also">
+                          <span>Samtidig</span>
+                          <ul>
+                            {alsoActive.map((entry) => (
+                              <li key={entry.id}>
+                                <a
+                                  href={`#erfaring-${entry.id}`}
+                                  onClick={(event) => {
+                                    event.preventDefault();
+                                    jumpTo(entry.id);
+                                  }}
+                                >
+                                  {entry.barLabel ?? entry.title}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                    <ul className="timeline-items">
+                      {entries.map((entry) => (
+                        <TimelineItem
+                          key={entry.id}
+                          entry={entry}
+                          highlighted={highlighted === entry.id}
+                          onOpenPhotos={(item) =>
+                            setOpen({ entry: item, index: 0 })
+                          }
+                        />
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {open && open.entry.photos && (
         <ImageLightbox
