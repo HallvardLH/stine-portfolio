@@ -175,11 +175,10 @@
   border-radius: 50%;
 }
 
-/* A thin line around the chart, on the page colour, on larger screens */
+/* The chart on the page colour, set against the soft background, on larger screens */
 .timeline-chart-card {
   display: none;
   padding: 2rem 1.5rem 1.25rem;
-  border: 1px solid var(--timeline-line);
   background-color: var(--primary-color);
 }
 
@@ -223,7 +222,9 @@
 .timeline-chart-grid > .timeline-chart-today {
   /* Behind the bars: a bar that runs past today slides over the line */
   z-index: 0;
-  background-color: color-mix(in srgb, var(--text-color) 40%, transparent);
+  width: 0;
+  border-left: 1px dashed color-mix(in srgb, var(--text-color) 35%, transparent);
+  background: none;
 }
 
 /* The label sits on the axis, at the top of the line */
