@@ -612,6 +612,23 @@
   white-space: nowrap;
 }
 
+/* "Alle" stays at the left edge while the rest moves under it, so you can
+   always see that a filter is on, and get out of it */
+.timeline-filter-sticky .timeline-chips {
+  scroll-padding-left: 5.5rem;
+}
+
+.timeline-filter-sticky .timeline-chip:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  box-shadow: 0.5rem 0 0 var(--primary-color);
+}
+
+.timeline-filter-sticky .timeline-chip:first-child:not([aria-pressed="true"]) {
+  background-color: var(--primary-color);
+}
+
 .timeline-chip {
   display: inline-flex;
   align-items: center;

@@ -75,6 +75,22 @@ export default function TimelineRoute() {
     }
   }, [filter]);
 
+  // The filter you picked is brought into view in the row of filters. Only the
+  // row moves, never the page.
+  useEffect(() => {
+    const row = document.querySelector<HTMLElement>(
+      ".timeline-filter-sticky .timeline-chips",
+    );
+    const chip = row?.querySelector<HTMLElement>("[aria-pressed=true]");
+    if (!row || !chip) return;
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    // Not under "Alle", which stays in place at the left
+    const left = chip.offsetLeft - 5.5 * rem;
+    const right = chip.offsetLeft + chip.offsetWidth - row.clientWidth;
+    if (left < row.scrollLeft) row.scrollLeft = Math.max(left, 0);
+    else if (right > row.scrollLeft) row.scrollLeft = right;
+  }, [filter]);
+
   // The highlight fades by itself
   useEffect(() => {
     if (!highlighted) return;
