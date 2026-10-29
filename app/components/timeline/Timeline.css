@@ -139,12 +139,6 @@
   outline-offset: 3px;
 }
 
-/* The filters over the chart, which only larger screens have */
-.timeline-toolbar {
-  display: none;
-  margin-bottom: 1.5rem;
-}
-
 /* Under the chart: the arrows that change the stretch of time, and a button back to today */
 .timeline-chart-footer {
   display: flex;
@@ -544,16 +538,11 @@
     display: block;
   }
 
-  .timeline-toolbar {
-    display: block;
-  }
-
   .timeline-chart-card {
     display: block;
   }
 
-  .timeline-year-jump,
-  .timeline-filter-sticky {
+  .timeline-year-jump {
     display: none;
   }
 }
@@ -585,42 +574,51 @@
   gap: 0.5rem;
 }
 
-/* On small screens the filters stay under the menu while the list scrolls,
-   in one row that moves sideways so they never take much of the screen */
-.timeline-filter-sticky {
-  gap: 0.5rem;
+/* One bar of filters for the chart and the list. It stays under the menu while
+   you scroll, in one row that moves sideways when it does not fit, with "Alle"
+   fixed at the left so you can always see that a filter is on, and get out. */
+.timeline-body {
+  /* Keeps the page from moving sideways, and leaves the bar free to stick */
+  overflow-x: clip;
+}
+
+.timeline-filterbar {
   position: sticky;
   top: 4.5rem;
   z-index: 5;
-  margin: 0 -1.6rem 1rem;
-  padding: 0.75rem 1.6rem;
   border-bottom: 1px solid var(--timeline-line);
   background-color: var(--primary-color);
 }
 
-.timeline-filter-sticky .timeline-chips {
-  position: relative;
+.timeline-filterbar-inner {
+  display: flex;
+  gap: 0.5rem;
+  padding-block: 0.75rem;
+}
+
+.timeline-filterbar .timeline-chips {
   flex: 1;
   flex-wrap: nowrap;
   min-width: 0;
   overflow-x: auto;
+  position: relative;
   scrollbar-width: none;
 }
 
-.timeline-filter-sticky .timeline-chips::-webkit-scrollbar {
+.timeline-filterbar .timeline-chips::-webkit-scrollbar {
   display: none;
 }
 
-.timeline-filter-sticky .timeline-chip {
+.timeline-filterbar .timeline-chip {
   flex-shrink: 0;
   white-space: nowrap;
 }
 
-/* "Alle" stays at the left edge while the rest moves beside it, so you can
-   always see that a filter is on, and get out of it */
+/* On small screens the row runs out to the edge of the screen */
 @media only screen and (max-width: 699px) {
-  .timeline-filter-sticky {
-    display: flex;
+  .timeline-filterbar .timeline-chips {
+    margin-right: -1.6rem;
+    padding-right: 1.6rem;
   }
 }
 

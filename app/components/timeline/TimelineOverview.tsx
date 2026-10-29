@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   chartEnd,
   chartStart,
@@ -13,8 +13,6 @@ interface TimelineOverviewProps {
   /** Only this category is in full colour, the rest is dimmed */
   filter: TimelineCategory | "alle";
   onSelect: (id: string) => void;
-  /** The category filters, shown above the chart */
-  filters: ReactNode;
 }
 
 function Chevron({ direction }: { direction: "left" | "right" }) {
@@ -59,7 +57,6 @@ interface View {
 export default function TimelineOverview({
   filter,
   onSelect,
-  filters,
 }: TimelineOverviewProps) {
   const today = currentYear();
   const cardRef = useRef<HTMLDivElement>(null);
@@ -242,8 +239,6 @@ export default function TimelineOverview({
 
   return (
     <>
-      <div className="timeline-toolbar">{filters}</div>
-
       <div className="timeline-chart-card" ref={cardRef}>
         <div
           className={`timeline-chart ${ready ? "" : "is-hidden"}`}
