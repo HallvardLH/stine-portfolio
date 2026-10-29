@@ -163,7 +163,6 @@ export default function TimelineOverview({
                           {entry.barLabel && !lane.notes && (
                             <span className="timeline-bar-label">
                               {entry.barLabel}
-                              {cutLeft && ` · siden ${Math.floor(entry.start)}`}
                             </span>
                           )}
                           <span

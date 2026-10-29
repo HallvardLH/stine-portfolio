@@ -175,11 +175,12 @@
   border-radius: 50%;
 }
 
-/* A thin line around the chart, on larger screens */
+/* A thin line around the chart, on the page colour, on larger screens */
 .timeline-chart-card {
   display: none;
   padding: 2rem 1.5rem 1.25rem;
   border: 1px solid var(--timeline-line);
+  background-color: var(--primary-color);
 }
 
 .timeline-chart-axis {
@@ -284,7 +285,7 @@
   right: calc(100% + 0.5rem);
   padding: 0 0.25rem;
   /* Hides the today line behind the name */
-  background-color: var(--case-soft);
+  background-color: var(--primary-color);
   transform: translateY(-50%);
   font-size: 0.8125rem;
   white-space: nowrap;
