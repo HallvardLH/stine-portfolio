@@ -160,7 +160,8 @@
   text-align: center;
 }
 
-.timeline-today-button {
+.timeline-today-button,
+.timeline-clear-button {
   padding: 0.375rem 0.875rem;
   border: 1px solid color-mix(in srgb, var(--text-color) 35%, transparent);
   border-radius: 999px;
@@ -172,7 +173,8 @@
   cursor: pointer;
 }
 
-.timeline-today-button:hover:not(:disabled) {
+.timeline-today-button,
+.timeline-clear-button:hover:not(:disabled) {
   border-color: var(--text-color);
 }
 
@@ -181,7 +183,8 @@
   cursor: default;
 }
 
-.timeline-today-button:focus-visible {
+.timeline-today-button,
+.timeline-clear-button:focus-visible {
   outline: 2px solid var(--text-color);
   outline-offset: 3px;
 }
@@ -640,7 +643,12 @@
 }
 
 /* Larger screens have the filters over the chart, so the list only has the
-   count, in the page like any other line */
+   count, and a button to remove the filter. The line follows along once a
+   filter is on. */
+.timeline-clear-button {
+  display: none;
+}
+
 @media only screen and (min-width: 700px) {
   .timeline-filter-set {
     display: none;
@@ -648,12 +656,18 @@
 
   .timeline-filter-sticky {
     position: static;
+    justify-content: space-between;
+    min-height: 2rem;
     margin-bottom: 0;
-    padding-block: 0;
+    padding-block: 0.5rem;
   }
 
-  .timeline-filter-sticky::before {
-    display: none;
+  .timeline-filter-sticky.is-filtered {
+    position: sticky;
+  }
+
+  .timeline-clear-button {
+    display: block;
   }
 }
 
@@ -695,7 +709,6 @@
 }
 
 .timeline-chip:focus-visible,
-.timeline-filter-status button:focus-visible,
 .timeline-thumb:focus-visible {
   outline: 2px solid var(--text-color);
   outline-offset: 3px;
@@ -705,17 +718,6 @@
   margin: 0;
   font-size: var(--font-size-small);
   opacity: 0.75;
-}
-
-.timeline-filter-status button {
-  padding: 0;
-  border: 0;
-  background: none;
-  color: inherit;
-  font: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
 }
 
 /* The experiences, by year */

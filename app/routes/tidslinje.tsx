@@ -226,19 +226,22 @@ export default function TimelineRoute() {
         <div className="case-container">
           {/* The filters stay under the menu while the list scrolls, on the same
               line as how many are shown */}
-          <div className="timeline-filter-sticky">
+          <div
+            className={`timeline-filter-sticky ${filter === "alle" ? "" : "is-filtered"}`}
+          >
             <p className="timeline-filter-status" aria-live="polite">
-              {filter === "alle" ? (
-                `${timeline.length} erfaringer · nyeste først`
-              ) : (
-                <>
-                  {visible.length} av {timeline.length} vises ·{" "}
-                  <button onClick={() => setFilter("alle")}>
-                    Nullstill filter
-                  </button>
-                </>
-              )}
+              {filter === "alle"
+                ? `${timeline.length} erfaringer · nyeste først`
+                : `${visible.length} av ${timeline.length} erfaringer vises`}
             </p>
+            {filter !== "alle" && (
+              <button
+                className="timeline-clear-button"
+                onClick={() => setFilter("alle")}
+              >
+                Fjern filter
+              </button>
+            )}
             <div
               className="timeline-filter-set"
               role="group"
