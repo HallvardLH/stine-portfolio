@@ -76,7 +76,9 @@ export default function Index() {
         <div className="case-container">
           <div className="case-row">
             <div className="case-margin">
-              <span className="case-margin-number">Siste prosjekt</span>
+              <span className="case-margin-number">
+                Prosjektet jeg er mest stolt av
+              </span>
             </div>
             <div className="case-text home-latest-text">
               <ul className="home-tags">
