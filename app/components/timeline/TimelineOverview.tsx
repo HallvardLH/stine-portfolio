@@ -37,20 +37,9 @@ function tooltip(entry: TimelineEntry) {
   return entry.title.includes(org) ? entry.title : `${entry.title} · ${org}`;
 }
 
-// The first lane of each group of lanes carries the group's name
-const groupStart = lanes.map((_, index) => {
-  let start = index;
-  while (start > 0 && !lanes[start].label) start--;
-  return start;
-});
-
-// How tall a row is, in rem, as set in the stylesheet
-const laneHeight = (lane: (typeof lanes)[number]) =>
-  lane.tall ? 3.75 : lane.featured ? 3 : 2.5;
-
 // What a stretch of time shows: the bars that fall in it, cut at its edges,
-// grouped by row. Rows with nothing in them are left out, and the group name
-// goes on the first row that is left.
+// on their rows. Every row stays, also when it is empty in this stretch, so
+// the chart does not change shape when you switch.
 function layout(step: (typeof steps)[number], today: number) {
   const { from, to } = step;
   const share = (year: number) => ((year - from) / (to - from)) * 100;
@@ -75,15 +64,11 @@ function layout(step: (typeof steps)[number], today: number) {
     ];
   });
 
-  const named = new Set<number>();
-  return lanes.flatMap((lane, index) => {
-    const items = shown.filter((item) => item.entry.lane === index);
-    if (items.length === 0) return [];
-    const group = groupStart[index];
-    const label = named.has(group) ? undefined : lanes[group].label;
-    named.add(group);
-    return [{ lane, index, items, label }];
-  });
+  return lanes.map((lane, index) => ({
+    lane,
+    index,
+    items: shown.filter((item) => item.entry.lane === index),
+  }));
 }
 
 // The journey on a shared time axis, a stretch of time at a time: a bar per
@@ -110,13 +95,6 @@ export default function TimelineOverview({
   const todayShown = today > from && today < to;
 
   const rows = layout(steps[step], today);
-  // The chart is as tall as the tallest stretch, so the page does not jump
-  // when you switch
-  const height = Math.max(
-    ...steps.map((item) =>
-      layout(item, today).reduce((sum, row) => sum + laneHeight(row.lane), 0),
-    ),
-  );
 
   return (
     <>
@@ -140,10 +118,7 @@ export default function TimelineOverview({
             ))}
         </div>
 
-        <div
-          className="timeline-chart-lanes"
-          style={{ minHeight: `${height + 1.25}rem` }}
-        >
+        <div className="timeline-chart-lanes">
           <div className="timeline-chart-grid" aria-hidden="true">
             {gridYears.map((year) => (
               <span key={year} style={{ left: `${share(year)}%` }} />
@@ -158,12 +133,12 @@ export default function TimelineOverview({
             )}
           </div>
 
-          {rows.map(({ lane, index, items, label }) => (
+          {rows.map(({ lane, index, items }) => (
             <div
               className={`timeline-lane ${lane.tall ? "timeline-lane-tall" : ""} ${lane.featured ? "timeline-lane-featured" : ""}`}
               key={index}
             >
-              <span className="timeline-lane-label">{label}</span>
+              <span className="timeline-lane-label">{lane.label}</span>
               <div className="timeline-track">
                 {items.map(({ entry, cutLeft, cutRight, left, width }) => {
                   const dimmed = filter !== "alle" && entry.category !== filter;
