@@ -313,7 +313,7 @@ export const lanes: {
 export const steps = [
   { label: "2019–2023", from: at(2019, 10), to: at(2023, 7) },
   { label: "2022–2026", from: at(2022, 7), to: at(2026, 4) },
-  { label: "2025–2027", from: at(2025, 6), to: 2027.75 },
+  { label: "2024–2027", from: at(2024, 10), to: 2027.75 },
 ];
 
 /** Today as a decimal year, to the month so the server and the browser agree */

@@ -104,7 +104,7 @@
   margin-bottom: 1.5rem;
 }
 
-/* Under the chart: the dots that change the stretch of time, and a button back to today */
+/* Under the chart: the arrows that change the stretch of time, and a button back to today */
 .timeline-chart-footer {
   display: none;
   align-items: center;
@@ -126,22 +126,24 @@
 }
 
 .timeline-today-button {
-  padding: 0;
-  border: 0;
+  padding: 0.375rem 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--text-color) 35%, transparent);
+  border-radius: 999px;
   background: none;
   color: var(--text-color);
   font: inherit;
   font-size: var(--font-size-small);
   font-weight: 500;
-  text-decoration: underline;
-  text-underline-offset: 4px;
   cursor: pointer;
+}
+
+.timeline-today-button:hover:not(:disabled) {
+  border-color: var(--text-color);
 }
 
 .timeline-today-button:disabled {
   opacity: 0.4;
   cursor: default;
-  text-decoration: none;
 }
 
 .timeline-today-button:focus-visible {
@@ -291,12 +293,6 @@
   );
 }
 
-/* On the other side of the bar, when there is more room there */
-.timeline-bar-note-right {
-  right: auto;
-  left: calc(100% + 0.5rem);
-}
-
 .timeline-bar-note b {
   font-weight: 500;
 }
@@ -310,84 +306,6 @@
   align-self: stretch;
   display: flex;
   align-items: center;
-  flex: 0 0 var(--timeline-label-width);
-  padding-right: 0.75rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  line-height: 1.25;
-}
-
-.timeline-track {
-  height: 2.75rem;
-}
-
-.timeline-lane-tall .timeline-bar-label {
-  box-sizing: border-box;
-  padding: 0 0.625rem;
-  font-size: 0.75rem;
-  line-height: 1.2;
-  text-align: center;
-  white-space: normal;
-}
-
-/* The highlighted internships sit on a green band across the whole row */
-.timeline-lane-featured {
-  min-height: 3rem;
-  /* The green runs a little past the column, so the label lines up with the others */
-  margin-inline: -0.75rem;
-  padding-inline: 0.75rem;
-  background-color: var(--timeline-featured-tint);
-}
-
-.timeline-lane-featured .timeline-track {
-  height: 2rem;
-}
-
-.timeline-bar-note {
-  position: absolute;
-  top: 50%;
-  right: calc(100% + 0.5rem);
-  padding: 0 0.25rem;
-  /* Hides the today line behind the name */
-  background-color: var(--primary-color);
-  transform: translateY(-50%);
-  font-size: 0.8125rem;
-  white-space: nowrap;
-}
-
-.timeline-lane-featured .timeline-bar-note {
-  background-image: linear-gradient(
-    var(--timeline-featured-tint),
-    var(--timeline-featured-tint)
-  );
-}
-
-/* On the other side of the bar, when there is more room there */
-.timeline-bar-note-right {
-  right: auto;
-  left: calc(100% + 0.5rem);
-}
-
-.timeline-bar-note b {
-  font-weight: 500;
-}
-
-.timeline-bar-note.is-dim {
-  opacity: 0.2;
-}
-
-/* The row names stay put when the chart is scrolled sideways */
-.timeline-lane-label {
-  position: sticky;
-  left: 0;
-  z-index: 1;
-  box-sizing: border-box;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  background-color: var(--primary-color);
-  /* Covers the strip left of the label, so the bars do not show there when scrolled */
-  box-shadow: -0.75rem 0 0 var(--primary-color);
   flex: 0 0 var(--timeline-label-width);
   padding-right: 0.75rem;
   font-size: 0.8125rem;

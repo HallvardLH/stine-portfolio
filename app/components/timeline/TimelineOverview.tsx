@@ -75,7 +75,7 @@ export default function TimelineOverview({
     const first = Math.max(entry.start, from);
     const last = Math.min(end, to);
     // A sliver of something that mostly belongs to another stretch is left out
-    if ((cutLeft || cutRight) && (last - first) / (to - from) < 0.08) return [];
+    if ((cutLeft || cutRight) && (last - first) / (to - from) < 0.1) return [];
     return [
       {
         entry,
@@ -140,9 +140,6 @@ export default function TimelineOverview({
               <div className="timeline-track">
                 {items.map(({ entry, cutLeft, cutRight, left, width }) => {
                   const dimmed = filter !== "alle" && entry.category !== filter;
-                  // The name stands beside the bar, on the side with the most room
-                  const noteOnRight =
-                    !cutRight && (cutLeft || left < 100 - left - width);
                   return (
                     <span
                       key={entry.id}
@@ -174,7 +171,7 @@ export default function TimelineOverview({
                       </a>
                       {lane.notes && (
                         <span
-                          className={`timeline-bar-note ${noteOnRight ? "timeline-bar-note-right" : ""} ${dimmed ? "is-dim" : ""}`}
+                          className={`timeline-bar-note ${dimmed ? "is-dim" : ""}`}
                           aria-hidden="true"
                         >
                           {entry.barLabel}
