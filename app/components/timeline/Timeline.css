@@ -182,7 +182,8 @@
 }
 
 .timeline-chart-grid > .timeline-chart-today {
-  z-index: 2;
+  /* Behind the bars: a bar that runs past today slides over the line */
+  z-index: 0;
   width: 1.5px;
   background-color: var(--text-color);
 }
@@ -304,6 +305,7 @@
   position: relative;
   display: flex;
   flex-shrink: 0;
+  width: 100%;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -375,16 +377,6 @@
 
 .timeline a.timeline-bar.is-dim {
   opacity: 0.2;
-}
-
-/* What is planned: the same bar, drawn dashed */
-.timeline-bar-planned {
-  flex-shrink: 0;
-  box-sizing: border-box;
-  height: 100%;
-  border: 1.5px dashed color-mix(in srgb, var(--text-color) 50%, transparent);
-  border-left: 0;
-  border-radius: 0 999px 999px 0;
 }
 
 .timeline-tip {

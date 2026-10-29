@@ -42,7 +42,7 @@ export interface TimelineEntry {
   lane: number;
   start: number;
   end?: number;
-  /** Where a bar that is still going is planned to end */
+  /** Where a bar that is still going is planned to end; the bar runs there */
   plannedEnd?: number;
   /** Text inside the bar, for bars wide enough to hold it. Also the short name in the list. */
   barLabel?: string;

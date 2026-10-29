@@ -126,31 +126,23 @@ export default function TimelineOverview({
                 {timeline
                   .filter((entry) => entry.lane === index)
                   .map((entry) => {
-                    const end = entry.end ?? today;
+                    // A bar still going runs to where it is planned to end, or to today
+                    const end = entry.end ?? entry.plannedEnd ?? today;
                     // Started before the chart does: the bar runs in from the left edge
                     const clipped = entry.start < chartStart;
                     const left = clipped ? 0 : share(entry.start);
                     const width = Math.max(share(end) - left, 0.9);
-                    const planned = entry.plannedEnd
-                      ? share(entry.plannedEnd) - left - width
-                      : 0;
                     const dimmed =
                       filter !== "alle" && entry.category !== filter;
                     return (
                       <span
                         key={entry.id}
                         className="timeline-bar-wrap"
-                        style={{
-                          left: `${left}%`,
-                          width: `${width + planned}%`,
-                        }}
+                        style={{ left: `${left}%`, width: `${width}%` }}
                       >
                         <a
                           href={`#erfaring-${entry.id}`}
                           className={`timeline-bar timeline-bar-${entry.category} ${clipped ? "is-clipped" : ""} ${dimmed ? "is-dim" : ""}`}
-                          style={{
-                            width: `${(width / (width + planned)) * 100}%`,
-                          }}
                           aria-label={`${entry.title}, ${entry.org}, ${entry.dateLabel}`}
                           onClick={(event) => {
                             event.preventDefault();
@@ -180,15 +172,6 @@ export default function TimelineOverview({
                           >
                             <b>{entry.barLabel}</b> {entry.dateLabel}
                           </span>
-                        )}
-                        {planned > 0 && (
-                          <span
-                            className="timeline-bar-planned"
-                            style={{
-                              width: `${(planned / (width + planned)) * 100}%`,
-                            }}
-                            aria-hidden="true"
-                          />
                         )}
                       </span>
                     );
