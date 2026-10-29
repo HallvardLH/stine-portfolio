@@ -36,7 +36,6 @@
   flex-shrink: 0;
   width: 0.625rem;
   height: 0.625rem;
-  border: 1px solid var(--case-ink);
   border-radius: 50%;
   background-color: var(--contrast-color);
 }
