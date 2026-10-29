@@ -37,7 +37,23 @@ export const latestProject: Project = {
 };
 
 export const projectsByYear: ProjectYear[] = [
-  { year: "2026", projects: [latestProject] },
+  {
+    year: "2026",
+    projects: [
+      {
+        category: "freelance",
+        thumbnail: thumbnails.oppskrifter,
+        date: "Høsten 2026",
+        platformInfo: "Web",
+        title: "Stines oppskrifter",
+        description:
+          "En digital oppskriftsbok der du og vennene dine deler retter, planlegger uka og lager handleliste sammen.",
+        link: "/stines-oppskrifter",
+        tags: ["Freelance", "Eget prosjekt", "Bygget med Claude"],
+      },
+      latestProject,
+    ],
+  },
   {
     year: "2025",
     projects: [

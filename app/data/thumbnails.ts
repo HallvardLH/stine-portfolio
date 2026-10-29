@@ -72,4 +72,9 @@ export const thumbnails = {
     foregroundSize: { width: 819, height: 603 },
     backgroundColor: "#3cc6b2",
   },
+  oppskrifter: {
+    foregroundSrc: "/stines-oppskrifter/thumbnail-fg.webp",
+    foregroundSize: { width: 860, height: 500 },
+    backgroundColor: "#ffc0fd",
+  },
 } satisfies Record<string, Thumbnail>;

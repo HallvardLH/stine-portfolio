@@ -87,7 +87,7 @@ export default function StinesOppskrifterRoute() {
                   figures={[
                     {
                       src: "/stines-oppskrifter/sporsmal.webp",
-                      alt: "Forsiden med spørsmålskortet som filtrerer oppskriftene.",
+                      alt: "Forsiden med spørsmålskortet, der Middag er valgt og oppskriftene under er filtrert.",
                       caption: "Spørsmålskortet på forsiden",
                     },
                   ]}
@@ -182,8 +182,8 @@ export default function StinesOppskrifterRoute() {
                   figures={[
                     {
                       src: "/stines-oppskrifter/kalorier.webp",
-                      alt: "Valget «Er du opptatt av kalorier?» med Bryr meg ikke som standard.",
-                      caption: "Kalorivalget",
+                      alt: "Dagsmenyen med kalorier slått på, og valget «Er du opptatt av kalorier?» nederst.",
+                      caption: "Dagsmenyen med kalorier slått på",
                     },
                   ]}
                 >
