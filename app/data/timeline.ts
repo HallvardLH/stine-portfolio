@@ -202,7 +202,7 @@ export const timeline: TimelineEntry[] = [
     org: "Røde Kors Bergen",
     text: "Var frivillig på chatten til Kors på halsen, der jeg snakket med barn og unge som ønsket noen å dele tanker og opplevelser med.",
     through: 2025,
-    lane: 8,
+    lane: 7,
     start: at(2024),
     end: at(2025),
     barLabel: "Kors på halsen",
@@ -308,16 +308,11 @@ export const lanes: {
   { notes: true },
   { notes: true },
   { label: "Frivillig arbeid" },
-  {},
 ];
 
-/** The stretches of time the overview shows, one at a time. They overlap a
- * little, so what runs from one into the next is seen in both. */
-export const steps = [
-  { label: "2019–2023", from: at(2019, 10), to: at(2023, 7) },
-  { label: "2022–2026", from: at(2022, 7), to: at(2026, 4) },
-  { label: "2024–2027", from: at(2024, 10), to: 2027.75 },
-];
+/** The chart runs from here to there, and is moved sideways to see it all */
+export const chartStart = at(2019, 10);
+export const chartEnd = 2027.75;
 
 /** Today as a decimal year, to the month so the server and the browser agree */
 export function currentYear(): number {

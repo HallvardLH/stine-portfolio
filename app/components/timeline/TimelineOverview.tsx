@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
+  chartEnd,
+  chartStart,
   currentYear,
   lanes,
-  steps,
   timeline,
   type TimelineCategory,
   type TimelineEntry,
@@ -37,147 +38,207 @@ function tooltip(entry: TimelineEntry) {
   return entry.title.includes(org) ? entry.title : `${entry.title} · ${org}`;
 }
 
-// What a stretch of time shows: the bars that fall in it, cut at its edges,
-// on their rows. Every row stays, also when it is empty in this stretch, so
-// the chart does not change shape when you switch.
-function layout(step: (typeof steps)[number], today: number) {
-  const { from, to } = step;
-  const share = (year: number) => ((year - from) / (to - from)) * 100;
+const span = chartEnd - chartStart;
+const share = (year: number) => ((year - chartStart) / span) * 100;
+const gridYears = Array.from(
+  { length: Math.floor(chartEnd) - Math.ceil(chartStart) + 1 },
+  (_, i) => Math.ceil(chartStart) + i,
+);
 
-  const shown = timeline.flatMap((entry) => {
-    const end = entry.end ?? entry.plannedEnd ?? today;
-    if (end <= from || entry.start >= to) return [];
-    const cutLeft = entry.start < from;
-    const cutRight = end > to;
-    const first = Math.max(entry.start, from);
-    const last = Math.min(end, to);
-    // A sliver of something that mostly belongs to another stretch is left out
-    if ((cutLeft || cutRight) && (last - first) / (to - from) < 0.1) return [];
-    return [
-      {
-        entry,
-        cutLeft,
-        cutRight,
-        left: share(first),
-        width: Math.max(share(last) - share(first), 0.9),
-      },
-    ];
-  });
-
-  return lanes.map((lane, index) => ({
-    lane,
-    index,
-    items: shown.filter((item) => item.entry.lane === index),
-  }));
+// Where the chart is scrolled to, and what that means for the controls
+interface View {
+  label: string;
+  atStart: boolean;
+  atEnd: boolean;
+  todayVisible: boolean;
 }
 
-// The stretch of time with the most of a category in it, which is where to
-// look when that category is picked
-function stretchFor(category: TimelineCategory, today: number) {
-  let best = 0;
-  let bestYears = -1;
-  steps.forEach(({ from, to }, index) => {
-    const years = timeline
-      .filter((entry) => entry.category === category)
-      .reduce((sum, entry) => {
-        const end = entry.end ?? entry.plannedEnd ?? today;
-        return (
-          sum + Math.max(Math.min(end, to) - Math.max(entry.start, from), 0)
-        );
-      }, 0);
-    if (years >= bestYears) {
-      best = index;
-      bestYears = years;
-    }
-  });
-  return best;
-}
-
-// The journey on a shared time axis, a stretch of time at a time: a bar per
-// experience. A bar takes you to the entry in the list.
+// The journey on a shared time axis: a bar per experience. The chart is wider
+// than the screen and is moved sideways by dragging, scrolling, the arrows or
+// a swipe. A bar takes you to the entry in the list.
 export default function TimelineOverview({
   filter,
   onSelect,
   filters,
 }: TimelineOverviewProps) {
   const today = currentYear();
-  // The stretch with today in it, which is where the chart opens
-  const todayStep = Math.max(
-    steps.findIndex((item) => today >= item.from && today < item.to),
-    0,
-  );
-  const [step, setStep] = useState(todayStep);
-  const { from, to } = steps[step];
+  const cardRef = useRef<HTMLDivElement>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const positioned = useRef(false);
+  const [ready, setReady] = useState(false);
+  const [view, setView] = useState<View>({
+    label: "",
+    atStart: true,
+    atEnd: false,
+    todayVisible: true,
+  });
+
+  // The chart in pixels: how wide a year is, and how many years are in view
+  const measure = () => {
+    const el = scrollerRef.current;
+    if (!el || el.clientWidth === 0) return null;
+    const labelWidth =
+      el.querySelector<HTMLElement>(".timeline-axis-cover")?.offsetWidth ?? 0;
+    const perYear = (el.scrollWidth - labelWidth) / span;
+    return {
+      el,
+      perYear,
+      viewWidth: el.clientWidth - labelWidth,
+      viewYears: (el.clientWidth - labelWidth) / perYear,
+      max: el.scrollWidth - el.clientWidth,
+    };
+  };
+
+  const update = () => {
+    const m = measure();
+    if (!m) return;
+    const from = chartStart + m.el.scrollLeft / m.perYear;
+    const to = from + m.viewYears;
+    const next: View = {
+      label: `${Math.floor(from)}–${Math.floor(to)}`,
+      atStart: m.el.scrollLeft <= 1,
+      atEnd: m.el.scrollLeft >= m.max - 1,
+      todayVisible: today >= from && today <= to,
+    };
+    setView((prev) =>
+      prev.label === next.label &&
+      prev.atStart === next.atStart &&
+      prev.atEnd === next.atEnd &&
+      prev.todayVisible === next.todayVisible
+        ? prev
+        : next,
+    );
+  };
+
+  const scrollTo = (left: number, smooth: boolean) => {
+    const m = measure();
+    if (!m) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    m.el.scrollTo({
+      left: Math.min(Math.max(left, 0), m.max),
+      behavior: smooth && !reduced.matches ? "smooth" : "auto",
+    });
+  };
+
+  // Today a little right of the middle: some of what came before, a little of what is next
+  const showToday = (smooth: boolean) => {
+    const m = measure();
+    if (!m) return;
+    scrollTo((today - chartStart - m.viewYears * 0.65) * m.perYear, smooth);
+  };
+
+  const pan = (direction: number) => {
+    const m = measure();
+    if (m) scrollTo(m.el.scrollLeft + direction * m.viewWidth * 0.8, true);
+  };
+
+  // It opens on today, and keeps up when the window changes size
+  useEffect(() => {
+    const place = () => {
+      if (!positioned.current && measure()) {
+        positioned.current = true;
+        showToday(false);
+      }
+      update();
+    };
+    place();
+    setReady(true);
+    window.addEventListener("resize", place);
+    return () => window.removeEventListener("resize", place);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Picking a category brings up the stretch of time where it mostly is
   useEffect(() => {
-    if (filter !== "alle") setStep(stretchFor(filter, today));
-  }, [filter, today]);
-
-  // Scrolling sideways (a trackpad, shift and the wheel, or a swipe) moves
-  // to the next or previous stretch of time
-  const cardRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
-    const go = (direction: number) =>
-      setStep((value) =>
-        Math.min(Math.max(value + direction, 0), steps.length - 1),
-      );
-
-    let sum = 0;
-    let lastEvent = 0;
-    let lastStep = 0;
-    const onWheel = (event: WheelEvent) => {
-      const sideways = Math.abs(event.deltaX) > Math.abs(event.deltaY);
-      const delta = sideways ? event.deltaX : event.shiftKey ? event.deltaY : 0;
-      // Mostly up and down is the page scrolling, which is left alone
-      if (!delta) return;
-      event.preventDefault();
-      const now = Date.now();
-      if (now - lastEvent > 200) sum = 0;
-      lastEvent = now;
-      // A swipe keeps sending events as it slows down; it counts as one step
-      if (now - lastStep < 600) return;
-      sum += delta;
-      if (Math.abs(sum) < 40) return;
-      go(sum > 0 ? 1 : -1);
-      sum = 0;
-      lastStep = now;
-    };
-
-    let startX = 0;
-    let startY = 0;
-    const onTouchStart = (event: TouchEvent) => {
-      startX = event.touches[0].clientX;
-      startY = event.touches[0].clientY;
-    };
-    const onTouchEnd = (event: TouchEvent) => {
-      const dx = event.changedTouches[0].clientX - startX;
-      const dy = event.changedTouches[0].clientY - startY;
-      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-        go(dx < 0 ? 1 : -1);
+    if (filter === "alle") return;
+    const m = measure();
+    if (!m) return;
+    let best = chartStart;
+    let bestYears = -1;
+    for (
+      let from = chartStart;
+      from <= chartEnd - m.viewYears + 1e-9;
+      from += 0.1
+    ) {
+      const to = from + m.viewYears;
+      const years = timeline
+        .filter((entry) => entry.category === filter)
+        .reduce((sum, entry) => {
+          const end = entry.end ?? entry.plannedEnd ?? today;
+          return (
+            sum + Math.max(Math.min(end, to) - Math.max(entry.start, from), 0)
+          );
+        }, 0);
+      if (years >= bestYears) {
+        best = from;
+        bestYears = years;
       }
-    };
+    }
+    scrollTo((best - chartStart) * m.perYear, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
 
-    card.addEventListener("wheel", onWheel, { passive: false });
-    card.addEventListener("touchstart", onTouchStart, { passive: true });
-    card.addEventListener("touchend", onTouchEnd, { passive: true });
+  // Dragging with the mouse moves the chart; a touch screen and the
+  // trackpad already scroll it
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    let startX = 0;
+    let startLeft = 0;
+    let down = false;
+    let moved = false;
+
+    const onDown = (event: MouseEvent) => {
+      if (event.button !== 0) return;
+      down = true;
+      moved = false;
+      startX = event.clientX;
+      startLeft = el.scrollLeft;
+    };
+    const onMove = (event: MouseEvent) => {
+      if (!down) return;
+      const dx = event.clientX - startX;
+      if (Math.abs(dx) > 4) {
+        moved = true;
+        el.classList.add("is-dragging");
+      }
+      if (moved) el.scrollLeft = startLeft - dx;
+    };
+    const onUp = () => {
+      down = false;
+      el.classList.remove("is-dragging");
+    };
+    // A drag that ends on a bar should not open it
+    const onClick = (event: MouseEvent) => {
+      if (!moved) return;
+      event.preventDefault();
+      event.stopPropagation();
+      moved = false;
+    };
+    const onDragStart = (event: Event) => event.preventDefault();
+
+    el.addEventListener("mousedown", onDown);
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+    el.addEventListener("click", onClick, true);
+    el.addEventListener("dragstart", onDragStart);
     return () => {
-      card.removeEventListener("wheel", onWheel);
-      card.removeEventListener("touchstart", onTouchStart);
-      card.removeEventListener("touchend", onTouchEnd);
+      el.removeEventListener("mousedown", onDown);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+      el.removeEventListener("click", onClick, true);
+      el.removeEventListener("dragstart", onDragStart);
     };
   }, []);
 
-  const share = (year: number) => ((year - from) / (to - from)) * 100;
-  const gridYears = Array.from(
-    { length: Math.max(Math.ceil(to) - Math.ceil(from), 0) },
-    (_, i) => Math.ceil(from) + i,
-  );
-  const todayShown = today > from && today < to;
-
-  const rows = layout(steps[step], today);
+  // The name tooltip opens towards the middle of the chart, so it is not cut off
+  const placeTip = (element: HTMLElement) => {
+    const card = cardRef.current?.getBoundingClientRect();
+    if (!card) return;
+    const bar = element.getBoundingClientRect();
+    element.dataset.tip =
+      bar.left - card.left > card.width / 2 ? "end" : "start";
+  };
 
   return (
     <>
@@ -185,120 +246,135 @@ export default function TimelineOverview({
 
       <div className="timeline-chart-card" ref={cardRef}>
         <div
-          className="timeline-chart"
+          className={`timeline-chart ${ready ? "" : "is-hidden"}`}
+          ref={scrollerRef}
+          onScroll={update}
           role="group"
-          aria-label={`Oversikt over erfaringene mine, ${steps[step].label}`}
+          aria-label="Oversikt over erfaringene mine"
         >
-          <div className="timeline-chart-axis" aria-hidden="true">
-            {gridYears
-              // A year right next to the today dot gives way to it
-              .filter(
-                (year) =>
-                  !todayShown || Math.abs(share(year) - share(today)) > 6,
-              )
-              .map((year) => (
-                <span key={year} style={{ left: `${share(year)}%` }}>
-                  {year}
-                </span>
-              ))}
-          </div>
+          <div
+            className="timeline-chart-inner"
+            style={{
+              minWidth: `calc(var(--timeline-label-width) + ${span} * var(--timeline-year-width))`,
+            }}
+          >
+            <div className="timeline-chart-axis-row" aria-hidden="true">
+              <div className="timeline-axis-cover" />
+              <div className="timeline-chart-axis">
+                {gridYears
+                  // A year right next to the today dot gives way to it
+                  .filter((year) => Math.abs(year - today) > 0.12)
+                  .map((year) => (
+                    <span key={year} style={{ left: `${share(year)}%` }}>
+                      {year}
+                    </span>
+                  ))}
+              </div>
+            </div>
 
-          <div className="timeline-chart-lanes">
-            <div className="timeline-chart-grid" aria-hidden="true">
-              {gridYears.map((year) => (
-                <span key={year} style={{ left: `${share(year)}%` }} />
-              ))}
-              {todayShown && (
+            <div className="timeline-chart-lanes">
+              <div className="timeline-chart-grid" aria-hidden="true">
+                {gridYears.map((year) => (
+                  <span key={year} style={{ left: `${share(year)}%` }} />
+                ))}
                 <span
                   className="timeline-chart-today"
                   style={{ left: `${share(today)}%` }}
                 />
-              )}
-            </div>
-
-            {rows.map(({ lane, index, items }) => (
-              <div
-                className={`timeline-lane ${lane.tall ? "timeline-lane-tall" : ""} ${lane.featured ? "timeline-lane-featured" : ""}`}
-                key={index}
-              >
-                <span className="timeline-lane-label">{lane.label}</span>
-                <div className="timeline-track">
-                  {items.map(({ entry, cutLeft, cutRight, left, width }) => {
-                    const dimmed =
-                      filter !== "alle" && entry.category !== filter;
-                    return (
-                      <span
-                        key={entry.id}
-                        className="timeline-bar-wrap"
-                        style={{ left: `${left}%`, width: `${width}%` }}
-                      >
-                        <a
-                          href={`#erfaring-${entry.id}`}
-                          className={`timeline-bar timeline-bar-${entry.category} ${cutLeft ? "is-cut-left" : ""} ${cutRight ? "is-cut-right" : ""} ${dimmed ? "is-dim" : ""}`}
-                          aria-label={`${entry.title}, ${entry.org}, ${entry.dateLabel}`}
-                          onClick={(event) => {
-                            event.preventDefault();
-                            onSelect(entry.id);
-                          }}
-                        >
-                          {entry.barLabel && !lane.notes && (
-                            <span className="timeline-bar-label">
-                              {entry.barLabel}
-                            </span>
-                          )}
-                          <span
-                            className={`timeline-tip ${left > 55 ? "timeline-tip-end" : ""}`}
-                            aria-hidden="true"
-                          >
-                            <b>{tooltip(entry)}</b>
-                            <span>
-                              {entry.dateLabel} · Trykk for å lese mer
-                            </span>
-                          </span>
-                        </a>
-                        {lane.notes && (
-                          <span
-                            className={`timeline-bar-note ${dimmed ? "is-dim" : ""}`}
-                            aria-hidden="true"
-                          >
-                            {entry.barLabel}
-                          </span>
-                        )}
-                      </span>
-                    );
-                  })}
-                </div>
               </div>
-            ))}
+
+              {lanes.map((lane, index) => (
+                <div
+                  className={`timeline-lane ${lane.tall ? "timeline-lane-tall" : ""} ${lane.featured ? "timeline-lane-featured" : ""}`}
+                  key={index}
+                >
+                  <span className="timeline-lane-label">{lane.label}</span>
+                  <div className="timeline-track">
+                    {timeline
+                      .filter((entry) => entry.lane === index)
+                      .map((entry) => {
+                        const end = entry.end ?? entry.plannedEnd ?? today;
+                        const left = share(entry.start);
+                        const width = Math.max(share(end) - left, 0.5);
+                        const dimmed =
+                          filter !== "alle" && entry.category !== filter;
+                        return (
+                          <span
+                            key={entry.id}
+                            className="timeline-bar-wrap"
+                            style={{ left: `${left}%`, width: `${width}%` }}
+                          >
+                            <a
+                              href={`#erfaring-${entry.id}`}
+                              className={`timeline-bar timeline-bar-${entry.category} ${dimmed ? "is-dim" : ""}`}
+                              aria-label={`${entry.title}, ${entry.org}, ${entry.dateLabel}`}
+                              onMouseEnter={(event) =>
+                                placeTip(event.currentTarget)
+                              }
+                              onFocus={(event) => placeTip(event.currentTarget)}
+                              onClick={(event) => {
+                                event.preventDefault();
+                                onSelect(entry.id);
+                              }}
+                            >
+                              {entry.barLabel && !lane.notes && (
+                                <span className="timeline-bar-label">
+                                  {entry.barLabel}
+                                </span>
+                              )}
+                              <span className="timeline-tip" aria-hidden="true">
+                                <b>{tooltip(entry)}</b>
+                                <span>
+                                  {entry.dateLabel} · Trykk for å lese mer
+                                </span>
+                              </span>
+                            </a>
+                            {lane.notes && (
+                              <span
+                                className={`timeline-bar-note ${dimmed ? "is-dim" : ""}`}
+                                aria-hidden="true"
+                              >
+                                {entry.barLabel}
+                              </span>
+                            )}
+                          </span>
+                        );
+                      })}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
         <div className="timeline-chart-footer">
-          <div className="timeline-steps" role="group" aria-label="Tidsrom">
+          <div
+            className="timeline-steps"
+            role="group"
+            aria-label="Flytt tidslinjen"
+          >
             <button
               className="timeline-step"
-              aria-label="Tidligere tidsrom"
-              disabled={step === 0}
-              onClick={() => setStep(step - 1)}
+              aria-label="Tidligere"
+              disabled={view.atStart}
+              onClick={() => pan(-1)}
             >
               <Chevron direction="left" />
             </button>
-            <span className="timeline-steps-label" aria-live="polite">
-              {steps[step].label}
-            </span>
+            <span className="timeline-steps-label">{view.label}</span>
             <button
               className="timeline-step"
-              aria-label="Senere tidsrom"
-              disabled={step === steps.length - 1}
-              onClick={() => setStep(step + 1)}
+              aria-label="Senere"
+              disabled={view.atEnd}
+              onClick={() => pan(1)}
             >
               <Chevron direction="right" />
             </button>
           </div>
           <button
             className="timeline-today-button"
-            disabled={step === todayStep}
-            onClick={() => setStep(todayStep)}
+            disabled={view.todayVisible}
+            onClick={() => showToday(true)}
           >
             I dag
           </button>

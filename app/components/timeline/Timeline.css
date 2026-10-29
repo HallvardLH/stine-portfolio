@@ -4,6 +4,8 @@
   --timeline-line: color-mix(in srgb, var(--text-color) 20%, transparent);
   --timeline-soft-line: color-mix(in srgb, var(--text-color) 12%, transparent);
   --timeline-label-width: 6.5rem;
+  /* How wide a year is in the chart, which is moved sideways to see it all */
+  --timeline-year-width: 17rem;
   --timeline-featured-tint: color-mix(
     in srgb,
     var(--contrast-color) 12%,
@@ -71,10 +73,27 @@
 
 .timeline-now-tags li {
   list-style: none;
+}
+
+/* Each one takes you to the explanation further down */
+.timeline-now-tag {
   padding: 0.375rem 0.875rem;
   border: 1px solid color-mix(in srgb, currentColor 50%, transparent);
   border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
   font-size: var(--font-size-small);
+  cursor: pointer;
+}
+
+.timeline-now-tag:hover {
+  border-color: currentColor;
+}
+
+.timeline-now-tag:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 
 /* Overview */
@@ -131,6 +150,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  padding-inline: 0.75rem;
 }
 
 .timeline-steps {
@@ -199,14 +219,52 @@
 /* The chart on the page colour, set against the soft background, on larger screens */
 .timeline-chart-card {
   display: none;
-  padding: 2rem 1.5rem 1.25rem;
+  padding: 2rem 0.75rem 1.25rem;
+  background-color: var(--primary-color);
+}
+
+/* The chart is wider than the card and is moved sideways: by dragging, by
+   scrolling, with the arrows or by touch. The padding on top makes room for
+   the tooltips above the top bars. */
+.timeline-chart {
+  margin-top: -2rem;
+  padding-top: 2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.timeline-chart::-webkit-scrollbar {
+  display: none;
+}
+
+.timeline-chart.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+/* Hidden until it has been placed on today, so it does not jump */
+.timeline-chart.is-hidden {
+  visibility: hidden;
+}
+
+.timeline-chart-axis-row {
+  display: flex;
+}
+
+/* Holds the place of the row names, so the years do not slide over them */
+.timeline-axis-cover {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  flex: 0 0 var(--timeline-label-width);
   background-color: var(--primary-color);
 }
 
 .timeline-chart-axis {
   position: relative;
+  flex: 1;
   height: 1.5rem;
-  margin-left: var(--timeline-label-width);
 }
 
 .timeline-chart-axis > span {
@@ -289,10 +347,14 @@
 /* The highlighted internships sit on a green band across the whole row */
 .timeline-lane-featured {
   min-height: 3rem;
-  /* The green runs a little past the column, so the label lines up with the others */
-  margin-inline: -0.75rem;
-  padding-inline: 0.75rem;
   background-color: var(--timeline-featured-tint);
+}
+
+.timeline-lane-featured .timeline-lane-label {
+  background-image: linear-gradient(
+    var(--timeline-featured-tint),
+    var(--timeline-featured-tint)
+  );
 }
 
 .timeline-lane-featured .timeline-track {
@@ -319,13 +381,18 @@
   opacity: 0.2;
 }
 
+/* The row names stay put when the chart is moved sideways */
 .timeline-lane-label {
+  position: sticky;
+  left: 0;
+  z-index: 1;
   box-sizing: border-box;
   align-self: stretch;
   display: flex;
   align-items: center;
   flex: 0 0 var(--timeline-label-width);
-  padding-right: 0.75rem;
+  padding-inline: 0.75rem;
+  background-color: var(--primary-color);
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.25;
@@ -362,23 +429,15 @@
   text-decoration: none;
 }
 
-/* Goes on past the edge of this stretch, so the end is square */
-.timeline a.timeline-bar.is-cut-left {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.timeline a.timeline-bar.is-cut-right {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
 .timeline a.timeline-bar:hover {
   outline: 2px solid var(--text-color);
   outline-offset: 1px;
 }
 
 .timeline-bar-label {
+  /* Follows the screen while the start of the bar is under the row names */
+  position: sticky;
+  left: var(--timeline-label-width);
   min-width: 0;
   overflow: hidden;
   padding: 0 0.625rem;
@@ -457,7 +516,8 @@
   font-size: 0.75rem;
 }
 
-.timeline-tip-end {
+/* Opens to the left for bars in the right half of the chart */
+.timeline-bar[data-tip="end"] .timeline-tip {
   right: 0;
   left: auto;
 }
@@ -496,7 +556,7 @@
   }
 
   .timeline {
-    --timeline-label-width: 9.5rem;
+    --timeline-label-width: 11rem;
   }
 
   .timeline-list.case-section {

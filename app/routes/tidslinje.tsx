@@ -118,9 +118,20 @@ export default function TimelineRoute() {
                 eksperimenterer litt med Claude.
               </p>
               <ul className="timeline-now-tags">
-                <li>Master</li>
-                <li>Læreassistent MIX301</li>
-                <li>Freelance</li>
+                {[
+                  { id: "master", label: "Master" },
+                  { id: "mix301", label: "Læreassistent MIX301" },
+                  { id: "freelance", label: "Freelance" },
+                ].map((tag) => (
+                  <li key={tag.id}>
+                    <button
+                      className="timeline-now-tag"
+                      onClick={() => jumpTo(tag.id)}
+                    >
+                      {tag.label}
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -137,8 +148,7 @@ export default function TimelineRoute() {
             <div className="case-margin">
               <h2 className="case-margin-title">Oversikt</h2>
               <p className="timeline-help">
-                Hele reisen på ett blikk. Bla sidelengs eller bruk pilene, og
-                trykk på en strek for å lese mer.
+                Dra eller bla sidelengs, og trykk på en strek for å lese mer.
               </p>
             </div>
           </div>

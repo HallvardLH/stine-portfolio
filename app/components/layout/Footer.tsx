@@ -44,6 +44,9 @@ export default function Footer() {
               <li>
                 <Link to="/om-meg">Om meg</Link>
               </li>
+              <li>
+                <Link to="/tidslinje">Tidslinje</Link>
+              </li>
             </ul>
           </nav>
           <p className="footer-credit">
