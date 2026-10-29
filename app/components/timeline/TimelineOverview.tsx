@@ -72,7 +72,9 @@ export default function TimelineOverview({
                 .filter((entry) => entry.lane === index)
                 .map((entry) => {
                   const end = entry.end ?? today;
-                  const left = share(entry.start);
+                  // Started before the chart does: the bar runs in from the left edge
+                  const clipped = entry.start < chartStart;
+                  const left = clipped ? 0 : share(entry.start);
                   const width = Math.max(share(end) - left, 0.9);
                   const planned = entry.plannedEnd
                     ? share(entry.plannedEnd) - left - width
@@ -86,7 +88,7 @@ export default function TimelineOverview({
                     >
                       <a
                         href={`#erfaring-${entry.id}`}
-                        className={`timeline-bar timeline-bar-${entry.category} ${dimmed ? "is-dim" : ""}`}
+                        className={`timeline-bar timeline-bar-${entry.category} ${clipped ? "is-clipped" : ""} ${dimmed ? "is-dim" : ""}`}
                         style={{
                           width: `${(width / (width + planned)) * 100}%`,
                         }}

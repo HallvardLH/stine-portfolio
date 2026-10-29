@@ -268,7 +268,7 @@ export const timeline: TimelineEntry[] = [
     lane: 1,
     start: at(2019, 11),
     end: at(2025, 7),
-    barLabel: "Bergans",
+    barLabel: "Bergans · siden 2019",
   },
 ];
 
@@ -283,8 +283,9 @@ export const lanes: { label?: string; tall?: boolean; featured?: boolean }[] = [
   { label: "Frivillig arbeid" },
 ];
 
-/** The years the overview covers: from mid-2019 to mid-2027 */
-export const chartStart = 2019.5;
+/** The years the overview covers. It starts after 2021, so the left side is not
+ * empty; the job that began in 2019 runs in from the edge. */
+export const chartStart = 2021.6;
 export const chartEnd = 2027.5;
 
 /** Today as a decimal year, to the month so the server and the browser agree */

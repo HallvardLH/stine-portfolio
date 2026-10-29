@@ -121,13 +121,13 @@
 
   .timeline-chart-lanes {
     position: relative;
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
   }
 
   .timeline-chart-grid {
     position: absolute;
     top: 0;
-    bottom: 1.5rem;
+    bottom: 2.5rem;
     left: var(--timeline-label-width);
     right: 0;
     pointer-events: none;
@@ -138,22 +138,27 @@
     top: 0;
     bottom: 0;
     width: 1px;
-    background-color: var(--timeline-soft-line);
+    background-color: color-mix(in srgb, var(--text-color) 7%, transparent);
   }
 
   .timeline-chart-grid > .timeline-chart-today {
     z-index: 2;
-    width: 2px;
+    width: 1.5px;
     background-color: var(--text-color);
   }
 
+  /* A small label at the foot of the line */
   .timeline-chart-today b {
     position: absolute;
     top: 100%;
     left: 50%;
-    margin-top: 0.25rem;
-    transform: translateX(-50%);
+    padding: 0.125rem 0.625rem;
+    border-radius: 999px;
+    background-color: var(--text-color);
+    color: var(--primary-color);
     font-size: 0.75rem;
+    font-weight: 500;
+    transform: translateX(-50%);
     white-space: nowrap;
   }
 
@@ -195,7 +200,7 @@
   }
 
   .timeline-lane-featured .timeline-track {
-    height: 2rem;
+    height: 2.25rem;
   }
 
   .timeline-bar-note {
@@ -227,7 +232,7 @@
   .timeline-track {
     position: relative;
     flex: 1;
-    height: 1.75rem;
+    height: 2rem;
   }
 
   .timeline-bar-wrap {
@@ -254,6 +259,12 @@
     transition:
       opacity 0.2s ease,
       outline-color 0.15s ease;
+  }
+
+  /* Began before the chart does, so it has no rounded start */
+  .timeline a.timeline-bar.is-clipped {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   .timeline a.timeline-bar:hover {
@@ -296,6 +307,7 @@
   }
 
   .timeline a.timeline-bar-frivillig {
+    margin-right: 2px;
     border: 1.5px solid color-mix(in srgb, var(--text-color) 70%, transparent);
     color: var(--text-color);
   }
