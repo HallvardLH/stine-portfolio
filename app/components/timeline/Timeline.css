@@ -673,7 +673,8 @@
   }
 
   .timeline-filter-sticky {
-    position: static;
+    /* Not static, so the band behind it stays inside the section */
+    position: relative;
     justify-content: space-between;
     min-height: 2rem;
     margin-bottom: 0;
