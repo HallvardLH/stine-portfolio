@@ -7,6 +7,7 @@ import TimelineLightbox from "~/components/timeline/TimelineLightbox";
 import TimelineOverview from "~/components/timeline/TimelineOverview";
 import {
   categories,
+  lastYear,
   timeline,
   years,
   type TimelineCategory,
@@ -184,6 +185,12 @@ export default function TimelineRoute() {
             {years.map((year) => {
               const entries = visible.filter((entry) => entry.year === year);
               if (entries.length === 0) return null;
+              // What started earlier and was still going on that year
+              const alsoActive = visible.filter(
+                (entry) =>
+                  Number(entry.year) < Number(year) &&
+                  lastYear(entry) >= Number(year),
+              );
               return (
                 <div key={year} id={`ar-${year}`} className="timeline-year">
                   <div className="case-row">
@@ -193,6 +200,26 @@ export default function TimelineRoute() {
                         {entries.length}{" "}
                         {entries.length === 1 ? "erfaring" : "erfaringer"}
                       </p>
+                      {alsoActive.length > 0 && (
+                        <div className="timeline-year-also">
+                          <span>Samtidig</span>
+                          <ul>
+                            {alsoActive.map((entry) => (
+                              <li key={entry.id}>
+                                <a
+                                  href={`#erfaring-${entry.id}`}
+                                  onClick={(event) => {
+                                    event.preventDefault();
+                                    jumpTo(entry.id);
+                                  }}
+                                >
+                                  {entry.barLabel ?? entry.title}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                     </div>
                     <ul className="timeline-items">
                       {entries.map((entry) => (

@@ -18,7 +18,7 @@ export default function TimelineItem({
   return (
     <li
       id={`erfaring-${entry.id}`}
-      className={`timeline-item ${highlighted ? "is-highlighted" : ""}`}
+      className={`timeline-item ${entry.featured ? "timeline-item-featured" : ""} ${highlighted ? "is-highlighted" : ""}`}
     >
       {photos.length > 0 && (
         <button
@@ -33,6 +33,12 @@ export default function TimelineItem({
         </button>
       )}
       <div className="timeline-item-text">
+        {entry.featured && (
+          <p className="timeline-eyebrow">
+            <span className="timeline-dot" aria-hidden="true" />
+            Utvalgt erfaring
+          </p>
+        )}
         <p className="timeline-item-meta">
           {entry.live && (
             <span className="timeline-dot" role="img" aria-label="Pågående" />

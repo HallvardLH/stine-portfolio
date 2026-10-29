@@ -44,8 +44,14 @@ export interface TimelineEntry {
   end?: number;
   /** Where a bar that is still going is planned to end */
   plannedEnd?: number;
-  /** Text inside the bar, for bars wide enough to hold it */
+  /** Text inside the bar, for bars wide enough to hold it. Also the short name in the list. */
   barLabel?: string;
+  /** Last year it was going on, when that is later than the year it sits under */
+  through?: number;
+  /** Highlighted in the overview and the list */
+  featured?: boolean;
+  /** Which side of its period the name sits on in the overview */
+  labelSide?: "start" | "end";
 }
 
 /** Year with months as a decimal: month 1 is the start of the year */
@@ -77,6 +83,9 @@ export const timeline: TimelineEntry[] = [
       "Innsikt, intervjuer, workshops, konseptutvikling, prototyping og brukertesting.",
     note: "Påmeldingsskjemaet ble lansert samme høst",
     link: { to: "/finn-eiendom", label: "Les om prosjektet" },
+    featured: true,
+    labelSide: "start",
+    barLabel: "FINN Eiendom",
     photos: [
       {
         src: "/om-meg/finn-presentasjon.webp",
@@ -156,6 +165,9 @@ export const timeline: TimelineEntry[] = [
     text: "Designet en ny bankløsning for barn sammen med en medstudent, gjennom hele UX-prosessen fra innsiktsarbeid til prototyping og iterering.",
     note: "Lansert til bankens kunder samme sommer",
     link: { to: "/barnebank", label: "Les om prosjektet" },
+    featured: true,
+    labelSide: "end",
+    barLabel: "Sparebanken Norge",
     photos: [
       {
         src: "/om-meg/spn.webp",
@@ -188,6 +200,7 @@ export const timeline: TimelineEntry[] = [
     dateLabel: "2024 – 2025",
     title: "Kors på Halsen",
     org: "Røde Kors · Bergen",
+    through: 2025,
     lane: 5,
     start: at(2024),
     end: at(2025),
@@ -200,6 +213,7 @@ export const timeline: TimelineEntry[] = [
     dateLabel: "2023 – 2024",
     title: "Redd Barna",
     org: "Bergen",
+    through: 2024,
     lane: 5,
     start: at(2023),
     end: at(2024),
@@ -240,6 +254,7 @@ export const timeline: TimelineEntry[] = [
           "Innovasjonsuken Opp sitt Kickoff der vi fikk presentere OurSpace.",
       },
     ],
+    through: 2025,
     lane: 0,
     start: at(2022, 8),
     end: at(2025, 6),
@@ -253,6 +268,7 @@ export const timeline: TimelineEntry[] = [
     title: "Butikkmedarbeider",
     org: "Bergans · Bergen/Oslo",
     text: "Ansvar for åpning og stenging av butikk, kundeservice og avstemning av kasseapparat.",
+    through: 2025,
     lane: 1,
     start: at(2019, 11),
     end: at(2025, 7),
@@ -278,6 +294,14 @@ export const chartEnd = 2027.5;
 export function currentYear(): number {
   const now = new Date();
   return now.getFullYear() + now.getMonth() / 12;
+}
+
+/** The last year an entry was going on, for showing what runs alongside each year */
+export function lastYear(entry: TimelineEntry): number {
+  return (
+    entry.through ??
+    (entry.live ? new Date().getFullYear() : Number(entry.year))
+  );
 }
 
 export const years = Array.from(new Set(timeline.map((entry) => entry.year)));
