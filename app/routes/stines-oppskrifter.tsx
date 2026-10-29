@@ -279,7 +279,7 @@ export default function StinesOppskrifterRoute() {
                 phones={[
                   {
                     src: "/stines-oppskrifter/mobil-kalorier.webp",
-                    alt: "Kalorivalget på mobil, med kalorier på oppskriftskortet.",
+                    alt: "Valget «Er du opptatt av kalorier?» med «Vis meg» og «Bryr meg ikke», og oppskriften «Baked oats med bær» med 269 kcal på kortet.",
                     caption: "Kalorier på oppskriftskortet",
                   },
                 ]}
