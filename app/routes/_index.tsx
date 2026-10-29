@@ -74,9 +74,11 @@ export default function Index() {
             </div>
             <div className="case-text home-latest-text">
               <ul className="home-tags">
-                <li className={`home-tag home-tag-${latestProject.status}`}>
-                  {projectStatusLabels[latestProject.status]}
-                </li>
+                {projectStatusLabels[latestProject.status] && (
+                  <li className={`home-tag home-tag-${latestProject.status}`}>
+                    {projectStatusLabels[latestProject.status]}
+                  </li>
+                )}
                 {latestProject.tags.map((tag) => (
                   <li key={tag} className="home-tag">
                     {tag}

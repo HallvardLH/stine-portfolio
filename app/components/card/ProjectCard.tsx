@@ -35,9 +35,11 @@ export default function ProjectCard(props: ProjectCardProps) {
       <h3 className="project-card-title">{title}</h3>
       <p className="project-card-description">{description}</p>
       <ul className="card-tags">
-        <li className={`card-tag card-tag-${status}`}>
-          {projectStatusLabels[status]}
-        </li>
+        {projectStatusLabels[status] && (
+          <li className={`card-tag card-tag-${status}`}>
+            {projectStatusLabels[status]}
+          </li>
+        )}
         {tags?.slice(0, 2).map((tag) => (
           <li key={tag} className="card-tag">
             {tag}

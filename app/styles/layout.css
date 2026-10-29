@@ -151,19 +151,10 @@
   font-size: 0.8125rem;
 }
 
-/* Whether the project is for real use or a case */
-.home-tag-produksjon,
+/* Marks a prototype */
 .home-tag-fiktiv {
   border-color: transparent;
   font-weight: 500;
-}
-
-.home-tag-produksjon {
-  background-color: var(--contrast-color);
-  color: var(--case-ink, #181b09);
-}
-
-.home-tag-fiktiv {
   background-color: color-mix(in srgb, currentColor 14%, transparent);
 }
 

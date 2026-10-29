@@ -54,9 +54,11 @@ export default function ArchiveRoute() {
                     </Link>
                     <div className="archive-feature-text">
                       <ul className="home-tags">
-                        <li className={`home-tag home-tag-${project.status}`}>
-                          {projectStatusLabels[project.status]}
-                        </li>
+                        {projectStatusLabels[project.status] && (
+                          <li className={`home-tag home-tag-${project.status}`}>
+                            {projectStatusLabels[project.status]}
+                          </li>
+                        )}
                         {project.tags.map((tag) => (
                           <li key={tag} className="home-tag">
                             {tag}

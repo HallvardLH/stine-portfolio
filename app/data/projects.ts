@@ -8,12 +8,13 @@ export const projectCategories: { id: ProjectCategory; label: string }[] = [
   { id: "freelance", label: "Freelance" },
 ];
 
-// Whether the project was made for real use or as a case
+// Whether the project went into real use or stayed a prototype. Only the
+// prototypes get a tag.
 export type ProjectStatus = "produksjon" | "fiktiv";
 
-export const projectStatusLabels: Record<ProjectStatus, string> = {
-  produksjon: "I produksjon",
-  fiktiv: "Fiktiv case",
+export const projectStatusLabels: Record<ProjectStatus, string | null> = {
+  produksjon: null,
+  fiktiv: "Prototype",
 };
 
 export interface Project {
