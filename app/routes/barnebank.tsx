@@ -21,7 +21,7 @@ const chapters: Chapter[] = [
   { id: "innsikt", label: "Innsikt" },
   { id: "losning", label: "Løsning" },
   { id: "laering", label: "Læring" },
-  { id: "bilder", label: "Bilde" },
+  { id: "bilder", label: "Bilder" },
 ];
 
 export const meta: MetaFunction = () => {
