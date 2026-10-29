@@ -44,6 +44,48 @@ const groupStart = lanes.map((_, index) => {
   return start;
 });
 
+// How tall a row is, in rem, as set in the stylesheet
+const laneHeight = (lane: (typeof lanes)[number]) =>
+  lane.tall ? 3.75 : lane.featured ? 3 : 2.5;
+
+// What a stretch of time shows: the bars that fall in it, cut at its edges,
+// grouped by row. Rows with nothing in them are left out, and the group name
+// goes on the first row that is left.
+function layout(step: (typeof steps)[number], today: number) {
+  const { from, to } = step;
+  const share = (year: number) => ((year - from) / (to - from)) * 100;
+
+  const shown = timeline.flatMap((entry) => {
+    const end = entry.end ?? entry.plannedEnd ?? today;
+    if (end <= from || entry.start >= to) return [];
+    const cutLeft = entry.start < from;
+    const cutRight = end > to;
+    const first = Math.max(entry.start, from);
+    const last = Math.min(end, to);
+    // A sliver of something that mostly belongs to another stretch is left out
+    if ((cutLeft || cutRight) && (last - first) / (to - from) < 0.1) return [];
+    return [
+      {
+        entry,
+        cutLeft,
+        cutRight,
+        left: share(first),
+        width: Math.max(share(last) - share(first), 0.9),
+      },
+    ];
+  });
+
+  const named = new Set<number>();
+  return lanes.flatMap((lane, index) => {
+    const items = shown.filter((item) => item.entry.lane === index);
+    if (items.length === 0) return [];
+    const group = groupStart[index];
+    const label = named.has(group) ? undefined : lanes[group].label;
+    named.add(group);
+    return [{ lane, index, items, label }];
+  });
+}
+
 // The journey on a shared time axis, a stretch of time at a time: a bar per
 // experience. A bar takes you to the entry in the list.
 export default function TimelineOverview({
@@ -65,39 +107,16 @@ export default function TimelineOverview({
     { length: Math.max(Math.ceil(to) - Math.ceil(from), 0) },
     (_, i) => Math.ceil(from) + i,
   );
+  const todayShown = today > from && today < to;
 
-  // The bars that fall in this stretch, cut at its edges
-  const shown = timeline.flatMap((entry) => {
-    const end = entry.end ?? entry.plannedEnd ?? today;
-    if (end <= from || entry.start >= to) return [];
-    const cutLeft = entry.start < from;
-    const cutRight = end > to;
-    const first = Math.max(entry.start, from);
-    const last = Math.min(end, to);
-    // A sliver of something that mostly belongs to another stretch is left out
-    if ((cutLeft || cutRight) && (last - first) / (to - from) < 0.1) return [];
-    return [
-      {
-        entry,
-        cutLeft,
-        cutRight,
-        left: share(first),
-        width: Math.max(share(last) - share(first), 0.9),
-      },
-    ];
-  });
-
-  // Rows with nothing in this stretch are left out; the group name goes on the
-  // first row that is left
-  const named = new Set<number>();
-  const rows = lanes.flatMap((lane, index) => {
-    const items = shown.filter((item) => item.entry.lane === index);
-    if (items.length === 0) return [];
-    const group = groupStart[index];
-    const label = named.has(group) ? undefined : lanes[group].label;
-    named.add(group);
-    return [{ lane, index, items, label }];
-  });
+  const rows = layout(steps[step], today);
+  // The chart is as tall as the tallest stretch, so the page does not jump
+  // when you switch
+  const height = Math.max(
+    ...steps.map((item) =>
+      layout(item, today).reduce((sum, row) => sum + laneHeight(row.lane), 0),
+    ),
+  );
 
   return (
     <>
@@ -109,19 +128,27 @@ export default function TimelineOverview({
         aria-label={`Oversikt over erfaringene mine, ${steps[step].label}`}
       >
         <div className="timeline-chart-axis" aria-hidden="true">
-          {gridYears.map((year) => (
-            <span key={year} style={{ left: `${share(year)}%` }}>
-              {year}
-            </span>
-          ))}
+          {gridYears
+            // A year right next to today gives way to the I dag label
+            .filter(
+              (year) => !todayShown || Math.abs(share(year) - share(today)) > 7,
+            )
+            .map((year) => (
+              <span key={year} style={{ left: `${share(year)}%` }}>
+                {year}
+              </span>
+            ))}
         </div>
 
-        <div className="timeline-chart-lanes">
+        <div
+          className="timeline-chart-lanes"
+          style={{ minHeight: `${height + 1.25}rem` }}
+        >
           <div className="timeline-chart-grid" aria-hidden="true">
             {gridYears.map((year) => (
               <span key={year} style={{ left: `${share(year)}%` }} />
             ))}
-            {today > from && today < to && (
+            {todayShown && (
               <span
                 className="timeline-chart-today"
                 style={{ left: `${share(today)}%` }}
