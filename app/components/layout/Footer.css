@@ -5,6 +5,9 @@
   --footer-text: #fdfff9;
 
   margin-top: 6rem;
+  /* The dark band carries on below the page, so the bounce at the bottom of a
+     phone screen shows dark and not the page colour */
+  box-shadow: 0 50vh 0 50vh var(--footer-bg);
   background-color: var(--footer-bg);
   color: var(--footer-text);
   letter-spacing: var(--letter-spacing);
