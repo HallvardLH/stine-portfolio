@@ -3,6 +3,8 @@ import { Link } from "@remix-run/react";
 import "~/components/case/Case.css";
 import ChapterNav, { type Chapter } from "~/components/chapter-nav/ChapterNav";
 import ProjectCard from "~/components/card/ProjectCard";
+import "~/components/archive/Archive.css";
+import ArchiveTeaser from "~/components/archive/ArchiveTeaser";
 import ThumbnailImage from "~/components/card/ThumbnailImage";
 import { latestProject, projectsByYear } from "~/data/projects";
 
@@ -122,6 +124,21 @@ export default function Index() {
           </div>
         </section>
       </div>
+
+      <section
+        id="arkiv"
+        className="case-section case-soft home-archive"
+        data-surface="soft"
+      >
+        <div className="case-container">
+          <div className="case-row">
+            <div className="case-margin">
+              <span className="case-margin-number">Arkiv</span>
+            </div>
+            <ArchiveTeaser />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

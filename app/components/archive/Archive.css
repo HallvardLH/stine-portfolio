@@ -1,0 +1,134 @@
+/* The archive: a box on the home page, and a page for the small projects */
+
+/* On the home page: the text, and the box on the right */
+.archive-teaser {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.archive-teaser-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.archive-teaser-box {
+  display: block;
+  /* Under the text on small screens, at the right edge */
+  align-self: flex-end;
+  width: min(100%, 13rem);
+}
+
+.archive-teaser-box:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media only screen and (min-width: 700px) {
+  .archive-teaser {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .archive-teaser-box {
+    flex-shrink: 0;
+    width: 17rem;
+  }
+}
+
+/* The box. The lid is in two halves that fold open, and the cards rise. */
+.archive-box {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.archive-flap,
+.archive-cards {
+  transition: transform 0.35s ease-out;
+}
+
+.archive-flap-back {
+  transform-origin: 160px 96px;
+}
+
+.archive-flap-front {
+  transform-origin: 160px 132px;
+}
+
+.archive-box.is-open .archive-flap-back {
+  transform: scale(0.95, -1.1);
+}
+
+.archive-box.is-open .archive-flap-front {
+  transform: scale(1.06, -1);
+}
+
+.archive-box.is-open .archive-cards {
+  transform: translateY(-34px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .archive-flap,
+  .archive-cards {
+    transition: none;
+  }
+}
+
+/* The archive page */
+.archive-intro.case-section {
+  padding: 2rem 0 3rem;
+}
+
+.archive-intro .case-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.archive-lead {
+  margin: 0;
+  max-width: 44rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.archive-list.case-section {
+  padding-top: 2.5rem;
+}
+
+.archive-empty {
+  margin: 0;
+  opacity: 0.7;
+}
+
+.archive-items {
+  all: unset;
+  display: block;
+}
+
+.archive-item {
+  list-style: none;
+  padding: 2rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent);
+}
+
+.archive-item-year {
+  font-size: var(--font-size-small);
+  opacity: 0.7;
+}
+
+.archive-item-title {
+  font-size: var(--font-size-heading);
+  font-weight: 700;
+}
+
+.archive-item-description {
+  margin: 0;
+}
