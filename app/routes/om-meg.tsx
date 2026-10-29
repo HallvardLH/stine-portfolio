@@ -11,7 +11,7 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "Jeg er UX-designer og masterstudent i medie- og interaksjonsdesign ved Universitetet i Bergen.",
+        "Jeg er en UX-designer og masterstudent i medie- og interaksjonsdesign ved Universitetet i Bergen.",
     },
   ];
 };
@@ -28,8 +28,8 @@ export default function AboutRoute() {
           <div className="about-text">
             <h1 className="case-title-heading">Om meg</h1>
             <p className="about-lead">
-              Jeg er UX-designer og masterstudent i medie- og interaksjonsdesign
-              ved Universitetet i Bergen.
+              Jeg er en UX-designer og masterstudent i medie- og
+              interaksjonsdesign ved Universitetet i Bergen.
             </p>
             <p className="about-body">
               Jeg har alltid likt å lage ting og jobbe visuelt, og det var noe
