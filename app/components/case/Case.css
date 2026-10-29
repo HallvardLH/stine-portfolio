@@ -181,6 +181,11 @@
   font-weight: 500;
 }
 
+/* The link colour of the page must not win over the dark text on the green */
+.case a.case-button {
+  color: var(--button-text-color);
+}
+
 .case-button:hover {
   filter: brightness(0.9);
 }
