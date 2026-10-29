@@ -36,7 +36,7 @@ export default function TimelineItem({
         {entry.featured && (
           <p className="timeline-eyebrow">
             <span className="timeline-dot" aria-hidden="true" />
-            Utvalgt erfaring
+            Høydepunkt
           </p>
         )}
         <p className="timeline-item-meta">

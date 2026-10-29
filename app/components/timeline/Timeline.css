@@ -230,6 +230,8 @@
   margin-top: -2rem;
   padding-top: 2rem;
   overflow-x: auto;
+  /* No bounce at the ends */
+  overscroll-behavior-x: none;
   scrollbar-width: none;
   cursor: grab;
 }

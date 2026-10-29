@@ -114,8 +114,8 @@ export default function TimelineRoute() {
             </div>
             <div className="case-text">
               <p className="case-statement">
-                Jeg holder på med masterprosjektet, er læreassistent i MIX301 og
-                eksperimenterer litt med Claude.
+                Jeg holder på med masterprosjektet mitt, er læreassistent på
+                universitetet og eksperimenterer med Claude.
               </p>
               <ul className="timeline-now-tags">
                 {[
@@ -148,7 +148,8 @@ export default function TimelineRoute() {
             <div className="case-margin">
               <h2 className="case-margin-title">Oversikt</h2>
               <p className="timeline-help">
-                Dra eller bla sidelengs, og trykk på en strek for å lese mer.
+                Dra eller bla på tidslinjen, og trykk på elementer for å lese
+                mer.
               </p>
             </div>
           </div>
