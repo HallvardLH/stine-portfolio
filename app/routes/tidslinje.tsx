@@ -116,7 +116,7 @@ export default function TimelineRoute() {
               <ul className="timeline-now-tags">
                 <li>Master</li>
                 <li>Læreassistent MIX301</li>
-                <li>Frilans</li>
+                <li>Freelance</li>
               </ul>
             </div>
           </div>

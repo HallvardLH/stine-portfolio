@@ -129,7 +129,7 @@ export const timeline: TimelineEntry[] = [
     id: "master",
     category: "utdanning",
     year: "2025",
-    dateLabel: "2025 – 2027",
+    dateLabel: "august 2025 – juni 2027",
     title: "Mastergrad i Medie- og interaksjonsdesign",
     org: "Universitetet i Bergen",
     text: "Innhenting og analyse av brukerinnsikt, designprinsipper og universell utforming.",
@@ -137,7 +137,7 @@ export const timeline: TimelineEntry[] = [
     live: true,
     lane: 0,
     start: at(2025, 8),
-    plannedEnd: at(2027, 6),
+    plannedEnd: at(2027, 7),
     barLabel: "Master i interaksjonsdesign",
   },
   {
@@ -219,7 +219,7 @@ export const timeline: TimelineEntry[] = [
     id: "bachelor",
     category: "utdanning",
     year: "2022",
-    dateLabel: "2022 – 2025",
+    dateLabel: "august 2022 – juni 2025",
     title: "Bachelorgrad i Medie- og interaksjonsdesign",
     org: "Universitetet i Bergen",
     text: "UX- og interaksjonsdesign med fokus på brukervennlige digitale løsninger og effektive arbeidsprosesser.",
@@ -253,14 +253,14 @@ export const timeline: TimelineEntry[] = [
     through: 2025,
     lane: 0,
     start: at(2022, 8),
-    end: at(2025, 6),
+    end: at(2025, 7),
     barLabel: "Bachelor i interaksjonsdesign",
   },
   {
     id: "kjelsas",
     category: "arbeid",
     year: "2021",
-    dateLabel: "2021 – 2022",
+    dateLabel: "august 2021 – juni 2022",
     title: "Assistent",
     org: "Kjelsås barneskole · Oslo",
     through: 2022,
@@ -300,7 +300,7 @@ export const lanes: { label?: string; tall?: boolean; featured?: boolean }[] = [
 /** The years the overview covers. It starts after 2021, so the left side is not
  * empty; the job that began in 2019 runs in from the edge. */
 export const chartStart = 2021.4;
-export const chartEnd = 2027.5;
+export const chartEnd = 2027.75;
 
 /** Today as a decimal year, to the month so the server and the browser agree */
 export function currentYear(): number {
