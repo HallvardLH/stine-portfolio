@@ -227,22 +227,6 @@
   background: none;
 }
 
-/* The label sits on the axis, at the top of the line */
-.timeline-chart-today b {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-bottom: 0.125rem;
-  padding: 0.125rem 0.625rem;
-  border-radius: 999px;
-  background-color: var(--contrast-color);
-  color: var(--case-ink);
-  font-size: 0.75rem;
-  font-weight: 500;
-  transform: translateX(-50%);
-  white-space: nowrap;
-}
-
 .timeline-lane {
   display: flex;
   align-items: center;

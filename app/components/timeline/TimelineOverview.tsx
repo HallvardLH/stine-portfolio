@@ -107,17 +107,11 @@ export default function TimelineOverview({
           aria-label={`Oversikt over erfaringene mine, ${steps[step].label}`}
         >
           <div className="timeline-chart-axis" aria-hidden="true">
-            {gridYears
-              // A year right next to today gives way to the I dag label
-              .filter(
-                (year) =>
-                  !todayShown || Math.abs(share(year) - share(today)) > 7,
-              )
-              .map((year) => (
-                <span key={year} style={{ left: `${share(year)}%` }}>
-                  {year}
-                </span>
-              ))}
+            {gridYears.map((year) => (
+              <span key={year} style={{ left: `${share(year)}%` }}>
+                {year}
+              </span>
+            ))}
           </div>
 
           <div className="timeline-chart-lanes">
@@ -129,9 +123,7 @@ export default function TimelineOverview({
                 <span
                   className="timeline-chart-today"
                   style={{ left: `${share(today)}%` }}
-                >
-                  <b>I dag</b>
-                </span>
+                />
               )}
             </div>
 
