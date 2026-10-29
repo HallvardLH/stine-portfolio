@@ -68,7 +68,7 @@ export default function AboutRoute() {
           endrer løsningen underveis.
         </p>
         <Link to="/tidslinje" className="case-button">
-          Se hele reisen min
+          Se alle erfaringene mine
           <img src="/icons/arrow.svg" alt="" />
         </Link>
       </CaseChapter>

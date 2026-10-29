@@ -430,33 +430,128 @@
   margin-top: 0;
 }
 
-/* Related projects: the same cards as on the home page, in a grid beside
-   the heading */
-.case-related .case-container {
-  border-top: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent);
-  padding-top: 2rem;
+/* Related projects */
+.case-related {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4rem 0 4rem 1.6rem;
+  overflow: hidden;
+}
+
+.case-related-heading {
+  margin: 0;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--header-color);
+}
+
+.case-related-list-wrapper {
+  min-width: 0;
+}
+
+.case-related-list {
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  /* Only sideways: the list must not scroll up and down as well */
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.case-related-list::-webkit-scrollbar {
+  display: none;
+}
+
+.case-related-item {
+  flex: 0 0 min(80vw, 24.25rem);
+  scroll-snap-align: start;
+}
+
+/* The last card gets the same space on the right as the section has on the left */
+.case-related-item:last-child {
+  margin-right: 1.6rem;
+}
+
+.case-related-link {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.case-related-link:focus-visible {
+  outline-offset: -4px;
+}
+
+/* The title, and under it a flat label with an arrow on the right that shows
+   on hover */
+.case-related-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.case-related-footer .case-related-cta {
+  align-self: flex-end;
+}
+
+.case-related-cta {
+  flex-shrink: 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--contrast-color);
+  color: var(--button-text-color);
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.case-related-cta img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.case-related-link:hover .case-related-cta,
+.case-related-link:focus-visible .case-related-cta {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-related-cta {
+    transition: none;
+  }
 }
 
 .case-related-title {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: 1.75rem;
+  font-weight: 500;
 }
 
-.case-related-grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-items: start;
-  gap: 3rem 1.5rem;
+.case-related-next {
+  all: unset;
+  display: block;
+  margin: 2rem 1.6rem 0 auto;
+  cursor: pointer;
 }
 
-.case-related-grid > li {
-  list-style: none;
-  min-width: 0;
+.case-related-next:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 4px;
+}
+
+.case-related-next img {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 /* Desktop */
@@ -468,10 +563,6 @@
   .case-columns,
   .case-figure-row {
     grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
-  }
-
-  .case-related-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -515,7 +606,23 @@
     column-gap: 5rem;
   }
 
-  .case-related .case-row > :nth-child(2) {
-    padding-top: 0;
+  .case-related {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+    /* In line with the rest of the page on wide screens */
+    padding: 5rem 0 5rem max(2rem, calc((100vw - 70rem) / 2));
+  }
+
+  .case-related-heading {
+    flex: 0 0 min(26rem, 28%);
+  }
+
+  .case-related-item:last-child {
+    margin-right: 2rem;
+  }
+
+  .case-related-list-wrapper {
+    flex: 1;
   }
 }

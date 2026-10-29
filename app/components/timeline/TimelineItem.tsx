@@ -40,10 +40,12 @@ export default function TimelineItem({
           </p>
         )}
         <p className="timeline-item-meta">
-          {entry.live && (
-            <span className="timeline-dot" role="img" aria-label="Pågående" />
-          )}
-          <span>{entry.dateLabel}</span>
+          <span className="timeline-item-date">
+            {entry.live && (
+              <span className="timeline-dot" role="img" aria-label="Pågående" />
+            )}
+            {entry.dateLabel}
+          </span>
           <span className="timeline-category">
             {categoryLabel(entry.category)}
           </span>
