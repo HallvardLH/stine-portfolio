@@ -100,123 +100,129 @@ export default function TimelineOverview({
     <>
       <div className="timeline-toolbar">{filters}</div>
 
-      <div
-        className="timeline-chart"
-        role="group"
-        aria-label={`Oversikt over erfaringene mine, ${steps[step].label}`}
-      >
-        <div className="timeline-chart-axis" aria-hidden="true">
-          {gridYears
-            // A year right next to today gives way to the I dag label
-            .filter(
-              (year) => !todayShown || Math.abs(share(year) - share(today)) > 7,
-            )
-            .map((year) => (
-              <span key={year} style={{ left: `${share(year)}%` }}>
-                {year}
-              </span>
-            ))}
-        </div>
-
-        <div className="timeline-chart-lanes">
-          <div className="timeline-chart-grid" aria-hidden="true">
-            {gridYears.map((year) => (
-              <span key={year} style={{ left: `${share(year)}%` }} />
-            ))}
-            {todayShown && (
-              <span
-                className="timeline-chart-today"
-                style={{ left: `${share(today)}%` }}
-              >
-                <b>I dag</b>
-              </span>
-            )}
+      <div className="timeline-chart-card">
+        <div
+          className="timeline-chart"
+          role="group"
+          aria-label={`Oversikt over erfaringene mine, ${steps[step].label}`}
+        >
+          <div className="timeline-chart-axis" aria-hidden="true">
+            {gridYears
+              // A year right next to today gives way to the I dag label
+              .filter(
+                (year) =>
+                  !todayShown || Math.abs(share(year) - share(today)) > 7,
+              )
+              .map((year) => (
+                <span key={year} style={{ left: `${share(year)}%` }}>
+                  {year}
+                </span>
+              ))}
           </div>
 
-          {rows.map(({ lane, index, items }) => (
-            <div
-              className={`timeline-lane ${lane.tall ? "timeline-lane-tall" : ""} ${lane.featured ? "timeline-lane-featured" : ""}`}
-              key={index}
-            >
-              <span className="timeline-lane-label">{lane.label}</span>
-              <div className="timeline-track">
-                {items.map(({ entry, cutLeft, cutRight, left, width }) => {
-                  const dimmed = filter !== "alle" && entry.category !== filter;
-                  return (
-                    <span
-                      key={entry.id}
-                      className="timeline-bar-wrap"
-                      style={{ left: `${left}%`, width: `${width}%` }}
-                    >
-                      <a
-                        href={`#erfaring-${entry.id}`}
-                        className={`timeline-bar timeline-bar-${entry.category} ${cutLeft ? "is-cut-left" : ""} ${cutRight ? "is-cut-right" : ""} ${dimmed ? "is-dim" : ""}`}
-                        aria-label={`${entry.title}, ${entry.org}, ${entry.dateLabel}`}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          onSelect(entry.id);
-                        }}
+          <div className="timeline-chart-lanes">
+            <div className="timeline-chart-grid" aria-hidden="true">
+              {gridYears.map((year) => (
+                <span key={year} style={{ left: `${share(year)}%` }} />
+              ))}
+              {todayShown && (
+                <span
+                  className="timeline-chart-today"
+                  style={{ left: `${share(today)}%` }}
+                >
+                  <b>I dag</b>
+                </span>
+              )}
+            </div>
+
+            {rows.map(({ lane, index, items }) => (
+              <div
+                className={`timeline-lane ${lane.tall ? "timeline-lane-tall" : ""} ${lane.featured ? "timeline-lane-featured" : ""}`}
+                key={index}
+              >
+                <span className="timeline-lane-label">{lane.label}</span>
+                <div className="timeline-track">
+                  {items.map(({ entry, cutLeft, cutRight, left, width }) => {
+                    const dimmed =
+                      filter !== "alle" && entry.category !== filter;
+                    return (
+                      <span
+                        key={entry.id}
+                        className="timeline-bar-wrap"
+                        style={{ left: `${left}%`, width: `${width}%` }}
                       >
-                        {entry.barLabel && !lane.notes && (
-                          <span className="timeline-bar-label">
+                        <a
+                          href={`#erfaring-${entry.id}`}
+                          className={`timeline-bar timeline-bar-${entry.category} ${cutLeft ? "is-cut-left" : ""} ${cutRight ? "is-cut-right" : ""} ${dimmed ? "is-dim" : ""}`}
+                          aria-label={`${entry.title}, ${entry.org}, ${entry.dateLabel}`}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            onSelect(entry.id);
+                          }}
+                        >
+                          {entry.barLabel && !lane.notes && (
+                            <span className="timeline-bar-label">
+                              {entry.barLabel}
+                              {cutLeft && ` · siden ${Math.floor(entry.start)}`}
+                            </span>
+                          )}
+                          <span
+                            className={`timeline-tip ${left > 55 ? "timeline-tip-end" : ""}`}
+                            aria-hidden="true"
+                          >
+                            <b>{tooltip(entry)}</b>
+                            <span>
+                              {entry.dateLabel} · Trykk for å lese mer
+                            </span>
+                          </span>
+                        </a>
+                        {lane.notes && (
+                          <span
+                            className={`timeline-bar-note ${dimmed ? "is-dim" : ""}`}
+                            aria-hidden="true"
+                          >
                             {entry.barLabel}
-                            {cutLeft && ` · siden ${Math.floor(entry.start)}`}
                           </span>
                         )}
-                        <span
-                          className={`timeline-tip ${left > 55 ? "timeline-tip-end" : ""}`}
-                          aria-hidden="true"
-                        >
-                          <b>{tooltip(entry)}</b>
-                          <span>{entry.dateLabel} · Trykk for å lese mer</span>
-                        </span>
-                      </a>
-                      {lane.notes && (
-                        <span
-                          className={`timeline-bar-note ${dimmed ? "is-dim" : ""}`}
-                          aria-hidden="true"
-                        >
-                          {entry.barLabel}
-                        </span>
-                      )}
-                    </span>
-                  );
-                })}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="timeline-chart-footer">
-        <div className="timeline-steps" role="group" aria-label="Tidsrom">
+        <div className="timeline-chart-footer">
+          <div className="timeline-steps" role="group" aria-label="Tidsrom">
+            <button
+              className="timeline-step"
+              aria-label="Tidligere tidsrom"
+              disabled={step === 0}
+              onClick={() => setStep(step - 1)}
+            >
+              <Chevron direction="left" />
+            </button>
+            <span className="timeline-steps-label" aria-live="polite">
+              {steps[step].label}
+            </span>
+            <button
+              className="timeline-step"
+              aria-label="Senere tidsrom"
+              disabled={step === steps.length - 1}
+              onClick={() => setStep(step + 1)}
+            >
+              <Chevron direction="right" />
+            </button>
+          </div>
           <button
-            className="timeline-step"
-            aria-label="Tidligere tidsrom"
-            disabled={step === 0}
-            onClick={() => setStep(step - 1)}
+            className="timeline-today-button"
+            disabled={step === todayStep}
+            onClick={() => setStep(todayStep)}
           >
-            <Chevron direction="left" />
-          </button>
-          <span className="timeline-steps-label" aria-live="polite">
-            {steps[step].label}
-          </span>
-          <button
-            className="timeline-step"
-            aria-label="Senere tidsrom"
-            disabled={step === steps.length - 1}
-            onClick={() => setStep(step + 1)}
-          >
-            <Chevron direction="right" />
+            I dag
           </button>
         </div>
-        <button
-          className="timeline-today-button"
-          disabled={step === todayStep}
-          onClick={() => setStep(todayStep)}
-        >
-          I dag
-        </button>
       </div>
     </>
   );

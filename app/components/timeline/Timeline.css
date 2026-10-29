@@ -106,7 +106,7 @@
 
 /* Under the chart: the arrows that change the stretch of time, and a button back to today */
 .timeline-chart-footer {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
@@ -175,8 +175,12 @@
   border-radius: 50%;
 }
 
-.timeline-chart {
+/* The chart sits on a panel of its own on the soft background, on larger screens */
+.timeline-chart-card {
   display: none;
+  padding: 2rem 1.5rem 1.25rem;
+  border-radius: 1rem;
+  background-color: var(--primary-color);
 }
 
 .timeline-chart-axis {
@@ -281,7 +285,7 @@
   right: calc(100% + 0.5rem);
   padding: 0 0.25rem;
   /* Hides the today line behind the name */
-  background-color: var(--case-soft);
+  background-color: var(--primary-color);
   transform: translateY(-50%);
   font-size: 0.8125rem;
   white-space: nowrap;
@@ -449,15 +453,7 @@
     display: block;
   }
 
-  .timeline-toolbar {
-    margin-bottom: 3rem;
-  }
-
-  .timeline-chart-footer {
-    display: flex;
-  }
-
-  .timeline-chart {
+  .timeline-chart-card {
     display: block;
   }
 
