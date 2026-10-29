@@ -802,9 +802,11 @@
   text-transform: uppercase;
 }
 
-/* What else was going on that year */
+/* What else was going on that year. It sits in the margin beside the year, so
+   only wide screens have it; below that it would only come between the year
+   and the experiences. */
 .timeline-year-also {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 0.375rem;
   margin-top: 1rem;
@@ -902,6 +904,10 @@
   .timeline-year-margin {
     position: sticky;
     top: 6rem;
+  }
+
+  .timeline-year-also {
+    display: flex;
   }
 
   .timeline-year .case-row > :nth-child(2) {
