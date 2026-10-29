@@ -125,7 +125,7 @@ export default function StinesOppskrifterRoute() {
                   },
                   {
                     src: "/stines-oppskrifter/mobil-forside-liste.webp",
-                    alt: "Oppskriften Ratatouille som kort på mobil, filtrert på middag.",
+                    alt: "Oppskriften «Baked oats med bær» som kort på mobil.",
                     caption: "Oppskriftene filtreres mens du svarer",
                   },
                 ]}
@@ -155,12 +155,12 @@ export default function StinesOppskrifterRoute() {
                 phones={[
                   {
                     src: "/stines-oppskrifter/mobil-oppskrift.webp",
-                    alt: "Oppskriften på en focaccia på mobil, med forfatter, tider og bilde.",
+                    alt: "Oppskriften «Baked oats med bær» på mobil, med forfatter, tider og bilde.",
                     caption: "Oppskriften på mobil",
                   },
                   {
                     src: "/stines-oppskrifter/mobil-tilpasser.webp",
-                    alt: "Porsjonsvelger og ingredienser på mobil.",
+                    alt: "Porsjonsvelger og ingredienser på mobil, med en egen mengde for gresk yoghurt.",
                     caption: "Porsjoner og ingredienser",
                   },
                 ]}
@@ -211,7 +211,7 @@ export default function StinesOppskrifterRoute() {
                 phones={[
                   {
                     src: "/stines-oppskrifter/mobil-dag.webp",
-                    alt: "Dagsmenyen på mobil, med frokost og middag og en knapp for å legge til flere retter.",
+                    alt: "Dagsmenyen på mobil, med lunsj og middag og en knapp for å legge til flere retter.",
                     caption: "Dagsmenyen",
                   },
                   {
@@ -279,8 +279,8 @@ export default function StinesOppskrifterRoute() {
                 phones={[
                   {
                     src: "/stines-oppskrifter/mobil-kalorier.webp",
-                    alt: "Dagsmenyen på mobil, med kalorier per måltid og en oppsummering for dagen.",
-                    caption: "Kalorier i menyen",
+                    alt: "Kalorivalget på mobil, med kalorier på oppskriftskortet.",
+                    caption: "Kalorier på oppskriftskortet",
                   },
                 ]}
               >
