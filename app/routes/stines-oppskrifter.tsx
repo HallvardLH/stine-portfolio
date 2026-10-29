@@ -12,7 +12,7 @@ const chapters: Chapter[] = [
   { id: "intro", label: "Intro" },
   { id: "bakgrunn", label: "Bakgrunn" },
   { id: "losning", label: "Løsning" },
-  { id: "bygget", label: "Bygget" },
+  { id: "utvikling", label: "Utvikling" },
   { id: "videre", label: "Veien videre" },
 ];
 
@@ -77,7 +77,7 @@ export default function StinesOppskrifterRoute() {
           id="losning"
           number="02"
           title="Løsning"
-          surface="dark"
+          surface="soft"
           lead="Oppskrifter å la seg inspirere av, verktøy for hverdagen, og alt kan deles med vennene dine."
           wide={
             <>
@@ -196,7 +196,7 @@ export default function StinesOppskrifterRoute() {
 
               <FeatureGroup title="Sammen">
                 <Feature
-                  title="Følg vennene dine"
+                  title="Følgere og community"
                   figures={[
                     {
                       src: "/stines-oppskrifter/folg.webp",
@@ -252,9 +252,9 @@ export default function StinesOppskrifterRoute() {
         />
 
         <CaseChapter
-          id="bygget"
+          id="utvikling"
           number="03"
-          title="Bygget"
+          title="Utvikling"
           lead="Jeg har brukt Claude til å lage nettsiden."
         >
           <p>
@@ -268,6 +268,17 @@ export default function StinesOppskrifterRoute() {
             designet og bygge siden ut fra det. Underveis har jeg finjustert
             detaljer som filtrene på forsiden, stegene i Lag oppskrift og
             hvordan siden fungerer på mobil.
+          </p>
+          <p>
+            Prosjektet har ikke gått gjennom noen UX-prosess. Jeg har ikke gjort
+            brukerundersøkelser eller testet prototyper på forhånd, og siden er
+            så langt laget syntetisk sammen med Claude uten at ekte brukere har
+            vært med.
+          </p>
+          <p>
+            Nå er jeg i gang med å teste siden på vennene mine, og det er gøy å
+            få tilbakemelding fra dem. De bruker den på ekte og ser ting jeg og
+            Claude ikke har tenkt på.
           </p>
         </CaseChapter>
 
@@ -289,8 +300,8 @@ export default function StinesOppskrifterRoute() {
             men hvis flere skal bruke den, bør navnet fungere for alle.
           </p>
           <p>
-            Til da bruker vi den selv, og det vi savner underveis blir det neste
-            jeg tar tak i.
+            Til da bruker vi den selv. Tilbakemeldingene fra vennene mine og det
+            vi savner underveis blir det neste jeg tar tak i.
           </p>
         </CaseChapter>
       </div>
