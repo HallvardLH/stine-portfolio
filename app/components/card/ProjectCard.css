@@ -122,3 +122,20 @@
   padding: 0.3rem 0.75rem;
   font-size: 0.8125rem;
 }
+
+/* Whether the project is for real use or a case. It is filled, so it reads
+   before the other tags do. */
+.card-tag-produksjon,
+.card-tag-fiktiv {
+  border-color: transparent;
+  font-weight: 500;
+}
+
+.card-tag-produksjon {
+  background-color: var(--contrast-color);
+  color: var(--button-text-color);
+}
+
+.card-tag-fiktiv {
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
+}

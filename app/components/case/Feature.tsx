@@ -11,7 +11,7 @@ interface FeatureProps {
   title: string;
   /** The text next to the image(s) */
   children: React.ReactNode;
-  figures: FeatureFigure[];
+  figures?: FeatureFigure[];
 }
 
 // One part of the solution: its text, with the images right underneath
@@ -22,11 +22,13 @@ export function Feature({ title, children, figures }: FeatureProps) {
         <h3 className="case-block-title">{title}</h3>
         {children}
       </div>
-      <div className="case-feature-figures">
-        {figures.map((figure) => (
-          <Figure key={figure.src} {...figure} />
-        ))}
-      </div>
+      {figures && figures.length > 0 && (
+        <div className="case-feature-figures">
+          {figures.map((figure) => (
+            <Figure key={figure.src} {...figure} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

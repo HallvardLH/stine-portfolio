@@ -8,8 +8,17 @@ export const projectCategories: { id: ProjectCategory; label: string }[] = [
   { id: "freelance", label: "Freelance" },
 ];
 
+// Whether the project was made for real use or as a case
+export type ProjectStatus = "produksjon" | "fiktiv";
+
+export const projectStatusLabels: Record<ProjectStatus, string> = {
+  produksjon: "I produksjon",
+  fiktiv: "Fiktiv case",
+};
+
 export interface Project {
   category: ProjectCategory;
+  status: ProjectStatus;
   thumbnail: Thumbnail;
   date: string;
   platformInfo: string;
@@ -26,6 +35,7 @@ export interface ProjectYear {
 
 export const latestProject: Project = {
   category: "internship",
+  status: "produksjon",
   thumbnail: thumbnails.finn,
   date: "Sommeren 2026",
   platformInfo: "Web",
@@ -42,6 +52,7 @@ export const projectsByYear: ProjectYear[] = [
     projects: [
       {
         category: "freelance",
+        status: "produksjon",
         thumbnail: thumbnails.oppskrifter,
         date: "Høsten 2026",
         platformInfo: "Web",
@@ -59,6 +70,7 @@ export const projectsByYear: ProjectYear[] = [
     projects: [
       {
         category: "internship",
+        status: "produksjon",
         thumbnail: thumbnails.barnebank,
         date: "Sommeren 2025",
         platformInfo: "App",
@@ -70,6 +82,7 @@ export const projectsByYear: ProjectYear[] = [
       },
       {
         category: "universitet",
+        status: "produksjon",
         thumbnail: thumbnails.grundercampus,
         date: "Våren 2025",
         platformInfo: "Web",
@@ -86,6 +99,7 @@ export const projectsByYear: ProjectYear[] = [
     projects: [
       {
         category: "freelance",
+        status: "fiktiv",
         thumbnail: thumbnails.rema,
         date: "Høsten 2024",
         platformInfo: "App",
@@ -97,6 +111,7 @@ export const projectsByYear: ProjectYear[] = [
       },
       {
         category: "universitet",
+        status: "fiktiv",
         thumbnail: thumbnails.corwell,
         date: "Våren 2024",
         platformInfo: "App",
@@ -113,6 +128,7 @@ export const projectsByYear: ProjectYear[] = [
     projects: [
       {
         category: "universitet",
+        status: "fiktiv",
         thumbnail: thumbnails.ourspace,
         date: "Høsten 2023",
         platformInfo: "Software",
@@ -123,6 +139,7 @@ export const projectsByYear: ProjectYear[] = [
       },
       {
         category: "universitet",
+        status: "fiktiv",
         thumbnail: thumbnails.dromme,
         date: "Våren 2023",
         platformInfo: "App",
@@ -143,6 +160,7 @@ export const archiveByYear: ProjectYear[] = [
     projects: [
       {
         category: "freelance",
+        status: "fiktiv",
         thumbnail: thumbnails.portefoljeRedesign,
         date: "Vinteren 2024",
         platformInfo: "Web",

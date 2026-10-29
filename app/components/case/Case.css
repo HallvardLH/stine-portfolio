@@ -20,6 +20,17 @@
   --case-dark: #181b09;
 }
 
+/* Stines oppskrifter: a warm band that sits well with the pink screenshots,
+   and softer corners on the images */
+.case-oppskrifter {
+  --case-soft: #f8efe9;
+  --case-soft-strong: #f1e3da;
+}
+
+.case-oppskrifter .case-figure-image {
+  border-radius: 1rem;
+}
+
 /* Wraps the chapters, so the nav can follow them from top to bottom */
 .case-chapters {
   position: relative;

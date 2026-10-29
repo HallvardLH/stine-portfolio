@@ -29,7 +29,7 @@ export const meta: MetaFunction = () => {
 
 export default function StinesOppskrifterRoute() {
   return (
-    <main className="case">
+    <main className="case case-oppskrifter">
       <CoverImage thumbnail={thumbnails.oppskrifter} />
 
       <div className="case-chapters">
@@ -78,7 +78,7 @@ export default function StinesOppskrifterRoute() {
           number="02"
           title="Løsning"
           surface="soft"
-          lead="Oppskrifter å la seg inspirere av, og verktøy for å bruke dem i hverdagen."
+          lead="Oppskrifter å la seg inspirere av, verktøy for hverdagen, og alt kan deles med vennene dine."
           wide={
             <>
               <FeatureGroup title="Oppskriftene">
@@ -114,9 +114,7 @@ export default function StinesOppskrifterRoute() {
                   <p>
                     Mengdene regnes om når du endrer antall porsjoner. Har du en
                     annen ingrediens hjemme, kan du skrive hva du bruker, og du
-                    kan sette egne mengder og tilbakestille når du vil. Under
-                    oppskriften står det hvem som har laget den, og du kan følge
-                    dem.
+                    kan sette egne mengder og tilbakestille når du vil.
                   </p>
                 </Feature>
 
@@ -172,8 +170,8 @@ export default function StinesOppskrifterRoute() {
                   <p>
                     Handlelisten lages ut fra ukesmenyen. Ingrediensene fra
                     rettene slås sammen og regnes om etter hvor mange du skal
-                    lage mat til. Du kan dele listen med andre, og alle kan
-                    slette og krysse av varer i sanntid. Genialt for samboere!
+                    lage mat til. Du kan også lage tomme lister, for eksempel
+                    til en hyttetur.
                   </p>
                 </Feature>
 
@@ -195,6 +193,45 @@ export default function StinesOppskrifterRoute() {
                   </p>
                 </Feature>
               </FeatureGroup>
+
+              <FeatureGroup title="Sammen">
+                <Feature
+                  title="Følg vennene dine"
+                  figures={[
+                    {
+                      src: "/stines-oppskrifter/folg.webp",
+                      alt: "Oppskriftskort med forfatteren nederst og en Følg-knapp, der én av dem er fulgt.",
+                      caption:
+                        "Forfatteren står på kortet, med en knapp for å følge",
+                    },
+                  ]}
+                >
+                  <p>
+                    Under hver oppskrift står det hvem som har laget den, og du
+                    kan følge dem. Da finner du igjen oppskriftene til vennene
+                    dine, og de du følger kommer først i forslagene når du skal
+                    dele en meny eller en handleliste.
+                  </p>
+                </Feature>
+
+                <Feature title="Del menyen">
+                  <p>
+                    Du kan dele en dag eller en hel uke med andre, og ikke bare
+                    med én person. Søk opp vennene dine, eller send en lenke. De
+                    du deler med kan se og redigere menyen, og du kan når som
+                    helst ta bort tilgangen igjen.
+                  </p>
+                </Feature>
+
+                <Feature title="Del handlelisten">
+                  <p>
+                    Inviter så mange du vil til en handleliste. Alle ser den
+                    samme listen og kan krysse av og slette varer i sanntid, så
+                    den som står i butikken ser hva som allerede er tatt.
+                    Genialt for samboere!
+                  </p>
+                </Feature>
+              </FeatureGroup>
             </>
           }
         />
@@ -203,14 +240,19 @@ export default function StinesOppskrifterRoute() {
           id="bygget"
           number="03"
           title="Bygget"
-          lead="Designet i Figma, bygget i kode med Claude."
+          lead="Jeg har brukt Claude til å lage nettsiden."
         >
           <p>
-            Jeg og Claude har designet siden sammen. Claude har vært koblet til
-            Figma gjennom MCP, slik at den kunne lese designet og bygge siden i
-            kode ut fra det. Underveis har vi finpusset detaljer som filtrene på
-            forsiden, stegene i Lag oppskrift og hvordan siden fungerer på
-            mobil.
+            Jeg tenkte at dette prosjektet var en perfekt mulighet til å bli
+            ordentlig kjent med Claude og hva Claude kan gjøre. Jeg har designet
+            i Figma, og Claude har bygget siden i kode. Jeg har ikke skrevet
+            koden selv.
+          </p>
+          <p>
+            Claude er koblet til Figma gjennom MCP, slik at Claude kan lese
+            designet og bygge siden ut fra det. Underveis har jeg finjustert
+            detaljer som filtrene på forsiden, stegene i Lag oppskrift og
+            hvordan siden fungerer på mobil.
           </p>
         </CaseChapter>
 
@@ -221,7 +263,20 @@ export default function StinesOppskrifterRoute() {
           surface="soft"
           lead="Planer om å gjøre Stines oppskrifter.no til en app."
         >
-          <p>Jeg vurderer å endre til et mer passende navn.</p>
+          <p>
+            Planen er å gjøre nettsiden til en app. Handlelisten brukes i
+            butikken og menyen i hverdagen, og begge er enklere å ha i lomma enn
+            i en nettleser.
+          </p>
+          <p>
+            Jeg vurderer også å endre navnet til noe som passer bedre. Stines
+            oppskrifter startet som en oppskriftsbok for meg og veninnene mine,
+            men hvis flere skal bruke den, bør navnet fungere for alle.
+          </p>
+          <p>
+            Til da bruker vi den selv, og det vi savner underveis blir det neste
+            jeg tar tak i.
+          </p>
         </CaseChapter>
       </div>
 
