@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   currentYear,
   lanes,
@@ -114,6 +114,62 @@ export default function TimelineOverview({
     if (filter !== "alle") setStep(stretchFor(filter, today));
   }, [filter, today]);
 
+  // Scrolling sideways (a trackpad, shift and the wheel, or a swipe) moves
+  // to the next or previous stretch of time
+  const cardRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+    const go = (direction: number) =>
+      setStep((value) =>
+        Math.min(Math.max(value + direction, 0), steps.length - 1),
+      );
+
+    let sum = 0;
+    let lastEvent = 0;
+    let lastStep = 0;
+    const onWheel = (event: WheelEvent) => {
+      const sideways = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+      const delta = sideways ? event.deltaX : event.shiftKey ? event.deltaY : 0;
+      // Mostly up and down is the page scrolling, which is left alone
+      if (!delta) return;
+      event.preventDefault();
+      const now = Date.now();
+      if (now - lastEvent > 200) sum = 0;
+      lastEvent = now;
+      // A swipe keeps sending events as it slows down; it counts as one step
+      if (now - lastStep < 600) return;
+      sum += delta;
+      if (Math.abs(sum) < 40) return;
+      go(sum > 0 ? 1 : -1);
+      sum = 0;
+      lastStep = now;
+    };
+
+    let startX = 0;
+    let startY = 0;
+    const onTouchStart = (event: TouchEvent) => {
+      startX = event.touches[0].clientX;
+      startY = event.touches[0].clientY;
+    };
+    const onTouchEnd = (event: TouchEvent) => {
+      const dx = event.changedTouches[0].clientX - startX;
+      const dy = event.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        go(dx < 0 ? 1 : -1);
+      }
+    };
+
+    card.addEventListener("wheel", onWheel, { passive: false });
+    card.addEventListener("touchstart", onTouchStart, { passive: true });
+    card.addEventListener("touchend", onTouchEnd, { passive: true });
+    return () => {
+      card.removeEventListener("wheel", onWheel);
+      card.removeEventListener("touchstart", onTouchStart);
+      card.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
+
   const share = (year: number) => ((year - from) / (to - from)) * 100;
   const gridYears = Array.from(
     { length: Math.max(Math.ceil(to) - Math.ceil(from), 0) },
@@ -127,18 +183,24 @@ export default function TimelineOverview({
     <>
       <div className="timeline-toolbar">{filters}</div>
 
-      <div className="timeline-chart-card">
+      <div className="timeline-chart-card" ref={cardRef}>
         <div
           className="timeline-chart"
           role="group"
           aria-label={`Oversikt over erfaringene mine, ${steps[step].label}`}
         >
           <div className="timeline-chart-axis" aria-hidden="true">
-            {gridYears.map((year) => (
-              <span key={year} style={{ left: `${share(year)}%` }}>
-                {year}
-              </span>
-            ))}
+            {gridYears
+              // A year right next to the today dot gives way to it
+              .filter(
+                (year) =>
+                  !todayShown || Math.abs(share(year) - share(today)) > 6,
+              )
+              .map((year) => (
+                <span key={year} style={{ left: `${share(year)}%` }}>
+                  {year}
+                </span>
+              ))}
           </div>
 
           <div className="timeline-chart-lanes">

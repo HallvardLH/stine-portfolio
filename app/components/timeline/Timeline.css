@@ -22,6 +22,21 @@
   gap: 1.5rem;
 }
 
+/* Only the wide layout has a chart to press, so only it says so */
+.timeline-lead-wide {
+  display: none;
+}
+
+@media only screen and (min-width: 700px) {
+  .timeline-lead-wide {
+    display: inline;
+  }
+
+  .timeline-lead-narrow {
+    display: none;
+  }
+}
+
 .timeline-lead {
   margin: 0;
   max-width: 44rem;
@@ -228,14 +243,14 @@
 .timeline-chart-grid > .timeline-chart-today {
   /* Behind the bars: a bar that runs past today slides over the line */
   z-index: 0;
-  /* Starts below the dot, with some air between them */
-  top: 0.625rem;
+  /* Starts a little below the dot, with air between them */
+  top: -0.25rem;
   width: 0;
   border-left: 1px dashed color-mix(in srgb, var(--text-color) 35%, transparent);
   background: none;
 }
 
-/* A green dot where the line meets the axis: this is where I am now */
+/* A green dot on the axis, level with the years: this is where I am now */
 .timeline-chart-today::before {
   content: "";
   position: absolute;

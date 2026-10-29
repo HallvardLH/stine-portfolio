@@ -93,8 +93,12 @@ export default function TimelineRoute() {
           <h1 className="case-title-heading">Tidslinje</h1>
           <p className="timeline-lead">
             Hva jeg har gjort til nå: studier, ulike jobber, internships og
-            frivillig arbeid. Trykk på elementer i tidslinjen eller bla ned for
-            å se hvordan jeg har kommet dit jeg er i dag.
+            frivillig arbeid.{" "}
+            <span className="timeline-lead-wide">
+              Trykk på elementer i tidslinjen eller bla
+            </span>
+            <span className="timeline-lead-narrow">Bla</span> ned for å se
+            hvordan jeg har kommet dit jeg er i dag.
           </p>
         </div>
       </section>
@@ -133,8 +137,8 @@ export default function TimelineRoute() {
             <div className="case-margin">
               <h2 className="case-margin-title">Oversikt</h2>
               <p className="timeline-help">
-                Hele reisen på ett blikk. Bytt tidsrom med pilene, og trykk på
-                en strek for å lese mer.
+                Hele reisen på ett blikk. Bla sidelengs eller bruk pilene, og
+                trykk på en strek for å lese mer.
               </p>
             </div>
           </div>
