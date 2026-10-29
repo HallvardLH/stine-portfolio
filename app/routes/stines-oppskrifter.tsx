@@ -77,7 +77,7 @@ export default function StinesOppskrifterRoute() {
           id="losning"
           number="02"
           title="Løsning"
-          surface="soft"
+          surface="dark"
           lead="Oppskrifter å la seg inspirere av, verktøy for hverdagen, og alt kan deles med vennene dine."
           wide={
             <>
@@ -223,7 +223,22 @@ export default function StinesOppskrifterRoute() {
                   </p>
                 </Feature>
 
-                <Feature title="Del handlelisten">
+                <Feature
+                  title="Del handlelisten"
+                  figures={[
+                    {
+                      src: "/stines-oppskrifter/delt-liste.webp",
+                      alt: "En handleliste delt med tre personer, med initialene deres ved siden av Rediger og Del.",
+                      caption: "En handleliste med tre medlemmer",
+                    },
+                    {
+                      src: "/stines-oppskrifter/delt-dialog.webp",
+                      alt: "Dialogen Rediger medlemmer, med eieren, to medlemmer og en invitasjon som venter på svar.",
+                      caption:
+                        "Eieren ser hvem som er med og kan fjerne tilgang",
+                    },
+                  ]}
+                >
                   <p>
                     Inviter så mange du vil til en handleliste. Alle ser den
                     samme listen og kan krysse av og slette varer i sanntid, så
