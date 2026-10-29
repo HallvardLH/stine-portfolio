@@ -71,19 +71,32 @@ export default function StinesOppskrifterRoute() {
           number="01"
           title="Bakgrunn"
           rule
-          lead="Vi foreslår alltid retter til hverandre, men oppskriftene finnes bare i hodet."
+          lead="Oppskriftene vi deler med hverandre, finnes bare i hodet."
         >
           <p>
-            Jeg og veninnene mine foreslår alltid retter til hverandre og blir
-            inspirert av det vi lager. Problemet er at alle oppskriftene våre
-            bare finnes i hodet. Jeg ønsket meg en slags digital oppskriftsbok
-            der vi kan legge ut det vi lager og lese hverandres oppskrifter.
+            Jeg og venninnene mine deler stadig oppskrifter og tips til hva vi
+            kan lage. Ofte blir jeg inspirert av noe en av dem har laget, men så
+            glemmer jeg både hva retten het og hvordan den ble laget.
+            Oppskriftene ender gjerne opp i gamle meldinger, notater eller
+            screenshots.
           </p>
           <p>
-            Det jeg har laget er et community der man kan legge ut og lese
-            venners oppskrifter, og la seg inspirere. I tillegg kan man
-            planlegge måltidene for dagen og uka, og lage en handleliste som
-            hele husholdningen bruker.
+            Derfor fikk jeg lyst til å lage en digital oppskriftsbok der vi kan
+            samle våre egne oppskrifter, finne inspirasjon hos hverandre og
+            slippe å lete etter ting vi har delt før.
+          </p>
+          <p>
+            Etter hvert utviklet ideen seg til noe mer enn en oppskriftsbok. Jeg
+            og samboeren min har lenge lett etter en god løsning for å planlegge
+            ukas middager og lage handleliste sammen. Vi bruker mer tid på dette
+            enn vi egentlig skulle ønske, men gjør det likevel fordi det hjelper
+            oss å spare både tid og penger, samtidig som vi får planlagt sunne
+            og varierte middager.
+          </p>
+          <p>
+            Jeg ville derfor samle oppskrifter, middagsplanlegging og
+            handlelister på ett sted, med mulighet for å dele alt sammen med
+            andre.
           </p>
         </CaseChapter>
 
@@ -92,228 +105,265 @@ export default function StinesOppskrifterRoute() {
           number="02"
           title="Løsning"
           surface="soft"
-          lead="Oppskrifter å la seg inspirere av, verktøy for hverdagen, og alt kan deles med vennene dine."
+          lead="Oppskrifter, middagsplanlegging og handlelister på ett sted."
           wide={
-            <>
-              <FeatureGroup title="Oppskriftene">
-                <Feature
-                  title="Finn noe å lage"
-                  figures={[
-                    {
-                      src: "/stines-oppskrifter/sporsmal.webp",
-                      alt: "Forsiden med spørsmålskortet, der Middag er valgt og oppskriftene under er filtrert.",
-                      caption: "Spørsmålskortet på forsiden",
-                    },
-                  ]}
-                  phones={[
-                    {
-                      src: "/stines-oppskrifter/mobil-forside.webp",
-                      alt: "Forsiden på mobil, med søk og spørsmålskortet.",
-                      caption: "Forsiden på mobil",
-                    },
-                    {
-                      src: "/stines-oppskrifter/mobil-forside-liste.webp",
-                      alt: "Oppskriftene på mobil, filtrert på middag.",
-                      caption: "Oppskriftene filtreres underveis",
-                    },
-                  ]}
-                >
-                  <p>
-                    På forsiden svarer du på noen få spørsmål, og oppskriftene
-                    under filtreres underveis: hva du skal lage, hva du vil ha,
-                    hva som er viben din om dagen, hva målet med måltidet er og
-                    hvor mange som skal spise. Man kan også bare søke eller bla.
-                  </p>
-                </Feature>
+            <FeatureGroup>
+              <Feature
+                title="Finn noe å lage"
+                figures={[
+                  {
+                    src: "/stines-oppskrifter/sporsmal.webp",
+                    alt: "Forsiden med søkefelt og spørsmålskortet «Hva skal du lage?», med oppskriftene som kort under.",
+                    caption: "Spørsmålskortet på forsiden",
+                  },
+                ]}
+                phones={[
+                  {
+                    src: "/stines-oppskrifter/mobil-forside.webp",
+                    alt: "Forsiden på mobil, med søk og spørsmålskortet.",
+                    caption: "Forsiden på mobil",
+                  },
+                  {
+                    src: "/stines-oppskrifter/mobil-forside-liste.webp",
+                    alt: "Oppskriften Ratatouille som kort på mobil, filtrert på middag.",
+                    caption: "Oppskriftene filtreres mens du svarer",
+                  },
+                ]}
+              >
+                <p>
+                  På forsiden kan du svare på noen enkle spørsmål for å finne
+                  oppskrifter som passer til det du har lyst på. Du kan velge
+                  hva du skal lage, hvilken stemning du er i, hva du ønsker å få
+                  ut av måltidet og hvor mange som skal spise. Oppskriftene
+                  filtreres mens du svarer.
+                </p>
+                <p>
+                  Vil du heller lete selv, kan du søke eller bla gjennom
+                  oppskriftene.
+                </p>
+              </Feature>
 
-                <Feature
-                  title="Oppskriften"
-                  phones={[
-                    {
-                      src: "/stines-oppskrifter/mobil-oppskrift.webp",
-                      alt: "En oppskrift på mobil, med forfatteren, Følg-knapp og tid.",
-                      caption: "Oppskriften på mobil",
-                    },
-                    {
-                      src: "/stines-oppskrifter/mobil-ingredienser.webp",
-                      alt: "Porsjonsvalg og ingrediensliste på mobil.",
-                      caption: "Porsjonsknapper og ingredienser",
-                    },
-                  ]}
-                >
-                  <p>
-                    Mengdene regnes om når du endrer antall porsjoner. Har du en
-                    annen ingrediens hjemme, kan du skrive hva du bruker, og du
-                    kan sette egne mengder og tilbakestille når du vil.
-                  </p>
-                </Feature>
+              <Feature
+                title="Oppskrifter som tilpasser seg deg"
+                figures={[
+                  {
+                    src: "/stines-oppskrifter/tilpasser.webp",
+                    alt: "Porsjonsvelger og ingredienslisten til en focaccia, med fremgangsmåten ved siden av.",
+                    caption: "Mengdene regnes om når du endrer porsjoner",
+                  },
+                ]}
+                phones={[
+                  {
+                    src: "/stines-oppskrifter/mobil-oppskrift.webp",
+                    alt: "Oppskriften på en focaccia på mobil, med forfatter, tider og bilde.",
+                    caption: "Oppskriften på mobil",
+                  },
+                  {
+                    src: "/stines-oppskrifter/mobil-tilpasser.webp",
+                    alt: "Porsjonsvelger og ingredienser på mobil.",
+                    caption: "Porsjoner og ingredienser",
+                  },
+                ]}
+              >
+                <p>
+                  Du kan endre antall porsjoner, og ingrediensmengdene regnes
+                  automatisk om. Mangler du en ingrediens, kan du skrive inn hva
+                  du bruker i stedet og justere mengden selv. Du kan også
+                  tilbakestille endringene når du vil.
+                </p>
+              </Feature>
 
-                <Feature
-                  title="Legg ut din egen"
-                  figures={[
-                    {
-                      src: "/stines-oppskrifter/lag-oppskrift.webp",
-                      alt: "Lag oppskrift, med stegindikator og skjema.",
-                      caption: "Lag oppskrift i fem steg",
-                    },
-                  ]}
-                >
-                  <p>
-                    Å legge ut en oppskrift går i fem steg: om retten,
-                    ingredienser, fremgangsmåte, bilde og en forhåndsvisning.
-                    Hvert steg i fremgangsmåten kan ha et eget bilde. Du velger
-                    om oppskriften skal være offentlig eller privat, og kan
-                    lagre den som utkast og fortsette senere.
-                  </p>
-                </Feature>
-              </FeatureGroup>
+              <Feature
+                title="Del det du lager"
+                figures={[
+                  {
+                    src: "/stines-oppskrifter/lag-oppskrift.webp",
+                    alt: "Første steg av fem når du legger ut en oppskrift, med skjema for å fortelle om retten.",
+                    caption: "Steg 1 av 5 når du legger ut en oppskrift",
+                  },
+                ]}
+              >
+                <p>
+                  Det skal være enkelt å dele egne oppskrifter i et ryddig
+                  format. Derfor er det å legge ut en oppskrift delt inn i fem
+                  steg: informasjon om retten, ingredienser, fremgangsmåte,
+                  bilder og forhåndsvisning. Du kan legge til bilder underveis i
+                  fremgangsmåten, velge om oppskriften skal være offentlig eller
+                  privat, og lagre den som et utkast hvis du vil fortsette
+                  senere.
+                </p>
+                <p>
+                  Du kan også tagge andre oppskrifter for å foreslå tilbehør
+                  eller sette sammen et helt måltid. For eksempel kan du koble
+                  en oppskrift på focaccia til en suppe.
+                </p>
+              </Feature>
 
-              <FeatureGroup title="Hverdagen">
-                <Feature
-                  title="Dagsmeny og ukesmeny"
-                  figures={[
-                    {
-                      src: "/stines-oppskrifter/meny.webp",
-                      alt: "Ukesmenyen med måltidene for sju dager.",
-                      caption: "Ukesmenyen",
-                    },
-                  ]}
-                >
-                  <p>
-                    Du setter opp en meny for dagen eller uka ved å velge dag,
-                    måltid og hvor mange porsjoner du skal spise. Det trenger
-                    ikke være oppskrifter som ligger ute på siden. Du kan også
-                    legge inn dine egne retter.
-                  </p>
-                </Feature>
+              <Feature
+                title="Planlegg middager for dagen eller uka"
+                figures={[
+                  {
+                    src: "/stines-oppskrifter/meny.webp",
+                    alt: "Ukesmenyen med frokost, lunsj og middag fordelt på dagene.",
+                    caption: "Ukesmenyen",
+                  },
+                ]}
+                phones={[
+                  {
+                    src: "/stines-oppskrifter/mobil-dag.webp",
+                    alt: "Dagsmenyen på mobil, med frokost og middag og en knapp for å legge til flere retter.",
+                    caption: "Dagsmenyen",
+                  },
+                  {
+                    src: "/stines-oppskrifter/mobil-uke.webp",
+                    alt: "Ukesmenyen på mobil, med dagene under hverandre.",
+                    caption: "Ukesmenyen",
+                  },
+                ]}
+              >
+                <p>
+                  Med dagsmenyen og ukesmenyen kan du planlegge hva du skal
+                  spise, og hvor mange porsjoner du trenger. Du kan bruke
+                  oppskrifter fra nettsiden eller legge inn retter du lager
+                  selv.
+                </p>
+                <p>
+                  Du kan også dele menyen med andre, slik at flere kan se og
+                  redigere planene sammen. Jeg og samboeren min planlegger
+                  allerede middagene våre hver uke, men foreløpig gjør vi det i
+                  et delt notat på telefonen.
+                </p>
+              </Feature>
 
-                <Feature
-                  title="Handleliste"
-                  phones={[
-                    {
-                      src: "/stines-oppskrifter/mobil-uke.webp",
-                      alt: "Ukesmenyen på mobil.",
-                      caption: "Ukesmenyen",
-                    },
-                    {
-                      src: "/stines-oppskrifter/mobil-handleliste.webp",
-                      alt: "Handlelisten på mobil, laget ut fra ukesmenyen, med avkryssede varer.",
-                      caption: "Handlelisten laget ut fra den",
-                    },
-                  ]}
-                >
-                  <p>
-                    Handlelisten lages ut fra ukesmenyen. Ingrediensene fra
-                    rettene slås sammen og regnes om etter hvor mange du skal
-                    lage mat til. Du kan også lage tomme lister, for eksempel
-                    til en hyttetur.
-                  </p>
-                </Feature>
+              <Feature
+                title="Handlelisten lager seg selv"
+                figures={[
+                  {
+                    src: "/stines-oppskrifter/delt-liste.webp",
+                    alt: "Handlelisten Ukeshandel med varer sortert etter kategori, avkryssede varer og tre personer som deler listen.",
+                    caption: "Handlelisten laget ut fra ukesmenyen",
+                  },
+                ]}
+                phones={[
+                  {
+                    src: "/stines-oppskrifter/mobil-handleliste.webp",
+                    alt: "Handlelisten på mobil, med varer under Frukt og grønt og noen avkrysset.",
+                    caption: "Handlelisten på mobil",
+                  },
+                ]}
+              >
+                <p>
+                  Når du har planlagt måltidene, kan du lage en handleliste
+                  basert på ukesmenyen. Ingrediensene samles, og mengdene
+                  tilpasses antall porsjoner. Varene kategoriseres automatisk,
+                  og du kan også lage en tom liste, for eksempel til en
+                  hyttetur.
+                </p>
+                <p>
+                  Handlelisten kan deles med så mange du vil. Alle ser den samme
+                  listen og kan krysse av eller fjerne varer i sanntid. Da
+                  slipper dere å sende meldinger om hva som mangler, eller lure
+                  på hva den andre allerede har handlet. Praktisk for samboere!
+                </p>
+              </Feature>
 
-                <Feature
-                  title="Kalorier bare hvis du vil"
-                  figures={[
-                    {
-                      src: "/stines-oppskrifter/kalorier.webp",
-                      alt: "Dagsmenyen med kalorier slått på, og valget «Er du opptatt av kalorier?» nederst.",
-                      caption: "Dagsmenyen med kalorier slått på",
-                    },
-                  ]}
-                >
-                  <p>
-                    Som standard vises ingen kalorier noe sted. Er du opptatt av
-                    det, kan du slå det på, og da dukker kaloriene opp på
-                    kortene, ingrediensene og i menyen. Tallene kommer fra
-                    Matvaretabellen.
-                  </p>
-                </Feature>
-              </FeatureGroup>
+              <Feature
+                title="Kalorier hvis du ønsker det"
+                figures={[
+                  {
+                    src: "/stines-oppskrifter/kalorier.webp",
+                    alt: "Oppskriftskortene med kalorier slått på, og valget «Er du opptatt av kalorier?» øverst til høyre.",
+                    caption: "Kalorier på oppskriftskortene",
+                  },
+                ]}
+                phones={[
+                  {
+                    src: "/stines-oppskrifter/mobil-kalorier.webp",
+                    alt: "Dagsmenyen på mobil, med kalorier per måltid og en oppsummering for dagen.",
+                    caption: "Kalorier i menyen",
+                  },
+                ]}
+              >
+                <p>
+                  Kalorier er skjult som standard. Hvis du vil følge med på dem,
+                  kan du slå dem på og få informasjonen vist på oppskriftskort,
+                  i ingredienslistene og i menyen. Tallene hentes fra
+                  Matvaretabellen.
+                </p>
+              </Feature>
 
-              <FeatureGroup title="Sammen">
-                <Feature
-                  title="Følgere og community"
-                  figures={[
-                    {
-                      src: "/stines-oppskrifter/folg.webp",
-                      alt: "Oppskriftskort med forfatteren nederst og en Følg-knapp, der én av dem er fulgt.",
-                      caption:
-                        "Forfatteren står på kortet, med en knapp for å følge",
-                    },
-                  ]}
-                >
-                  <p>
-                    Under hver oppskrift står det hvem som har laget den, og du
-                    kan følge dem. Da finner du igjen oppskriftene til vennene
-                    dine, og de du følger kommer først i forslagene når du skal
-                    dele en meny eller en handleliste.
-                  </p>
-                </Feature>
-
-                <Feature title="Del menyen">
-                  <p>
-                    Du kan dele en dag eller en hel uke med andre, og ikke bare
-                    med én person. Søk opp vennene dine, eller send en lenke. De
-                    du deler med kan se og redigere menyen, og du kan når som
-                    helst ta bort tilgangen igjen.
-                  </p>
-                </Feature>
-
-                <Feature
-                  title="Del handlelisten"
-                  figures={[
-                    {
-                      src: "/stines-oppskrifter/delt-liste.webp",
-                      alt: "En handleliste delt med tre personer, med initialene deres ved siden av Rediger og Del.",
-                      caption: "En handleliste med tre medlemmer",
-                    },
-                    {
-                      src: "/stines-oppskrifter/delt-dialog.webp",
-                      alt: "Dialogen Rediger medlemmer, med eieren, to medlemmer og en invitasjon som venter på svar.",
-                      caption:
-                        "Eieren ser hvem som er med og kan fjerne tilgang",
-                    },
-                  ]}
-                >
-                  <p>
-                    Inviter så mange du vil til en handleliste. Alle ser den
-                    samme listen og kan krysse av og slette varer i sanntid, så
-                    den som står i butikken ser hva som allerede er tatt.
-                    Genialt for samboere!
-                  </p>
-                </Feature>
-              </FeatureGroup>
-            </>
+              <Feature
+                title="Finn igjen oppskriftene til vennene dine"
+                figures={[
+                  {
+                    src: "/stines-oppskrifter/folg.webp",
+                    alt: "Oppskriftssiden med forfatteren og en knapp for å følge dem.",
+                    caption: "Du kan følge forfatteren av en oppskrift",
+                  },
+                ]}
+              >
+                <p>
+                  Du kan følge andre brukere og enkelt finne oppskriftene deres
+                  igjen. Oppskriftene fra dem du følger, prioriteres også når du
+                  skal sette sammen en meny eller lage en handleliste.
+                </p>
+                <p>
+                  På den måten handler nettsiden ikke bare om å finne nye
+                  oppskrifter, men også om å ta vare på maten vi lager og
+                  inspirerer hverandre med.
+                </p>
+              </Feature>
+            </FeatureGroup>
           }
-        />
+        >
+          <p>
+            Jeg har laget en nettside der du kan samle egne oppskrifter, finne
+            inspirasjon fra andre og planlegge hva du skal spise. Det sosiale er
+            fortsatt viktig, men jeg ville også at løsningen skulle være nyttig
+            i hverdagen, fra du lurer på hva du skal lage til du står i
+            butikken.
+          </p>
+        </CaseChapter>
 
         <CaseChapter
           id="utvikling"
           number="03"
           title="Utvikling"
-          lead="Jeg har brukt Claude til å lage nettsiden."
+          lead="Jeg har designet i Figma og brukt Claude til å kode nettsiden."
         >
           <p>
-            Jeg tenkte at dette prosjektet var en perfekt mulighet til å bli
-            ordentlig kjent med Claude og hva Claude kan gjøre. Jeg har designet
-            i Figma, og Claude har bygget siden i kode. Jeg har ikke skrevet
-            koden selv.
+            Jeg ville bruke dette prosjektet til å bli bedre kjent med Claude og
+            utforske hvor langt jeg kunne komme med å bygge en nettside ved
+            hjelp av KI. Jeg har stått for designet i Figma, mens Claude har
+            skrevet koden og bygget løsningen. Jeg har altså ikke kodet
+            nettsiden selv.
           </p>
           <p>
-            Claude er koblet til Figma gjennom MCP, slik at Claude kan lese
-            designet og bygge siden ut fra det. Underveis har jeg finjustert
-            detaljer som filtrene på forsiden, stegene i Lag oppskrift og
-            hvordan siden fungerer på mobil.
+            Jeg koblet Claude til Figma gjennom MCP, slik at Claude kunne lese
+            designet og bruke det som utgangspunkt for utviklingen. Underveis
+            har jeg jobbet videre med detaljene, blant annet hvordan filtrene på
+            forsiden fungerer, hvordan det er å legge ut en oppskrift, og
+            hvordan løsningen tilpasser seg mobil.
           </p>
           <p>
-            Prosjektet har ikke gått gjennom noen UX-prosess. Jeg har ikke gjort
-            brukerundersøkelser eller testet prototyper på forhånd, og siden er
-            så langt laget syntetisk sammen med Claude uten at ekte brukere har
-            vært med.
+            Jeg har også lagt inn innlogging med Google, slik at brukerne enkelt
+            kan logge inn og få tilgang til sine egne oppskrifter, menyer og
+            handlelister. Jeg ville at nettsiden skulle være mer enn en visuell
+            prototype, og at det skulle være mulig å bruke funksjonene i
+            praksis.
           </p>
           <p>
-            Nå er jeg i gang med å teste siden på vennene mine, og det er gøy å
-            få tilbakemelding fra dem. De bruker den på ekte og ser ting jeg og
-            Claude ikke har tenkt på.
+            Prosjektet har ikke fulgt en tradisjonell UX-prosess. Jeg har ikke
+            gjennomført brukerundersøkelser eller testet prototyper før
+            utviklingen, og den første versjonen ble laget i samarbeid med
+            Claude uten involvering av faktiske brukere.
+          </p>
+          <p>
+            Nå har jeg begynt å teste nettsiden på vennene mine. Det er gøy å se
+            dem bruke noe som startet som min egen idé, og få tilbakemeldinger
+            på ting jeg ikke selv har tenkt på. Det er også en påminnelse om
+            hvor mye som dukker opp når noen faktisk prøver å bruke løsningen,
+            og ikke bare ser på designet.
           </p>
         </CaseChapter>
 
@@ -322,21 +372,33 @@ export default function StinesOppskrifterRoute() {
           number="04"
           title="Veien videre"
           surface="soft"
-          lead="Planer om å gjøre Stines oppskrifter.no til en app."
+          lead="Fra nettside til app, og kanskje noe mer?"
         >
           <p>
-            Planen er å gjøre nettsiden til en app. Handlelisten brukes i
-            butikken og menyen i hverdagen, og begge er enklere å ha i lomma enn
-            i en nettleser.
+            Planen er å gjøre nettsiden om til en app. Både menyen og
+            handlelisten er verktøy man bruker gjennom dagen, og da hadde det
+            vært fint å ha dem lett tilgjengelig på mobilen, særlig når man står
+            i butikken.
           </p>
           <p>
-            Jeg vurderer også å endre navnet til noe som passer bedre. Stines
-            oppskrifter startet som en oppskriftsbok for meg og veninnene mine,
-            men hvis flere skal bruke den, bør navnet fungere for alle.
+            Jeg har også begynt å se for meg andre måter løsningen kan brukes
+            på. For eksempel kunne dagsmenyen vært nyttig når man planlegger
+            arrangementer med flere måltider, der man trenger å sette sammen
+            retter og tilpasse porsjoner. Jeg kjenner ikke eventplanlegging
+            særlig godt, så dette er foreløpig bare en idé. Men det hadde vært
+            spennende å utforske om løsningen kan dekke behov jeg ikke har tenkt
+            på fra før.
           </p>
           <p>
-            Til da bruker vi den selv. Tilbakemeldingene fra vennene mine og det
-            vi savner underveis blir det neste jeg tar tak i.
+            Jeg vurderer også å endre navnet. Stines oppskrifter startet som en
+            digital oppskriftsbok for meg og venninnene mine, men hvis flere
+            skal bruke den, vil jeg gjerne finne et navn som passer for flere
+            enn bare oss.
+          </p>
+          <p>
+            Inntil videre fortsetter vi å bruke nettsiden selv.
+            Tilbakemeldingene fra vennene mine, og ting vi savner når vi bruker
+            den, blir utgangspunktet for hva jeg jobber videre med.
           </p>
         </CaseChapter>
       </div>

@@ -46,15 +46,16 @@ export function Feature({ title, children, figures, phones }: FeatureProps) {
 }
 
 interface FeatureGroupProps {
-  title: string;
+  /** Without a title the features sit in the text column with no rule above */
+  title?: string;
   children: React.ReactNode;
 }
 
 // A set of features, with the group name in the margin beside the first one
 export function FeatureGroup({ title, children }: FeatureGroupProps) {
   return (
-    <div className="case-feature-group">
-      <h3 className="case-group-title">{title}</h3>
+    <div className={`case-feature-group${title ? "" : " is-plain"}`}>
+      {title && <h3 className="case-group-title">{title}</h3>}
       <div className="case-feature-list">{children}</div>
     </div>
   );

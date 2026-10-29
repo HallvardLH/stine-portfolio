@@ -395,6 +395,11 @@
   border-top: 1px solid currentColor;
 }
 
+.case-feature-group.is-plain {
+  padding-top: 0;
+  border-top: 0;
+}
+
 .case-group-title {
   font-size: var(--font-size-small);
   font-weight: 500;
@@ -620,6 +625,10 @@
   .case-feature-group {
     grid-template-columns: minmax(0, 17.5rem) minmax(0, 47.5rem);
     column-gap: 5rem;
+  }
+
+  .case-feature-group.is-plain .case-feature-list {
+    grid-column: 2;
   }
 
   .case-related {
