@@ -73,10 +73,6 @@
   margin-bottom: 2.5rem;
 }
 
-.timeline-chart {
-  display: none;
-}
-
 .timeline-year-jump {
   display: flex;
   flex-wrap: wrap;
@@ -101,305 +97,336 @@
   outline-offset: 3px;
 }
 
-@media only screen and (min-width: 700px) {
-  /* The chart scrolls sideways when the screen is narrower than it needs. The
-     padding makes room for the tooltips above the top bars and for the green
+/* The chart is wider than most screens and scrolls sideways, by the scrollbar,
+   by dragging or with touch. The padding makes room for the tooltips above the top bars and for the green
      row, which runs a little past the edges. */
-  .timeline-chart {
-    display: block;
-    margin: -2.5rem -0.75rem 0;
-    padding: 2.5rem 0.75rem 0;
-    overflow-x: auto;
-    scrollbar-width: thin;
-  }
+.timeline-chart {
+  display: none;
+  margin: -2.5rem -0.75rem 0;
+  padding: 2.5rem 0.75rem 0;
+  overflow-x: auto;
+  cursor: grab;
+}
 
-  .timeline-chart-inner {
-    min-width: 56rem;
-  }
+.timeline-chart.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
 
-  .timeline-year-jump {
-    display: none;
-  }
+/* Always visible, so it is clear that the chart can be moved */
+.timeline-chart::-webkit-scrollbar {
+  height: 0.5rem;
+}
 
-  .timeline-chart-axis {
-    position: relative;
-    height: 1.5rem;
-    margin-left: var(--timeline-label-width);
-    font-size: 0.8125rem;
-    opacity: 0.65;
-  }
+.timeline-chart::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--text-color) 8%, transparent);
+}
 
-  .timeline-chart-axis span {
-    position: absolute;
-    transform: translateX(-50%);
-  }
+.timeline-chart::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--text-color) 35%, transparent);
+}
 
-  .timeline-chart-lanes {
-    position: relative;
-    padding-bottom: 2.5rem;
-  }
+.timeline-chart-inner {
+  min-width: 112rem;
+}
 
-  .timeline-chart-grid {
-    position: absolute;
-    top: 0;
-    bottom: 2.5rem;
-    left: var(--timeline-label-width);
-    right: 0;
-    pointer-events: none;
-  }
+.timeline-chart-axis-row {
+  display: flex;
+}
 
-  .timeline-chart-grid > span {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: color-mix(in srgb, var(--text-color) 7%, transparent);
-  }
+/* Holds the place of the row names, so the years do not slide over them */
+.timeline-axis-cover {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  flex: 0 0 var(--timeline-label-width);
+  background-color: var(--primary-color);
+  box-shadow: -0.75rem 0 0 var(--primary-color);
+}
 
-  .timeline-chart-grid > .timeline-chart-today {
-    z-index: 2;
-    width: 1.5px;
-    background-color: var(--text-color);
-  }
+.timeline-chart-axis {
+  position: relative;
+  flex: 1;
+  height: 1.5rem;
+  font-size: 0.8125rem;
+  opacity: 0.65;
+}
 
-  /* A small label at the foot of the line */
-  .timeline-chart-today b {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    padding: 0.125rem 0.625rem;
-    border-radius: 999px;
-    background-color: var(--text-color);
-    color: var(--primary-color);
-    font-size: 0.75rem;
-    font-weight: 500;
-    transform: translateX(-50%);
-    white-space: nowrap;
-  }
+.timeline-chart-axis span {
+  position: absolute;
+  transform: translateX(-50%);
+}
 
-  .timeline-lane {
-    display: flex;
-    align-items: center;
-    min-height: 2.75rem;
-  }
+.timeline-chart-lanes {
+  position: relative;
+  padding-bottom: 2.5rem;
+}
 
-  /* The education bars are taller, to have room for their names */
-  .timeline-lane-tall {
-    min-height: 3.75rem;
-  }
+.timeline-chart-grid {
+  position: absolute;
+  top: 0;
+  bottom: 2.5rem;
+  left: var(--timeline-label-width);
+  right: 0;
+  pointer-events: none;
+}
 
-  .timeline-lane-tall .timeline-track {
-    height: 2.75rem;
-  }
+.timeline-chart-grid > span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: color-mix(in srgb, var(--text-color) 7%, transparent);
+}
 
-  .timeline-lane-tall .timeline-bar-label {
-    box-sizing: border-box;
-    padding: 0 0.625rem;
-    font-size: 0.75rem;
-    line-height: 1.2;
-    text-align: center;
-    white-space: normal;
-  }
+.timeline-chart-grid > .timeline-chart-today {
+  z-index: 2;
+  width: 1.5px;
+  background-color: var(--text-color);
+}
 
-  /* The highlighted internships sit on a green band across the whole row */
-  .timeline-lane-featured {
-    min-height: 3.25rem;
-    /* The green runs a little past the column, so the label lines up with the others */
-    margin-inline: -0.75rem;
-    padding-inline: 0.75rem;
-    background-color: var(--timeline-featured-tint);
-  }
+/* A small label at the foot of the line */
+.timeline-chart-today b {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  padding: 0.125rem 0.625rem;
+  border-radius: 999px;
+  background-color: var(--text-color);
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
 
-  .timeline-lane-featured .timeline-lane-label {
-    background-color: var(--primary-color);
-    background-image: linear-gradient(
-      var(--timeline-featured-tint),
-      var(--timeline-featured-tint)
-    );
-    box-shadow:
-      -0.75rem 0 0 var(--timeline-featured-tint),
-      -0.75rem 0 0 var(--primary-color);
-  }
+.timeline-lane {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
 
-  .timeline-lane-featured .timeline-track {
-    height: 2.25rem;
-  }
+/* The education bars are taller, to have room for their names */
+.timeline-lane-tall {
+  min-height: 3.75rem;
+}
 
-  .timeline-bar-note {
-    position: absolute;
-    top: 50%;
-    right: calc(100% + 0.75rem);
-    transform: translateY(-50%);
-    font-size: 0.8125rem;
-    white-space: nowrap;
-    transition: opacity 0.2s ease;
-  }
+.timeline-lane-tall .timeline-track {
+  height: 2.75rem;
+}
 
-  .timeline-bar-note b {
-    font-weight: 700;
-  }
+.timeline-lane-tall .timeline-bar-label {
+  box-sizing: border-box;
+  padding: 0 0.625rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+}
 
-  .timeline-bar-note.is-dim {
-    opacity: 0.2;
-  }
+/* The highlighted internships sit on a green band across the whole row */
+.timeline-lane-featured {
+  min-height: 3.25rem;
+  /* The green runs a little past the column, so the label lines up with the others */
+  margin-inline: -0.75rem;
+  padding-inline: 0.75rem;
+  background-color: var(--timeline-featured-tint);
+}
 
-  /* The row names stay put when the chart is scrolled sideways */
-  .timeline-lane-label {
-    position: sticky;
-    left: 0;
-    z-index: 1;
-    box-sizing: border-box;
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-    background-color: var(--primary-color);
-    /* Covers the strip left of the label, so the bars do not show there when scrolled */
-    box-shadow: -0.75rem 0 0 var(--primary-color);
-    flex: 0 0 var(--timeline-label-width);
-    padding-right: 0.75rem;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    line-height: 1.25;
-  }
+.timeline-lane-featured .timeline-lane-label {
+  background-color: var(--primary-color);
+  background-image: linear-gradient(
+    var(--timeline-featured-tint),
+    var(--timeline-featured-tint)
+  );
+  box-shadow:
+    -0.75rem 0 0 var(--timeline-featured-tint),
+    -0.75rem 0 0 var(--primary-color);
+}
 
-  .timeline-track {
-    position: relative;
-    flex: 1;
-    height: 2rem;
-  }
+.timeline-lane-featured .timeline-track {
+  height: 2.25rem;
+}
 
-  .timeline-bar-wrap {
-    position: absolute;
-    top: 0;
-    display: flex;
-    height: 100%;
-  }
+.timeline-bar-note {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 0.75rem);
+  transform: translateY(-50%);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
 
-  .timeline a.timeline-bar {
-    position: relative;
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    height: 100%;
-    min-width: 0.5rem;
-    border-radius: 999px;
-    color: var(--primary-color);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition:
-      opacity 0.2s ease,
-      outline-color 0.15s ease;
-  }
+.timeline-bar-note b {
+  font-weight: 700;
+}
 
-  /* Began before the chart does, so it has no rounded start */
-  .timeline a.timeline-bar.is-clipped {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
+.timeline-bar-note.is-dim {
+  opacity: 0.2;
+}
 
-  .timeline a.timeline-bar:hover {
-    outline: 2px solid var(--text-color);
-    outline-offset: 1px;
-  }
+/* The row names stay put when the chart is scrolled sideways */
+.timeline-lane-label {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-color);
+  /* Covers the strip left of the label, so the bars do not show there when scrolled */
+  box-shadow: -0.75rem 0 0 var(--primary-color);
+  flex: 0 0 var(--timeline-label-width);
+  padding-right: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
 
-  .timeline-bar-label {
-    overflow: hidden;
-    padding: 0 0.625rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+.timeline-track {
+  position: relative;
+  flex: 1;
+  height: 2rem;
+}
 
-  .timeline a.timeline-bar-utdanning {
-    background-color: var(--text-color);
-  }
+.timeline-bar-wrap {
+  position: absolute;
+  top: 0;
+  display: flex;
+  height: 100%;
+}
 
-  .timeline a.timeline-bar-arbeid {
-    background-color: color-mix(
-      in srgb,
-      var(--text-color) 72%,
-      var(--primary-color)
-    );
-  }
+.timeline a.timeline-bar {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 100%;
+  min-width: 0.5rem;
+  border-radius: 999px;
+  color: var(--primary-color);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    opacity 0.2s ease,
+    outline-color 0.15s ease;
+}
 
-  .timeline a.timeline-bar-sommer {
-    color: var(--case-ink);
-    background-color: var(--contrast-color);
-    min-width: 1.5rem;
-  }
+/* Began before the chart does, so it has no rounded start */
+.timeline a.timeline-bar.is-clipped {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 
-  .timeline a.timeline-bar-universitet {
-    background-color: color-mix(
-      in srgb,
-      var(--text-color) 45%,
-      var(--primary-color)
-    );
-    color: var(--primary-color);
-  }
+.timeline a.timeline-bar:hover {
+  outline: 2px solid var(--text-color);
+  outline-offset: 1px;
+}
 
-  .timeline a.timeline-bar-frivillig {
-    margin-right: 2px;
-    border: 1.5px solid color-mix(in srgb, var(--text-color) 70%, transparent);
-    color: var(--text-color);
-  }
+.timeline-bar-label {
+  /* Follows the screen while the bar is scrolled past the row names */
+  position: sticky;
+  left: var(--timeline-label-width);
+  overflow: hidden;
+  padding: 0 0.625rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-  .timeline a.timeline-bar.is-dim {
-    opacity: 0.2;
-  }
+.timeline a.timeline-bar-utdanning {
+  background-color: var(--text-color);
+}
 
-  /* What is planned: the same bar, drawn dashed */
-  .timeline-bar-planned {
-    flex-shrink: 0;
-    box-sizing: border-box;
-    height: 100%;
-    border: 1.5px dashed color-mix(in srgb, var(--text-color) 50%, transparent);
-    border-left: 0;
-    border-radius: 0 999px 999px 0;
-  }
+.timeline a.timeline-bar-arbeid {
+  background-color: color-mix(
+    in srgb,
+    var(--text-color) 72%,
+    var(--primary-color)
+  );
+}
 
-  .timeline-tip {
-    position: absolute;
-    bottom: calc(100% + 0.5rem);
-    left: 0;
-    z-index: 3;
-    display: none;
-    flex-direction: column;
-    gap: 0.125rem;
-    padding: 0.625rem 0.875rem;
-    border-radius: 0.625rem;
-    background-color: var(--case-dark);
-    color: var(--case-paper);
-    font-size: 0.8125rem;
-    font-weight: 400;
-    line-height: 1.3;
-    white-space: nowrap;
-    pointer-events: none;
-  }
+.timeline a.timeline-bar-sommer {
+  color: var(--case-ink);
+  background-color: var(--contrast-color);
+  min-width: 1.5rem;
+}
 
-  [data-theme="dark"] .timeline-tip {
-    border: 1px solid color-mix(in srgb, var(--text-color) 25%, transparent);
-  }
+.timeline a.timeline-bar-universitet {
+  background-color: color-mix(
+    in srgb,
+    var(--text-color) 45%,
+    var(--primary-color)
+  );
+  color: var(--primary-color);
+}
 
-  .timeline-tip b {
-    font-weight: 500;
-  }
+.timeline a.timeline-bar-frivillig {
+  margin-right: 2px;
+  border: 1.5px solid color-mix(in srgb, var(--text-color) 70%, transparent);
+  color: var(--text-color);
+}
 
-  .timeline-tip span {
-    opacity: 0.7;
-    font-size: 0.75rem;
-  }
+.timeline a.timeline-bar.is-dim {
+  opacity: 0.2;
+}
 
-  .timeline-tip-end {
-    right: 0;
-    left: auto;
-  }
+/* What is planned: the same bar, drawn dashed */
+.timeline-bar-planned {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  height: 100%;
+  border: 1.5px dashed color-mix(in srgb, var(--text-color) 50%, transparent);
+  border-left: 0;
+  border-radius: 0 999px 999px 0;
+}
 
-  .timeline-bar:hover .timeline-tip,
-  .timeline-bar:focus-visible .timeline-tip {
-    display: flex;
-  }
+.timeline-tip {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 3;
+  display: none;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.625rem;
+  background-color: var(--case-dark);
+  color: var(--case-paper);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.3;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .timeline-tip {
+  border: 1px solid color-mix(in srgb, var(--text-color) 25%, transparent);
+}
+
+.timeline-tip b {
+  font-weight: 500;
+}
+
+.timeline-tip span {
+  opacity: 0.7;
+  font-size: 0.75rem;
+}
+
+.timeline-tip-end {
+  right: 0;
+  left: auto;
+}
+
+.timeline-bar:hover .timeline-tip,
+.timeline-bar:focus-visible .timeline-tip {
+  display: flex;
 }
 
 /* The overview and the list read as one: no extra space between them */
@@ -409,6 +436,17 @@
 
 .timeline-list.case-section {
   padding-top: 2.5rem;
+}
+
+/* On small screens the year links do the job; the chart is for larger ones */
+@media only screen and (min-width: 700px) {
+  .timeline-chart {
+    display: block;
+  }
+
+  .timeline-year-jump {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 1050px) {

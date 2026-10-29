@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import {
   chartEnd,
   chartStart,
@@ -23,7 +24,8 @@ const gridYears = Array.from(
 );
 
 function tooltip(entry: TimelineEntry) {
-  return `${entry.title} · ${entry.org.split(" · ")[0]}`;
+  const org = entry.org.split(" · ")[0];
+  return entry.title.includes(org) ? entry.title : `${entry.title} · ${org}`;
 }
 
 // The whole journey on one screen: a bar per experience on a shared time axis.
@@ -33,20 +35,72 @@ export default function TimelineOverview({
   onSelect,
 }: TimelineOverviewProps) {
   const today = Math.min(currentYear(), chartEnd);
+  const scroller = useRef<HTMLDivElement>(null);
+  // Dragging with the mouse scrolls it sideways; a drag is not a click on a bar
+  const drag = useRef<{ x: number; left: number; moved: boolean } | null>(null);
+
+  // The chart is wider than most screens, so it opens on the latest years with
+  // today about two thirds of the way across
+  useEffect(() => {
+    const element = scroller.current;
+    const marker = element?.querySelector<HTMLElement>(".timeline-chart-today");
+    if (!element || !marker) return;
+    const position =
+      marker.getBoundingClientRect().left -
+      element.getBoundingClientRect().left +
+      element.scrollLeft;
+    element.scrollLeft = Math.max(0, position - element.clientWidth * 0.67);
+  }, []);
 
   return (
     <div
+      ref={scroller}
       className="timeline-chart"
       role="group"
       aria-label="Oversikt over erfaringene mine, fra 2019 til nå"
+      onPointerDown={(event) => {
+        if (event.pointerType !== "mouse" || event.button !== 0) return;
+        drag.current = {
+          x: event.clientX,
+          left: event.currentTarget.scrollLeft,
+          moved: false,
+        };
+      }}
+      onPointerMove={(event) => {
+        const state = drag.current;
+        if (!state) return;
+        const distance = event.clientX - state.x;
+        if (!state.moved && Math.abs(distance) < 5) return;
+        if (!state.moved) {
+          state.moved = true;
+          event.currentTarget.setPointerCapture(event.pointerId);
+          event.currentTarget.classList.add("is-dragging");
+        }
+        event.currentTarget.scrollLeft = state.left - distance;
+      }}
+      onPointerUp={(event) => {
+        event.currentTarget.classList.remove("is-dragging");
+        // Keep `moved` until the click that follows has been swallowed
+        if (drag.current && !drag.current.moved) drag.current = null;
+      }}
+      onClickCapture={(event) => {
+        if (drag.current?.moved) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        drag.current = null;
+      }}
     >
       <div className="timeline-chart-inner">
-        <div className="timeline-chart-axis" aria-hidden="true">
-          {gridYears.map((year) => (
-            <span key={year} style={{ left: `${share(year)}%` }}>
-              {year}
-            </span>
-          ))}
+        <div className="timeline-chart-axis-row" aria-hidden="true">
+          <span className="timeline-axis-cover" />
+          <div className="timeline-chart-axis">
+            {gridYears.map((year) => (
+              <span key={year} style={{ left: `${share(year)}%` }}>
+                {year}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="timeline-chart-lanes">
@@ -103,7 +157,7 @@ export default function TimelineOverview({
                             onSelect(entry.id);
                           }}
                         >
-                          {entry.barLabel && !entry.featured && (
+                          {entry.barLabel && !lane.notes && (
                             <span className="timeline-bar-label">
                               {entry.barLabel}
                               {clipped && ` · siden ${Math.floor(entry.start)}`}
@@ -119,7 +173,7 @@ export default function TimelineOverview({
                             </span>
                           </span>
                         </a>
-                        {entry.featured && (
+                        {lane.notes && (
                           <span
                             className={`timeline-bar-note ${dimmed ? "is-dim" : ""}`}
                             aria-hidden="true"

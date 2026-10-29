@@ -66,7 +66,8 @@ export const timeline: TimelineEntry[] = [
     org: "Universitetet i Bergen",
     text: "Veileder UX-prosjekter i et KI-fokusert emne, med KI gjennom hele UX-prosessen. Fasiliterer workshops og bistår med idéutvikling, prosjektarbeid og semesteroppgaver.",
     live: true,
-    lane: 5,
+    barLabel: "Læreassistent MIX301",
+    lane: 7,
     start: at(2026, 9),
   },
   {
@@ -121,7 +122,8 @@ export const timeline: TimelineEntry[] = [
           "Med rekordmange publikumere, pitcher og deltakende emner ble dagen en stor suksess!",
       },
     ],
-    lane: 5,
+    barLabel: "Arrangør Innovasjonsdagene 2026",
+    lane: 6,
     start: at(2026, 2),
     end: at(2026, 7),
   },
@@ -148,6 +150,7 @@ export const timeline: TimelineEntry[] = [
     title: "Læreassistent MIX203",
     org: "Universitetet i Bergen",
     text: "Veiledet studenter i å utvikle brukerorienterte digitale løsninger for mediebransjen, med oppfølging av prototyper og feltarbeid hos samarbeidende bedrifter.",
+    barLabel: "Læreassistent MIX203",
     lane: 5,
     start: at(2025, 8),
     end: at(2026, 1),
@@ -197,7 +200,7 @@ export const timeline: TimelineEntry[] = [
     title: "Kors på Halsen",
     org: "Røde Kors · Bergen",
     through: 2025,
-    lane: 7,
+    lane: 9,
     start: at(2024),
     end: at(2025),
     barLabel: "Kors på Halsen",
@@ -210,7 +213,7 @@ export const timeline: TimelineEntry[] = [
     title: "Redd Barna",
     org: "Bergen",
     through: 2024,
-    lane: 6,
+    lane: 8,
     start: at(2023),
     end: at(2024),
     barLabel: "Redd Barna",
@@ -274,8 +277,8 @@ export const timeline: TimelineEntry[] = [
     category: "arbeid",
     year: "2019",
     dateLabel: "november 2019 – juni 2025",
-    title: "Butikkmedarbeider",
-    org: "Bergans · Bergen/Oslo",
+    title: "Butikkmedarbeider i Bergans Oslo og Bergen",
+    org: "Bergans",
     text: "Ansvar for åpning og stenging av butikk, kundeservice og avstemning av kasseapparat.",
     through: 2025,
     lane: 1,
@@ -285,21 +288,28 @@ export const timeline: TimelineEntry[] = [
   },
 ];
 
-/** The rows in the overview. Arbeidserfaring and Frivillig arbeid have two, as the jobs overlap. */
-export const lanes: { label?: string; tall?: boolean; featured?: boolean }[] = [
+/** The rows in the overview. Rows hold one experience each where they overlap. */
+export const lanes: {
+  label?: string;
+  tall?: boolean;
+  featured?: boolean;
+  /** The name and dates stand beside the bar, for bars too short to hold them */
+  notes?: boolean;
+}[] = [
   { label: "Utdanning", tall: true },
   { label: "Arbeidserfaring" },
   {},
-  { label: "Summer internships", featured: true },
-  { featured: true },
-  { label: "Arbeid på universitetet" },
+  { label: "Summer internships", featured: true, notes: true },
+  { featured: true, notes: true },
+  { label: "Arbeid på universitetet", notes: true },
+  { notes: true },
+  { notes: true },
   { label: "Frivillig arbeid" },
   {},
 ];
 
-/** The years the overview covers. It starts after 2021, so the left side is not
- * empty; the job that began in 2019 runs in from the edge. */
-export const chartStart = 2021.4;
+/** The years the overview covers: from the start of 2019 to mid-2027 */
+export const chartStart = 2019;
 export const chartEnd = 2027.75;
 
 /** Today as a decimal year, to the month so the server and the browser agree */
