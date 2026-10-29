@@ -33,7 +33,7 @@ export default function Index() {
           <div className="home-intro-text">
             <h1 className="case-title-heading">Hei!</h1>
             <p className="home-lead">
-              Jeg er UX-designer og masterstudent på medie- og
+              Jeg er en UX-designer og masterstudent på medie- og
               interaksjonsdesign ved Universitetet i Bergen. UX for meg er
               muligheten til å skape digitale løsninger som er enklere å bruke,
               og som gjør teknologi mer tilgjengelig og inkluderende for alle.
