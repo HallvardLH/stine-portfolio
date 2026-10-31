@@ -14,22 +14,16 @@
   --footer-bg: #181b09;
 }
 
-/* The canvas behind the page is dark, so the bounce at the bottom of a phone
-   screen (and the strip the browser bars leave) shows the footer colour and
-   not the page colour. The top of the canvas stays the page colour, and the
-   body paints the page colour over its own box. */
+/* The canvas behind the page is the footer colour. Phone browsers take the
+   colour of the bounce and of the strip under the page from here, and they
+   ignore gradients and box-shadows. The body paints the page colour over its
+   own box, so only the area outside the page shows the dark colour. */
 html {
-  background:
-    linear-gradient(var(--primary-color), var(--primary-color)) top / 100% 50vh
-      no-repeat,
-    #23261c;
+  background-color: #23261c;
 }
 
 html[data-theme="dark"] {
-  background:
-    linear-gradient(var(--primary-color), var(--primary-color)) top / 100% 50vh
-      no-repeat,
-    #181b09;
+  background-color: #181b09;
 }
 
 /* The case pages and the home page end in a section with its own spacing */
