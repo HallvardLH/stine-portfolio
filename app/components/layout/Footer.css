@@ -45,7 +45,9 @@ html[data-theme="dark"] {
 }
 
 .footer-container {
-  padding: 4rem 1.6rem 2rem;
+  /* Extra room at the bottom, so the dark footer reaches past the browser bar
+     and the white strip on a phone */
+  padding: 4rem 1.6rem calc(6rem + env(safe-area-inset-bottom));
 }
 
 .footer-row {
