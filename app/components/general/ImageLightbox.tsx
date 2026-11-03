@@ -97,7 +97,7 @@ export default function ImageLightbox({
           key={shown.src}
           src={shown.src}
           alt={shown.alt}
-          className={`image-lightbox-image ${actualSize ? "actual-size" : ""}`}
+          className={`image-lightbox-image ${actualSize ? "actual-size" : ""} ${shown.background ? "framed" : ""}`}
           style={{
             background: shown.background,
             ...(actualSize

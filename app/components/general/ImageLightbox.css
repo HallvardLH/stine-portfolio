@@ -70,6 +70,17 @@
   cursor: zoom-out;
 }
 
+/* A transparent image with its own background gets the background as a frame
+   around it, so the content has space on all sides */
+.image-lightbox-image.framed {
+  box-sizing: border-box;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+.image-lightbox-image.framed.actual-size {
+  box-sizing: content-box;
+}
+
 .image-lightbox-close {
   all: unset;
   position: fixed;
