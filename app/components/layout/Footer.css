@@ -5,9 +5,6 @@
   --footer-text: #fdfff9;
 
   margin-top: 6rem;
-  /* The dark band carries on below the page, so the bounce at the bottom of a
-     phone screen shows dark and not the page colour */
-  box-shadow: 0 50vh 0 50vh var(--footer-bg);
   background-color: var(--footer-bg);
   color: var(--footer-text);
   letter-spacing: var(--letter-spacing);
@@ -15,6 +12,18 @@
 
 [data-theme="dark"] .footer {
   --footer-bg: #181b09;
+}
+
+/* The canvas behind the page is the footer colour. Phone browsers take the
+   colour of the bounce and of the strip under the page from here, and they
+   ignore gradients and box-shadows. The body paints the page colour over its
+   own box, so only the area outside the page shows the dark colour. */
+html {
+  background-color: #23261c;
+}
+
+html[data-theme="dark"] {
+  background-color: #181b09;
 }
 
 /* The case pages and the home page end in a section with its own spacing */
@@ -36,7 +45,9 @@
 }
 
 .footer-container {
-  padding: 4rem 1.6rem 2rem;
+  /* Extra room at the bottom, so the dark footer reaches past the browser bar
+     and the white strip on a phone */
+  padding: 4rem 1.6rem calc(6rem + env(safe-area-inset-bottom));
 }
 
 .footer-row {
