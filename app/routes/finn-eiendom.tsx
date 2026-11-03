@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { pageMeta } from "~/utils/meta";
 import CoverImage from "~/components/cover-image/CoverImage";
 import { thumbnails } from "~/data/thumbnails";
 import { MdOutlineOpenInNew } from "react-icons/md";
@@ -26,14 +27,10 @@ const chapters: Chapter[] = [
 ];
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "FINN Eiendom - Stine Knutsen" },
-    {
-      name: "description",
-      content:
-        "Sommeren 2026 jobbet jeg som UX-intern hos FINN Eiendom (Vend). Sammen med tre utviklere utviklet vi et påmeldingsskjema for boligvisninger, samt løsninger for hvordan dette kunne skape verdi for både brukere og meglere.",
-    },
-  ];
+  return pageMeta(
+    "FINN Eiendom - Stine Knutsen",
+    "Sommeren 2026 jobbet jeg som UX-intern hos FINN Eiendom (Vend). Sammen med tre utviklere utviklet vi et påmeldingsskjema for boligvisninger, samt løsninger for hvordan dette kunne skape verdi for både brukere og meglere.",
+  );
 };
 
 export default function ProjectsLibaryRoute() {
@@ -490,13 +487,13 @@ export default function ProjectsLibaryRoute() {
           {
             thumbnail: thumbnails.rema,
             title: "Redesign: Rema appen",
-            link: "/æ",
+            link: "/rema",
           },
           { thumbnail: thumbnails.corwell, title: "CorWell", link: "/corwell" },
           {
             thumbnail: thumbnails.portefoljeRedesign,
             title: "Redesign: portefølje",
-            link: "/redesign-av-portefølje",
+            link: "/redesign-av-portefolje",
           },
         ]}
       />

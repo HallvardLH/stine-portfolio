@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { pageMeta } from "~/utils/meta";
 import { Link } from "@remix-run/react";
 import { useMemo, useState } from "react";
 import "~/components/case/Case.css";
@@ -15,13 +16,10 @@ import {
 } from "~/data/projects";
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "Stine Knutsen" },
-    {
-      name: "description",
-      content: "Hjemmesiden for Stine Knutsens portefølje.",
-    },
-  ];
+  return pageMeta(
+    "Stine Knutsen",
+    "UX-designer og masterstudent i medie- og interaksjonsdesign ved Universitetet i Bergen. Her samler jeg prosjekter jeg har jobbet med, idéer jeg har utforsket og ting jeg har lært underveis.",
+  );
 };
 
 export default function Index() {
@@ -55,6 +53,10 @@ export default function Index() {
               interaksjonsdesign ved Universitetet i Bergen. UX for meg er
               muligheten til å skape digitale løsninger som er enklere å bruke,
               og som gjør teknologi mer tilgjengelig og inkluderende for alle.
+            </p>
+            <p className="home-lead">
+              Her samler jeg prosjekter jeg har jobbet med, idéer jeg har
+              utforsket og ting jeg har lært underveis.
             </p>
           </div>
         </div>

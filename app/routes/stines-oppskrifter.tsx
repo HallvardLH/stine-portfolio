@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { pageMeta } from "~/utils/meta";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import CoverImage from "~/components/cover-image/CoverImage";
 import { thumbnails } from "~/data/thumbnails";
@@ -20,14 +21,10 @@ const chapters: Chapter[] = [
 ];
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "Stines oppskrifter - Stine Knutsen" },
-    {
-      name: "description",
-      content:
-        "Fra oppskrifter venner anbefaler til felles ukesmenyer og handlelister. Et personlig prosjekt for å gjøre matplanlegging litt enklere.",
-    },
-  ];
+  return pageMeta(
+    "Stines oppskrifter - Stine Knutsen",
+    "Fra oppskrifter venner anbefaler til felles ukesmenyer og handlelister. Et personlig prosjekt for å gjøre matplanlegging litt enklere.",
+  );
 };
 
 export default function StinesOppskrifterRoute() {

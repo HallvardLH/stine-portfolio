@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { pageMeta } from "~/utils/meta";
 import CoverImage from "~/components/cover-image/CoverImage";
 import { thumbnails } from "~/data/thumbnails";
 import ChapterNav, { type Chapter } from "~/components/chapter-nav/ChapterNav";
@@ -24,14 +25,10 @@ const chapters: Chapter[] = [
 ];
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "Bachelorprosjekt: GründerCampus - Stine Knutsen" },
-    {
-      name: "description",
-      content:
-        "Som del av bacheloroppgaven min designet jeg og gruppen min en nettside for GründerCampus. Prosjektet vårt vant MVP-prisen under universitetets Innovasjonsdag 9. mai 2025.",
-    },
-  ];
+  return pageMeta(
+    "Bachelorprosjekt: GründerCampus - Stine Knutsen",
+    "Som del av bacheloroppgaven min designet jeg og gruppen min en nettside for GründerCampus. Prosjektet vårt vant MVP-prisen under universitetets Innovasjonsdag 9. mai 2025.",
+  );
 };
 
 export default function ProjectsLibaryRoute() {
@@ -426,7 +423,7 @@ export default function ProjectsLibaryRoute() {
           {
             thumbnail: thumbnails.portefoljeRedesign,
             title: "Redesign: portefølje",
-            link: "/redesign-av-portefølje",
+            link: "/redesign-av-portefolje",
           },
           {
             thumbnail: thumbnails.finn,
@@ -441,7 +438,7 @@ export default function ProjectsLibaryRoute() {
           {
             thumbnail: thumbnails.rema,
             title: "Redesign: Rema appen",
-            link: "/æ",
+            link: "/rema",
           },
         ]}
       />

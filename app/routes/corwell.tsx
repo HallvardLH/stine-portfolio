@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { pageMeta } from "~/utils/meta";
 import CoverImage from "~/components/cover-image/CoverImage";
 import { thumbnails } from "~/data/thumbnails";
 import ChapterNav, { type Chapter } from "~/components/chapter-nav/ChapterNav";
@@ -18,14 +19,10 @@ const chapters: Chapter[] = [
 ];
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "Corwell - Stine Knutsen" },
-    {
-      name: "description",
-      content:
-        "Et Media- og Interaksjonsdesign prosjekt om en helseapp som forbedrer helseoppfølging ved hjelp av lifelogging.",
-    },
-  ];
+  return pageMeta(
+    "Corwell - Stine Knutsen",
+    "Et Media- og Interaksjonsdesign prosjekt om en helseapp som forbedrer helseoppfølging ved hjelp av lifelogging.",
+  );
 };
 
 export default function ProjectsLibaryRoute() {
@@ -276,12 +273,12 @@ export default function ProjectsLibaryRoute() {
           {
             thumbnail: thumbnails.dromme,
             title: "Drømmeland",
-            link: "/drømmeland",
+            link: "/drommeland",
           },
           {
             thumbnail: thumbnails.rema,
             title: "Redesign: Rema appen",
-            link: "/æ",
+            link: "/rema",
           },
         ]}
       />

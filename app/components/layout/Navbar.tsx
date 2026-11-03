@@ -66,6 +66,19 @@ export default function Navbar({
   const isCurrent = (path: string) => location.pathname === path;
   const close = () => setNavbarOpen(false);
 
+  // Kontakt is the footer, which every page has. Scrolling there directly keeps
+  // the router from restoring an old scroll position for the #kontakt link.
+  const scrollToContact = (event: React.MouseEvent) => {
+    event.preventDefault();
+    close();
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    document
+      .getElementById("kontakt")
+      ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+  };
+
   return (
     <nav
       ref={navbarRef}
@@ -102,7 +115,11 @@ export default function Navbar({
             >
               Tidslinje
             </Link>
-            <a href="#kontakt" className="navbar-link">
+            <a
+              href="#kontakt"
+              className="navbar-link"
+              onClick={scrollToContact}
+            >
               Kontakt
             </a>
             <ThemeSwitch
@@ -160,7 +177,7 @@ export default function Navbar({
               </Link>
             </li>
             <li>
-              <a onClick={close} href="#kontakt">
+              <a onClick={scrollToContact} href="#kontakt">
                 Kontakt
               </a>
             </li>

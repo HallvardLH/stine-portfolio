@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { pageMeta } from "~/utils/meta";
 import CoverImage from "~/components/cover-image/CoverImage";
 import { thumbnails } from "~/data/thumbnails";
 import { MdOutlineOpenInNew } from "react-icons/md";
@@ -25,14 +26,10 @@ const chapters: Chapter[] = [
 ];
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "Barnebank for Sparebanken Norge - Stine Knutsen" },
-    {
-      name: "description",
-      content:
-        "I løpet av sommeren 2025 utviklet vi en bankløsning for de yngste kundene til Sparebanken Norge. Teamet besto av fem utviklere og to UX-designere. Den nye løsningen er nå lansert for bankens kunder.",
-    },
-  ];
+  return pageMeta(
+    "Barnebank for Sparebanken Norge - Stine Knutsen",
+    "I løpet av sommeren 2025 utviklet vi en bankløsning for de yngste kundene til Sparebanken Norge. Teamet besto av fem utviklere og to UX-designere. Den nye løsningen er nå lansert for bankens kunder.",
+  );
 };
 
 export default function ProjectsLibaryRoute() {
@@ -366,7 +363,7 @@ export default function ProjectsLibaryRoute() {
           {
             thumbnail: thumbnails.dromme,
             title: "Drømmeland",
-            link: "/drømmeland",
+            link: "/drommeland",
           },
           {
             thumbnail: thumbnails.finn,
@@ -376,7 +373,7 @@ export default function ProjectsLibaryRoute() {
           {
             thumbnail: thumbnails.rema,
             title: "Redesign: Rema appen",
-            link: "/æ",
+            link: "/rema",
           },
           { thumbnail: thumbnails.corwell, title: "CorWell", link: "/corwell" },
         ]}

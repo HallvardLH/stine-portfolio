@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { pageMeta } from "~/utils/meta";
 import CoverImage from "~/components/cover-image/CoverImage";
 import { thumbnails } from "~/data/thumbnails";
 import ChapterNav, { type Chapter } from "~/components/chapter-nav/ChapterNav";
@@ -20,14 +21,10 @@ const chapters: Chapter[] = [
 ];
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "OurSpace - Stine Knutsen" },
-    {
-      name: "description",
-      content:
-        "Et CSCW-verktøy med mål om å strukturere konsulenter og klienters kalendere for å oppfylle deres ønsker og behov.",
-    },
-  ];
+  return pageMeta(
+    "OurSpace - Stine Knutsen",
+    "Et CSCW-verktøy med mål om å strukturere konsulenter og klienters kalendere for å oppfylle deres ønsker og behov.",
+  );
 };
 
 export default function ProjectsLibaryRoute() {
@@ -261,17 +258,17 @@ export default function ProjectsLibaryRoute() {
           {
             thumbnail: thumbnails.dromme,
             title: "Drømmeland",
-            link: "/drømmeland",
+            link: "/drommeland",
           },
           {
             thumbnail: thumbnails.rema,
             title: "Redesign: Rema appen",
-            link: "/æ",
+            link: "/rema",
           },
           {
             thumbnail: thumbnails.portefoljeRedesign,
             title: "Redesign: portefølje",
-            link: "/redesign-av-portefølje",
+            link: "/redesign-av-portefolje",
           },
         ]}
       />

@@ -1,3 +1,4 @@
+import type { MetaFunction } from "@remix-run/node";
 import {
   Links,
   Meta,
@@ -8,6 +9,7 @@ import {
   useLocation,
 } from "@remix-run/react";
 import { themeCookie } from "./utils/theme.server";
+import { ogImagePath } from "./utils/ogImage";
 import { useState, useEffect } from "react";
 
 import Navbar from "./components/layout/Navbar";
@@ -17,10 +19,15 @@ import "./styles/global.css";
 import "./styles/text.css";
 import "./styles/layout.css";
 
+// Fallback title for pages without their own, such as the error page
+export const meta: MetaFunction = () => [{ title: "Stine Knutsen" }];
+
 export async function loader({ request }: { request: Request }) {
   const cookieHeader = request.headers.get("Cookie");
   const theme = (await themeCookie.parse(cookieHeader)) || "light"; // Default theme
-  return Response.json({ theme });
+  // Share images need absolute URLs
+  const origin = new URL(request.url).origin;
+  return Response.json({ theme, origin });
 }
 
 export async function action({ request }: { request: Request }) {
@@ -42,15 +49,14 @@ export async function action({ request }: { request: Request }) {
 }
 
 export default function App() {
-  const { theme } = useLoaderData<typeof loader>();
+  const { theme, origin } = useLoaderData<typeof loader>();
   const [currentTheme, setCurrentTheme] = useState(theme);
   const location = useLocation();
 
   // Custom color schemes for certain pages
   const getColorScheme = (pathname: string) => {
     // console.log(pathname)
-    // æ is a scary character, so we need to use %C3%A6 instead
-    if (pathname.includes("/æ") || pathname.includes("/%C3%A6")) {
+    if (pathname.includes("/rema")) {
       return "æ-scheme";
     }
     if (pathname.includes("/corwell")) {
@@ -62,10 +68,10 @@ export default function App() {
     if (pathname.includes("/ourspace")) {
       return "ourspace-scheme";
     }
-    if (pathname.includes("/dr%C3%B8mmeland")) {
+    if (pathname.includes("/drommeland")) {
       return "drømmeland-scheme";
     }
-    if (pathname.includes("/redesign-av-portef%C3%B8lje")) {
+    if (pathname.includes("/redesign-av-portefolje")) {
       return "portfolio-redesign-scheme";
     }
     if (pathname.includes("/grundercampus")) {
@@ -77,18 +83,27 @@ export default function App() {
     return null; // Default color scheme
   };
 
+  const ogImagePathname = ogImagePath(location.pathname);
+  const ogImage = ogImagePathname ? `${origin}${ogImagePathname}` : null;
+
   // Sync client-side theme preference
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", currentTheme);
   }, [currentTheme]);
 
   return (
-    <html lang="en" data-theme={currentTheme}>
+    <html lang="nb" data-theme={currentTheme}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
-        <title>Stine Knutsen</title>
+        {ogImage && (
+          <>
+            <meta property="og:image" content={ogImage} />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+          </>
+        )}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

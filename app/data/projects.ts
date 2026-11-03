@@ -107,7 +107,7 @@ export const projectsByYear: ProjectYear[] = [
         title: "Redesign: Rema appen",
         description:
           "Redesign av Rema 1000s medlemsapp med fokus på brukervennlighet.",
-        link: "/æ",
+        link: "/rema",
         tags: ["Freelance", "Dagligvare"],
       },
       {
@@ -147,7 +147,7 @@ export const projectsByYear: ProjectYear[] = [
         title: "Drømmeland",
         description:
           "En læringsapp for barn som underviser om bærekraft gjennom virtuelle aktiviteter.",
-        link: "/drømmeland",
+        link: "/drommeland",
         tags: ["Universitetet i Bergen", "Læring"],
       },
     ],
@@ -168,7 +168,7 @@ export const archiveByYear: ProjectYear[] = [
         title: "Redesign: portefølje",
         description:
           "Redesign av en frontend utviklers portefølje for å fremheve arbeidet hans.",
-        link: "/redesign-av-portefølje",
+        link: "/redesign-av-portefolje",
         tags: ["Freelance", "Portefølje"],
       },
     ],

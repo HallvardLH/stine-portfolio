@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { pageMeta } from "~/utils/meta";
 import { useEffect, useRef, useState } from "react";
 import "~/components/case/Case.css";
 import "~/components/timeline/Timeline.css";
@@ -15,14 +16,10 @@ import {
 } from "~/data/timeline";
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "Tidslinje - Stine Knutsen" },
-    {
-      name: "description",
-      content:
-        "Reisen min så langt: studier, jobber og frivillig arbeid, med bilder fra underveis.",
-    },
-  ];
+  return pageMeta(
+    "Tidslinje - Stine Knutsen",
+    "Reisen min så langt: studier, jobber og frivillig arbeid, med bilder fra underveis.",
+  );
 };
 
 type Filter = TimelineCategory | "alle";

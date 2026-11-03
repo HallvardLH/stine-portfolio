@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { pageMeta } from "~/utils/meta";
 import { Link } from "@remix-run/react";
 import "~/components/case/Case.css";
 import ImageWithLoader from "~/components/general/ImageWithLoader";
@@ -7,14 +8,10 @@ import { Chapter as CaseChapter } from "~/components/case/Chapter";
 import { Figure, FigurePair } from "~/components/case/Figure";
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "Om meg - Stine Knutsen" },
-    {
-      name: "description",
-      content:
-        "Jeg er en UX-designer og masterstudent i medie- og interaksjonsdesign ved Universitetet i Bergen.",
-    },
-  ];
+  return pageMeta(
+    "Om meg - Stine Knutsen",
+    "Jeg er en UX-designer og masterstudent i medie- og interaksjonsdesign ved Universitetet i Bergen.",
+  );
 };
 
 export default function AboutRoute() {

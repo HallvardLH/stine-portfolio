@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { pageMeta } from "~/utils/meta";
 import "~/components/case/Case.css";
 import "~/components/archive/Archive.css";
 import { Link } from "@remix-run/react";
@@ -7,13 +8,10 @@ import Button from "~/components/general/Button";
 import { archiveByYear, projectStatusLabels } from "~/data/projects";
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "Arkiv - Stine Knutsen" },
-    {
-      name: "description",
-      content: "Prosjekter som har hjulpet meg komme dit jeg er i dag.",
-    },
-  ];
+  return pageMeta(
+    "Arkiv - Stine Knutsen",
+    "Prosjekter som har hjulpet meg komme dit jeg er i dag.",
+  );
 };
 
 export default function ArchiveRoute() {
