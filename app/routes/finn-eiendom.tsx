@@ -53,7 +53,7 @@ export default function ProjectsLibaryRoute() {
             { label: "Plattform", value: "Web" },
             { label: "Periode", value: "Sommeren 2026" },
             { label: "Rolle", value: "UX-intern" },
-            { label: "Team", value: "Tre utviklere" },
+            { label: "Team", value: "Meg på UX og tre utviklere" },
             {
               label: "Les mer",
               value: (

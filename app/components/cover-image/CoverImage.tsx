@@ -2,6 +2,7 @@ import "./CoverImage.css";
 import { Link } from "@remix-run/react";
 import Button from "../general/Button";
 import type { Thumbnail } from "~/data/thumbnails";
+import { useZoomableImage } from "../general/useZoomableImage";
 
 interface CoverImageProps {
   thumbnail: Thumbnail;
@@ -17,6 +18,11 @@ export default function CoverImage({
 }: CoverImageProps) {
   const { foregroundSrc, foregroundSize, backgroundColor, backgroundSrc } =
     thumbnail;
+  const { props: zoomProps, lightbox } = useZoomableImage();
+  // The mockups are transparent, so fullscreen gets the stage's background too
+  const lightboxBackground = backgroundSrc
+    ? `url(${backgroundSrc}) ${thumbnail.backgroundPosition ?? "center"} / cover no-repeat ${backgroundColor ?? ""}`
+    : backgroundColor;
 
   return (
     <div
@@ -31,7 +37,7 @@ export default function CoverImage({
         <Button label="Tilbake" arrowDirection="left" />
       </Link>
       <div
-        className={`cover-stage ${thumbnail.foregroundAlign === "left" ? "align-left" : ""} ${thumbnail.corner?.position === "bottom-right" ? "corner-below" : ""}`}
+        className={`cover-stage ${thumbnail.foregroundAlign === "left" ? "align-left" : ""} ${thumbnail.corner?.position === "bottom-right" ? "corner-below" : ""} ${thumbnail.tight ? "tight" : ""}`}
         style={
           {
             // The logo scales with the stage but never grows past its design size
@@ -48,10 +54,12 @@ export default function CoverImage({
       >
         <img
           src={foregroundSrc}
-          alt=""
-          className="cover-image"
+          alt={thumbnail.alt ?? ""}
+          className="cover-image image-zoomable"
           width={foregroundSize.width}
           height={foregroundSize.height}
+          data-lightbox-background={lightboxBackground}
+          {...zoomProps}
         />
         {thumbnail.corner && (
           <img
@@ -61,6 +69,7 @@ export default function CoverImage({
           />
         )}
       </div>
+      {lightbox}
     </div>
   );
 }

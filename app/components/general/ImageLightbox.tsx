@@ -5,6 +5,8 @@ export interface GalleryImage {
   src: string;
   alt: string;
   caption?: string;
+  /** A CSS background for the image itself, for transparent images */
+  background?: string;
 }
 
 function Chevron({ direction }: { direction: "left" | "right" }) {
@@ -96,11 +98,12 @@ export default function ImageLightbox({
           src={shown.src}
           alt={shown.alt}
           className={`image-lightbox-image ${actualSize ? "actual-size" : ""}`}
-          style={
-            actualSize
+          style={{
+            background: shown.background,
+            ...(actualSize
               ? { width: `${naturalWidth / window.devicePixelRatio}px` }
-              : undefined
-          }
+              : undefined),
+          }}
           decoding="async"
           onLoad={(event) => setNaturalWidth(event.currentTarget.naturalWidth)}
           onClick={() => setActualSize((value) => !value)}

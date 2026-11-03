@@ -29,6 +29,10 @@
   object-fit: contain;
 }
 
+.cover-stage.tight {
+  padding: 1rem 0.75rem;
+}
+
 .cover-corner {
   position: absolute;
   right: 1rem;
@@ -92,6 +96,10 @@
   .cover-stage {
     height: clamp(24rem, 70vh, 38rem);
     padding: 3rem 2rem;
+  }
+
+  .cover-stage.tight {
+    padding: 1.5rem 2rem;
   }
 
   .cover-corner {

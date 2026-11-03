@@ -10,9 +10,13 @@
   letter-spacing: var(--letter-spacing);
 }
 
-/* Stines oppskrifter: the lime from its thumbnail */
+/* Stines oppskrifter: the lime from its thumbnail, and the pinks and the dark
+   plum from the website itself */
 .case-oppskrifter {
   --case-lime: #d9f5b8;
+  --case-pink: #fff0fe;
+  --case-pink-strong: #ffbfff;
+  --case-plum: #2b0a12;
 }
 
 [data-theme="dark"] .case {
@@ -265,6 +269,14 @@
   height: auto;
   max-height: min(80vh, 50rem);
   margin: 0 auto;
+}
+
+/* The tall version for phones is shown at full height, not cut down to the
+   screen height */
+@media only screen and (max-width: 899px) {
+  .case-image-break-image {
+    max-height: none;
+  }
 }
 
 /* Image with space around it on the band, and narrower from 1400px so the

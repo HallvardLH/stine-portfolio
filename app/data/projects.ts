@@ -44,7 +44,7 @@ export const latestProject: Project = {
   description:
     "Summer internship i FINN Eiendom med fokus på å forenkle påmeldingen til boligvisninger for meglere og boligkjøpere.",
   link: "/finn-eiendom",
-  tags: ["Summer internship", "FINN Eiendom"],
+  tags: ["Summer internship", "Boligvisninger"],
 };
 
 export const projectsByYear: ProjectYear[] = [
@@ -59,9 +59,9 @@ export const projectsByYear: ProjectYear[] = [
         platformInfo: "Web",
         title: "Stines oppskrifter",
         description:
-          "En digital oppskriftsbok der du og vennene dine deler retter, planlegger uka og lager handleliste sammen.",
+          "Fra oppskrifter venner anbefaler til felles ukesmenyer og handlelister. Et personlig prosjekt for å gjøre matplanlegging litt enklere.",
         link: "/stines-oppskrifter",
-        tags: ["Freelance", "Eget prosjekt", "Bygget med Claude"],
+        tags: ["Freelance", "Matplanlegging"],
       },
       latestProject,
     ],
@@ -79,7 +79,7 @@ export const projectsByYear: ProjectYear[] = [
         description:
           "Summer internship der vi designet deres nye bankløsning for barn.",
         link: "/barnebank",
-        tags: ["Summer internship", "Sparebanken Norge", "Bank for barn"],
+        tags: ["Summer internship", "Bank for barn"],
       },
       {
         category: "universitet",
@@ -91,7 +91,7 @@ export const projectsByYear: ProjectYear[] = [
         description:
           "Nettside, logo og visuell profil for det nyoppstartede studentnettverket GründerCampus.",
         link: "/grundercampus",
-        tags: ["Universitetet i Bergen", "Bachelorprosjekt", "Visuelt & UX"],
+        tags: ["Universitetet i Bergen", "Studentnettverk"],
       },
     ],
   },
@@ -108,7 +108,7 @@ export const projectsByYear: ProjectYear[] = [
         description:
           "Redesign av Rema 1000s medlemsapp med fokus på brukervennlighet.",
         link: "/æ",
-        tags: ["Freelance", "Redesign", "Case"],
+        tags: ["Freelance", "Dagligvare"],
       },
       {
         category: "universitet",
@@ -148,7 +148,7 @@ export const projectsByYear: ProjectYear[] = [
         description:
           "En læringsapp for barn som underviser om bærekraft gjennom virtuelle aktiviteter.",
         link: "/drømmeland",
-        tags: ["Universitetet i Bergen", "Læring", "Barn", "Bærekraft"],
+        tags: ["Universitetet i Bergen", "Læring"],
       },
     ],
   },
@@ -169,7 +169,7 @@ export const archiveByYear: ProjectYear[] = [
         description:
           "Redesign av en frontend utviklers portefølje for å fremheve arbeidet hans.",
         link: "/redesign-av-portefølje",
-        tags: ["Freelance", "Redesign", "Case"],
+        tags: ["Freelance", "Portefølje"],
       },
     ],
   },
