@@ -25,7 +25,7 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "En digital oppskriftsbok der du og vennene dine deler retter, planlegger uka og lager handleliste sammen.",
+        "Fra oppskrifter venner anbefaler til felles ukesmenyer og handlelister. Et personlig prosjekt for å gjøre matplanlegging litt enklere.",
     },
   ];
 };
@@ -194,7 +194,7 @@ export default function StinesOppskrifterRoute() {
                       src: "/stines-oppskrifter/finn.webp",
                       alt: "Tre mobilskjermer: forsiden med spørsmålskortet «Hvor mange skal spise?» og filtre for oppskriftene, oppskriften Kyllingsuppe med forfatteren, og profilsiden med lista over brukere man følger.",
                       caption:
-                        "Filtrer deg frem til oppskrifter eller la deg inspirere av feeden. Du kan også følge andre og enkelt finne igjen oppskriftene deres.",
+                        "Filtrer deg frem til oppskrifter eller la deg inspirere av feeden. Ved å følge andre kan du enkelt finne igjen oppskriftene deres.",
                     },
                   ]}
                 >
@@ -243,13 +243,13 @@ export default function StinesOppskrifterRoute() {
                       src: "/stines-oppskrifter/lag-1.webp",
                       alt: "To mobilskjermer fra det å legge ut en oppskrift: steg 2 av 5 med ingredienser, og steg 4 av 5 med bilde av retten.",
                       caption:
-                        "Når du legger inn oppskrifter, følger du en stegvis prosess som gjør det enkelt å lage ryddige og fullstendige oppskrifter.",
+                        "Når du legger inn oppskrifter, følger du en stegvis prosess som gjør det enkelt å registrere all informasjon på en ryddig og oversiktlig måte.",
                     },
                     {
                       src: "/stines-oppskrifter/lag-2.webp",
                       alt: "To mobilskjermer: steg 5 av 5 med forhåndsvisning av oppskriften og knappene Lagre som utkast og Publiser, og feltet der man kobler en annen oppskrift til, her en focaccia.",
                       caption:
-                        "Før du publiserer oppskriften, får du se en forhåndsvisning. Her kan du også tagge andre oppskrifter for å foreslå et komplett måltid.",
+                        "Før du publiserer oppskriften, får du se en forhåndsvisning. Her kan du også tagge andre oppskrifter for å sette sammen et komplett måltid.",
                     },
                   ]}
                 >
@@ -280,7 +280,7 @@ export default function StinesOppskrifterRoute() {
                       src: "/stines-oppskrifter/planlegg.webp",
                       alt: "Tre mobilskjermer: dagsmenyen med Ratatouille, ukesmenyen med flere dager under hverandre, og skjemaet for å legge en rett til i menyen.",
                       caption:
-                        "På Meny og handleliste-siden kan du planlegge både dags- og ukesmenyer, og dele dem med andre du skal spise sammen med. Du kan også legge inn måltider direkte i menyen.",
+                        "På Meny og handleliste-siden kan du planlegge både dags- og ukesmenyer, og dele dem med andre du skal spise sammen med. Du kan også legge inn egne måltider direkte i menyen.",
                     },
                   ]}
                 >
@@ -303,7 +303,7 @@ export default function StinesOppskrifterRoute() {
                       src: "/stines-oppskrifter/handleliste.webp",
                       alt: "Fire mobilskjermer: skjemaet for en ny handleliste laget fra menyen, listen Ukeshandel med felt for egne varer, delingen av listen med venner, og en liste der 12 av 47 varer er krysset av.",
                       caption:
-                        "Fra å lage en handleliste basert på ukesmenyen til å dele den med andre, kopiere som tekst eller rydde opp i listen.",
+                        "Lag en handleliste fra ukesmenyen, del den med andre eller kopier den som tekst. Du kan også tømme listen når du er ferdig.",
                     },
                   ]}
                 >
