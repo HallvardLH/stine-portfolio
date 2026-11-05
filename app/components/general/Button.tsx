@@ -5,11 +5,13 @@ interface ButtonProps {
   arrowDirection?: "left" | "right";
 }
 
+// Only looks like a button. It always sits inside a link, so it is not a
+// <button> itself, which would be a second stop for the keyboard.
 export default function Button({ label, arrowDirection }: ButtonProps) {
   return (
-    <div className="button-container">
-      <button className="button">
-        <div
+    <span className="button-container">
+      <span className="button">
+        <span
           className="read-more-container"
           style={
             arrowDirection === "left"
@@ -17,14 +19,14 @@ export default function Button({ label, arrowDirection }: ButtonProps) {
               : undefined
           }
         >
-          <p className="text-large button-label">{label}</p>
+          <span className="text-large button-label">{label}</span>
           <img
             src="/icons/arrow.svg"
             alt=""
             className={`button-arrow ${arrowDirection === "left" ? "arrow-back" : ""}`}
           />
-        </div>
-      </button>
-    </div>
+        </span>
+      </span>
+    </span>
   );
 }
