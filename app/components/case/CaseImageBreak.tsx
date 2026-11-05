@@ -36,6 +36,7 @@ export default function CaseImageBreak({
         mobileSrc={mobileSrc}
         alt={alt}
         classes="case-image-break-image"
+        sizes="100vw"
       />
       {caption && (
         <figcaption className="case-container case-image-break-caption text-small">
