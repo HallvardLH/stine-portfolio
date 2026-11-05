@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   Meta,
@@ -15,9 +15,21 @@ import { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
+import satoshiFont from "./styles/Satoshi-Variable.woff2?url";
 import "./styles/global.css";
 import "./styles/text.css";
 import "./styles/layout.css";
+
+// The font is needed on every page, so it is fetched before the CSS asks for it
+export const links: LinksFunction = () => [
+  {
+    rel: "preload",
+    href: satoshiFont,
+    as: "font",
+    type: "font/woff2",
+    crossOrigin: "anonymous",
+  },
+];
 
 // Fallback title for pages without their own, such as the error page
 export const meta: MetaFunction = () => [{ title: "Stine Knutsen" }];

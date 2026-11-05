@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Satoshi";
-  src: url("Satoshi-Variable.ttf") format("truetype");
+  src: url("Satoshi-Variable.woff2") format("woff2");
+  font-display: swap;
 }
 
 /* Type scale tokens live in global.css (--font-size-*) */
