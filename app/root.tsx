@@ -62,9 +62,6 @@ export default function App() {
     if (pathname.includes("/corwell")) {
       return "corwell-scheme";
     }
-    if (pathname.includes("/skreddernettside")) {
-      return "skredder-scheme";
-    }
     if (pathname.includes("/ourspace")) {
       return "ourspace-scheme";
     }
