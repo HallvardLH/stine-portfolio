@@ -16,10 +16,22 @@ import {
 } from "~/data/projects";
 
 export const meta: MetaFunction = () => {
-  return pageMeta(
-    "Stine Knutsen",
-    "UX-designer og masterstudent i medie- og interaksjonsdesign ved Universitetet i Bergen. Her samler jeg prosjekter jeg har jobbet med, idéer jeg har utforsket og ting jeg har lært underveis.",
-  );
+  return [
+    ...pageMeta(
+      "Stine Knutsen",
+      "UX-designer og masterstudent i medie- og interaksjonsdesign ved Universitetet i Bergen. Her samler jeg prosjekter jeg har jobbet med, idéer jeg har utforsket og ting jeg har lært underveis.",
+    ),
+    // Lets search engines know who the site belongs to
+    {
+      "script:ld+json": {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Stine Knutsen",
+        jobTitle: "UX-designer",
+        sameAs: ["https://www.linkedin.com/in/stine-knutsen-77b311294"],
+      },
+    },
+  ];
 };
 
 export default function Index() {
