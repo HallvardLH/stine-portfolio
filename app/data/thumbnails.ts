@@ -56,15 +56,15 @@ export const thumbnails = {
   },
   portefoljeRedesign: {
     alt: "Skjermbilder fra redesignet av porteføljen",
-    foregroundSrc: "/portefølje-redesign/thumbnail-fg.webp",
+    foregroundSrc: "/redesign-av-portefolje/thumbnail-fg.webp",
     foregroundSize: { width: 736, height: 478 },
-    backgroundSrc: "/portefølje-redesign/thumbnail-bg.webp",
+    backgroundSrc: "/redesign-av-portefolje/thumbnail-bg.webp",
   },
   rema: {
     alt: "Skjermbilder fra redesignet av Rema-appen",
-    foregroundSrc: "/æ/thumbnail-fg.webp",
+    foregroundSrc: "/rema/thumbnail-fg.webp",
     foregroundSize: { width: 903, height: 560 },
-    backgroundSrc: "/æ/thumbnail-bg.webp",
+    backgroundSrc: "/rema/thumbnail-bg.webp",
   },
   corwell: {
     alt: "Skjermbilde fra CorWell",
@@ -80,7 +80,7 @@ export const thumbnails = {
   },
   dromme: {
     alt: "Skjermbilder fra Drømmeland",
-    foregroundSrc: "/drømmeland/thumbnail-fg.webp",
+    foregroundSrc: "/drommeland/thumbnail-fg.webp",
     foregroundSize: { width: 819, height: 603 },
     backgroundColor: "#3cc6b2",
   },

@@ -146,12 +146,12 @@ export default function ProjectsLibaryRoute() {
             <>
               <FigurePair
                 first={{
-                  src: "/æ/æ-wireframes.webp",
+                  src: "/rema/æ-wireframes.webp",
                   alt: "Et bord med tegninger fra Crazy 8's.",
                   caption: "Crazy 8's med prosjektgruppen",
                 }}
                 second={{
-                  src: "/æ/wireframes.webp",
+                  src: "/rema/wireframes.webp",
                   alt: "Wireframes av designet i Figma.",
                   caption: "Wireframes laget i Figma",
                 }}
@@ -179,17 +179,17 @@ export default function ProjectsLibaryRoute() {
               <FigureRow
                 figures={[
                   {
-                    src: "/æ/typography.webp",
+                    src: "/rema/typography.webp",
                     alt: "Oversikt over typografien som er brukt i designet, laget i Figma, med font og ulike skriftstørrelser.",
                     caption: "Typografien for redesignet",
                   },
                   {
-                    src: "/æ/primary-colors.webp",
+                    src: "/rema/primary-colors.webp",
                     alt: "Oversikt over primærfargene i designet, med farger og tilhørende koder.",
                     caption: "Primærfargene for redesignet",
                   },
                   {
-                    src: "/æ/accent.webp",
+                    src: "/rema/accent.webp",
                     alt: "Oversikt over aksentfargene i designet, med farger og tilhørende koder.",
                     caption: "Aksentfargene for redesignet",
                   },
@@ -201,7 +201,7 @@ export default function ProjectsLibaryRoute() {
                   title="Prototypens første iterasjon"
                   figures={[
                     {
-                      src: "/æ/first-iteration.webp",
+                      src: "/rema/first-iteration.webp",
                       alt: "Tre mobilskjermer som hver viser en del av appen: hjemmesiden og to deler av innstillingssiden.",
                       caption:
                         "Første designiterasjon av hjemmesiden og profilsiden i appen",
@@ -249,7 +249,7 @@ export default function ProjectsLibaryRoute() {
                   title="Hjemmesiden"
                   figures={[
                     {
-                      src: "/æ/homepage.webp",
+                      src: "/rema/homepage.webp",
                       alt: "To mobilskjermer: hjemmesiden i appen og siden som viser rabattene dine.",
                       caption:
                         "Hjemmesiden viser personlige rabatter øverst for enkel tilgang, med en snarvei i navigasjonsfeltet.",
@@ -269,7 +269,7 @@ export default function ProjectsLibaryRoute() {
                   title="Varsler"
                   figures={[
                     {
-                      src: "/æ/notifications.webp",
+                      src: "/rema/notifications.webp",
                       alt: "To mobilskjermer, en som viser rabattene dine og en som viser varslingssenteret.",
                       caption:
                         "Varsler er plassert i sidemenyen og kan nås via bjelleikonet øverst til høyre. Dette holder rabatter i fokus og sørger for at varsler er organisert separat.",
@@ -290,11 +290,11 @@ export default function ProjectsLibaryRoute() {
                   title="Handleturer og kvitteringer"
                   figures={[
                     {
-                      src: "/æ/receipt-old-vs-new.webp",
+                      src: "/rema/receipt-old-vs-new.webp",
                       alt: "To mobilskjermer: dagens design av Æ-appen og den nye versjonen, begge med kvitteringsdelen av appen.",
                     },
                     {
-                      src: "/æ/receipt.webp",
+                      src: "/rema/receipt.webp",
                       alt: "Tre mobilenheter, hvor den ene viser det opprinnelige grensesnittets «handleturer»-side og de to andre viser redesignet.",
                       caption:
                         "Elementene er gruppert i tydelige seksjoner for å redusere kognitiv belastning",
@@ -325,7 +325,7 @@ export default function ProjectsLibaryRoute() {
                   title="Tiltak for å heve brukervennligheten"
                   figures={[
                     {
-                      src: "/æ/discounts.webp",
+                      src: "/rema/discounts.webp",
                       alt: "To skjermer som viser det opprinnelige grensesnittets «Personlige rabatter»-side og den redesignede siden.",
                       caption:
                         "Personlige rabatter vises i aktivert tilstand, med gul kant som fremhever aktiverte rabatter som en visuell påminnelse.",
@@ -355,7 +355,7 @@ export default function ProjectsLibaryRoute() {
                   title="Lettere scanning"
                   figures={[
                     {
-                      src: "/æ/barcode.webp",
+                      src: "/rema/barcode.webp",
                       alt: "Den nye «strekkode»-funksjonen i grensesnittet, med både horisontal og vertikal visning av strekkoden.",
                       caption:
                         "Strekkoden er tilgjengelig i både vertikal og horisontal visning",
@@ -388,11 +388,11 @@ export default function ProjectsLibaryRoute() {
                   title="Redusert risiko for feiltrykk"
                   figures={[
                     {
-                      src: "/æ/profile-top.webp",
+                      src: "/rema/profile-top.webp",
                       alt: "Øverste del av profilsiden, både i det opprinnelige og det redesignede grensesnittet.",
                     },
                     {
-                      src: "/æ/profile-bottom.webp",
+                      src: "/rema/profile-bottom.webp",
                       alt: "Nederste del av profilsiden, både i det opprinnelige og det redesignede grensesnittet.",
                       caption:
                         "Den redesignede profilsiden har et klart og intuitivt oppsett for å redusere kognitiv belastning.",
@@ -426,7 +426,7 @@ export default function ProjectsLibaryRoute() {
                   title="Handleliste"
                   figures={[
                     {
-                      src: "/æ/shopping-list.webp",
+                      src: "/rema/shopping-list.webp",
                       alt: "Mobilskjerm som viser den nye handlelistefunksjonen.",
                       caption: "Handlelistefunksjonen",
                     },
@@ -445,7 +445,7 @@ export default function ProjectsLibaryRoute() {
                   title="Innsikter"
                   figures={[
                     {
-                      src: "/æ/insights.webp",
+                      src: "/rema/insights.webp",
                       alt: "Den nye innsiktsfunksjonen, med ulik statistikk fra tidligere handleturer.",
                       caption: "Innsikter-siden",
                     },
@@ -463,7 +463,7 @@ export default function ProjectsLibaryRoute() {
                   title="Widgets"
                   figures={[
                     {
-                      src: "/æ/widget.webp",
+                      src: "/rema/widget.webp",
                       alt: "Mobilskjerm som viser «tilpass hjemmesiden din», hvor brukeren kan legge til widgets.",
                       caption: "Tilpass hjemskjerm-siden",
                     },

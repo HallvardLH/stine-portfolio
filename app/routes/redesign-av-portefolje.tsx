@@ -67,7 +67,7 @@ export default function ProjectsLibaryRoute() {
         </CaseChapter>
 
         <CaseImageBreak
-          src="/portefølje-redesign/portfolio-before-after.webp"
+          src="/redesign-av-portefolje/portfolio-before-after.webp"
           alt="Sammenligning av porteføljens gamle og nye design."
           caption="Porteføljen før og etter redesign."
           dark
@@ -129,12 +129,12 @@ export default function ProjectsLibaryRoute() {
 
               <FigurePair
                 first={{
-                  src: "/portefølje-redesign/wireframe.webp",
+                  src: "/redesign-av-portefolje/wireframe.webp",
                   alt: "Wireframe for nettsiden.",
                   caption: "Wireframe for porteføljens hjemmeside",
                 }}
                 second={{
-                  src: "/portefølje-redesign/about.webp",
+                  src: "/redesign-av-portefolje/about.webp",
                   alt: "Mobilskjerm hvor man bytter fra lys til mørk modus gjennom navigasjonsmenyen.",
                   caption:
                     "Man kan enkelt bytte mellom lys og mørk modus ved å klikke på modus-knappen i navigasjonsmenyen",
@@ -156,7 +156,7 @@ export default function ProjectsLibaryRoute() {
                   title="Header og navigasjon"
                   figures={[
                     {
-                      src: "/portefølje-redesign/landing-page.webp",
+                      src: "/redesign-av-portefolje/landing-page.webp",
                       alt: "Sammenligning av det gamle og det nye designet.",
                       caption:
                         "Navigasjonsmenyen har blitt endret i det nye designet for å gjøre navigasjonen enklere",
@@ -188,7 +188,7 @@ export default function ProjectsLibaryRoute() {
                   title="Struktur og brukervennlighet"
                   figures={[
                     {
-                      src: "/portefølje-redesign/footer.webp",
+                      src: "/redesign-av-portefolje/footer.webp",
                       alt: "Den nye footeren på både mobil og desktop.",
                       caption:
                         "Den nye footeren har navigasjonslenker, kontaktinformasjon og lenker til GitHub og LinkedIn",
@@ -220,7 +220,7 @@ export default function ProjectsLibaryRoute() {
                   title="Lys og mørk modus"
                   figures={[
                     {
-                      src: "/portefølje-redesign/dark-light.webp",
+                      src: "/redesign-av-portefolje/dark-light.webp",
                       alt: "Et prosjekt vist i både mørk og lys modus.",
                       caption:
                         "Prosjektsider i både lys og mørk modus for å heve brukervennlighet",

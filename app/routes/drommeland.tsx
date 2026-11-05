@@ -102,7 +102,7 @@ export default function ProjectsLibaryRoute() {
                 title="Konseptet"
                 figures={[
                   {
-                    src: "/drømmeland/spillreise.webp",
+                    src: "/drommeland/spillreise.webp",
                     alt: "Spilluniverset i Drømmeland-appen vist på en iPad-skjerm.",
                     caption: "Spilluniverset i Drømmeland",
                   },
@@ -124,7 +124,7 @@ export default function ProjectsLibaryRoute() {
                 title="Spillene"
                 figures={[
                   {
-                    src: "/drømmeland/games.webp",
+                    src: "/drommeland/games.webp",
                     alt: "To av spillene du kan spille i Drømmeland, «Pant» og «Redd Fisken».",
                     caption:
                       "To av spillene i Drømmeland, “Pant” og “Redd Fisken”",
@@ -141,7 +141,7 @@ export default function ProjectsLibaryRoute() {
                 title="Min side og klasseoversikt"
                 figures={[
                   {
-                    src: "/drømmeland/min-side.webp",
+                    src: "/drommeland/min-side.webp",
                     alt: "To iPad-skjermer som viser «Min side» og «Klasseoversikt» i Drømmeland-appen.",
                     caption: "Min side og klasseoversikt i Drømmeland",
                   },
