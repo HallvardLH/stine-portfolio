@@ -2,9 +2,14 @@ import { useRef, useState } from "react";
 import ImageLightbox, { type GalleryImage } from "./ImageLightbox";
 
 // The caption under an image on the page, shown under it in fullscreen too
+// Fullscreen shows the original, not the lighter version the page loaded
+function originalOf(url: string) {
+  return url.replace(/-(800|1400|2400)\.webp$/, ".webp");
+}
+
 function toGalleryImage(img: HTMLImageElement): GalleryImage {
   return {
-    src: img.currentSrc || img.getAttribute("src") || "",
+    src: originalOf(img.currentSrc || img.getAttribute("src") || ""),
     alt: img.alt,
     caption:
       img.closest("figure")?.querySelector("figcaption")?.textContent ??

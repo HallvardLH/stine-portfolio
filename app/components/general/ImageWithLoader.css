@@ -14,3 +14,13 @@
   outline: 2px solid var(--contrast-color);
   outline-offset: 2px;
 }
+
+/* The skeleton fills a box with the same shape as the image */
+.image-skeleton-box {
+  width: 100%;
+}
+
+.image-skeleton-box .react-loading-skeleton {
+  display: block;
+  height: 100%;
+}

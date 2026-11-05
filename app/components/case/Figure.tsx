@@ -31,7 +31,12 @@ export function Figure({
           : undefined
       }
     >
-      <ImageWithLoader src={src} alt={alt} classes="case-figure-image" />
+      <ImageWithLoader
+        src={src}
+        alt={alt}
+        classes="case-figure-image"
+        skeletonRatio
+      />
       {caption && <figcaption className="text-small">{caption}</figcaption>}
     </figure>
   );

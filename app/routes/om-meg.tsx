@@ -41,6 +41,7 @@ export default function AboutRoute() {
               src="/om-meg/headshot.webp"
               alt="Portrett av Stine Knutsen."
               classes="about-portrait-image"
+              sizes="(max-width: 1100px) calc(100vw - 3rem), 340px"
             />
           </figure>
         </div>
