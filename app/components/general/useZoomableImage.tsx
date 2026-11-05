@@ -4,7 +4,7 @@ import ImageLightbox, { type GalleryImage } from "./ImageLightbox";
 // The caption under an image on the page, shown under it in fullscreen too
 // Fullscreen shows the original, not the lighter version the page loaded
 function originalOf(url: string) {
-  return url.replace(/-(800|1400|2400)\.webp$/, ".webp");
+  return url.replace(/-(800|1400|2400|3200)\.webp$/, ".webp");
 }
 
 function toGalleryImage(img: HTMLImageElement): GalleryImage {

@@ -6,7 +6,7 @@ import { useZoomableImage } from "./useZoomableImage";
 import "./ImageWithLoader.css";
 
 // The widest light version. The original is only used fullscreen.
-const MAX_WIDTH = 2400;
+const MAX_WIDTH = 3200;
 // The widest an image gets on a page, and the margin around it on phones
 const DEFAULT_SIZES = "(max-width: 899px) calc(100vw - 3rem), 1120px";
 
@@ -61,6 +61,28 @@ export default function ImageWithLoader({
       setLoaded(true);
     }
   }, [imageRef, src, mobileSrc]);
+
+  // The browser decides when a lazy image starts loading, and some never do.
+  // This starts it once the image is near the screen, whatever the browser does.
+  useEffect(() => {
+    const image = imageRef.current;
+    if (!lazy || !image) return;
+    if (!("IntersectionObserver" in window)) {
+      image.loading = "eager";
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          image.loading = "eager";
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "1000px 0px" },
+    );
+    observer.observe(image);
+    return () => observer.disconnect();
+  }, [imageRef, lazy, src]);
 
   return (
     <>

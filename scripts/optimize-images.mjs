@@ -5,7 +5,8 @@
 //   node scripts/optimize-images.mjs
 //
 // The original file stays as it is (it is what opens fullscreen). Next to it come
-// name-800.webp, name-1400.webp and name-2400.webp, only for the sizes that are
+// name-800.webp, name-1400.webp and name-2400.webp (and name-3200.webp for the
+// images that span the whole screen), only for the sizes that are
 // smaller than the original. They are resized with Lanczos and saved at a high
 // quality, so text and edges stay crisp.
 import { readdir, stat, writeFile } from "node:fs/promises";
@@ -14,10 +15,12 @@ import sharp from "sharp";
 
 const publicDir = path.resolve("public");
 const widths = [800, 1400, 2400];
-const quality = { 800: 90, 1400: 90, 2400: 88 };
+const quality = { 800: 90, 1400: 90, 2400: 88, 3200: 88 };
+// Images across the whole screen need to be sharp on a retina screen too
+const fullWidth = /\/bruddbilde-desktop\.webp$/;
 // Images that are not shown through ImageWithLoader
 const skip = /(^|\/)(og|icons)\/|\/(thumbnail|cover)-[^/]*\.webp$/;
-const variantName = /-(800|1400|2400)\.webp$/;
+const variantName = /-(800|1400|2400|3200)\.webp$/;
 
 async function* walk(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
@@ -40,7 +43,7 @@ for await (const file of walk(publicDir)) {
   const size = (await stat(file)).size;
   const variants = [];
 
-  for (const target of widths) {
+  for (const target of fullWidth.test(url) ? [...widths, 3200] : widths) {
     // A version only 10% smaller than the original is not worth having
     if (target > width * 0.9) continue;
     const out = file.replace(/\.webp$/, `-${target}.webp`);
