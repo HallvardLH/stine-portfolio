@@ -173,11 +173,13 @@ export default function ProjectsLibaryRoute() {
               <FigurePair
                 first={{
                   src: "/finn-eiendom/insight.webp",
+                  alt: "Tavle med notater fra geriljaintervjuene, sortert i temaer.",
                   caption:
                     "Analyse av data fra geriljaintervjuene. Dataene ble kategorisert og analysert tematisk for å definere designkrav.",
                 }}
                 second={{
                   src: "/finn-eiendom/workshop.webp",
+                  alt: "Tegninger fra workshopen: skisser av visningskalender, kommentarfunksjon og rangering av boliger.",
                   caption:
                     "Tegninger fra den eksterne workshopen. Deltakerne tegnet blant annet visningskalendere, kommentarfunksjoner og muligheten til å rangere ulike aspekter ved boligen.",
                 }}
@@ -228,11 +230,13 @@ export default function ProjectsLibaryRoute() {
                   figures={[
                     {
                       src: "/finn-eiendom/pameldingsskjema.webp",
+                      alt: "Påmeldingsskjemaet til visning, som modal på mobil og som drawer på desktop.",
                       caption:
                         "Påmeldingsskjemaet. Venstre side viser mobildesignet, hvor skjemaet åpnes som en modal fra bunnen av skjermen. Høyre side viser desktopversjonen, hvor skjemaet åpnes som en drawer over annonseinnholdet.",
                     },
                     {
                       src: "/finn-eiendom/pameldingsskjema2.webp",
+                      alt: "Seksjonen «Opplysninger til megler» i påmeldingsskjemaet.",
                       caption:
                         "Seksjonen «Opplysninger til megler» i påmeldingsskjemaet, med informasjon om meglerens tjenester.",
                     },
@@ -263,6 +267,7 @@ export default function ProjectsLibaryRoute() {
                   figures={[
                     {
                       src: "/finn-eiendom/mine-visninger.webp",
+                      alt: "Dashboardet «Mine visninger» med liste- og kalendervisning av visninger.",
                       caption:
                         "Dashboardet “Mine visninger”. Venstre side viser listevisning, mens høyre side viser kalendervisning.",
                     },
@@ -287,6 +292,7 @@ export default function ProjectsLibaryRoute() {
                   figures={[
                     {
                       src: "/finn-eiendom/mine-visninger2.webp",
+                      alt: "Arbeidsflaten for en valgt bolig i «Mine visninger», med grensesnittet og funksjonene ved siden av.",
                       caption:
                         "Arbeidsflaten for en valgt bolig. Venstre side viser grensesnittet, mens høyre side viser de ulike funksjonene på siden.",
                     },
@@ -313,6 +319,7 @@ export default function ProjectsLibaryRoute() {
                   figures={[
                     {
                       src: "/finn-eiendom/meglerinnsikt.webp",
+                      alt: "Ny fane i Meglerinnsikt som viser forventet aktivitet og interesse for en boligannonse.",
                       caption:
                         "Den nye fanen i Meglerinnsikt gir megleren et estimat på aktivitet og interesse for boligannonsen etter publisering.",
                     },
@@ -337,6 +344,7 @@ export default function ProjectsLibaryRoute() {
                   figures={[
                     {
                       src: "/finn-eiendom/meglerhub.webp",
+                      alt: "Verktøyet i Meglerhub med oversikt over påmeldte til visning og detaljert data om dem.",
                       caption:
                         "Det nye verktøyet i Meglerhub gir megleren innsikt i hvem som er påmeldt og hva de ser etter. Bildet til høyre viser mer detaljert data om de påmeldte.",
                     },
@@ -363,6 +371,7 @@ export default function ProjectsLibaryRoute() {
                   figures={[
                     {
                       src: "/finn-eiendom/kontakte-leads.webp",
+                      alt: "Verktøy i Meglerhub for å kontakte brukere som er interessert i lignende boliger.",
                       caption:
                         "Et verktøy som kobler meglere med brukere som er interessert i lignende boliger, dersom brukeren samtykker til dette.",
                     },
@@ -384,6 +393,7 @@ export default function ProjectsLibaryRoute() {
                   figures={[
                     {
                       src: "/finn-eiendom/megler-bruker.webp",
+                      alt: "Pop-up etter visning der brukeren bekrefter oppmøte, og funksjonen «Mine meglere».",
                       caption:
                         "Venstre: Pop-up-modalen som vises etter en boligvisning. Brukeren kan bekrefte om de deltok på visningen og reservere seg mot videre kontakt fra megleren dersom de ikke lenger er interessert. Høyre: Funksjonen «Mine meglere», som lar brukeren holde oversikt over meglere de har vært i kontakt med, for eventuell senere bruk.",
                     },

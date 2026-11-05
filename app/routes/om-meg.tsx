@@ -80,11 +80,13 @@ export default function AboutRoute() {
             <FigurePair
               first={{
                 src: "/om-meg/finn-presentasjon.webp",
+                alt: "Sommerteamet foran en skjerm med presentasjonen av sommerprosjektet.",
                 caption: "Presentasjonen av sommerprosjektet hos FINN.",
                 aspectRatio: "556 / 370",
               }}
               second={{
                 src: "/om-meg/finn-teamet.webp",
+                alt: "Sommerteamet utenfor FINN-kontoret.",
                 caption: "Sommerteamet utenfor kontoret hos FINN!",
                 aspectRatio: "556 / 370",
               }}
