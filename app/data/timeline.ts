@@ -20,6 +20,8 @@ export interface TimelinePhoto {
   src: string;
   alt: string;
   caption: string;
+  /** Where the thumbnail crop is anchored, e.g. "right" when the subject is at the edge */
+  position?: string;
 }
 
 export interface TimelineEntry {
@@ -172,6 +174,7 @@ export const timeline: TimelineEntry[] = [
       {
         src: "/om-meg/spn.webp",
         alt: "Studentteamet hos Sparebanken Norge.",
+        position: "right center",
         caption:
           "Studentteamet hos Sparebanken Norge sommeren 2025 under presentasjonen av den nye Barnebanken.",
       },

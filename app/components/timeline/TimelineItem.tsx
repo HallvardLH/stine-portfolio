@@ -26,7 +26,12 @@ export default function TimelineItem({
           onClick={() => onOpenPhotos(entry)}
           aria-label={`Se ${photos.length === 1 ? "bildet" : `de ${photos.length} bildene`} fra ${entry.title}, ${entry.org.split(" · ")[0]}`}
         >
-          <img src={photos[0].src} alt="" loading="lazy" />
+          <img
+            src={photos[0].src}
+            alt=""
+            loading="lazy"
+            style={{ objectPosition: photos[0].position }}
+          />
           <span className="timeline-thumb-count">
             {photos.length} {photos.length === 1 ? "bilde" : "bilder"}
           </span>
