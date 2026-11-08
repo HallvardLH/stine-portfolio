@@ -174,7 +174,7 @@ export const timeline: TimelineEntry[] = [
       {
         src: "/om-meg/spn.webp",
         alt: "Studentteamet hos Sparebanken Norge.",
-        position: "right center",
+        position: "70% center",
         caption:
           "Studentteamet hos Sparebanken Norge sommeren 2025 under presentasjonen av den nye Barnebanken.",
       },
